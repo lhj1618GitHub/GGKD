@@ -1,3 +1,12 @@
+# 我的订阅地址：
+```txt
+https://raw.githubusercontent.com/lhj1618GitHub/GGKD/main/dist/gkd.json5
+```
+加速链接：
+```txt
+https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD@main/dist/gkd.json5
+```
+
 # subscription-template
 
 GKD 订阅模板, 此仓库方便您直接构建自己订阅, 点击右上角 [Use this template](https://github.com/new?template_name=subscription-template&template_owner=gkd-kit) 即可使用
