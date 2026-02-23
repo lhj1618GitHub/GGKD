@@ -13,29 +13,4 @@ anyMatches:['[text*="跳过" || text*="跳过广告"|| text*="关闭"][text.leng
 snapshotUrls:[],
 excludeSnapshotUrls:[]
 },
-  
-//activityIds:活动id=应用id+界面id
-  {
-  key: 1,
-  name: '内嵌广告-1',
-  "desc": "功能描述",
-  rules: [
-    {
-      key: 0,
-      fastQuery: true,
-      activityIds: '应用及界面id',
-      matches: '[属性值]',
-      snapshotUrls: '快照地址',
-      [visibleToUser=true]"],
-    },
-    {
-      key: 1,
-      fastQuery: true,
-      activityIds: '应用及界面id',
-      matches: '[属性值]',
-      snapshotUrls: '快照地址',
-      [visibleToUser=true]"],
-    },
-  ],
-}
 ]);
