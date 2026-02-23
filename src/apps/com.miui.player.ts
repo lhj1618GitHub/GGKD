@@ -155,6 +155,6 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/e7d3d6c3-d8be-4e0f-ac02-e5df2a0615b3',
           snapshotUrls: 'https://i.gkd.li/i/20420265',
         },
-    },
+     },
   ],
 });
