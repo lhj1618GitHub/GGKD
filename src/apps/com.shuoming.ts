@@ -13,7 +13,6 @@ resetMatch: 'app',
 excludeMatches:'()',
 anyMatches:['[text*="跳过" || text*="跳过广告"|| text*="关闭"][text.length<10][visibleToUser=true]'],
 snapshotUrls:[],
-excludeSnapshotUrls:[]
 },
 {
   key: 1,
