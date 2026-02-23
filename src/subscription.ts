@@ -2,8 +2,7 @@
 import { defineGkdSubscription } from '@gkd-kit/define';
 import { batchImportApps } from '@gkd-kit/tools';
 import categories from './categories';
-import globalGroups, { OPEN_AD_ORDER } from './globalGroups';
-import { RawApp, RawAppGroup } from '@gkd-kit/api';
+import globalGroups from './globalGroups';
 
 const apps = await batchImportApps(`${import.meta.dirname}/apps`);
 const rawApps: RawApp[] = [];
