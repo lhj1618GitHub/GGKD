@@ -23,20 +23,13 @@ export default defineGkdCategories([
     enable: false,
   },
   {
-    //系统功能自动化
     key: 3,
-    name: '系统自动化',
+    name: '自动化',
     enable: false,
   },
-  {
-    // 软件内自动化
-    key: 4,
-    name: '软件内自动化',
-    enable: false,
-  },
-  {
+ {
     // 分类不明确
-    key: 5,
+    key: 4,
     name: '其它',
     enable: false,
   },
