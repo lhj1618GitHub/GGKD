@@ -156,6 +156,6 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/20420265',
         },
            ],
-  },
+ },
 ], 
 });
