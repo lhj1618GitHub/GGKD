@@ -3,6 +3,7 @@ import { defineGkdApp } from '@gkd-kit/define';
 export default defineGkdApp({
   id: 'com.lbe.security.miui',
   name: '权限管理服务',
+  //小米权限管理服务
   groups: [
     {
       key: 1,
