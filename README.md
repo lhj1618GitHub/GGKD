@@ -9,6 +9,8 @@ https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD@main/dist/gkd.json5
 
 可编辑 [./src](./src/) 下的文件来自定义订阅内容, 构建后的订阅文件处于 [./dist](./dist/) 目录下
 
+编辑后提交：[https://github.com/lhj1618GitHub/GGKD/actions/workflows/build_release.yml](https://github.com/lhj1618GitHub/GGKD/actions/workflows/build_release.yml)
+
 # subscription-template
 
 GKD 订阅模板, 此仓库方便您直接构建自己订阅, 点击右上角 [Use this template](https://github.com/new?template_name=subscription-template&template_owner=gkd-kit) 即可使用
