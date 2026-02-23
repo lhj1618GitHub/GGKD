@@ -7,6 +7,7 @@ import { defineGkdCategories } from '@gkd-kit/define';
 
 export default defineGkdCategories([
   {
+    //非全局-仅单应用
     key: 0,
     name: '开屏广告',
     enable: true,
