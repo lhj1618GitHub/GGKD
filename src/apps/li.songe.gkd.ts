@@ -31,11 +31,7 @@ excludeSnapshotUrls:[]
       activityIds: '应用及界面id',
       matches: '[属性值]',
       snapshotUrls: '快照地址',
-      [visibleToUser=true]"],
-      ],
-    },
-  ],
+         ]
 }
-  
-  ],
+    ]
 });
