@@ -1,3 +1,4 @@
+//订阅文件
 import { defineGkdSubscription } from '@gkd-kit/define';
 import { batchImportApps } from '@gkd-kit/tools';
 import categories from './categories';
