@@ -22,7 +22,7 @@ export default defineGkdApp({
     },
     {
       key: 1,
-      name: '局部广告-悬浮广告',
+      name: '弹窗广告-悬浮广告',
       desc: '点击关闭',
       rules: [
         {
@@ -46,7 +46,7 @@ export default defineGkdApp({
     },
     {
       key: 2,
-      name: '局部广告-横幅广告',
+      name: '内嵌广告-横幅广告',
       desc: '关闭播放页面横幅广告',
       fastQuery: true,
       activityIds:
@@ -73,7 +73,7 @@ export default defineGkdApp({
     },
     {
       key: 3,
-      name: '全屏广告-弹窗广告',
+      name: '弹窗广告-1',
       desc: '点击关闭',
       matchTime: 10000,
       actionMaximum: 1,
@@ -100,8 +100,8 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 5,
-      name: '全屏广告-弹窗广告（部分误触）',
+      key: 4,
+      name: '弹窗广告-（部分误触）',
       desc: '注意：会关闭年度报告邀请函弹窗',
       rules: [
         {
@@ -113,8 +113,8 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 12,
-      name: '功能类-看广告视频领VIP',
+      key: 5,
+      name: '自动化-看广告视频领VIP',
       desc: '等待15s自动点击"退出"',
       rules: [
         {
@@ -127,8 +127,9 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 13,
-      name: '局部广告-主界面卡片广告',
+      key: 6,
+      name: '内嵌广告-主界面卡片广告',
+      desc: '主界面卡片广告',
       rules: [
         {
           key: 1,
@@ -146,30 +147,13 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/d9b74767-84b6-4668-8a9b-261bd938a8a3',
           snapshotUrls: 'https://i.gkd.li/i/20420253',
         },
-      ],
-    },
-    {
-      key: 14,
-      name: '分段广告-首页卡片广告',
-      rules: [
         {
-          key: 0,
+          key: 3,
           fastQuery: true,
           activityIds: 'com.tencent.qqmusiclite.activity.MainActivity',
           matches: '[vid="ad_more"]',
           exampleUrls: 'https://e.gkd.li/e7d3d6c3-d8be-4e0f-ac02-e5df2a0615b3',
           snapshotUrls: 'https://i.gkd.li/i/20420265',
         },
-        {
-          preKeys: [0],
-          key: 20,
-          fastQuery: true,
-          activityIds: 'com.tencent.qqmusiclite.activity.MainActivity',
-          matches: '[vid="ad_close"][text="不感兴趣"]',
-          exampleUrls: 'https://e.gkd.li/6ca7beba-98b8-4892-b275-1a116d040115',
-          snapshotUrls: 'https://i.gkd.li/i/20420322',
-        },
-      ],
-    },
   ],
 });
