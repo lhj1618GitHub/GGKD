@@ -1,7 +1,8 @@
 import { defineGkdGlobalGroups } from '@gkd-kit/define';
 
 export default defineGkdGlobalGroups([
-  {key:0,
+  {
+key:0,
 name:'开屏广告',
 desc:'跳过/跳过广告/关闭',
 fastQuery: true,
