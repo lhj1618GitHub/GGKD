@@ -10,11 +10,11 @@
 ## 我构建的订阅地址
 
 ```txt
-` https://raw.githubusercontent.com/lhj1618GitHub/GGKD/main/dist/gkd.json5`
+https://raw.githubusercontent.com/lhj1618GitHub/GGKD/main/dist/gkd.json5
 ```
 
 ```txt
-` https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD@main/dist/gkd.json5`
+https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD@main/dist/gkd.json5
 ```
 
 
