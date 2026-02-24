@@ -17,6 +17,7 @@ https://raw.githubusercontent.com/lhj1618GitHub/GGKD/main/dist/gkd.json5
 ```txt
 https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD@main/dist/gkd.json5
  ```
+
 #### 其它备份
     *   ❤️ [李跳跳 + AutoJS + 规则工具](https://github.com/lhj1618GitHub/litiaotiao-autojs-android-app)；[Gitee](https://gitee.com/lhj1618/litiaotiao-autojs-android-app)
 
