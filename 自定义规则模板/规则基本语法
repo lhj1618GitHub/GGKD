@@ -1,0 +1,80 @@
+使用 JSON5 语法,
+
+快照审查工具：https://i.gkd.li/
+
+快速查询：通过 id/vid/text 直接获取子孙节点
+
+各个类型可用的属性及其方法
+
+null 					无任何属性方法, 并且在无特殊说明时, 属性方法当调用者或者参数是 null 时, 均返回 null
+a || b 	or			a或b
+a && b	and			a和b
+!a					非a
+=	equal			等于
+!=	notEqual		不等于
+>	more			大于
+>=	moreEqual		大于或等于
+<	less				小于
+<=	lessEqual		小于或等于
+^=	startsWith		以...开头
+!^=	notStartsWith	不以...开头
+*=	contains			包含...
+!*=	notContains		不包含...
+$=	endsWith		以...结尾
+!$=	notEndsWith		不以...结尾
+~=	matches			正则匹配...
+!~=	notMatches		正则不匹配...附加说明: 
+
+
+正则匹配/正则不匹配要求 值 必须是合法的 Java/Kotlin 正则表达式 且 右侧的值只能是 字面量/字符串, 否则提示语法错误
+操作符只能使用在对应的类型的值, 比如 a>'' 类型不匹配, 将提示 非法类型
+
+
+关系
++	前置兄弟节点
+-	后置兄弟节点
+>	父节点
+<	直接子节点
+<<	孙节点(深度先序)，* <<2 ，子节点的子节点；* <<3 ，子节点的子节点的子节点
+->, 用于查询过程中, 表示当前节点的之前节点
+例子：@LinearLayout > TextView[id=`a`][text=`不感兴趣`]
+选择器从末尾开始查找, 首先找到 id=`a` 和 text=`不感兴趣` 的 TextView, 并且父节点是 LinearLayout 的节点;
+等价于 TextView[id=`a`][text=`不感兴趣`] <n LinearLayout ，但在查询算法时间复杂度上, 这个更慢
+
+
+
+
+
+选择器语法
+
+示例 div > img 的结构是 属性选择器 关系选择器 属性选择器, 它表示选择父节点是 div 的 img 节点,
+另外 属性选择器 和 关系选择器 之间必须强制用 空白字符(空格/换行/回车/制表) 隔开
+
+属性选择
+
+@TextView[a=1][b^='2'][c*='a'||d.length>7&&e=false][!(f=true)][g.plus(1)>0]
+@ 表示选择此节点, 一条规则最后属性选择器 @ 生效, 如果没有 @, 取最后一个属性选择器
+TextView 代表节点的 name 属性, 而且与 CSS 相似, * 表示匹配任意属性
+
+由于该选择器主要用于 Android 平台, 节点的 name 都是 java 类如 android.text.TextView 这种形式
+
+为了方便书写规则, 上述 TextView 等价 [name='TextView'||name$='.TextView']
+
+[] 内部是一个 逻辑表达式/布尔表达式/取反表达式
+
+逻辑表达式 -> name='TextView'||name$='.TextView'
+布尔表达式 -> name='TextView'
+取反表达式 -> !(name$='TextView'), !(name='TextView'||name$='.TextView')
+注意 取反表达式中的 ! 后面必须是 (...), !!(...) 是非法的
+
+逻辑表达式 有两个操作符 || 和 &&. && 优先级更高
+即 [a>1||b>1&&c>1||d>1] 等价于 [a>1||(b>1&&c>1)||d>1]
+
+并列的 [] 视为使用 && 的逻辑表达式, 即 [a=1][b=1] 等价于 [a=1&&b=1]
+布尔表达式 由 左值 操作符 右值 构成, 左值/右值 是一个 值表达式
+
+
+
+
+
+
