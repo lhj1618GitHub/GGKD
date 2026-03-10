@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>规则自动生成工具（自定义匹配条件）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", monospace;
+        }
+        body {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .type-select {
+            margin-bottom: 20px;
+        }
+        .type-select label {
+            font-size: 16px;
+            margin-right: 10px;
+            color: #555;
+        }
+        .type-select select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 300px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical;
+        }
+        .form-group textarea {
+            min-height: 60px;
+        }
+        .form-panel {
+            display: none;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .form-panel.active {
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result-area {
+            margin-top: 20px;
+        }
+        .result-area textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f8f8f8;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .tip {
+            color: #999;
+            font-size: 12px;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>规则自动生成工具（自定义匹配条件）</h1>
+        
+        <!-- 规则类型选择 -->
+        <div class="type-select">
+            <label for="rule-type">选择规则类型：</label>
+            <select id="rule-type">
+                <option value="">-- 请选择 --</option>
+                <option value="global">全局规则</option>
+                <option value="basic">基础格式</option>
+                <option value="multi-activity">不同界面下点击相同按钮</option>
+                <option value="step-click">连续界面阶段性点击</option>
+            </select>
+        </div>
+
+        <!-- 全局规则表单（自定义anyMatches） -->
+        <div class="form-panel" id="global-form">
+            <div class="form-group">
+                <label for="global-key">key（数字）：</label>
+                <input type="number" id="global-key" placeholder="例如：0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="global-name">name（规则名称）：</label>
+                <input type="text" id="global-name" placeholder="例如：开屏广告" value="开屏广告">
+            </div>
+            <div class="form-group">
+                <label for="global-desc">desc（规则描述）：</label>
+                <input type="text" id="global-desc" placeholder="例如：跳过/跳过广告/关闭" value="跳过/跳过广告/关闭">
+            </div>
+            <div class="form-group">
+                <label for="global-actionMaximum">actionMaximum（数字）：</label>
+                <input type="number" id="global-actionMaximum" placeholder="例如：1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="global-matchTime">matchTime（毫秒）：</label>
+                <input type="number" id="global-matchTime" placeholder="例如：4000" value="4000">
+            </div>
+            <div class="form-group">
+                <label for="global-resetMatch">resetMatch：</label>
+                <input type="text" id="global-resetMatch" placeholder="例如：app" value="app">
+            </div>
+            <div class="form-group">
+                <label for="global-anyMatches">anyMatches匹配条件：</label>
+                <input type="text" id="global-anyMatches" placeholder="示例：[text*='跳过' || text*='关闭'][text.length<10][visibleToUser=true]" value="[text*='跳过' || text*='跳过广告'|| text*='关闭'][text.length<10][visibleToUser=true]">
+                <div class="tip">支持任意条件组合，例如：<br>
+                1. [text*="同意"][visibleToUser=true]<br>
+                2. [id="com.miui:id/btn_close"][text.length<5]<br>
+                3. [vid="check_box"][checked=false]
+                </div>
+            </div>
+        </div>
+
+        <!-- 基础格式表单（自定义matches） -->
+        <div class="form-panel" id="basic-form">
+            <div class="form-group">
+                <label for="basic-key">key（数字）：</label>
+                <input type="number" id="basic-key" placeholder="例如：1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="basic-name">name（规则名称）：</label>
+                <input type="text" id="basic-name" placeholder="例如：功能类-USB安装时自动继续安装" value="功能类-USB安装时自动继续安装">
+            </div>
+            <div class="form-group">
+                <label for="basic-desc">desc（规则描述）：</label>
+                <input type="text" id="basic-desc" placeholder="例如：点击USB安装应用时的[继续安装]按钮" value="点击USB安装应用时的[继续安装]按钮">
+            </div>
+            <div class="form-group">
+                <label for="basic-activityIds">activityIds（字符串）：</label>
+                <input type="text" id="basic-activityIds" placeholder="例如：com.miui.permcenter.install.AdbInstallActivity" value="com.miui.permcenter.install.AdbInstallActivity">
+            </div>
+            <div class="form-group">
+                <label for="basic-matches">matches匹配条件：</label>
+                <input type="text" id="basic-matches" placeholder="示例：[text='继续安装'] 或 [id='com.miui:id/btn_continue']" value="[text='继续安装']">
+                <div class="tip">支持任意单条匹配条件，例如：<br>
+                1. [text="不同意"]<br>
+                2. [id="com.miui.securitycenter:id/title"][text="获取位置信息"]<br>
+                3. [vid="btn_ok"][visibleToUser=true]
+                </div>
+            </div>
+        </div>
+
+        <!-- 不同界面相同按钮表单（自定义matches数组） -->
+        <div class="form-panel" id="multi-activity-form">
+            <div class="form-group">
+                <label for="multi-key">key（数字）：</label>
+                <input type="number" id="multi-key" placeholder="例如：11" value="11">
+            </div>
+            <div class="form-group">
+                <label for="multi-name">name（规则名称）：</label>
+                <input type="text" id="multi-name" placeholder="例如：功能类-禁止获取定位" value="功能类-禁止获取定位">
+            </div>
+            <div class="form-group">
+                <label for="multi-desc">desc（规则描述）：</label>
+                <input type="text" id="multi-desc" placeholder="例如：点击获取定位权限弹窗的【不同意】按钮" value="点击获取定位权限弹窗的【不同意】按钮">
+            </div>
+            <div class="form-group">
+                <label for="multi-activityIds">activityIds数组（每行一个，格式：值 // 备注）：</label>
+                <textarea id="multi-activityIds" placeholder="例如：
+com.miui.securityscan.MainActivity // app版本v8
+com.miui.permcenter.permissions.SystemAppPermissionDialogActivity // app版本v5">com.miui.securityscan.MainActivity // app版本v8
+com.miui.permcenter.permissions.SystemAppPermissionDialogActivity // app版本v5</textarea>
+            </div>
+            <div class="form-group">
+                <label for="multi-matches">matches匹配条件数组（多个条件用英文逗号分隔）：</label>
+                <input type="text" id="multi-matches" placeholder="示例：[id='com.miui:id/title'][text='获取位置信息'],[text='不同意']" value="[id='com.miui.securitycenter:id/title'][text='获取位置信息'],[text='不同意']">
+                <div class="tip">多个条件用英文逗号分隔，例如：<br>
+                1. [text="确定"],[vid="btn_submit"][visibleToUser=true]<br>
+                2. [id="com.miui:id/tv_cancel"],[text.length<8]
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="multi-ruleActivityId">rules内activityIds：</label>
+                <input type="text" id="multi-ruleActivityId" placeholder="例如：com.miui.permcenter.permissions.SystemAppPermissionDialogActivity" value="com.miui.permcenter.permissions.SystemAppPermissionDialogActivity">
+            </div>
+        </div>
+
+        <!-- 连续界面阶段性点击表单（自定义各阶段matches） -->
+        <div class="form-panel" id="step-click-form">
+            <div class="form-group">
+                <label for="step-key">key（数字）：</label>
+                <input type="number" id="step-key" placeholder="例如：13" value="13">
+            </div>
+            <div class="form-group">
+                <label for="step-name">name（规则名称）：</label>
+                <input type="text" id="step-name" placeholder="例如：功能类-高敏感权限自动确定" value="功能类-高敏感权限自动确定">
+            </div>
+            <div class="form-group">
+                <label for="step-desc">desc（规则描述）：</label>
+                <input type="text" id="step-desc" placeholder="例如：自动处理高敏感权限申请：勾选风险提示并延迟10秒后点击确定" value="自动处理高敏感权限申请：勾选风险提示并延迟10秒后点击确定">
+            </div>
+            <div class="form-group">
+                <label for="step-activityIds">activityIds数组（每行一个）：</label>
+                <textarea id="step-activityIds" placeholder="例如：
+com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity
+com.miui.permcenter.privacymanager.DeviceManagerApplyActivity">com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity
+com.miui.permcenter.privacymanager.DeviceManagerApplyActivity</textarea>
+            </div>
+            <div class="form-group">
+                <label for="step-matches0">第一阶段（key=0）matches匹配条件（多个用英文逗号分隔）：</label>
+                <input type="text" id="step-matches0" placeholder="示例：[text='我已知晓风险'],@[vid='check_box'][checked=false]" value="[text='我已知晓可能存在的风险，并自愿承担可能导致的后果'],@[vid='check_box'][checked=false]">
+            </div>
+            <div class="form-group">
+                <label for="step-matches1">第二阶段（key=1）matches匹配条件：</label>
+                <input type="text" id="step-matches1" placeholder="示例：[text='确定'] 或 [id='com.miui:id/btn_confirm']" value="[text='确定']">
+            </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div>
+            <button id="generate-btn">生成规则</button>
+            <button id="copy-btn">复制结果</button>
+            <button id="reset-btn">重置表单</button>
+        </div>
+
+        <!-- 结果展示 -->
+        <div class="result-area">
+            <label>生成结果：</label>
+            <textarea id="result-text" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        // 1. 切换规则类型显示对应表单
+        const ruleTypeSelect = document.getElementById('rule-type');
+        const formPanels = document.querySelectorAll('.form-panel');
+        
+        ruleTypeSelect.addEventListener('change', function() {
+            // 隐藏所有表单
+            formPanels.forEach(panel => panel.classList.remove('active'));
+            // 显示选中类型的表单
+            const selectedType = this.value;
+            if (selectedType) {
+                document.getElementById(`${selectedType}-form`).classList.add('active');
+            }
+            // 清空结果
+            document.getElementById('result-text').value = '';
+        });
+
+        // 2. 生成规则核心逻辑
+        document.getElementById('generate-btn').addEventListener('click', function() {
+            const ruleType = ruleTypeSelect.value;
+            if (!ruleType) {
+                alert('请先选择规则类型！');
+                return;
+            }
+
+            let result = '';
+            switch (ruleType) {
+                case 'global':
+                    result = generateGlobalRule();
+                    break;
+                case 'basic':
+                    result = generateBasicRule();
+                    break;
+                case 'multi-activity':
+                    result = generateMultiActivityRule();
+                    break;
+                case 'step-click':
+                    result = generateStepClickRule();
+                    break;
+            }
+
+            document.getElementById('result-text').value = result;
+        });
+
+        // 3. 复制结果
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const resultText = document.getElementById('result-text');
+            if (!resultText.value) {
+                alert('暂无生成结果可复制！');
+                return;
+            }
+            resultText.select();
+            document.execCommand('copy');
+            alert('复制成功！');
+        });
+
+        // 4. 重置表单
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            ruleTypeSelect.value = '';
+            formPanels.forEach(panel => {
+                panel.classList.remove('active');
+                // 清空表单内输入框
+                const inputs = panel.querySelectorAll('input, textarea');
+                inputs.forEach(input => input.value = '');
+            });
+            document.getElementById('result-text').value = '';
+        });
+
+        // ========== 规则生成函数（适配自定义匹配条件） ==========
+        // 全局规则生成
+        function generateGlobalRule() {
+            const key = document.getElementById('global-key').value || 0;
+            const name = document.getElementById('global-name').value || '开屏广告';
+            const desc = document.getElementById('global-desc').value || '跳过/跳过广告/关闭';
+            const actionMaximum = document.getElementById('global-actionMaximum').value || 1;
+            const matchTime = document.getElementById('global-matchTime').value || 4000;
+            const resetMatch = document.getElementById('global-resetMatch').value || 'app';
+            const anyMatches = document.getElementById('global-anyMatches').value || '[text*="跳过"][text.length<10][visibleToUser=true]';
+
+            // 拼接规则（保持缩进和格式）
+            return `{
+key:${key},
+name:'${name}',
+desc:'${desc}',
+actionMaximum: ${actionMaximum},
+matchTime: ${matchTime},
+resetMatch: '${resetMatch}',
+anyMatches:['${anyMatches}'],
+}`;
+        }
+
+        // 基础格式规则生成
+        function generateBasicRule() {
+            const key = document.getElementById('basic-key').value || 1;
+            const name = document.getElementById('basic-name').value || '功能类-USB安装时自动继续安装';
+            const desc = document.getElementById('basic-desc').value || '点击USB安装应用时的[继续安装]按钮';
+            const activityIds = document.getElementById('basic-activityIds').value || 'com.miui.permcenter.install.AdbInstallActivity';
+            const matches = document.getElementById('basic-matches').value || '[text="继续安装"]';
+
+            return `{
+      key: ${key},
+      name: '${name}',
+      desc: '${desc}',
+      enable: false,
+      fastQuery: true,
+      activityIds: '${activityIds}',
+      rules: [
+        {
+          matches: '${matches}',
+        },
+      ],
+},`;
+        }
+
+        // 不同界面相同按钮规则生成
+        function generateMultiActivityRule() {
+            const key = document.getElementById('multi-key').value || 11;
+            const name = document.getElementById('multi-name').value || '功能类-禁止获取定位';
+            const desc = document.getElementById('multi-desc').value || '点击获取定位权限弹窗的【不同意】按钮';
+            const activityIdsText = document.getElementById('multi-activityIds').value || `com.miui.securityscan.MainActivity // app版本v8
+com.miui.permcenter.permissions.SystemAppPermissionDialogActivity // app版本v5`;
+            const matchesStr = document.getElementById('multi-matches').value || '[id="com.miui.securitycenter:id/title"][text="获取位置信息"],[text="不同意"]';
+            const ruleActivityId = document.getElementById('multi-ruleActivityId').value || 'com.miui.permcenter.permissions.SystemAppPermissionDialogActivity';
+
+            // 处理activityIds数组
+            const activityIdsArr = activityIdsText.split('\n').map(line => line.trim()).filter(line => line);
+            const activityIdsStr = activityIdsArr.map(line => `        '${line.split('//')[0].trim()}' // ${line.split('//')[1] || ''}`).join(',\n');
+            
+            // 处理matches数组（拆分逗号，格式化缩进）
+            const matchesArr = matchesStr.split(',').map(item => item.trim()).filter(item => item);
+            const matchesFormatted = matchesArr.map(item => `            '${item}'`).join(',\n');
+
+            return `{
+      key: ${key},
+      name: '${name}',
+      desc: '${desc}',
+      enable: false,
+      fastQuery: true,
+      activityIds: [
+${activityIdsStr}
+      ],
+      rules: [
+        {
+          matches: [
+${matchesFormatted}
+          ],
+          activityIds: '${ruleActivityId}',
+        },
+      ],
+    },`;
+        }
+
+        // 连续界面阶段性点击规则生成
+        function generateStepClickRule() {
+            const key = document.getElementById('step-key').value || 13;
+            const name = document.getElementById('step-name').value || '功能类-高敏感权限自动确定';
+            const desc = document.getElementById('step-desc').value || '自动处理高敏感权限申请：勾选风险提示并延迟10秒后点击确定';
+            const activityIdsText = document.getElementById('step-activityIds').value || `com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity
+com.miui.permcenter.privacymanager.DeviceManagerApplyActivity`;
+            const matches0Str = document.getElementById('step-matches0').value || '[text="我已知晓可能存在的风险，并自愿承担可能导致的后果"],@[vid="check_box"][checked=false]';
+            const matches1 = document.getElementById('step-matches1').value || '[text="确定"]';
+
+            // 处理activityIds数组
+            const activityIdsArr = activityIdsText.split('\n').map(line => line.trim()).filter(line => line);
+            const activityIdsStr = activityIdsArr.map(line => `        '${line}'`).join(',\n');
+            
+            // 处理第一阶段matches数组
+            const matches0Arr = matches0Str.split(',').map(item => item.trim()).filter(item => item);
+            const matches0Formatted = matches0Arr.map(item => `            '${item}'`).join(',\n');
+
+            return `{
+      key: ${key},
+      name: '${name}',
+      desc: '${desc}',
+      enable: false,
+      fastQuery: true,
+      activityIds: [
+${activityIdsStr}
+      ],
+      rules: [
+        {
+          key: 0,
+          matches: [
+${matches0Formatted}
+          ],
+         },
+        {
+          preKeys: [0], // 界面倒计时至0
+          key: 1,
+          matches: '${matches1}',
+         },
+      ],
+    },`;
+        }
+    </script>
+</body>
+</html>
