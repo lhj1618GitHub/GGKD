@@ -1,0 +1,23 @@
+{
+      key: 1,
+      name: '功能类-禁止获取定位',
+      desc: '点击获取定位权限弹窗的【不同意】按钮',
+      enable: false,
+      fastQuery: true,
+      activityIds: [
+        'com.miui.securityscan.MainActivity', // app版本v8
+        'com.miui.permcenter.permissions.SystemAppPermissionDialogActivity', // app版本v5
+      ],
+      rules: [
+        {
+          matches: [
+            '[id="com.miui.securitycenter:id/title"][text="获取位置信息"]',
+            '[text="不同意"]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/import/13474517',
+            'https://i.gkd.li/import/13476592', // activityIds: 'com.miui.permcenter.permissions.SystemAppPermissionDialogActivity',
+          ],
+        },
+      ],
+    },
