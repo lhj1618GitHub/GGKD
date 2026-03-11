@@ -1,0 +1,12 @@
+{
+  id: 订阅文件的标识(数字-新旧保持一致，否则更新失败),
+  name: '订阅的名称',
+  version: 订阅版本号(大的替换小的),
+  author: '作者名称',
+  updateUrl: 'json5更新下载链接，检查版本号',
+  checkUpdateUrl: 'json5更新检查链接,检查标识和版本',
+  supportUri: '自定义链接,点击[用户反馈]时, 打开此链接(https://gkd.li/)',
+  categories: [此订阅的应用规则分类列表],
+  globalGroups: [此订阅的全局规则组列表],
+  apps: [应用列表],
+}
