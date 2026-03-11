@@ -22,7 +22,6 @@
         },
         {
           preKeys: [0], // 以执行完key0为前提
-
           key: 1,
           matches: '[text="确定"]',
           snapshotUrls: [
