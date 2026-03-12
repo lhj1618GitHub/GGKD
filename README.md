@@ -21,3 +21,5 @@ https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD@main/dist/gkd.json5
 编辑后提交：[https://github.com/lhj1618GitHub/GGKD/actions/workflows/build_release.yml](https://github.com/lhj1618GitHub/GGKD/actions/workflows/build_release.yml)
 
 # 查看[原文-详细说明](./原文.md/)
+
+***
