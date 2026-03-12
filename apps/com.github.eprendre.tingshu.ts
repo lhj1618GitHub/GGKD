@@ -1,5 +1,5 @@
 {
-    id:'com.github.eprendre.tingshu'
+    id:'com.github.eprendre.tingshu',
     name:'我的听书',
     groups:[
       {
@@ -12,12 +12,12 @@
             {
             matches:[
                 '[visibleToUser=true][clickable=true][right>850][height=34][width=33||width=34]'
-                ],
+                    ],
             activityIds:[
                 'com.github.eprendre.tingshu.ui.play.PlayerActivity'
-                    ],
+                        ],
             },
-                ],
+             ],
       },
              ],
 }
