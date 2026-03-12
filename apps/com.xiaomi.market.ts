@@ -1,6 +1,4 @@
-import { defineGkdApp } from '@gkd-kit/define';
-
-export default defineGkdApp({
+{
   id: 'com.xiaomi.market',
   name: '小米应用商店',
   //小米应用商店
@@ -103,4 +101,4 @@ export default defineGkdApp({
       ],
     },
   ],
-});
+}
