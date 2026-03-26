@@ -9,8 +9,8 @@
       key: 0,
       name: '开启宝箱',
       position: {
-        left: 'width * 0.5271',
-        top: 'width * 0.5934',
+        left: 'width * 0.5000',
+        top: 'width * 0.6000',
       },
       matches: [
         'ViewGroup[width=18][height=220][index=1]',
@@ -18,22 +18,22 @@
       ],
       fastQuery: true,
       activityIds: [
-        'com.dragon.read.pages.main.MainFragmentActivity',
+        '.pages.main.MainFragmentActivity',
       ],
     },
     {
       key: 1,
       name: '关闭宝箱结算',
       position: {
-        left: 'width * -5.2500',
+        left: 'width * -5.0000',
         top: 'width * 13.5000',
       },
       matches: [
-        '@ViewGroup[width=24][height=58][index=7]',
+        '@ViewGroup[width=24][height=58][top>1350][index=7]',
       ],
       fastQuery: true,
       activityIds: [
-        'com.dragon.read.pages.main.MainFragmentActivity',
+        '.pages.main.MainFragmentActivity',
       ],
     },
   ],
