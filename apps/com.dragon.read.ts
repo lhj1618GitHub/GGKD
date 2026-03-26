@@ -29,7 +29,7 @@
         top: 'width * 13.5000',
       },
       matches: [
-        '@ViewGroup[width=24][height=58][top>1350][index=7]',
+        '@ViewGroup[width=24][height=58][index=7]',
       ],
       fastQuery: true,
       activityIds: [
