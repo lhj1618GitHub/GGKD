@@ -1,39 +1,38 @@
-//红果免费短剧
 {
   key: 1,
   name: '弹窗广告-宝箱相关',
   desc: '领取/结算',
+  fastQuery: true,
   matchTime: 10000,
   rules: [
     {
       key: 0,
       name: '开启宝箱',
       position: {
-        left: 'width * 0.5000',
-        top: 'width * 0.6000',
+        left: 'width * 0',
+        top: 'width * 8',
       },
       matches: [
-        'ViewGroup[width=18][height=220][index=1]',
-        '@ViewGroup[width=332][height=222]',
+        '@ViewGroup[width=18][index=0][visibleToUser=true]',
       ],
       fastQuery: true,
       activityIds: [
-        '.pages.main.MainFragmentActivity',
+        'com.dragon.read.pages.main.MainFragmentActivity',
       ],
     },
     {
       key: 1,
       name: '关闭宝箱结算',
       position: {
-        left: 'width * -5.0000',
-        top: 'width * 13.5000',
+        left: 'width * -3.6',
+        top: 'width * 8',
       },
       matches: [
-        '@ViewGroup[width=24][height=58][index=7]',
+        '@ViewGroup[desc="第?个"][width=66][visibleToUser=true]',
       ],
       fastQuery: true,
       activityIds: [
-        '.pages.main.MainFragmentActivity',
+        'com.dragon.read.pages.main.MainFragmentActivity',
       ],
     },
   ],
