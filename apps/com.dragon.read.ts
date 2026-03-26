@@ -2,6 +2,7 @@
   key: 1,
   name: '弹窗广告-宝箱相关',
   desc: '领取/结算',
+  matchTime: 10000,
   rules: [
     {
       key: 0,
