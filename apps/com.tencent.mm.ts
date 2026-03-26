@@ -1,6 +1,5 @@
-import { defineGkdApp } from '@gkd-kit/define';
-
-export default defineGkdApp({
+//微信
+{
   id: 'com.tencent.mm',
   name: '微信',
   groups: [
@@ -605,4 +604,5 @@ export default defineGkdApp({
       ],
     },
   ],
-});
+}
+
