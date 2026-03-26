@@ -1,0 +1,15 @@
+点击绝对坐标：
+{
+  position: {
+    left: 538,
+    top: 1755,
+  },
+}
+
+点击相对坐标：
+{
+  position: {
+    left: 'width * 0.4981',
+    top: 'width * 1.6250',
+  },
+}
