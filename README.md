@@ -1,7 +1,7 @@
 
 ## 我的本地备份 - [Gitee](https://gitee.com/lhj1618/GGKD/releases) - [Github](https://github.com/lhj1618GitHub/GGKD/releases)
 
-## [快照审查地址](https://i.gkd.li/) - [GKD官网](https://gkd.li/)--[GitHub](https://github.com/gkd-kit/gkd/releases)
+## [快照审查地址](https://i.gkd.li/) - [增强脚本](https://github.com/adproqwq/MikuMagicWand/releases) - [GKD官网](https://gkd.li/) - [GitHub](https://github.com/gkd-kit/gkd/releases)
 
 ## [第三方订阅列表](https://github.com/topics/gkd-subscription)
 
