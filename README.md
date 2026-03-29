@@ -6,7 +6,7 @@
 
 ***
 
-### <details><summary>点此展开[APP列表-APPS](./apps/)，</summary>- [微信](./apps/com.tencent.mm.ts)<br>- [红果免费短视频](./apps/com.dragon.read.ts)<br>- [小米权限管理服务](./apps/com.lbe.security.miui.ts)<br>- [小米音乐](./apps/com.miui.player.ts)<br>- [小米安全管家](./apps/com.miui.securitycenter.ts)<br>- [小米游戏中心](./apps/com.xiaomi.gamecenter.ts)<br>- [小米应用商店](./apps/com.xiaomi.market.ts)</details>
+### <details><summary>点此展开[APP列表-Rules](./Rules/)，</summary>- [微信](./Rules/com.tencent.mm.ts)<br>- [红果免费短视频](./Rules/com.dragon.read.ts)<br>- [小米权限管理服务](./Rules/com.lbe.security.miui.ts)<br>- [小米音乐](./Rules/com.miui.player.ts)<br>- [小米安全管家](./Rules/com.miui.securitycenter.ts)<br>- [小米游戏中心](./Rules/com.xiaomi.gamecenter.ts)<br>- [小米应用商店](./Rules/com.xiaomi.market.ts)</details>
 最后统计时间：2026.03.26.20.00
 
 ***
