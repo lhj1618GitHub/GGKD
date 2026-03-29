@@ -1,7 +1,7 @@
 
 ## 我的仓库-备份 ： [Gitee](https://gitee.com/lhj1618/GGKD/releases) - [Github](https://github.com/lhj1618GitHub/GGKD/releases) / [GKD官网](https://gkd.li/)-[GitHub](https://github.com/gkd-kit/gkd/releases)
 
-## [快照审查地址](https://i.gkd.li/) - [增强脚本](https://github.com/adproqwq/MikuMagicWand/releases) - [json5格式化查错工具](https://lhj1618github.github.io/html/json-json5-tool.html) - [含json5库版本](https://lhj1618github.github.io/html/json5-tool/json-json5.html)
+## [快照审查地址](https://i.gkd.li/) - [增强脚本](https://github.com/adproqwq/MikuMagicWand/releases) / [json5格式化查错工具](https://lhj1618github.github.io/html/json-json5-tool.html) - [含json5库版本](https://lhj1618github.github.io/html/json5-tool/json-json5.html)
 
 
 ***
