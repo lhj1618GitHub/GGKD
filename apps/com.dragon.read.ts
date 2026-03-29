@@ -15,10 +15,6 @@
     {
       key: 0,
       name: '开启宝箱',
-      position: {
-        left: 'width * 0',
-        top: 'width * 8',
-      },
       matches: [
         '@ViewGroup[width=18][index=0][visibleToUser=true]',
       ],
@@ -45,10 +41,6 @@
           fastQuery: true,
           action: 'back',
           activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-          position: {
-            top: 'width * -6.8161',
-            left: 'width * -1.0806',
-          },
           matches: '[vid="an1"][text="2s后即将进入广告"]',
         },
       ],
