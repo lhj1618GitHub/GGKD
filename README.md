@@ -7,9 +7,11 @@
 ***
 
 ### <details><summary>点此展开[APP列表-APPS](./apps/)，</summary>- [微信](./apps/com.tencent.mm.ts)<br>- [红果免费短视频](./apps/com.dragon.read.ts)<br>- [小米权限管理服务](./apps/com.lbe.security.miui.ts)<br>- [小米音乐](./apps/com.miui.player.ts)<br>- [小米安全管家](./apps/com.miui.securitycenter.ts)<br>- [小米游戏中心](./apps/com.xiaomi.gamecenter.ts)<br>- [小米应用商店](./apps/com.xiaomi.market.ts)</details>
-最后统计时间：2026.03.26.20.00
+
+[下载备份](https://gitee.com/lhj1618/GGKD/raw/master/Backup/GKD%E6%9C%AC%E5%9C%B0%E8%A7%84%E5%88%99%E5%A4%87%E4%BB%BD-20260329.zip)；最后统计时间：2026.03.26.20.00
 
 ***
+
 
 ## [第三方订阅列表](https://github.com/topics/gkd-subscription)
 
