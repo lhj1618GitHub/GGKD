@@ -29,11 +29,11 @@
             name: '自动化',
         },
         {
-            key: 2,
+            key: 1,
             name: '弹窗广告',
         },
         {
-            key: 3,
+            key: 2,
             name: '内嵌广告',
         },
     ],
@@ -47,7 +47,7 @@
                     name: '自动化-应用信息页面',
                     desc: '点击[确定]',
                     fastQuery: true,
-                    matchTime: 5000,
+                    matchTime: 3000,
                     rules: [
                         {
                             matches: [
@@ -64,7 +64,7 @@
                     name: '自动化-允许打开应用',
                     desc: '点击[允许]',
                     fastQuery: true,
-                    matchTime: 5000,
+                    matchTime: 3000,
                     rules: [
                         {
                             matches: [
@@ -144,7 +144,7 @@
                     key: 3,
                     name: '自动化-发送通知',
                     desc: '点击[拒绝]',
-                    matchTime: 5000,
+                    matchTime: 3000,
                     rules: [
                         {
                             matches: [
@@ -473,7 +473,7 @@
                     desc: '请求推送通知弹窗，点击取消',
                     fastQuery: true,
                     actionMaximum: 1,
-                    matchTime: 10000,
+                    matchTime: 5000,
                     resetMatch: 'app',
                     rules: [
                         {
@@ -1004,7 +1004,7 @@
                     key: 6,
                     name: '弹窗广告-其它弹窗',
                     desc: '关闭其它弹窗',
-                    matchTime: 8000,
+                    matchTime: 5000,
                     rules: [
                         {
                             key: 1,
