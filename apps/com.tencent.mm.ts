@@ -48,7 +48,14 @@
                         'com.tencent.mm.plugin.gallery.ui.ImagePreviewUI',
                     ],
                     matches: '@ImageButton[desc="未选中,原图,复选框"] + [text="原图"]',
-                },
+                },{
+                      key: 2,
+                        name: '选中原图',
+                          fastQuery: true, 
+                                   activityIds: 'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
+                                             matches: '[vid="km5"][desc="未选中,原图,复选框"]',
+                }
+                }
                 {
                     key: 2,
                     name: '自动查看原图',
