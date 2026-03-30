@@ -1,0 +1,1051 @@
+{
+    "id": 3432,
+    "name": "lhj1618",
+    "version": 3,
+    "author": "lhj1618",
+    "checkUpdateUrl": "./checkversion.json5",
+    "supportUri": "https://gitee.com/lhj1618/GGKD",
+    "globalGroups": [
+        {
+            "key": 0,
+            "name": "开屏广告-全局",
+            "desc": "关闭打开应用时的开屏广告",
+            "fastQuery": true,
+            "matchTime": 5000,
+            "actionMaximum": 1,
+            "resetMatch": "app",
+            "rules": [
+                {
+                    "anyMatches": [
+                        "[text*=\"跳过\" || text=\"关闭\"][text.length<10][visibleToUser=true][clickable=true]"
+                    ]
+                }
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "key": 0,
+            "name": "自动化"
+        },
+        {
+            "key": 2,
+            "name": "弹窗广告"
+        },
+        {
+            "key": 3,
+            "name": "内嵌广告"
+        }
+    ],
+    "apps": [
+        {
+            "id": "com.miui.securitycenter",
+            "name": "安全服务",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "自动化-应用信息页面",
+                    "desc": "点击[确定]",
+                    "fastQuery": true,
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text=\"确定\"][visibleToUser=true]"
+                            ],
+                            "activityIds": [
+                                "com.miui.appmanager.ApplicationsDetailsActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 2,
+                    "name": "自动化-允许打开应用",
+                    "desc": "点击[允许]",
+                    "fastQuery": true,
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "matches": [
+                                "[childCount=0][text*=\"本次允许\"][visibleToUser=true]"
+                            ],
+                            "activityIds": [
+                                "com.miui.securitycenter",
+                                "com.miui.wakepath.ui.ConfirmStartActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "自动化-高敏感权限自动确定",
+                    "desc": "勾选[我已知晓..]后点击[确定]",
+                    "fastQuery": true,
+                    "activityIds": [
+                        "com.miui.permcenter.privacymanager.SpecialPermissionInterceptActivity",
+                        "com.miui.permcenter.privacymanager.DeviceManagerApplyActivity"
+                    ],
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "@[vid=\"check_box\"][checked=false]"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "preKeys": [
+                                0
+                            ],
+                            "matches": [
+                                "[text=\"确定\"]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 4,
+                    "name": "自动化-省电策略",
+                    "desc": "禁止后台运行点[确定]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[id=\"android:id/button1\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.miui.powercenter.legacypowerrank.PowerDetailActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 5,
+                    "name": "自动化-获取应用列表权限",
+                    "desc": "点击[拒绝]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "@Button < [vid=\"buttonPanel\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.android.permissioncontroller",
+            "name": "权限控制器",
+            "groups": [
+                {
+                    "key": 3,
+                    "name": "自动化-发送通知",
+                    "desc": "点击[拒绝]",
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text*=\"拒绝\"][visibleToUser=true]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.xiaomi.market",
+            "name": "应用商店",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "自动化-自动点击[查看全部升级]",
+                    "desc": "应用升级页面",
+                    "actionMaximum": 1,
+                    "rules": [
+                        {
+                            "matches": [
+                                "@[clickable=true] > [text^=\"查看全部升级\" || text^=\"查看全部更新\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.xiaomi.market.ui.UpdateListActivity",
+                                ".ui.UpdateAppsActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 2,
+                    "name": "自动化-忽略升级",
+                    "desc": "应用升级界面-自动点击忽略",
+                    "fastQuery": true,
+                    "activityIds": [
+                        "com.xiaomi.market.ui.UpdateListActivity"
+                    ],
+                    "rules": [
+                        {
+                            "key": 1,
+                            "matches": [
+                                "[vid=\"expand_button\"][visibleToUser=true]"
+                            ],
+                            "excludeMatches": [
+                                "[text=\"忽略本次\"][visibleToUser=true]"
+                            ]
+                        },
+                        {
+                            "key": 2,
+                            "preKeys": [
+                                1
+                            ],
+                            "matches": [
+                                "[text=\"忽略本次\"][visibleToUser=true]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.miui.player",
+            "name": "音乐",
+            "groups": [
+                {
+                    "key": 6,
+                    "name": "自动化-看广告视频领VIP",
+                    "desc": "等待15s自动点击\"退出\"",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[id=\"com.miui.player:id/tme_ad_skip_button\"]"
+                            ],
+                            "actionDelay": 15000,
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.tencentmusic.ad.tmead.reward.TMERewardActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 1,
+                    "name": "内嵌广告-卡片",
+                    "desc": "点击首页/我的[x]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[vid=\"close\" || vid=\"close_banner\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.tencent.qqmusiclite.activity.MainActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.ss.android.ugc.aweme",
+            "name": "抖音",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "自动化-通知权限",
+                    "desc": "点击[暂不]/[以后再说]/[禁止]",
+                    "fastQuery": true,
+                    "actionMaximum": 1,
+                    "resetMatch": "app",
+                    "activityIds": [
+                        ".main.MainActivity",
+                        ".profile.ui.UserProfileActivity",
+                        ".detail.ui.DetailActivity"
+                    ],
+                    "rules": [
+                        {
+                            "key": 1,
+                            "matches": [
+                                "[text^=\"打开私信通知\" || text=\"开启朋友的消息通知\" || text=\"及时获得消息提醒\" || text$=\"评论回复提醒\"][visibleToUser=true]",
+                                "[text=\"以后再说\" || text=\"暂不开启\" || text=\"禁止\"][visibleToUser=true]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 2,
+                    "name": "自动化-通讯录权限",
+                    "desc": "点击[拒绝]",
+                    "actionMaximum": 1,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text*=\"通讯录\"]",
+                                "[text=\"拒绝\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".main.MainActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "弹窗广告-个性化推荐弹窗",
+                    "desc": "点击[稍后再说]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text*=\"个性化推荐\"][visibleToUser=true]",
+                                "[text=\"稍后再说\"][visibleToUser=true]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".main.MainActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 4,
+                    "name": "弹窗广告-视频推荐广告",
+                    "desc": "通过返回操作跳过广告",
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "FlattenUIText[text=\"不感兴趣\"][visibleToUser=true]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".main.MainActivity"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "action": "back",
+                            "matches": [
+                                "[desc^=\"已选中\"] > [text=\"推荐\"][visibleToUser=true]",
+                                "([text$=\"广告\"][vid=\"desc\"][visibleToUser=true]) || (ImageView[childCount=0] + [text=\"应用\" || text=\"购物\" || text=\"游戏\"][visibleToUser=true])"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".main.MainActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 5,
+                    "name": "自动化-相机权限",
+                    "desc": "点击[以后再说]",
+                    "actionMaximum": 1,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text*=\"相机权限\"]",
+                                "[text=\"以后再说\"][clickable=true]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".shortvideo.ui.scan.ScanNewActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "info.muge.appshare",
+            "name": "AppShare",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "内嵌广告-卡片广告",
+                    "desc": "点击关闭",
+                    "fastQuery": true,
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "matches": [
+                                "FrameLayout[childCount=5] > @FrameLayout[childCount=1][visibleToUser=true][width<50 && height<50] > ImageView[childCount=0] <<n [vid=\"adContainer\" || vid=\"adView\" || vid=\"cardAd\"]"
+                            ],
+                            "activityIds": [
+                                "info.muge.appshare.view.app.detail.AppDetailActivity",
+                                "info.muge.appshare.view.app.detail.v4.AppDetailV4Activity",
+                                "info.muge.appshare.view.search.v4.SearchActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "弹窗广告-自动展示的广告",
+                    "desc": "广告展示率低于20%时出现的广告",
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "View[vid=\"v_jump\"][clickable=true]"
+                            ],
+                            "fastQuery": true
+                        },
+                        {
+                            "key": 1,
+                            "matches": [
+                                "@ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null] <2 FrameLayout[childCount=5] + FrameLayout[childCount=2] > [text^=\"立即\" || text$=\"详情\" || text^=\"了解\" || text=\"去逛逛\" || text=\"去微信看看\" || text$=\"应用\" || text=\"进入小程序\" || text=\"领取优惠\" || text=\"跳转微信\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "info.muge.appshare.view.main.MainActivity"
+                            ]
+                        },
+                        {
+                            "key": 2,
+                            "matches": [
+                                "[text=\"反馈\"] <n * > @View[childCount=1][index=0 || index=1] > Image[text=\"\"]"
+                            ],
+                            "activityIds": [
+                                "com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity"
+                            ]
+                        },
+                        {
+                            "key": 3,
+                            "matches": [
+                                "@ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null][parent.childCount>3] <n FrameLayout >(2,3) [text^=\"立即\" || text$=\"详情\" || text^=\"了解\" || text=\"去微信看看\" || text$=\"应用\" || text=\"进入小程序\" || text=\"领取优惠\" || text=\"跳转微信\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".view.main.MainActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 4,
+                    "name": "弹窗广告-公告",
+                    "desc": "点击[收到]",
+                    "fastQuery": true,
+                    "actionMaximum": 1,
+                    "matchTime": 10000,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text=\"收到\"][clickable=true]"
+                            ],
+                            "activityIds": [
+                                "info.muge.appshare.view.main.MainActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.greenpoint.android.mc10086.activity",
+            "name": "中国移动",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "弹窗广告-首页",
+                    "desc": "点[x]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[vid=\"iv_close\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.mc10086.cmcc.view.tabs.AppTabFragment"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 2,
+                    "name": "自动化-通知权限",
+                    "desc": "请求推送通知弹窗，点击取消",
+                    "fastQuery": true,
+                    "actionMaximum": 1,
+                    "matchTime": 10000,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "[text*=\"开启推送通知\"]",
+                                "[text=\"取消\"]"
+                            ],
+                            "activityIds": [
+                                "com.mc10086.cmcc.base.StartPageActivity"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "matches": [
+                                "[text=\"授权提醒\"] +3 [text=\"拒绝\"]"
+                            ],
+                            "activityIds": [
+                                "com.mc10086.cmcc.view.tabs.AppTabFragment"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "自动化-剪贴板权限弹窗",
+                    "desc": "点击不允许",
+                    "fastQuery": true,
+                    "actionMaximum": 1,
+                    "matchTime": 5000,
+                    "resetMatch": "app",
+                    "activityIds": [
+                        "com.mc10086.cmcc.view.tabs.AppTabFragment",
+                        "com.mc10086.cmcc.base.StartPageActivity"
+                    ],
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text*=\"获取您的\"] < LinearLayout +(2) LinearLayout >(2) [text=\"不允许\"]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 6,
+                    "name": "自动化-通讯录权限",
+                    "desc": "点击取消",
+                    "fastQuery": true,
+                    "actionMaximum": 1,
+                    "matchTime": 5000,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text=\"通讯录权限申请\"]",
+                                "[text=\"取消\"]"
+                            ],
+                            "activityIds": [
+                                "com.cmccit.paycenter.PayCenterActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 7,
+                    "name": "自动化-定位权限",
+                    "actionMaximum": 1,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[text^=\"位置权限\" || text$=\"定位权限\"]",
+                                "[text=\"取消\"][clickable=true]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.mc10086.cmcc.view.tabs.AppTabFragment"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.android.browser",
+            "name": "浏览器",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "弹窗广告-关闭[个性推荐开启提示]",
+                    "matchTime": 5000,
+                    "activityIds": [
+                        "com.android.browser.BrowserActivity"
+                    ],
+                    "rules": [
+                        {
+                            "matches": [
+                                "@ImageView[id!=null][clickable=true] -2 [text=\"个性推荐获得更丰富内容\"]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 2,
+                    "name": "内嵌广告-主页信息流广告",
+                    "fastQuery": true,
+                    "activityIds": [
+                        "com.android.browser.BrowserActivity",
+                        "com.android.browser.flow.view.FeedbackDialog"
+                    ],
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "@[id!=null][desc=\"负反馈\"][visibleToUser=true] -n * > * > [text=\"广告\"]"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "preKeys": [
+                                0
+                            ],
+                            "matches": [
+                                "@FrameLayout > ViewGroup > [text=\"不感兴趣\"]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "内嵌广告-小说阅读页面广告",
+                    "fastQuery": true,
+                    "activityIds": [
+                        "com.duokan.shop.mibrowser.reading.SdkReaderActivity"
+                    ],
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "[vid=\"reading__app_ad_view__close\"][visibleToUser=true]"
+                            ],
+                            "excludeMatches": [
+                                "[vid=\"reading__close_ad_view__subtitle_tv\"][visibleToUser=true]"
+                            ]
+                        },
+                        {
+                            "preKeys": [
+                                0
+                            ],
+                            "matches": [
+                                "[vid=\"reading__close_ad_view__subtitle_tv\"][visibleToUser=true]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.xunmeng.pinduoduo",
+            "name": "拼多多",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "弹窗广告-多关键词",
+                    "desc": "使用[返回键]和点击[x]",
+                    "fastQuery": true,
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "key": 0,
+                            "action": "back",
+                            "matches": [
+                                "[text=\"开心收下\" || text=\"去抢购\" || text=\"立即抽免单\" || text=\"去刮奖\" || text=\"立即领取\" || text=\"去领大额金币\" || text=\"送你大额现金\" || text*=\"红包助手\" || text=\"刮刮卡发来的消息通知\" || text=\"立即充值\" || text=\"打款金额\"][top>600][visibleToUser=true]"
+                            ],
+                            "excludeMatches": [
+                                "[text=\"我的订单\" || text=\"聊天\"][bottom<500][visibleToUser=true]"
+                            ],
+                            "activityIds": [
+                                ".ui.activity.HomeActivity",
+                                ".ui.activity.MainFrameActivity"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "matches": [
+                                "ImageView[childCount=0][width<130&&height<130] < ViewGroup[childCount=1] < @ViewGroup[childCount=1][clickable=true][visibleToUser=true] <(1,2) ViewGroup <(1,2) ViewGroup < ViewGroup < FrameLayout < FrameLayout < FrameLayout < FrameLayout < FrameLayout <(1,2,3) [parent=null]"
+                            ],
+                            "activityIds": [
+                                ".ui.activity.HomeActivity",
+                                ".ui.activity.MainFrameActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "弹窗广告-商品详情页视频讲解窗口",
+                    "desc": "点击[x]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[vid=\"iv_float_window_close\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.xunmeng.pinduoduo.activity.NewPageActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 4,
+                    "name": "弹窗广告-下单后出现的弹窗",
+                    "desc": "点击[x]",
+                    "fastQuery": true,
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "key": 0,
+                            "action": "clickCenter",
+                            "matches": [
+                                "Button[text=\"关闭弹窗\" || desc=\"关闭弹窗\"][clickable=true]"
+                            ],
+                            "activityIds": [
+                                "com.xunmeng.pinduoduo.activity.NewPageMaskActivity",
+                                "com.xunmeng.pinduoduo.ui.activity.HomeActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 5,
+                    "name": "自动化-通知权限",
+                    "desc": "点击[x]和返回键",
+                    "fastQuery": true,
+                    "actionMaximum": 1,
+                    "matchTime": 5000,
+                    "resetMatch": "app",
+                    "rules": [
+                        {
+                            "key": 0,
+                            "matches": [
+                                "FrameLayout > ViewGroup[vid=\"pdd\"] > ViewGroup > ViewGroup[childCount<3] > ViewGroup[childCount=3 || childCount=2] >(1,2) ImageView[clickable=true][visibleToUser=true]"
+                            ],
+                            "activityIds": [
+                                ".ui.activity.HomeActivity"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "action": "back",
+                            "matches": [
+                                "[text=\"及时获取物流消息\" || text=\"开启通知\" || text=\"允许通知\"]"
+                            ],
+                            "activityIds": [
+                                ".ui.activity.HomeActivity",
+                                ".activity.NewPageActivity",
+                                ".ui.activity.MainFrameActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.tencent.mm",
+            "name": "微信",
+            "groups": [
+                {
+                    "key": 2,
+                    "name": "自动化-点击数字未读消息",
+                    "desc": "头像有数字",
+                    "rules": [
+                        {
+                            "matches": [
+                                "TextView[childCount=0] - ImageView[childCount=0] < RelativeLayout[childCount=2] < LinearLayout < @LinearLayout[clickable=true][visibleToUser=true] <n ListView <n RelativeLayout < FrameLayout < FrameLayout < FrameLayout < ViewGroup < FrameLayout < FrameLayout < [id=\"android:id/content\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".ui.LauncherUI"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "自动化-点击红点未读消息",
+                    "desc": "头像右上角为红点",
+                    "rules": [
+                        {
+                            "matches": [
+                                "ImageView[childCount=0] - ImageView[childCount=0] < RelativeLayout[childCount=2] < LinearLayout < @LinearLayout[clickable=true][visibleToUser=true] <n ListView <n RelativeLayout < FrameLayout < FrameLayout < FrameLayout < ViewGroup < FrameLayout < FrameLayout < [id=\"android:id/content\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                ".ui.LauncherUI"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 4,
+                    "name": "自动化-确认清空聊天记录",
+                    "desc": "点击[清空]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[vid=\"mm_alert_ok_btn\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.tencent.mm.chatroom.ui.ChatroomInfoUI",
+                                "com.tencent.mm.ui.SingleChatInfoUI"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 5,
+                    "name": "自动化-删除聊天列表",
+                    "desc": "点击[删除]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[vid=\"mm_alert_ok_btn\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.tencent.mm.ui.LauncherUI"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.github.eprendre.tingshu",
+            "name": "我的听书",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "弹窗广告-播放页广告",
+                    "desc": "播放页点[x]",
+                    "fastQuery": true,
+                    "matchTime": 10000,
+                    "rules": [
+                        {
+                            "matches": [
+                                "[visibleToUser=true][clickable=true][right>850][height<70][width<70]"
+                            ],
+                            "activityIds": [
+                                "com.github.eprendre.tingshu.ui.play.PlayerActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "com.phoenix.read",
+            "name": "红果免费短剧",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "弹窗广告-宝箱相关",
+                    "desc": "领取/结算",
+                    "fastQuery": true,
+                    "matchTime": 8000,
+                    "activityIds": [
+                        "com.dragon.read.pages.main.MainFragmentActivity"
+                    ],
+                    "rules": [
+                        {
+                            "key": 0,
+                            "name": "开启宝箱",
+                            "matches": [
+                                "@ViewGroup[width=18][index=0][visibleToUser=true]"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "name": "关闭宝箱结算",
+                            "position": {
+                                "left": "width * -3.6",
+                                "top": "width * 8"
+                            },
+                            "matches": [
+                                "@ViewGroup[desc=\"第?个\"][visibleToUser=true]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 2,
+                    "name": "内嵌广告-剧集广告",
+                    "desc": "广告预警时[返回]",
+                    "rules": [
+                        {
+                            "action": "back",
+                            "matches": [
+                                "[text=\"2s后即将进入广告\"]",
+                                "[vid=\"an1\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.dragon.read.component.shortvideo.impl.ShortSeriesActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 3,
+                    "name": "弹窗广告-推送提醒",
+                    "desc": "点[取消]",
+                    "rules": [
+                        {
+                            "matches": [
+                                "[vid=\"j3\"][text=\"开启推送提醒\"]",
+                                "[vid=\"cm_\"]"
+                            ],
+                            "fastQuery": true,
+                            "activityIds": [
+                                "com.dragon.read.component.shortvideo.impl.ShortSeriesActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 4,
+                    "name": "弹窗广告-签到",
+                    "desc": "立即领取/关闭结算/立即签到",
+                    "matchTime": 5000,
+                    "activityIds": [
+                        "com.dragon.read.pages.main.MainFragmentActivity"
+                    ],
+                    "rules": [
+                        {
+                            "key": 1,
+                            "name": "七天签到-立即领取",
+                            "matches": [
+                                "@ViewGroup[width=664][height=122]"
+                            ],
+                            "actionMaximum": 1
+                        },
+                        {
+                            "key": 2,
+                            "name": "今日签到可领-立即签到",
+                            "position": {
+                                "left": "width * 1.5",
+                                "top": "width * 2.8"
+                            },
+                            "matches": [
+                                "@ViewGroup[width=272][height=89]"
+                            ],
+                            "actionMaximum": 1
+                        },
+                        {
+                            "key": 3,
+                            "name": "关闭明日签到可领",
+                            "position": {
+                                "left": "width * 1.6",
+                                "top": "width * 3.9"
+                            },
+                            "matches": [
+                                "@ViewGroup[width=272][height=89]"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 5,
+                    "name": "内嵌广告-翻卡",
+                    "desc": "看广告翻卡领金币",
+                    "matchTime": 5000,
+                    "rules": [
+                        {
+                            "key": 0,
+                            "name": "开始翻卡",
+                            "matches": [
+                                "@ViewGroup[childCount=4][visibleToUser=true][height=485]"
+                            ],
+                            "activityIds": [
+                                "com.dragon.read.pages.main.MainFragmentActivity"
+                            ]
+                        },
+                        {
+                            "key": 1,
+                            "name": "领取成功-点x",
+                            "matches": [
+                                "@ViewGroup[width=246][top=129][left=789]",
+                                "@ImageView[width=22][height=23][top=163][right=1000]"
+                            ],
+                            "activityIds": [
+                                "com.ss.android.excitingvideo.ExcitingVideoActivity"
+                            ]
+                        },
+                        {
+                            "key": 2,
+                            "name": "关-获得权益弹窗",
+                            "position": {
+                                "left": "width * 0.5",
+                                "top": "width * 1.3"
+                            },
+                            "matches": [
+                                "@ViewGroup[width=806][height=919]"
+                            ],
+                            "activityIds": [
+                                "com.ss.android.excitingvideo.ExcitingVideoActivity"
+                            ]
+                        },
+                        {
+                            "key": 3,
+                            "name": "关闭结算[x]",
+                            "position": {
+                                "left": "width * 0.5",
+                                "top": "width * -0.63"
+                            },
+                            "matches": [
+                                "@ViewGroup[width=1080][height=0][top=2342]"
+                            ],
+                            "activityIds": [
+                                "com.ss.android.excitingvideo.ExcitingVideoActivity"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": 6,
+                    "name": "弹窗广告-其它弹窗",
+                    "desc": "关闭其它弹窗",
+                    "matchTime": 8000,
+                    "rules": [
+                        {
+                            "key": 1,
+                            "name": "恭喜获得金币",
+                            "position": {
+                                "left": "width * 0.75",
+                                "top": "width * 3.2"
+                            },
+                            "matches": [
+                                "@ViewGroup[height=113][top=1028][childCount=3]"
+                            ],
+                            "activityIds": [
+                                "com.dragon.read.pages.main.MainFragmentActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "li.songe.gkd",
+            "name": "GKD",
+            "groups": [
+                {
+                    "key": 1,
+                    "name": "自动化-http服务",
+                    "desc": "链接[打开]",
+                    "matchTime": 3000,
+                    "rules": [
+                        {
+                            "matches": [
+                                "@TextView[text=\"查看链接\"]",
+                                "@TextView[text=\"打开\"]"
+                            ],
+                            "activityIds": [
+                                "li.songe.gkd.MainActivity"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
