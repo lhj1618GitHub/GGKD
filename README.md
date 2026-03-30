@@ -15,8 +15,6 @@
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-最后统计时间：2026.03.29.23.00
-
 ***
 
 
