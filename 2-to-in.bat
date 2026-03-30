@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 
 set "TS_INPUT=apps-all.ts"
 set "JSON5_SOURCE=3-config.json5"
-set "JSON5_OUTPUT=output.json5"
+set "JSON5_OUTPUT=OutPut.json5"
 set "REPLACE_FLAG=//替换apps.ts内容"
 
 if not exist "%TS_INPUT%" (echo 错误：未找到 %TS_INPUT%&pause&exit /b 1)
