@@ -46,7 +46,7 @@
                     fastQuery: true, 
                     activityIds: 'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
                     matches: '[vid="km5"][desc="未选中,原图,复选框"]',
-                }，
+                },
                 {
                     key: 2,
                     name: '自动查看原图',
