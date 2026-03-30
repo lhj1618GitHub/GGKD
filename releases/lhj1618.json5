@@ -1,7 +1,7 @@
 {
     id: 3432,
-    name: 'lhj1618',
     version: 6,
+    name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
     supportUri: 'https://gitee.com/lhj1618/GGKD',
