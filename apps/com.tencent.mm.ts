@@ -38,24 +38,15 @@
             key: 2,
             name: '自动化-图片相关',
             desc: '发送/查看原图',
-            matchTime: 5000,
+            matchTime: 3000,
             rules: [
                 {
                     key: 1,
-                    name: '自动选中-发送原图',
-                    activityIds: [
-                        'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
-                        'com.tencent.mm.plugin.gallery.ui.ImagePreviewUI',
-                    ],
-                    matches: '@ImageButton[desc="未选中,原图,复选框"] + [text="原图"]',
-                },{
-                      key: 2,
-                        name: '选中原图',
-                          fastQuery: true, 
-                                   activityIds: 'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
-                                             matches: '[vid="km5"][desc="未选中,原图,复选框"]',
-                }
-                }
+                    name: '自动选中原图',
+                    fastQuery: true, 
+                    activityIds: 'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
+                    matches: '[vid="km5"][desc="未选中,原图,复选框"]',
+                }，
                 {
                     key: 2,
                     name: '自动查看原图',
