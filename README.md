@@ -6,7 +6,7 @@
 
 ***
 
-## 我的订阅地址（[查看版本](./releases/version.json5)）：
+## [本地创建订阅文件-说明](./创建订阅文件-说明.md) - 我的订阅地址（[查看版本](./releases/version.json5)）：
 
 ```txt
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
