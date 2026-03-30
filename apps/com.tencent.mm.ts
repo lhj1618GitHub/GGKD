@@ -63,6 +63,8 @@
             desc: '展开更早的消息',
             matchTime: 5000,
             rules: [
+  
+  
                 {
                     key: 0,
                     fastQuery: true,
@@ -73,6 +75,14 @@
                     key: 1,
                     matches: '[desc="展开更早的消息"]',
                 },
+
+                key: 2,
+      name: '订阅号-更多消息',
+  
+     activityIds: 'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+          matches: '@ImageView[index=5][visibleToUser=true]',
+        },
+      
             ],
         },
         {
