@@ -186,6 +186,19 @@
                         'com.dragon.read.pages.main.MainFragmentActivity',
                     ],
                 },
+
+                    {
+      key: 2,
+      name: '看短剧赚金币',
+      matches: [
+        '[vid="title"][text="恭喜你获得"]',
+        '[vid="ean"]',
+      ],
+      fastQuery: true,
+      activityIds: [
+        'com.dragon.read.pages.main.MainFragmentActivity',
+      ],
+    },
             ],
         },
     ],
