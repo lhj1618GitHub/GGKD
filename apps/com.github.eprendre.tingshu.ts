@@ -11,7 +11,7 @@
             rules: [
                 {
                     matches: [
-                        '[visibleToUser=true][clickable=true][right>850][height=34][width=33||width=34]',
+                        '[visibleToUser=true][clickable=true][right>850][height<70][width<70]',
                     ],
                     activityIds: [
                         'com.github.eprendre.tingshu.ui.play.PlayerActivity',
