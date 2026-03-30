@@ -3,7 +3,7 @@
     name: '我的听书',
     groups: [
         {
-            key: 4,
+            key: 1,
             name: '弹窗广告-播放页广告',
             desc: '播放页点[x]',
             fastQuery: true,
