@@ -17,7 +17,7 @@ del "apps-all.ts"
 
 echo.
 echo ========== ✅ 全部执行完成 ==========
-echo 最终文件：%JSON5_FILE%
+echo 最终文件：output.json5
 echo 请手动修改-版本号 +1
 echo.
 pause
