@@ -57,31 +57,6 @@
         },
         {
             key: 3,
-            name: '自动化-订阅号',
-            desc: '展开更早的消息/更多消息',
-            matchTime: 5000,
-            rules: [
-                {
-                    key: 1,
-                    name: '展开更早的消息',
-                    fastQuery: true,
-                    activityIds: 'com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI',
-                    matches: '@[clickable=true] > [text="展开更早的消息"]',
-                },
-                {
-                    key: 2,
-                    matches: '[desc="展开更早的消息"]',
-                },
-                {
-                    key: 3,
-                    name: '更多消息',
-                    activityIds: 'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
-                    matches: '@ImageView[index=5][visibleToUser=true]',
-                },
-            ],
-        },
-        {
-            key: 4,
             name: '自动化-付款后',
             desc: '点击-完成/返回商家',
             rules: [
@@ -93,7 +68,7 @@
             ],
         },
         {
-            key: 5,
+            key: 4,
             name: '自动化-自动语音转文字',
             desc: '点击-语音转文字',
             activityIds: 'com.tencent.mm.ui.LauncherUI',
@@ -106,7 +81,7 @@
             ],
         },
         {
-            key: 6,
+            key: 5,
             name: '自动化-点击数字未读消息',
             desc: '头像有数字',
             rules: [
@@ -122,7 +97,7 @@
             ],
         },
         {
-            key: 7,
+            key: 6,
             name: '自动化-点击红点未读消息',
             desc: '头像右上角为红点',
             rules: [
@@ -138,7 +113,7 @@
             ],
         },
         {
-            key: 8,
+            key: 7,
             name: '自动化-操作确认',
             desc: '点击[清空/删除]',
             rules: [
