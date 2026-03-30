@@ -59,30 +59,27 @@
         },
         {
             key: 3,
-            name: '自动化-订阅号消息',
-            desc: '展开更早的消息',
+            name: '自动化-订阅号',
+            desc: '展开更早的消息/更多消息',
             matchTime: 5000,
             rules: [
-  
-  
                 {
-                    key: 0,
+                    key: 1,
+                    name: '展开更早的消息',
                     fastQuery: true,
                     activityIds: 'com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI',
                     matches: '@[clickable=true] > [text="展开更早的消息"]',
                 },
                 {
-                    key: 1,
+                    key: 2,
                     matches: '[desc="展开更早的消息"]',
                 },
-
-                key: 2,
-      name: '订阅号-更多消息',
-  
-     activityIds: 'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
-          matches: '@ImageView[index=5][visibleToUser=true]',
-        },
-      
+                {
+                    key: 3,
+                    name: '更多消息',
+                    activityIds: 'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+                    matches: '@ImageView[index=5][visibleToUser=true]',
+                },
             ],
         },
         {
