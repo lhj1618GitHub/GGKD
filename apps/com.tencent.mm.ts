@@ -6,6 +6,7 @@
             key: 1,
             name: '自动化-微信红包自动领取',
             desc: '自动领取私聊红包,群聊红包',
+            matchTime: 5000,
             rules: [
                 {
                     name: '从红包结算界面返回',
@@ -37,6 +38,7 @@
             key: 2,
             name: '自动化-图片相关',
             desc: '发送/查看原图',
+            matchTime: 5000,
             rules: [
                 {
                     key: 1,
@@ -59,6 +61,7 @@
             key: 3,
             name: '自动化-订阅号消息',
             desc: '展开更早的消息',
+            matchTime: 5000,
             rules: [
                 {
                     key: 0,
