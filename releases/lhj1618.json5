@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 6,
+    version: 7,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -743,7 +743,102 @@
             name: '微信',
             groups: [
                 {
+                    key: 1,
+                    name: '自动化-微信红包自动领取',
+                    desc: '自动领取私聊红包,群聊红包',
+                    rules: [
+                        {
+                            name: '从红包结算界面返回',
+                            preKeys: [
+                                1,
+                                2,
+                            ],
+                            activityIds: [
+                                'com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBeforeDetailUI',
+                                'com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI',
+                            ],
+                            matches: 'ImageView[desc="返回"]',
+                        },
+                        {
+                            key: 1,
+                            name: '点击红包-开',
+                            activityIds: 'com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNotHookReceiveUI',
+                            matches: 'ImageButton[desc="开"] + Button[desc="开"]',
+                        },
+                        {
+                            key: 2,
+                            name: '点击别人发的红包',
+                            activityIds: 'com.tencent.mm.ui.LauncherUI',
+                            matches: 'LinearLayout[childCount=1] >5 LinearLayout[childCount=1] - ImageView < LinearLayout + View + RelativeLayout > TextView[text="微信红包"][id!=null]',
+                        },
+                    ],
+                },
+                {
                     key: 2,
+                    name: '自动化-图片相关',
+                    desc: '发送/查看原图',
+                    rules: [
+                        {
+                            key: 1,
+                            name: '自动选中-发送原图',
+                            activityIds: [
+                                'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
+                                'com.tencent.mm.plugin.gallery.ui.ImagePreviewUI',
+                            ],
+                            matches: '@ImageButton[desc="未选中,原图,复选框"] + [text="原图"]',
+                        },
+                        {
+                            key: 2,
+                            name: '自动查看原图',
+                            activityIds: 'com.tencent.mm.ui.chatting.gallery.ImageGalleryUI',
+                            rules: 'Button[text^="查看原图"][clickable=true]',
+                        },
+                    ],
+                },
+                {
+                    key: 3,
+                    name: '自动化-订阅号消息',
+                    desc: '展开更早的消息',
+                    rules: [
+                        {
+                            key: 0,
+                            fastQuery: true,
+                            activityIds: 'com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI',
+                            matches: '@[clickable=true] > [text="展开更早的消息"]',
+                        },
+                        {
+                            key: 1,
+                            matches: '[desc="展开更早的消息"]',
+                        },
+                    ],
+                },
+                {
+                    key: 4,
+                    name: '自动化-付款后',
+                    desc: '点击-完成/返回商家',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: 'com.tencent.mm.framework.app.UIPageFragmentActivity',
+                            matches: '[vid="kinda_button_impl_wrapper"][desc="完成" || desc="返回商家"]',
+                        },
+                    ],
+                },
+                {
+                    key: 5,
+                    name: '自动化-自动语音转文字',
+                    desc: '点击-语音转文字',
+                    activityIds: 'com.tencent.mm.ui.LauncherUI',
+                    fastQuery: true,
+                    rules: [
+                        {
+                            key: 0,
+                            matches: '@* > [text="转文字"]',
+                        },
+                    ],
+                },
+                {
+                    key: 6,
                     name: '自动化-点击数字未读消息',
                     desc: '头像有数字',
                     rules: [
@@ -759,7 +854,7 @@
                     ],
                 },
                 {
-                    key: 3,
+                    key: 7,
                     name: '自动化-点击红点未读消息',
                     desc: '头像右上角为红点',
                     rules: [
@@ -775,11 +870,13 @@
                     ],
                 },
                 {
-                    key: 4,
-                    name: '自动化-确认清空聊天记录',
-                    desc: '点击[清空]',
+                    key: 8,
+                    name: '自动化-操作确认',
+                    desc: '点击[清空/删除]',
                     rules: [
                         {
+                            key: 1,
+                            name: '确认[清空]聊天记录',
                             matches: [
                                 '[vid="mm_alert_ok_btn"]',
                             ],
@@ -789,14 +886,9 @@
                                 'com.tencent.mm.ui.SingleChatInfoUI',
                             ],
                         },
-                    ],
-                },
-                {
-                    key: 5,
-                    name: '自动化-删除聊天列表',
-                    desc: '点击[删除]',
-                    rules: [
                         {
+                            key: 2,
+                            name: '确认[删除]聊天列表',
                             matches: [
                                 '[vid="mm_alert_ok_btn"]',
                             ],
