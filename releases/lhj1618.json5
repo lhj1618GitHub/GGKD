@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 11,
+    version: 12,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -501,7 +501,7 @@
                     ],
                 },
                 {
-                    key: 6,
+                    key: 4,
                     name: '自动化-通讯录权限',
                     desc: '点击取消',
                     fastQuery: true,
@@ -521,7 +521,7 @@
                     ],
                 },
                 {
-                    key: 7,
+                    key: 5,
                     name: '自动化-定位权限',
                     actionMaximum: 1,
                     resetMatch: 'app',
