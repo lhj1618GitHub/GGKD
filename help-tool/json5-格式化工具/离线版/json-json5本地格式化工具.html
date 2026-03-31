@@ -96,6 +96,20 @@
         button:active {
             background: #1f618d;
         }
+        /* 新增文件导入按钮样式，与原有按钮统一 */
+        .file-input-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .file-input-btn input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
         .status {
             margin-top: 10px;
             padding: 10px 15px;
@@ -136,10 +150,14 @@
                         <button class="format-btn" onclick="convertToJson5()">→ JSON5</button>
                     </div>
                 </div>
-                <textarea id="input" placeholder="粘贴或输入JSON/JSON5内容..."></textarea>
+                <textarea id="input" placeholder="粘贴或输入JSON/JSON5内容...也可通过下方按钮导入本地文件"></textarea>
                 <div class="btn-group">
                     <button onclick="pasteInput()">📋 快捷粘贴</button>
                     <button onclick="clearInput()">🗑️ 清空输入</button>
+                    <!-- 新增：本地文件导入按钮 -->
+                    <button class="file-input-btn">📁 导入本地文件
+                        <input type="file" id="fileInput" accept=".json,.json5,.txt" onchange="readLocalFile(this)">
+                    </button>
                 </div>
             </div>
             <!-- 输出区 -->
@@ -158,7 +176,6 @@
             <span class="cursor-pos" id="cursor-pos">光标位置：行:列</span>
         </div>
     </div>
-
     <!-- 引入JSON5解析库 -->
     <script src="json5.min.js"></script>
     <script>
@@ -167,13 +184,11 @@
         const statusMsgEl = document.getElementById('status-msg');
         const cursorPosEl = document.getElementById('cursor-pos');
         const statusEl = document.getElementById('status');
-
         // 实时监听输入与光标
         inputEl.addEventListener('input', formatJson);
         inputEl.addEventListener('click', updateCursorPos);
         inputEl.addEventListener('keyup', updateCursorPos);
         inputEl.addEventListener('focus', updateCursorPos);
-
         // 格式化核心逻辑
         function formatJson() {
             const input = inputEl.value.trim();
@@ -183,7 +198,6 @@
                 updateCursorPos();
                 return;
             }
-
             try {
                 // 优先用JSON5解析（兼容JSON）
                 const parsed = JSON5.parse(input);
@@ -196,7 +210,6 @@
             }
             updateCursorPos();
         }
-
         // 转换为标准JSON（去掉JSON5特性）
         function convertToJson() {
             const input = inputEl.value.trim();
@@ -213,7 +226,6 @@
                 setStatus(`❌ 转换失败：${err.message}`, 'invalid');
             }
         }
-
         // 转换为JSON5（保留注释、单引号、尾逗号等）
         function convertToJson5() {
             const input = inputEl.value.trim();
@@ -231,7 +243,6 @@
                 setStatus(`❌ 转换失败：${err.message}`, 'invalid');
             }
         }
-
         // 实时更新光标位置（行:列）
         function updateCursorPos() {
             const value = inputEl.value;
@@ -242,7 +253,6 @@
             const col = lines[lines.length - 1].length + 1;
             cursorPosEl.textContent = `光标位置：${row}:${col}`;
         }
-
         // 输入框快捷粘贴
         async function pasteInput() {
             try {
@@ -253,7 +263,6 @@
                 setStatus('❌ 粘贴失败：浏览器权限不足', 'invalid');
             }
         }
-
         // 输出框复制
         async function copyOutput() {
             const text = outputEl.value;
@@ -269,23 +278,53 @@
                 setStatus('❌ 复制失败', 'invalid');
             }
         }
-
         // 清空输入
         function clearInput() {
             inputEl.value = '';
             formatJson();
         }
-
         // 清空输出
         function clearOutput() {
             outputEl.value = '';
             setStatus('', 'valid');
         }
-
         // 设置状态提示
         function setStatus(msg, type) {
             statusMsgEl.textContent = msg;
             statusEl.className = `status ${type}`;
+        }
+        // 新增：读取本地JSON5/JSON/TXT文件核心逻辑
+        function readLocalFile(fileInput) {
+            const file = fileInput.files[0];
+            if (!file) return;
+            // 校验文件类型（兼容json/json5/txt）
+            const validTypes = ['application/json', 'text/plain', 'application/json5'];
+            const validExts = ['.json', '.json5', '.txt'];
+            const fileExt = '.' + file.name.split('.').pop().toLowerCase();
+            if (!validTypes.includes(file.type) && !validExts.includes(fileExt)) {
+                setStatus('❌ 仅支持导入.json/.json5/.txt格式文件', 'invalid');
+                fileInput.value = ''; // 重置文件选择
+                return;
+            }
+            // 读取文件内容
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    inputEl.value = content; // 将文件内容写入输入框
+                    formatJson(); // 自动格式化
+                    setStatus(`✅ 成功导入文件：${file.name}`, 'valid');
+                } catch (err) {
+                    setStatus(`❌ 文件读取失败：${err.message}`, 'invalid');
+                }
+                fileInput.value = ''; // 重置文件选择，支持重复选择同一文件
+            };
+            reader.onerror = function() {
+                setStatus('❌ 文件读取异常，请检查文件是否损坏', 'invalid');
+                fileInput.value = '';
+            };
+            // 以文本方式读取文件
+            reader.readAsText(file, 'UTF-8');
         }
     </script>
 </body>
