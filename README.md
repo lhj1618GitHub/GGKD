@@ -12,6 +12,10 @@
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
+```txt
+https://gitee.com/lhj1618/GGKD/raw/master/.temp/output.json5
+```
+
 # [APP列表-APPS](./apps/) - [临时规则编辑](./.temp)
 
 | 影音                                   | Car | 工具                      | 应用商店                           | 社交                      | 金币                         | 游戏                   | 系统-其它                                       |
