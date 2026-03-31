@@ -14,7 +14,7 @@
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-- ### **临时规则**  - [APP列表](./bpps/)-订阅地址（[查看版本](./.temp/version.json5)）：
+- ### **临时规则**  - [APP列表](./bpps/) - 订阅地址（[查看版本](./.temp/version.json5)）：
 
 ```txt
 https://gitee.com/lhj1618/GGKD/raw/master/.temp/output.json5
