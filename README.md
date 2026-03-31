@@ -11,7 +11,7 @@
 ```txt
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
-临时规则 - [中转文件编辑](./.temp/01.md)
+临时规则订阅地址 - [中转文件编辑](./.temp/01.md)
 ```txt
 https://gitee.com/lhj1618/GGKD/raw/master/.temp/output.json5
 ```
