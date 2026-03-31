@@ -16,7 +16,9 @@ if not exist "%TS_SOURCE_DIR%" (
     exit /b 1
 )
 
+echo.
 echo 正在清空输出文件...
+echo.
 echo. > "%TS_OUTPUT%"
 
 set "first=1"
@@ -30,5 +32,6 @@ for %%f in ("%TS_SOURCE_DIR%\*.ts") do (
     )
 )
 
+echo.
 echo ✅ TS 合并完成：%TS_OUTPUT%
 echo.
