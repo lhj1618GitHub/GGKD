@@ -5,7 +5,7 @@
 
 ***
 
-### [APP列表](./apps/) - [第三方订阅列表](https://github.com/topics/gkd-subscription) - [编辑新规则](./.temp/01.md)
+- ### [APP列表](./apps/) - [第三方订阅列表](https://github.com/topics/gkd-subscription) - [编辑新规则](./.temp/01.md)
 
 ***
 
