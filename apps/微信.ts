@@ -54,8 +54,7 @@
             desc: '头像有数字',
             rules: [
                 {
-                    matches: [
-                        'TextView[childCount=0] - ImageView[childCount=0] < RelativeLayout[childCount=2] < LinearLayout < @LinearLayout[clickable=true][visibleToUser=true] <n ListView <n RelativeLayout < FrameLayout < FrameLayout < FrameLayout < ViewGroup < FrameLayout < FrameLayout < [id="android:id/content"]',
+                    matches: ['[vid="o_u"],
                     ],
                     fastQuery: true,
                     activityIds: [
@@ -71,7 +70,7 @@
             rules: [
                 {
                     matches: [
-                        'ImageView[childCount=0] - ImageView[childCount=0] < RelativeLayout[childCount=2] < LinearLayout < @LinearLayout[clickable=true][visibleToUser=true] <n ListView <n RelativeLayout < FrameLayout < FrameLayout < FrameLayout < ViewGroup < FrameLayout < FrameLayout < [id="android:id/content"]',
+                        '[vid="a_h"]',
                     ],
                     fastQuery: true,
                     activityIds: [
