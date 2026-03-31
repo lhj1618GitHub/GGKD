@@ -1,0 +1,22 @@
+{
+    id: 'com.miui.player',
+    name: '音乐',
+    groups: [
+        {
+            key: 1,
+            name: '内嵌广告-卡片',
+            desc: '点击首页/我的[x]',
+            rules: [
+                {
+                    matches: [
+                        '[vid="close" || vid="close_banner"]',
+                    ],
+                    fastQuery: true,
+                    activityIds: [
+                        'com.tencent.qqmusiclite.activity.MainActivity',
+                    ],
+                },
+            ],
+        },
+    ],
+}

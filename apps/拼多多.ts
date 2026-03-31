@@ -1,0 +1,107 @@
+{
+    id: 'com.xunmeng.pinduoduo',
+    name: '拼多多',
+    groups: [
+        {
+            key: 1,
+            name: '弹窗广告-多关键词',
+            desc: '使用[返回键]和点击[x]',
+            fastQuery: true,
+            matchTime: 5000,
+            rules: [
+                {
+                    key: 0,
+                    action: 'back',
+                    matches: [
+                        '[text="开心收下" || text="去抢购" || text="立即抽免单" || text="去刮奖" || text="立即领取" || text="去领大额金币" || text="送你大额现金" || text*="红包助手" || text="刮刮卡发来的消息通知" || text="立即充值" || text="打款金额"][top>600][visibleToUser=true]',
+                    ],
+                    excludeMatches: [
+                        '[text="我的订单" || text="聊天"][bottom<500][visibleToUser=true]',
+                    ],
+                    activityIds: [
+                        '.ui.activity.HomeActivity',
+                        '.ui.activity.MainFrameActivity',
+                    ],
+                },
+                {
+                    key: 1,
+                    matches: [
+                        'ImageView[childCount=0][width<130&&height<130] < ViewGroup[childCount=1] < @ViewGroup[childCount=1][clickable=true][visibleToUser=true] <(1,2) ViewGroup <(1,2) ViewGroup < ViewGroup < FrameLayout < FrameLayout < FrameLayout < FrameLayout < FrameLayout <(1,2,3) [parent=null]',
+                    ],
+                    activityIds: [
+                        '.ui.activity.HomeActivity',
+                        '.ui.activity.MainFrameActivity',
+                    ],
+                },
+            ],
+        },
+        {
+            key: 2,
+            name: '弹窗广告-商品详情页视频讲解窗口',
+            desc: '点击[x]',
+            rules: [
+                {
+                    matches: [
+                        '[vid="iv_float_window_close"]',
+                    ],
+                    fastQuery: true,
+                    activityIds: [
+                        'com.xunmeng.pinduoduo.activity.NewPageActivity',
+                    ],
+                },
+            ],
+        },
+        {
+            key: 3,
+            name: '弹窗广告-下单后出现的弹窗',
+            desc: '点击[x]',
+            fastQuery: true,
+            matchTime: 5000,
+            rules: [
+                {
+                    key: 0,
+                    action: 'clickCenter',
+                    matches: [
+                        'Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true]',
+                    ],
+                    activityIds: [
+                        'com.xunmeng.pinduoduo.activity.NewPageMaskActivity',
+                        'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+                    ],
+                },
+            ],
+        },
+        {
+            key: 4,
+            name: '自动化-通知权限',
+            desc: '点击[x]和返回键',
+            fastQuery: true,
+            actionMaximum: 1,
+            matchTime: 5000,
+            resetMatch: 'app',
+            rules: [
+                {
+                    key: 0,
+                    matches: [
+                        'FrameLayout > ViewGroup[vid="pdd"] > ViewGroup > ViewGroup[childCount<3] > ViewGroup[childCount=3 || childCount=2] >(1,2) ImageView[clickable=true][visibleToUser=true]',
+                    ],
+                    activityIds: [
+                        '.ui.activity.HomeActivity',
+                    ],
+                },
+                {
+                    key: 1,
+                    action: 'back',
+                    matches: [
+                        '[text="及时获取物流消息" || text="开启通知" || text="允许通知"]',
+                    ],
+                    activityIds: [
+                        '.ui.activity.HomeActivity',
+                        '.activity.NewPageActivity',
+                        '.ui.activity.MainFrameActivity',
+                    ],
+                },
+            ],
+        },
+    ],
+}
