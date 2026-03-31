@@ -6,31 +6,19 @@
 
 ***
 
-## [本地创建订阅文件-说明](./创建订阅文件-说明.md) - 我的订阅地址（[查看版本](./releases/version.json5)）：
+[本地创建订阅文件-说明](./创建订阅文件-说明.md) - [中转文件编辑](./.temp/01.md)
+
+- ### **稳定规则**  - [APP列表](./apps/) - 订阅地址（[查看版本](./releases/version.json5)）：
 
 ```txt
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
-临时规则订阅地址 - [中转文件编辑](./.temp/01.md)
+
+- ### **临时规则**  - [APP列表](./bpps/)-订阅地址（[查看版本](./.temp/version.json5)）：
+
 ```txt
 https://gitee.com/lhj1618/GGKD/raw/master/.temp/output.json5
 ```
-
-# [APP列表-APPS](./apps/)
-
-| 影音                                   | Car | 工具                      | 应用商店                           | 社交                      | 金币                         | 游戏                   | 系统-其它                                       |
-|--------------------------------------|-----|----------------------------|---------------------------------------|--------------------------------|----|-------------------------------------------|---------------------------------------------|
-| [红果免费短视频](./apps/com.dragon.read.ts) |     | [GKD](./apps/li.songe.gkd) | [小米应用商店](./apps/com.xiaomi.market.ts) | [微信](./apps/com.tencent.mm.ts) | [中国移动](./apps/com.greenpoint.android.mc10086.activity.ts)  |  | [小米权限管理服务](./apps/com.lbe.security.miui.ts) |
-| [小米音乐](./apps/com.miui.player.ts) |     |                            | [AppShare](./apps/info.muge.appshare.ts) |                   | [拼多多](./apps/com.xunmeng.pinduoduo.ts) |                                           | [小米安全管家](./apps/com.miui.securitycenter.ts) |
-|  [我的听书](./apps/com.github.eprendre.tingshu.ts) |     |                            |                                       |                                |    |                             | [小米浏览器](./apps/com.android.browser.ts) |
-| [抖音](./apps/com.ss.android.ugc.aweme.ts) |     |                       |                                      |                                |    |                                           | [全局规则](./apps/全局规则.ts)                                  |
-|                                      |     |                            |                                       |                                |    |                                           |                                             |
-|                                      |     |                            |                                       |                                |    |                                           |                                             |
-|                                      |     |                            |                                       |                                |    |                                           |                                             |
-|                                      |     |                            |                                       |                                |    |                                           |                                             |
-|                                      |     |                            |                                       |                                |    |                                           |                                             |
-
-
 
 ***
 
