@@ -80,19 +80,5 @@
                 },
             ],
         },
-        {
-            key: 5,
-            name: '自动化-获取应用列表权限',
-            desc: '点击[拒绝]',
-            rules: [
-                {
-                    matches: [
-                        '@Button < [vid="buttonPanel"]',
-                    ],
-                    fastQuery: true,
-                    activityIds: [],
-                },
-            ],
-        },
     ],
 }
