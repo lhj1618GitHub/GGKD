@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 12,
+    version: 15,
     name: '稳定',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
