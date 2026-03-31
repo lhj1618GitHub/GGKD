@@ -21,11 +21,3 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 [李跳跳 + AutoJS + 规则工具](https://github.com/lhj1618GitHub/litiaotiao-autojs-android-app)；[Gitee](https://gitee.com/lhj1618/litiaotiao-autojs-android-app)
 
 
-
-    需要复制的内容
-
-```
-需要复制的内容
-```
-
-
