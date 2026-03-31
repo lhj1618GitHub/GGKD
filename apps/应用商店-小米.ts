@@ -1,0 +1,53 @@
+{
+    id: 'com.xiaomi.market',
+    name: '应用商店',
+    groups: [
+        {
+            key: 1,
+            name: '自动化-自动点击[查看全部升级]',
+            desc: '应用升级页面',
+            actionMaximum: 1,
+            rules: [
+                {
+                    matches: [
+                        '@[clickable=true] > [text^="查看全部升级" || text^="查看全部更新"]',
+                    ],
+                    fastQuery: true,
+                    activityIds: [
+                        'com.xiaomi.market.ui.UpdateListActivity',
+                        '.ui.UpdateAppsActivity',
+                    ],
+                },
+            ],
+        },
+        {
+            key: 2,
+            name: '自动化-忽略升级',
+            desc: '应用升级界面-自动点击忽略',
+            fastQuery: true,
+            activityIds: [
+                'com.xiaomi.market.ui.UpdateListActivity',
+            ],
+            rules: [
+                {
+                    key: 1,
+                    matches: [
+                        '[vid="expand_button"][visibleToUser=true]',
+                    ],
+                    excludeMatches: [
+                        '[text="忽略本次"][visibleToUser=true]',
+                    ],
+                },
+                {
+                    key: 2,
+                    preKeys: [
+                        1,
+                    ],
+                    matches: [
+                        '[text="忽略本次"][visibleToUser=true]',
+                    ],
+                },
+            ],
+        },
+    ],
+}
