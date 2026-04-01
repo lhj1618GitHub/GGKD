@@ -2,33 +2,22 @@
     id: 'com.greenpoint.android.mc10086.activity',
     name: '中国移动',
     groups: [
-        
-
-
-{
-      key: 1,
-        name: '弹窗广告-首页',
-          desc: '启动后首页弹窗',
+        {
+            key: 1,
+            name: '弹窗广告-首页',
+            desc: '启动后首页弹窗',
             rules: [
-                    {
-                              matches: [
-                                          '[vid="close_btn"]',
-                              ],
-                                    fastQuery: true,
-                                          activityIds: [
-                                                      'com.mc10086.cmcc.view.tabs.AppTabFragment',
-                                          ],
-                    },
+                {
+                    matches: [
+                        '[vid="close_btn"]',
+                    ],
+                    fastQuery: true,
+                    activityIds: [
+                        'com.mc10086.cmcc.view.tabs.AppTabFragment',
+                    ],
+                },
             ],
-}
-                                          ]
-                              ]
-                    }
-            ]
-}
-
-
-        
+        },
         {
             key: 3,
             name: '自动化-剪贴板权限弹窗',
@@ -49,7 +38,6 @@
                 },
             ],
         },
-       
         {
             key: 5,
             name: '自动化-定位权限',
