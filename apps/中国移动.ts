@@ -5,7 +5,27 @@
         
 
 
-
+{
+      key: 1,
+        name: '弹窗广告-首页',
+          desc: '启动后首页弹窗',
+            rules: [
+                    {
+                              matches: [
+                                          '[vid="close_btn"]',
+                              ],
+                                    fastQuery: true,
+                                          activityIds: [
+                                                      'com.mc10086.cmcc.view.tabs.AppTabFragment',
+                                          ],
+                    },
+            ],
+}
+                                          ]
+                              ]
+                    }
+            ]
+}
 
 
         
