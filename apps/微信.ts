@@ -11,7 +11,7 @@
                 {
                     key: 1,
                     name: '自动选中原图',
-                    fastQuery: true, 
+                    fastQuery: true,
                     activityIds: 'com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI',
                     matches: '[vid="km5"][desc="未选中,原图,复选框"]',
                 },
@@ -38,7 +38,7 @@
         {
             key: 3,
             name: '自动化-自动语音转文字',
-            desc: '点击-语音转文字',
+            desc: '长按语音菜单中-[转文字]',
             activityIds: 'com.tencent.mm.ui.LauncherUI',
             fastQuery: true,
             rules: [
@@ -50,12 +50,11 @@
         },
         {
             key: 4,
-            name: '自动化-点击数字未读消息',
+            name: '自动化-数字标未读消息',
             desc: '头像有数字',
             rules: [
                 {
-                    matches: ['[vid="o_u"],
-                    ],
+                    matches: '[vid="o_u"]',
                     fastQuery: true,
                     activityIds: [
                         '.ui.LauncherUI',
@@ -65,8 +64,8 @@
         },
         {
             key: 5,
-            name: '自动化-点击红点未读消息',
-            desc: '头像右上角为红点',
+            name: '自动化-红点标未读消息',
+            desc: '头像有红点',
             rules: [
                 {
                     matches: [
