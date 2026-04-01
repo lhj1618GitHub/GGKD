@@ -22,7 +22,7 @@ echo.
 echo. > "%TS_OUTPUT%"
 
 set "first=1"
-for %%f in ("%TS_SOURCE_DIR%\*.ts") do (
+for %%f in ("%TS_SOURCE_DIR%\*.json5") do (
     if !first!==1 (
         type "%%f" >> "%TS_OUTPUT%"
         set "first=0"
