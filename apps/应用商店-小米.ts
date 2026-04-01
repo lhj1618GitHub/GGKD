@@ -4,8 +4,8 @@
     groups: [
         {
             key: 1,
-            name: '自动化-自动点击[查看全部升级]',
-            desc: '应用升级页面',
+            name: '自动化-应用升级页面查看升级',
+            desc: '点击[查看全部升级]',
             actionMaximum: 1,
             rules: [
                 {
@@ -22,8 +22,8 @@
         },
         {
             key: 2,
-            name: '自动化-忽略升级',
-            desc: '应用升级界面-自动点击忽略',
+            name: '自动化-应用升级界面忽略升级',
+            desc: '点击[忽略]',
             fastQuery: true,
             activityIds: [
                 'com.xiaomi.market.ui.UpdateListActivity',
