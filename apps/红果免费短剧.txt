@@ -21,36 +21,6 @@
             ],
         },
         {
-            key: 2,
-            name: '弹窗广告-宝箱相关',
-            desc: '领取/结算',
-            fastQuery: true,
-            matchTime: 8000,
-            activityIds: [
-                'com.dragon.read.pages.main.MainFragmentActivity',
-            ],
-            rules: [
-                {
-                    key: 0,
-                    name: '开启宝箱',
-                    matches: [
-                        '@ViewGroup[width=18][index=0][visibleToUser=true]',
-                    ],
-                },
-                {
-                    key: 1,
-                    name: '关闭宝箱结算',
-                    position: {
-                        left: 'width * -3.6',
-                        top: 'width * 8',
-                    },
-                    matches: [
-                        '@ViewGroup[desc="第?个"][visibleToUser=true]',
-                    ],
-                },
-            ],
-        },
-        {
             key: 3,
             name: '弹窗广告-恭喜获得金币',
             desc: 'X',
