@@ -210,7 +210,6 @@
                     rules: [
                         {
                             fastQuery: true,
-                            activityIds: null,
                             matches: [
                                 '[text*="获取已安装的应用信息"]',
                                 '@Button < [vid="buttonPanel"]',
