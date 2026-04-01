@@ -9,8 +9,6 @@
             matchTime: 5000,
             rules: [
                 {
-                    key: 1,
-                    name: 'http服务',
                     matches: [
                         '@TextView[text="查看链接"]',
                         '@TextView[text="打开"]',
