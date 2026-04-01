@@ -19,7 +19,7 @@
             ],
         },
         {
-            key: 3,
+            key: 2,
             name: '自动化-剪贴板权限弹窗',
             desc: '点击不允许',
             fastQuery: true,
@@ -39,7 +39,7 @@
             ],
         },
         {
-            key: 5,
+            key: 3,
             name: '自动化-定位权限',
             actionMaximum: 1,
             resetMatch: 'app',
