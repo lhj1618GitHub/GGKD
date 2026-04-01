@@ -11,7 +11,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 ***
 
- **[GKD官网](https://gkd.li/) - [GitHub](https://github.com/gkd-kit/gkd/releases) - [官方快照审查](https://i.gkd.li/) ：** 
+ **[GKD官网](https://gkd.li/) - [GitHub](https://github.com/gkd-kit/gkd/releases) - [官方快照审查网页](https://i.gkd.li/) ：** 
 
 - [浏览器增强脚本下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [脚本github主页](https://github.com/adproqwq/MikuMagicWand/releases)
 - 第三方快照审查工具：[下载apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
