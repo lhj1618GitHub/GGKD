@@ -28,6 +28,6 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ***
 
 
- **我的仓库**  ： [Gitee](https://gitee.com/lhj1618/GGKD/releases) - [Github](https://github.com/lhj1618GitHub/GGKD/releases) / [我的github-李跳跳](https://github.com/lhj1618GitHub/litiaotiao-autojs-android-app) - [Gitee](https://gitee.com/lhj1618/litiaotiao-autojs-android-app)
+ **我的仓库**  ： [Gitee](https://gitee.com/lhj1618/GGKD/releases) - [Github](https://github.com/lhj1618GitHub/GGKD/releases) / 我的李跳跳：[github](https://github.com/lhj1618GitHub/litiaotiao-autojs-android-app) - [Gitee](https://gitee.com/lhj1618/litiaotiao-autojs-android-app)
 
 
