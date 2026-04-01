@@ -8,5 +8,7 @@
 ```
 adb shell sh /storage/emulated/0/Android/data/li.songe.gkd/files/sh/start.sh
 ```
+
 - 等待并检查是否报错
+
 - END
