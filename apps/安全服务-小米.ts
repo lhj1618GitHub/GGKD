@@ -80,5 +80,26 @@
                 },
             ],
         },
+        {
+            id: 'com.miui.securitycenter',
+            name: '安全服务',
+            groups: [
+                {
+                    key: 5,
+                    name: '自动化-获取已安装的应用信息',
+                    desc: '[拒绝]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            matches: [
+                                '[text*="获取已安装的应用信息"]',
+                                '@Button < [vid="buttonPanel"]',
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
     ],
 }
