@@ -17,9 +17,10 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 **json5格式化：** 
 
-- 我的工具：[json5格式化查错工具](https://lhj1618github.github.io/html/json-json5-tool.html) - [含json5库版本](https://lhj1618github.github.io/html/json5-tool/json-json5.html)
-
-- 在线格式化网站：[51shizhi](https://www.51shizhi.com/tool/json5-format) - [lddgo](https://www.lddgo.net/string/json5) - [fly63](https://fly63.com/tool/json5/)
+- 移动端-app：[json5-apk下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/JSON5.apk)；
+- 电脑端-html文件：[下载离线版](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-tool-%E7%A6%BB%E7%BA%BF%E7%89%88.zip)；
+- GitHub文件预览-[网络json5库版](https://lhj1618github.github.io/html/json-json5-tool.html) - [本地json5库版本](https://lhj1618github.github.io/html/json5-tool/json-json5.html)
+- 在线网站：[51shizhi](https://www.51shizhi.com/tool/json5-format) - [lddgo](https://www.lddgo.net/string/json5) - [fly63](https://fly63.com/tool/json5/)
 
 ***
 
