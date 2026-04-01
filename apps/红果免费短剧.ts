@@ -52,13 +52,11 @@
         },
         {
             key: 3,
-            name: '弹窗广告-其它弹窗',
-            desc: '恭喜/获得/七天签到',
+            name: '弹窗广告-恭喜获得金币',
+            desc: 'X',
             matchTime: 5000,
             rules: [
                 {
-                    key: 1,
-                    name: '恭喜获得金币',
                     position: {
                         left: 'width * 0.75',
                         top: 'width * 3.2',
@@ -70,9 +68,15 @@
                         'com.dragon.read.pages.main.MainFragmentActivity',
                     ],
                 },
+            ],
+        },
+        {
+            key: 4,
+            name: '弹窗广告-看短剧赚金币',
+            desc: 'x',
+            matchTime: 5000,
+            rules: [
                 {
-                    key: 2,
-                    name: '看短剧赚金币',
                     matches: [
                         '[vid="title"][text="恭喜你获得"]',
                         '[vid="ean"]',
@@ -82,18 +86,30 @@
                         'com.dragon.read.pages.main.MainFragmentActivity',
                     ],
                 },
+            ],
+        },
+        {
+            key: 5,
+            name: '弹窗广告-获得预约礼包',
+            desc: '存在x点击[立即领取]',
+            matchTime: 5000,
+            rules: [
                 {
-                    key: 3,
-                    name: '获得预约礼包-x-立即领取',
                     matches: [
                         '@ViewGroup <7 FrameLayout < [vid="au5"]',
                         '@ViewGroup <3 FrameLayout < [vid="au5"]',
                     ],
                     fastQuery: true,
                 },
+            ],
+        },
+        {
+            key: 6,
+            name: '弹窗广告-获得权益',
+            desc: '点击[x]',
+            matchTime: 5000,
+            rules: [
                 {
-                    key: 4,
-                    name: '获得权益',
                     position: {
                         left: 'width * 0.5',
                         top: 'width * 1.3',
@@ -105,9 +121,15 @@
                         'com.ss.android.excitingvideo.ExcitingVideoActivity',
                     ],
                 },
+            ],
+        },
+        {
+            key: 7,
+            name: '弹窗广告-七天签到',
+            desc: '看视频再得金币-点击[x]',
+            matchTime: 5000,
+            rules: [
                 {
-                    key: 5,
-                    name: '七天签到-看视频再得金币',
                     position: {
                         left: 'width * 0.5',
                         top: 'width * 0.6',
@@ -119,7 +141,7 @@
             ],
         },
         {
-            key: 4,
+            key: 8,
             name: '弹窗广告-推送提醒',
             desc: '点[取消]',
             rules: [
@@ -136,7 +158,7 @@
             ],
         },
         {
-            key: 5,
+            key: 9,
             name: '自动化-删除浏览历史',
             desc: '点[确认]',
             rules: [
