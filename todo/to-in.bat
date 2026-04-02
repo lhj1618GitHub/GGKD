@@ -23,7 +23,7 @@ if not exist "%JSON5_SOURCE%" (
     exit /b 1
 )
 
-:: =============== 替换内容 ===============
+:: 替换标记
 powershell -Command "$ts = Get-Content -Path '%TS_INPUT%' -Raw -Encoding UTF8; $json = Get-Content -Path '%JSON5_SOURCE%' -Raw -Encoding UTF8; $result = $json -replace '%REPLACE_FLAG%', $ts; $result | Out-File -FilePath '%JSON5_OUTPUT%' -Encoding UTF8"
 
 echo.
