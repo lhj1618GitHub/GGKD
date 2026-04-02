@@ -1,6 +1,7 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
+
 :: 自动定位到【项目根目录】，不管从哪里运行都正确
 PUSHD "%~dp0.."
 set "ROOT_DIR=%CD%"
@@ -26,8 +27,8 @@ for %%f in ("%TS_SOURCE_DIR%\*.md") do (
         type "%%f" >> "%TS_OUTPUT%"
     )
 )
+
 echo.
-echo ✅ TS 合并完成，输出文件：%TS_OUTPUT%
+echo ✅ TS 合并完成：%TS_OUTPUT%
 echo.
-echo ==============================================
-echo.
+
