@@ -27,23 +27,7 @@ for %%f in ("%TS_SOURCE_DIR%\*.md") do (
     )
 )
 echo.
-echo ✅ TS 合并完成：%TS_OUTPUT%
+echo ✅ TS 合并完成，输出文件：%TS_OUTPUT%
 echo.
-
-:: 删除all-apps.ts中所有的```符号（使用powershell处理UTF-8编码，避免乱码）
-echo 正在清理文件中的```符号...
-echo.
-powershell -Command "(Get-Content -Path '%TS_OUTPUT%' -Encoding UTF8) -replace '```', '' | Set-Content -Path '%TS_OUTPUT%' -Encoding UTF8"
-if !errorlevel! equ 0 (
-    echo ✅ 成功删除所有```符号
-) else (
-    echo ❌ 清理```符号失败，请检查文件权限
-)
-
-echo.
-echo ======================
-echo 所有操作执行完成！
-echo.
-echo 输出文件：%TS_OUTPUT%
-echo ======================
+echo ==============================================
 echo.
