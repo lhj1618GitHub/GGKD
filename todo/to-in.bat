@@ -22,7 +22,6 @@ if not exist "%JSON5_SOURCE%" (
 )
 
 :: 删除TS_INPUT中所有的```符号，UTF-8编码防乱码
-echo 正在清理!TS_INPUT!中的```符号...
 powershell -Command "(Get-Content -Path '%TS_INPUT%' -Encoding UTF8) -replace '```', '' | Set-Content -Path '%TS_INPUT%' -Encoding UTF8"
 if !errorlevel! equ 0 (
     echo ✅ !TS_INPUT! 中```符号清理完成
