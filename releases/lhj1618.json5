@@ -1,8 +1,9 @@
 {
     id: 3432,
-    version: 19,
+    version: 20,
     name: 'lhj1618',
     author: 'lhj1618',
+    updateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5',
     checkUpdateUrl: './version.json5',
     supportUri: 'https://gitee.com/lhj1618/GGKD',
     globalGroups: [
