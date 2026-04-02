@@ -165,6 +165,7 @@
             key: 10,
             name: '弹窗广告-顶部金币图',
             desc: '开心收下点[x]',
+            matchTime: 5000,
             rules: [
                 {
                     position: {
