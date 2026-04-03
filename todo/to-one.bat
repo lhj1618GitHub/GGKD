@@ -2,7 +2,6 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 echo.
-echo =================================================
 echo 开始合并所有-应用规则
 echo.
 
