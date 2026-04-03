@@ -1,6 +1,10 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
+echo.
+echo ================================================
+echo 开始执行-第二步
+echo .
 
 :: 自动定位到【项目根目录】，不管从哪里运行都正确
 PUSHD "%~dp0.."
