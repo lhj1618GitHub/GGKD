@@ -9,7 +9,7 @@ POPD
 set "TS_SOURCE_DIR=%ROOT_DIR%\apps"
 set "TS_OUTPUT=%ROOT_DIR%\all-apps.ts"
 if not exist "%TS_SOURCE_DIR%" (
-    echo 错误：找不到文件夹 !TS_SOURCE_DIR!
+    echo ❌ 错误：找不到文件夹 !TS_SOURCE_DIR!
     pause
     exit /b 1
 )
