@@ -26,7 +26,7 @@ if not exist "!JSON5_SOURCE!" (
 :: 删除TS_INPUT中所有的```符号，UTF-8编码防乱码
 powershell -Command "(Get-Content -Path '!TS_INPUT!' -Encoding UTF8) -replace '```', '' | Set-Content -Path '!TS_INPUT!' -Encoding UTF8 -Force"
 if !errorlevel! equ 0 (
-    echo ✅ !TS_INPUT! 中```符号清理完成
+    echo ✅ 符号```清理完成
 ) else (
     echo ❌ !TS_INPUT! 清理失败，请检查文件权限/路径是否含特殊字符
     pause
@@ -50,5 +50,4 @@ if !errorlevel! equ 0 if exist "!JSON5_OUTPUT!" (
 
 echo.
 echo 操作全部完成！
-pause >nul
 exit /b 0
