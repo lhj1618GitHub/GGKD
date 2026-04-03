@@ -79,50 +79,6 @@
 
 ---
 
-## 💡 实用场景配置示例
-
-### 场景1：开屏广告（带冷却）
-```json
-{
-  "key": 1,
-  "name": "开屏广告",
-  "activityIds": ["com.app.splash"],
-  "matches": ["[text*='跳过']"],
-  "action": "click",
-  "actionCd": 3000,
-  "actionMaximum": 1,
-  "priorityTime": 2000
-}
-```
-
-### 场景2：顺序执行（多个步骤）
-```json
-[
-  {
-    "key": 1,
-    "matches": ["[text='关闭']"],
-    "action": "click"
-  },
-  {
-    "key": 2,
-    "preKeys": [1],
-    "matches": ["[text='确认关闭']"],
-    "action": "click"
-  }
-]
-```
-
-### 场景3：精确点击不可点击元素
-```json
-{
-  "matches": ["[text*='广告']"],
-  "action": "clickCenter",
-  "position": "{x: 0.5, y: 0.1}"
-}
-```
-
----
-
 ## ⚠️ 注意事项
 1. **`key`属性**：一旦设置就**不要更改**，否则会导致点击记录混乱
 2. **版本匹配**：优先使用`versionName`/`versionCode`，弃用`versionNames`/`versionCodes`
