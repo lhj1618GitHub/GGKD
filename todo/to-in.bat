@@ -1,8 +1,6 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
-echo.
-
 
 :: 自动定位到【项目根目录】，不管从哪里运行都正确
 PUSHD "%~dp0.."
@@ -28,7 +26,8 @@ if not exist "!JSON5_SOURCE!" (
 :: 删除TS_INPUT中所有的```符号，UTF-8编码防乱码
 powershell -Command "(Get-Content -Path '!TS_INPUT!' -Encoding UTF8) -replace '```', '' | Set-Content -Path '!TS_INPUT!' -Encoding UTF8 -Force"
 if !errorlevel! equ 0 (
-    echo ✅ 符号```清理完成
+    echo.
+    echo     ✅ 符号```清理完成
 ) else (
     echo ❌ !TS_INPUT! 清理失败，请检查文件权限/路径是否含特殊字符
     pause
@@ -41,7 +40,7 @@ powershell -Command "$tsContent = Get-Content -Path '!TS_INPUT!' -Raw -Encoding 
 
 :: 双重校验：errorlevel + 文件是否存在
 if !errorlevel! equ 0 if exist "!JSON5_OUTPUT!" (
-    echo ✅ 替换完成！
+    echo     ✅ 替换标记完成
 ) else (
     echo ❌ JSON5 替换失败，请检查：
     echo  1. 文件内容是否含特殊转义字符
@@ -51,5 +50,6 @@ if !errorlevel! equ 0 if exist "!JSON5_OUTPUT!" (
 )
 
 echo.
-echo 操作全部完成！
+echo ✅ 整理订阅文件完成！
+echo.
 exit /b 0
