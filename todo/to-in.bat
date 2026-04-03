@@ -27,7 +27,7 @@ if not exist "!JSON5_SOURCE!" (
 powershell -Command "(Get-Content -Path '!TS_INPUT!' -Encoding UTF8) -replace '```', '' | Set-Content -Path '!TS_INPUT!' -Encoding UTF8 -Force"
 if !errorlevel! equ 0 (
     echo.
-    echo     ✅ 符号```清理完成
+    echo     ✅ 多余符号清理完成
 ) else (
     echo ❌ !TS_INPUT! 清理失败，请检查文件权限/路径是否含特殊字符
     pause
@@ -40,7 +40,7 @@ powershell -Command "$tsContent = Get-Content -Path '!TS_INPUT!' -Raw -Encoding 
 
 :: 双重校验：errorlevel + 文件是否存在
 if !errorlevel! equ 0 if exist "!JSON5_OUTPUT!" (
-    echo     ✅ 替换标记完成
+    echo     ✅ 替换标记内容完成
 ) else (
     echo ❌ JSON5 替换失败，请检查：
     echo  1. 文件内容是否含特殊转义字符
