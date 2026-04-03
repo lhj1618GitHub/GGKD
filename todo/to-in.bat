@@ -39,7 +39,7 @@ powershell -Command "$tsContent = Get-Content -Path '!TS_INPUT!' -Raw -Encoding 
 
 :: 双重校验：errorlevel + 文件是否存在
 if !errorlevel! equ 0 if exist "!JSON5_OUTPUT!" (
-    echo ✅ 替换完成！输出：!JSON5_OUTPUT!
+    echo ✅ 替换完成！
 ) else (
     echo ❌ JSON5 替换失败，请检查：
     echo  1. 文件内容是否含特殊转义字符
