@@ -14,6 +14,9 @@ if errorlevel 1 (echo 替换失败 & pause & exit /b 1)
 
 :: 删除根目录下生成的临时文件
 del "all-apps.ts"
+echo.
+echo ✅ all-apps.ts 文件删除成功！
+echo.
 
 echo.
 echo ========== ✅ 全部执行完成 ==========
