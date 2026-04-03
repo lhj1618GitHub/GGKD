@@ -1,7 +1,6 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
-echo.
 
 :: 自动定位到【项目根目录】，不管从哪里运行都正确
 PUSHD "%~dp0.."
@@ -14,8 +13,7 @@ if not exist "%TS_SOURCE_DIR%" (
     pause
     exit /b 1
 )
-echo.
-echo 正在清空输出文件...
+
 echo.
 echo. > "%TS_OUTPUT%"
 set "first=1"
@@ -29,7 +27,6 @@ for %%f in ("%TS_SOURCE_DIR%\*.md") do (
     )
 )
 
-echo.
-echo ✅ 合并完成！
+echo ✅ 应用规则合并完成！
 echo.
 
