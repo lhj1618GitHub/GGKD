@@ -29,6 +29,6 @@ for %%f in ("%TS_SOURCE_DIR%\*.md") do (
 )
 
 echo.
-echo ✅ TS 合并完成：%TS_OUTPUT%
+echo ✅ 合并完成！
 echo.
 
