@@ -7,15 +7,15 @@ echo.
 
 :: 调用todo目录下的批处理文件
 call todo/to-one.bat
-if errorlevel 1 (echo 合并失败 & pause & exit /b 1)
+if errorlevel 1 (echo ❌ 合并失败 & pause & exit /b 1)
 
 call todo/to-in.bat
-if errorlevel 1 (echo 替换失败 & pause & exit /b 1)
+if errorlevel 1 (echo ❌ 替换失败 & pause & exit /b 1)
 
 :: 删除根目录下生成的临时文件
 del "all-apps.ts"
 echo.
-echo ✅ all-apps.ts 文件删除成功！
+echo ✅ all-apps.ts 文件删除已执行！
 echo.
 
 echo.
