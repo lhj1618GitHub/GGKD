@@ -13,12 +13,12 @@ set "REPLACE_FLAG=//替换标记"
 
 :: 校验输入文件是否存在
 if not exist "!TS_INPUT!" (
-    echo 错误：未找到 !TS_INPUT!
+    echo ❌ 错误：未找到 !TS_INPUT!
     pause
     exit /b 1
 )
 if not exist "!JSON5_SOURCE!" (
-    echo 错误：未找到 !JSON5_SOURCE!
+    echo ❌ 错误：未找到 !JSON5_SOURCE!
     pause
     exit /b 1
 )
