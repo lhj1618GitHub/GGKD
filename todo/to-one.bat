@@ -1,6 +1,10 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
+echo.
+echo =================================================
+echo 开始合并所有-应用规则
+echo.
 
 :: 自动定位到【项目根目录】，不管从哪里运行都正确
 PUSHD "%~dp0.."
