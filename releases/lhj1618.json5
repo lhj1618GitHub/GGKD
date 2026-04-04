@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 28,
+    version: 29,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
