@@ -7,7 +7,7 @@
 ***
 
  **[第三方订阅列表](https://github.com/topics/gkd-subscription)** 
-- [GKDTOOL](https://github.com/adproqwq/GKDTool_Vue/releases)：全网搜索应用/订阅规则；[下载apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKDTool_2.1.4.apk)
+- [GKDTOOL](https://github.com/adproqwq/GKDTool_Vue/releases)：搜索应用/订阅规则；[下载apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKDTool_2.1.4.apk)
  
  **[我的APP列表](./apps/)**
 
