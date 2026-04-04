@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 29,
+    version: 30,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -654,8 +654,9 @@
                                 '@ViewGroup[width<393] <5 ViewGroup < FrameLayout < FrameLayout < FrameLayout < [vid="d2_"]',
                                 '@ImageView[childCount=0] <n ViewGroup <5 ViewGroup < FrameLayout < FrameLayout < FrameLayout < [vid="d2_"]',
                             ],
+                            matchRoot: true,
+                            matchDelay: 15000,
                             fastQuery: true,
-                            forcedTime: 25000,
                             activityIds: [
                                 'com.ss.android.excitingvideo.ExcitingVideoActivity',
                             ],
@@ -815,7 +816,6 @@
                     key: 9,
                     name: '弹窗广告-顶部金币图',
                     desc: '[开心收下][我知道了]',
-                    actionMaximumKey: '1',
                     rules: [
                         {
                             key: 1,
