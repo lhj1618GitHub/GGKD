@@ -23,11 +23,11 @@ if not exist "!JSON5_SOURCE!" (
     exit /b 1
 )
 
-:: 删除TS_INPUT中所有的```符号，UTF-8编码防乱码
-powershell -Command "(Get-Content -Path '!TS_INPUT!' -Encoding UTF8) -replace '```', '' | Set-Content -Path '!TS_INPUT!' -Encoding UTF8 -Force"
+:: 删除TS_INPUT中所有的```json，UTF-8编码防乱码
+powershell -Command "(Get-Content -Path '!TS_INPUT!' -Encoding UTF8) -replace '```json', '' | Set-Content -Path '!TS_INPUT!' -Encoding UTF8 -Force"
 if !errorlevel! equ 0 (
     echo.
-    echo     ✅ 多余符号清理完成
+    echo     ✅ 多余内容清理完成
 ) else (
     echo ❌ !TS_INPUT! 清理失败，请检查文件权限/路径是否含特殊字符
     pause
