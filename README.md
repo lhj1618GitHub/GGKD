@@ -9,7 +9,7 @@
  **[我的APP列表](./apps/) - [第三方订阅列表](https://github.com/topics/gkd-subscription)** 
 
 
-- **我的订阅地址**（[查看版本](./releases/version.json5) - [编辑新规则](./.temp/01.md)）：
+- **我的订阅地址**（[查看版本](./releases/version.json5) - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)）：
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
