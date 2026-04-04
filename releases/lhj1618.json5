@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 23,
+    version: 24,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -293,7 +293,7 @@
                     desc: '语音旁边的[转文字]',
                     rules: [
                         {
-                            matches: '@[text="转文字" || vid="c1i"][vid!="obc"][vid!="rsf"]',
+                            matches: '[text="转文字" || vid="c1i"][vid!="obc"][vid!="rsf"]',
                             fastQuery: true,
                             activityIds: 'com.tencent.mm.ui.LauncherUI',
                         },
