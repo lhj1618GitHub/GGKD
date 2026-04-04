@@ -655,7 +655,7 @@
                                 '@ImageView[childCount=0] <n ViewGroup <5 ViewGroup < FrameLayout < FrameLayout < FrameLayout < [vid="d2_"]',
                             ],
                             fastQuery: true,
-                            forcedTime: 25000
+                            forcedTime: 25000,
                             activityIds: [
                                 'com.ss.android.excitingvideo.ExcitingVideoActivity',
                             ],
