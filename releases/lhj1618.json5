@@ -1,6 +1,6 @@
 d{
     id: 3432,
-    version: 30,
+    version: 31,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -663,41 +663,41 @@ d{
                         },
                     ],
                 },
-                {
-                    key: 3,
-                    name: '弹窗广告-宝箱相关',
-                    desc: '领取/结算',
-                    matchTime: 8000,
-                    activityIds: [
-                        'com.dragon.read.pages.main.MainFragmentActivity',
-                    ],
-                    rules: [
-                        {
-                            key: 0,
-                            name: '开启宝箱',
-                            position: {
-                                left: 'width * 0',
-                                top: 'width * 0.56',
-                            },
-                            matches: [
-                                '@ViewGroup[index=0][width=18][height=220][visibleToUser=true]',
-                                '@ViewGroup < LinearLayout < HorizontalScrollView < ScrollView <3 FrameLayout < [vid="au5"]',
-                            ],
-                        },
-                        {
-                            key: 1,
-                            name: '关闭宝箱结算',
-                            position: {
-                                left: 'width * -3.6',
-                                top: 'width * 8',
-                            },
-                            matches: [
-                                '@ViewGroup[desc="第?个"][visibleToUser=true]',
-                            ],
-                        },
-                    ],
-                },
-                {
+      
+    {
+      key: 3,
+      name: '弹窗广告-宝箱相关',
+      desc: '领取/结算',
+      matchTime: 8000,
+      activityIds: [
+        'com.dragon.read.pages.main.MainFragmentActivity',
+      ],
+      rules: [
+        {
+          key: 0,
+          name: '开启宝箱',
+          position: {
+            left: 'width * 0.5',
+            top: 'width * 0.56',
+          },
+          matches: [
+            'ViewGroup[index=0][width=18][height=220][visibleToUser=true] < @ViewGroup < LinearLayout < HorizontalScrollView < ScrollView <3 FrameLayout < [vid="au5"]',
+          ],
+        },
+        {
+          key: 1,
+          name: '关闭宝箱结算',
+          position: {
+            left: 'width * -3.6',
+            top: 'width * 8',
+          },
+          matches: [
+            '@ViewGroup[desc="第?个"][visibleToUser=true]',
+          ],
+        },
+      ],
+    },
+{
                     key: 4,
                     name: '自动化-删除浏览历史',
                     desc: '点[确认]',
@@ -716,7 +716,7 @@ d{
                 },
                 {
                     key: 5,
-                    name: '弹窗广告-签到',
+                    name: '弹窗广告-七日签到',
                     desc: '[立即领取][x]',
                     rules: [
                         {
@@ -745,27 +745,49 @@ d{
                         },
                     ],
                 },
-                {
-                    key: 6,
-                    name: '弹窗广告-今日签到可领',
-                    desc: '[立即签到]',
-                    rules: [
-                        {
-                            position: {
-                                left: 'width * 1.5625',
-                                top: 'width * 2.8493',
-                            },
-                            matches: [
-                                '@ViewGroup[width=272] < ViewGroup < ViewGroup < FrameLayout < [vid="au5"]',
-                            ],
-                            fastQuery: true,
-                            activityIds: [
-                                'com.dragon.read.pages.main.MainFragmentActivity',
-                            ],
-                        },
-                    ],
-                },
-                {
+                
+
+    {
+      key: 6,
+      name: '弹窗广告-签到可领',
+      desc: '[立即签到][x]',
+      rules: [
+        {
+          key: 1,
+          name: '今日签到可领[立即签到]',
+          position: {
+            left: 'width * 1.5625',
+            top: 'width * 2.8493',
+          },
+          matches: [
+            '@ViewGroup[width=272] < ViewGroup < ViewGroup < FrameLayout < [vid="au5"]',
+          ],
+          fastQuery: true,
+          activityIds: [
+            'com.dragon.read.pages.main.MainFragmentActivity',
+          ],
+        },
+        {
+          key: 2,
+          name: '明日签到可领[x]',
+          preKeys: [
+            1,
+          ],
+          position: {
+            left: 'width * 0.5',
+            top: 'width * 0.65',
+          },
+          matches: [
+            'ViewGroup[width=24] < @ViewGroup <2 ViewGroup < FrameLayout < [vid="au5"]',
+          ],
+        },
+      ],
+    },
+
+
+
+
+{
                     key: 7,
                     name: '弹窗广告-金币',
                     desc: '点[X][取消]',
