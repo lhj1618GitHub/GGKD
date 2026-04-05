@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 32,
+    version: 33,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -836,7 +836,7 @@
                             key: 1,
                             name: '恭喜你已累计获得奖励[开心收下]',
                             fastQuery: true,
-                            activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
+                            activityIds: ['com.ss.android.excitingvideo.ExcitingVideoActivity','com.dragon.read.pages.main.MainFragmentActivity'],
                             position: {
                                 top: 'width * 1.2320',
                                 left: 'width * 0.5',
