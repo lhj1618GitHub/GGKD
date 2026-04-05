@@ -92,25 +92,41 @@
         }
 
         // 主执行
-        async function startProcess() {
+                async function startProcess() {
             const btn = document.getElementById("startBtn");
             const versionInput = document.getElementById("versionInput");
             btn.disabled = true;
             let loadOk = false;
+            let rootHandle = null;
 
-            // 优先自动
+            addLog("\n🔄 正在启动文件选择...");
+
+            // ======================
+            // 【主要修复】：优先尝试手动选择，并优化移动端提示
+            // ======================
             try {
-                const autoRoot = await window.showDirectoryPicker();
-                loadOk = await loadFiles(autoRoot);
+                // 首先尝试手动选择根目录（这是最兼容的方式）
+                addLog("📂 请手动选择【根目录】文件夹（需包含 apps 和 todo 子目录）");
+                rootHandle = await window.showDirectoryPicker();
+                addLog("✅ 目录选择成功");
+                loadOk = await loadFiles(rootHandle);
             } catch (e) {
-                addLog("⚠️ 自动选择目录失败，切换手动模式");
+                // 捕获选择取消或失败的异常
+                if (e.name === 'AbortError') {
+                    addLog("❌ 用户取消了目录选择。");
+                } else {
+                    addLog("❌ 目录选择失败或不被浏览器支持: " + e.message);
+                    // 针对移动端的友好提示
+                    addLog("💡 提示：部分手机浏览器可能不支持直接选择文件夹。请尝试：");
+                    addLog("    1. 使用 Chrome、Edge 等桌面浏览器。");
+                    addLog("    2. 确认您的手机浏览器已更新至最新版本。");
+                    addLog("    3. 某些安卓文件管理器应用可能提供‘通过应用选择’的选项。");
+                }
+                btn.disabled = false;
+                return; // 选择失败，直接退出函数
             }
 
-            // 自动失败 → 手动
-            if (!loadOk) {
-                loadOk = await selectRootManually();
-            }
-
+            // 如果手动选择成功并加载了文件，则继续后续流程
             if (!loadOk) {
                 btn.disabled = false;
                 return;
@@ -172,6 +188,8 @@
 
             btn.disabled = false;
         }
+
+            
 
         // 下载（只输出最终文件）
         function download(filename, text) {
