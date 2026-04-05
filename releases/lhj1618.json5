@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 34,
+    version: 35,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -877,7 +877,7 @@
                                 top: 'width * 1.2',
                                 left: 'width * 0.5',
                             },
-                            matches: 'ImageView[childCount=0] - @ViewGroup[childCount=1] <3 FrameLayout < FrameLayout < FrameLayout < [vid="d2_"]',
+                            matches: '@ViewGroup[height=879][childCount=1] <3 FrameLayout < FrameLayout < FrameLayout < [vid="d2_"]',
                         },
                     ],
                 },
