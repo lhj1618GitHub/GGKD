@@ -3,110 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文件合并替换工具</title>
+    <title>全自动文件合并替换工具</title>
     <style>
         *{box-sizing:border-box;font-family:system-ui,sans-serif}
-        body{max-width:700px;margin:30px auto;padding:0 20px;background:#f7f9fa}
-        .box{padding:15px 20px;border:1px solid #ddd;border-radius:10px;margin-bottom:15px;background:white}
+        body{max-width:700px;margin:30px auto;padding:0 20px;background:#000} /* 修改背景色为黑色 */
+        .box{padding:15px 20px;border:1px solid #444;border-radius:10px;margin-bottom:15px;background:#333; color: #ddd} /* 调整边框和文字颜色以适应深色背景 */
         button{padding:12px 18px;background:#007bff;color:white;border:none;border-radius:8px;cursor:pointer;margin:5px}
-        button:disabled{background:#ccc}
-        .log{background:#f1f1f1;padding:12px;border-radius:8px;white-space:pre-wrap;height:260px;overflow-y:auto}
-        h2{color:#222}
+        button:disabled{background:#555}
+        .log{background:#222;padding:12px;border-radius:8px;white-space:pre-wrap;height:280px;overflow-y:auto; color: #eee} /* 调整日志框背景和文字颜色 */
+        h2{color:#eee}
+        .tip{color:#aaa;font-size:14px;margin-top:5px}
+        /* 新增输入框样式 */
+        .input-group {display: flex; align-items: center; flex-wrap: wrap;}
+        .input-group input {padding: 11px 15px; border: 1px solid #555; border-radius: 8px; margin-right: 10px; width: 150px; background: #222; color: white;}
     </style>
 </head>
 <body>
-    <h2>📂 本地文件合并 + 标记替换工具</h2>
+    <h2>📂 全自动文件合并替换工具</h2>
 
     <div class="box">
-        <button onclick="selectAppsFolder()">选择 apps 文件夹</button>
-        <button onclick="selectJson5()">选择 sample.json5</button>
-        <button onclick="startProcess()" id="startBtn" disabled>✅ 一键执行</button>
+        <!-- 新增数字输入框，与按钮整合在同一容器 -->
+        <div class="input-group">
+            <input type="number" id="versionInput" placeholder="输入版本号 (数字)" min="1" style="width: 180px;" />
+            <button onclick="startProcess()" id="startBtn">✅ 一键执行（全自动）</button>
+        </div>
+        <p class="tip">💡 自动加载失败时，会自动让你选择【根目录】（包含 apps 和 todo 的文件夹）<br>💡 在输入框中输入数字，可修改最终文件中 version 字段的值。留空则不修改。</p>
     </div>
 
-    <div class="box log" id="log">日志：\n</div>
+    <div class="box log" id="log">日志：
+--------------------------------
+📌 自动读取规则：
+1. 合并目录：根目录/apps
+2. 模板文件：根目录/todo/sample.json5
+3. 文件间隔：英文逗号 ,
+4. 仅输出：new.json5
+--------------------------------
+</div>
 
     <script>
         let appsFiles = [];
         let sampleJson5Content = "";
         const REPLACE_FLAG = "//替换标记";
+        let manualRootHandle = null;
 
-        // 选择 apps 文件夹
-        async function selectAppsFolder() {
+        // 统一加载文件
+        async function loadFiles(rootHandle) {
+            addLog("\n🔍 开始加载文件...");
             try {
-                const folderHandle = await window.showDirectoryPicker();
+                const appsHandle = await rootHandle.getDirectoryHandle("apps", { create: false });
                 appsFiles = [];
-                addLog("📂 已选择 apps 文件夹，遍历中...");
-
-                for await (const entry of folderHandle.values()) {
+                for await (const entry of appsHandle.values()) {
                     if (entry.kind === "file") {
                         const file = await entry.getFile();
                         appsFiles.push({ name: file.name, file });
                     }
                 }
-
                 appsFiles.sort((a, b) => a.name.localeCompare(b.name));
-                addLog(`✅ 加载完成：共 ${appsFiles.length} 个文件`);
-                checkEnableStart();
+                addLog(`✅ 加载 apps 文件夹：共 ${appsFiles.length} 个文件`);
+
+                const todoHandle = await rootHandle.getDirectoryHandle("todo", { create: false });
+                const json5Handle = await todoHandle.getFileHandle("sample.json5", { create: false });
+                const json5File = await json5Handle.getFile();
+                sampleJson5Content = await json5File.text();
+                addLog("✅ 加载 todo/sample.json5 成功");
+                return true;
             } catch (e) {
-                addLog("❌ 选择文件夹失败：" + e.message);
+                addLog("❌ 加载失败：" + e.message);
+                addLog("📂 目录结构要求：");
+                addLog("   根目录");
+                addLog("   ├─ apps/       (必须存在)");
+                addLog("   └─ todo/       (必须存在)");
+                addLog("      └─ sample.json5");
+                return false;
             }
         }
 
-        // 选择 sample.json5
-        async function selectJson5() {
-            const input = document.createElement("input");
-            input.type = "file";
-            input.accept = ".json5";
-            input.onchange = async e => {
-                const file = e.target.files[0];
-                if (!file) return;
-                sampleJson5Content = await file.text();
-                addLog("✅ 已加载 sample.json5");
-                checkEnableStart();
-            };
-            input.click();
+        // 手动选择根目录
+        async function selectRootManually() {
+            addLog("\n🔧 自动加载失败，请手动选择【根目录】");
+            try {
+                manualRootHandle = await window.showDirectoryPicker();
+                addLog("✅ 已手动选择根目录");
+                return await loadFiles(manualRootHandle);
+            } catch (e) {
+                addLog("❌ 手动选择取消或失败");
+                return false;
+            }
         }
 
-        // 检查是否可以开始执行
-        function checkEnableStart() {
-            document.getElementById("startBtn").disabled = 
-                appsFiles.length === 0 || !sampleJson5Content;
-        }
-
-        // 主流程：合并 → 清理 → 替换 → 下载
+        // 主执行
         async function startProcess() {
-            addLog("\n🚀 开始执行...");
+            const btn = document.getElementById("startBtn");
+            const versionInput = document.getElementById("versionInput");
+            btn.disabled = true;
+            let loadOk = false;
 
-            // 1. 合并所有文件
-            let allContent = "";
-            for (const f of appsFiles) {
-                const text = await f.file.text();
-                allContent += text + "\n";
+            // 优先自动
+            try {
+                const autoRoot = await window.showDirectoryPicker();
+                loadOk = await loadFiles(autoRoot);
+            } catch (e) {
+                addLog("⚠️ 自动选择目录失败，切换手动模式");
             }
-            addLog("✅ 合并完成 → all-app.ts");
 
-            // 2. 清理 ```
-            allContent = allContent.replace(/```/g, "");
-            addLog("✅ 清理 ``` 完成");
+            // 自动失败 → 手动
+            if (!loadOk) {
+                loadOk = await selectRootManually();
+            }
 
-            // 3. 替换标记
-            if (!sampleJson5Content.includes(REPLACE_FLAG)) {
-                addLog("❌ 错误：未找到替换标记 " + REPLACE_FLAG);
+            if (!loadOk) {
+                btn.disabled = false;
                 return;
             }
-            const result = sampleJson5Content.replace(REPLACE_FLAG, allContent);
+
+            // ======================
+            // 合并（逗号分隔）
+            // ======================
+            addLog("\n🚀 开始合并处理...");
+            let allContent = "";
+            for (let i = 0; i < appsFiles.length; i++) {
+                const text = await appsFiles[i].file.text();
+                allContent += text;
+                if (i !== appsFiles.length - 1) allContent += ",";
+            }
+            addLog("✅ 合并完成（逗号分隔）");
+
+            // 清理 ```json
+            allContent = allContent.replace(/```json/g, "");
+            addLog("✅ 清理 ```json 完成");
+
+            // 替换
+            if (!sampleJson5Content.includes(REPLACE_FLAG)) {
+                addLog("❌ 未找到替换标记：" + REPLACE_FLAG);
+                btn.disabled = false;
+                return;
+            }
+            let result = sampleJson5Content.replace(REPLACE_FLAG, allContent);
             addLog("✅ 替换完成");
 
-            // 4. 下载文件
-            download("all-app.ts", allContent);
-            download("new.json5", result);
+            // ======================
+            // 【新增功能】：根据输入框修改version字段
+            // ======================
+            const versionValue = versionInput.value.trim();
+            if (versionValue !== "") {
+                // 使用正则表达式匹配 version: 数字, 并替换
+                const versionRegex = /version:\s*(\d+),/gi;
+                if (versionRegex.test(result)) {
+                    result = result.replace(versionRegex, `version: ${versionValue},`);
+                    addLog(`✅ 已将文件中的 version 字段值替换为 ${versionValue}`);
+                } else {
+                    addLog("⚠️  未在文件内容中找到可匹配替换的 version 字段，已跳过修改。");
+                }
+            } else {
+                addLog("ℹ️  未输入版本号，已跳过 version 字段的替换。");
+            }
 
-            addLog("\n🎉 全部完成！已自动下载 2 个文件：");
-            addLog("   1. all-app.ts");
-            addLog("   2. new.json5");
+            // ======================
+            // 只下载 new.json5
+            // ======================
+            download("new.json5", result);
+            addLog("\n🎉 全部完成！已自动下载：new.json5");
+            addLog("--------------------------------");
+
+            // ======================
+            // 自动清除过程文件/变量
+            // ======================
+            clearProcessData();
+
+            btn.disabled = false;
         }
 
-        // 下载文件
+        // 下载（只输出最终文件）
         function download(filename, text) {
             const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
             const url = URL.createObjectURL(blob);
@@ -114,10 +181,20 @@
             a.href = url;
             a.download = filename;
             a.click();
-            URL.revokeObjectURL(url);
+            setTimeout(() => URL.revokeObjectURL(url), 100);
         }
 
-        // 日志输出
+        // ======================
+        // 自动清除所有过程缓存
+        // ======================
+        function clearProcessData() {
+            appsFiles = [];
+            sampleJson5Content = "";
+            manualRootHandle = null;
+            addLog("♻️ 已自动清除所有过程文件/缓存");
+        }
+
+        // 日志
         function addLog(text) {
             const el = document.getElementById("log");
             el.textContent += text + "\n";
