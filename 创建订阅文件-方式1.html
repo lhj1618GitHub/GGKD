@@ -88,19 +88,20 @@
             }
         });
 
-        // 递归遍历ZIP，查找所有apps文件夹文件 + todo/sample.json5
+        // 递归遍历ZIP，查找所有apps文件夹文件 + apps/sample.json5
         function findFilesInZip(zip) {
             const appsFiles = [];
             let sampleJson5 = null;
 
             // 深度遍历所有文件/文件夹
             zip.forEach((relativePath, file) => {
-                // 1. 查找所有apps文件夹下的文件（任意层级）
-                if (!file.dir && relativePath.includes('/apps/')) {
+                // 1. 查找所有apps文件夹下的.md文件（任意层级）
+                if (!file.dir && relativePath.includes('/apps/') && 
+            relativePath.endsWith('.md')) {
                     appsFiles.push(file);
                 }
-                // 2. 查找任意层级下的 todo/sample.json5
-                if (!file.dir && relativePath.endsWith('todo/sample.json5') && !sampleJson5) {
+                // 2. 查找任意层级下的 apps/sample.json5
+                if (!file.dir && relativePath.endsWith('apps/sample.json5') && !sampleJson5) {
                     sampleJson5 = file;
                 }
             });
@@ -124,7 +125,7 @@
                 const { appsFiles, sampleJson5 } = findFilesInZip(zipData);
 
                 if (appsFiles.length === 0) throw new Error('ZIP中未找到apps文件夹或文件夹为空');
-                if (!sampleJson5) throw new Error('ZIP中未找到todo/sample.json5文件');
+                if (!sampleJson5) throw new Error('ZIP中未找到apps/sample.json5文件');
 
                 // 合并apps文件内容
                 let mergedContent = '';
