@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 38,
+    version: 39,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -855,7 +855,7 @@
                                 left: 'width * 0.5000',
                             },
                             matches: [
-                                '@ViewGroup < LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="au5"]',
+                                '@ViewGroup[childCount=0][focusable=true] < LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="au5"]',
                                 '[vid="action_bar_root"][visibleToUser=true][childCount=1]',
                             ],
                         },
