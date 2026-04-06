@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 42,
+    version: 43,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -761,7 +761,7 @@
                         },
                         {
                             key: 2,
-                            name: '开启推送提醒-[取消]',
+                            name: '开启推送提醒[取消]',
                             matches: [
                                 '[text="开启推送提醒"]',
                                 '[vid="cm_"]',
@@ -781,8 +781,7 @@
                                 left: 'width * 0.5000',
                             },
                             matches: [
-                                '@ViewGroup[childCount=0][focusable=true] < LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="au5"]',
-                                '[vid="action_bar_root"]',
+                                'ViewGroup[desc="金币"][focusable=true] <<n [vid="root_layout"] + @[vid="action_bar_root"]',
                             ],
                         },
                     ],
