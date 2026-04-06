@@ -21,7 +21,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
     - [快照审查-网页增强脚本.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases)
     - [官方网站重定向至Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 
-- [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip) - [授权说明](./ADB/授权-GKD-命令.md)
+- [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip) - [授权说明](./help/adb授权命令.md)
 
 ---
 
