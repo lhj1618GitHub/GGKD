@@ -1,8 +1,8 @@
- **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)**
+ **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)** 
 
 ---
 
- **[第三方订阅列表](https://github.com/topics/gkd-subscription) - [新手编写帮助](./help/) - [我的APP列表](./apps/)**
+ **[第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的APP列表](./apps/)**
 
 - **我的订阅地址**（[查看版本](./releases/version.json5) - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)）：
 
@@ -11,6 +11,8 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
 ---
+
+[新手编写规则帮助文档](./help/) 
 
 - 快照审查网页
     - [官方网站](https://i.gkd.li/) - [仿官方.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
