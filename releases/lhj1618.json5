@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 41,
+    version: 42,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -782,20 +782,6 @@
                             },
                             matches: [
                                 '@ViewGroup[childCount=0][focusable=true] < LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="au5"]',
-                                '[vid="action_bar_root"]',
-                            ],
-                        },
-                        {
-                            key: 4,
-                            name: '连续打卡7天[立即打卡]',
-                            fastQuery: true,
-                            activityIds: 'com.dragon.read.bullet.widget.BulletContainerActivity',
-                            position: {
-                                top: 'width * 2.0000',
-                                left: 'width * 0.5000',
-                            },
-                            matches: [
-                                '@ViewGroup[visibleToUser=true] < ViewGroup <2 LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="au5"]',
                                 '[vid="action_bar_root"]',
                             ],
                         },
