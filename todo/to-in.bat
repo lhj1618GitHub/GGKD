@@ -7,7 +7,7 @@ PUSHD "%~dp0.."
 set "ROOT_DIR=!CD!"
 POPD
 set "TS_INPUT=!ROOT_DIR!\all-apps.ts"
-set "JSON5_SOURCE=%~dp0sample.json5"
+set "JSON5_SOURCE=!ROOT_DIR!\apps\sample.json5"
 set "JSON5_OUTPUT=!ROOT_DIR!\new.json5"
 set "REPLACE_FLAG=//替换标记"
 
