@@ -1,5 +1,3 @@
----
-
  **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)**
 
 ---
