@@ -1,11 +1,6 @@
- **[GKD官网](https://gkd.li/) - [GitHub发布页](https://github.com/gkd-kit/gkd/releases)**
+---
 
-- [官方快照审查网页](https://i.gkd.li/) - [仿官方快照工具-apk下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
-
-- [快照审查网页Plus](https://li.chenge.eu.org/) - [重定向至Plus-脚本](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
-
-- [快照审查-增强脚本下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [增强脚本github主页](https://github.com/adproqwq/MikuMagicWand/releases)
-
+ **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)**
 
 ---
 
@@ -16,6 +11,17 @@
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
+
+---
+
+- 快照审查网页
+    - [官方网站](https://i.gkd.li/) - [仿官方.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
+    - [第三方Plus版网站](https://li.chenge.eu.org/) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
+- 快照审查脚本
+    - [快照审查-网页增强脚本.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases)
+    - [官方网站重定向至Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
+
+- [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip) - [授权说明](./ADB/授权-GKD-命令.md)
 
 ---
 
