@@ -1,18 +1,8 @@
- **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)** 
+ **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases) - [第三方订阅列表](https://github.com/topics/gkd-subscription)** 
 
 ---
 
-- **我的订阅地址**（[查看版本](./releases/version.json5)）：
-
-```
-https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
-```
-
-- [上传快照文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/snapshot) - [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/new-app) - [编辑临时规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
-
----
-
-**[第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的APP列表](./apps)：**
+**[我的APP列表](./apps)：**
 
 | 序 号 |   应用名称     |     查看规则                     | 下载文件                                                                       | 
 |------|----------------|---------------------------------|-------------------------------------------------------------------------------|
@@ -25,6 +15,18 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 | 7    | 拼多多        | [查看](./apps/拼多多.md)         | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/拼多多.md)              | 
 | 8    | 红果免费短剧  | [查看](./apps/红果免费短剧.md)    | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/红果免费短剧.md)         |
 | 9    | 音乐-小米     | [查看](./apps/音乐-小米.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/音乐-小米.md)           |
+
+注：下载的文件为单应用规则记录文件，需在内容中删除开头的 ` ```json ` 
+
+---
+
+- **我的订阅地址**（[查看版本](./releases/version.json5)）：
+
+```
+https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
+```
+
+- [上传快照文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/snapshot) - [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/new-app) - [编辑临时规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
 
 ---
 
