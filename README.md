@@ -11,7 +11,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 ---
 
-**[第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的APP列表](.temp/apps.md)：**
+**[第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的APP列表](./apps)：**
 
 | 序 号 |   应用名称     |     查看规则                     | 下载文件                                                                       | 
 |------|----------------|---------------------------------|-------------------------------------------------------------------------------|
