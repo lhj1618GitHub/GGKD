@@ -1,6 +1,6 @@
  
 
-###  **应用列表** - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
+###  **应用列表** - [上传新规则文件](../.temp/new-app) - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
 
 ---
 
