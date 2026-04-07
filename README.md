@@ -30,7 +30,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 - 编辑工具下载（html文件需系统浏览器打开）：
     - [创建订阅文件方式1.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E5%88%9B%E5%BB%BA%E8%AE%A2%E9%98%85%E6%96%87%E4%BB%B6-%E6%96%B9%E5%BC%8F1.html)
     - [多格式文件编辑器.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91%E5%99%A8.html)
-    - [json5格式化.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-v0.0.3.apk)/[json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)
+    - [json5格式化.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-v0.0.3.apk) / [json5](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html) / [json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)
 - 浏览器脚本下载：
     - [增强快照审查.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js)
     - [重定向至快照审查Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js)
@@ -42,8 +42,8 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
  **json5格式化-工具：** 
 
-- 移动端-app：[json5.apk下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-v0.0.3.apk)；
-- 电脑端-html文件：[下载离线版](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；
+- 移动端：[json5.apk下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-v0.0.3.apk)；[json5](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html)
+- 电脑端-html文件：[下载离线版](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；[在线版](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html)
 - GitHub文件预览：[网络json5库版](https://lhj1618github.github.io/html/json-json5-tool.html) - [本地json5库版本](https://lhj1618github.github.io/html/json5-tool/json-json5.html)
 - 在线网站推荐：[51shizhi](https://www.51shizhi.com/tool/json5-format) - [lddgo](https://www.lddgo.net/string/json5) - [fly63](https://fly63.com/tool/json5/)
 
