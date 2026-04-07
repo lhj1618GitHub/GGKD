@@ -7,7 +7,8 @@
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
-- [上传新规则文件](./.temp/new-app) - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
+
+- [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/new-app) - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
 
 ---
 
