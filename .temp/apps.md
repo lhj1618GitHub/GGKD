@@ -1,15 +1,25 @@
-  **单应用下载** 
+ 
+
+###  **应用列表** - [编辑新规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
 
 ---
 
-1. [中国移动](../apps/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8.md```
-1. [安全服务-小米](../apps/%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1-%E5%B0%8F%E7%B1%B3.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1-%E5%B0%8F%E7%B1%B3.md```
-1. [应用商店-小米](../apps/%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97-%E5%B0%8F%E7%B1%B3.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97-%E5%B0%8F%E7%B1%B3.md```
-1. [微信](../apps/%E5%BE%AE%E4%BF%A1.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E5%BE%AE%E4%BF%A1.md```
-1. [我的听书](../apps/%E6%88%91%E7%9A%84%E5%90%AC%E4%B9%A6.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E6%88%91%E7%9A%84%E5%90%AC%E4%B9%A6.md```
-1. [抖音](../apps/%E6%8A%96%E9%9F%B3.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E6%8A%96%E9%9F%B3.md```
-1. [拼多多](../apps/%E6%8B%BC%E5%A4%9A%E5%A4%9A.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E6%8B%BC%E5%A4%9A%E5%A4%9A.md```
-1. [红果免费短剧](../apps/%E7%BA%A2%E6%9E%9C%E5%85%8D%E8%B4%B9%E7%9F%AD%E5%89%A7.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E7%BA%A2%E6%9E%9C%E5%85%8D%E8%B4%B9%E7%9F%AD%E5%89%A7.md```
-1. [音乐-小米](../apps/%E9%9F%B3%E4%B9%90-%E5%B0%8F%E7%B1%B3.md)：```https://gitee.com/lhj1618/GGKD/raw/master/apps/%E9%9F%B3%E4%B9%90-%E5%B0%8F%E7%B1%B3.md```
+| 序 号 |   应用名称     |     查看规则                     | 下载文件                                                               | 
+|------|----------------|---------------------------------|---------------------------------------------------------------------|
+| 1    | 中国移动       | [查看](../apps/中国移动.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/中国移动.md)   |
+| 2    | 安全服务-小米  | [查看](../apps/安全服务-小米.md)   | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)             |
+| 3    | 应用商店-小米  | [查看](../apps/应用商店-小米.md)   | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)             |
+| 4    | 微信          | [查看](../apps/微信.md)           | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)              | 
+| 5    | 我的听书      | [查看](../apps/我的听书.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)              |
+| 6    | 抖音          | [查看](../apps/抖音.md)           | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)              |
+| 7    | 拼多多        | [查看](../apps/拼多多.md)         | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)              | 
+| 8    | 红果免费短剧  | [查看](../apps/红果免费短剧.md)    | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)              |
+| 9    | 音乐-小米     | [查看](../apps/音乐-小米.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/)              |
 
 ---
+
+
+
+
+
+
