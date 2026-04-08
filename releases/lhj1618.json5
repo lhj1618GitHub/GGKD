@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 49,
+    version: 50,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -615,19 +615,19 @@
                         {
                             action: 'swipe',
                             swipeArg: {
-                                start: {
-                                    x: 'width * 0.5',
-                                    y: 'height * 0.7',
-                                },
-                                end: {
-                                    x: 'width * 0.5',
-                                    y: 'height * 0.3',
-                                },
-                                duration: 250,
-                            },
-                            matches: [
-                                '[visibleToUser=true][vid="hi"] - [vid="container"]',
-                            ],
+                                       start: {
+          x: '500',
+          y: '1500',
+        },
+        end: {
+          x: '500',
+          y: '800',
+        },
+        duration: 250,
+      },
+      matches: [
+        '[text="上滑继续观看短剧"][visibleToUser=true]',
+      ],
                             fastQuery: true,
                             actionMaximum: 1,
                             activityIds: [
