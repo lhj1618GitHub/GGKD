@@ -30,7 +30,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 ---
 
-[新手编写规则帮助文档](./help/) 
+[新手编写规则帮助文档](./help/)  - [官网API](https://gkd.li/api/)
 
 - 快照审查网页
     - [官方网站](https://i.gkd.li/) - [仿官方.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
