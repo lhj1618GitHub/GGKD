@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 46,
+    version: 47,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -607,37 +607,36 @@
             id: 'com.phoenix.read',
             name: '红果免费短剧',
             groups: [
-               {
-  key: 1,
-  name: '内嵌广告-剧集广告',
-  desc: '上滑继续',
-  rules: [
-    {
-        action: 'swipe',
-      swipeArg: {
-        start: {
-          x: 'width * 0.5',
-          y: 'height * 0.7',
-        },
-        end: {
-          x: 'width * 0.5',
-          y: 'height * 0.3',
-        },
-        duration: 300,
-      },
-      matches: [
-        '[text="上滑继续观看短剧"][vid="an1"]',
-        '[parent=null]',
-      ],
-      fastQuery: true,
-      matchRoot: true,
-      actionMaximum: 1,
-      activityIds: [
-        'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-      ],
-    },
-  ],
-}, {
+                {
+                    key: 1,
+                    name: '内嵌广告-剧集广告',
+                    desc: '上滑继续',
+                    rules: [
+                        {
+                            action: 'swipe',
+                            swipeArg: {
+                                start: {
+                                    x: 'width * 0.5',
+                                    y: 'height * 0.7',
+                                },
+                                end: {
+                                    x: 'width * 0.5',
+                                    y: 'height * 0.3',
+                                },
+                                duration: 250,
+                            },
+                            matches: [
+                                '[vid="an1"][visibleToUser=true] <<4 [vid="hi"] - [vid="container"]',
+                            ],
+                            fastQuery: true,
+                            actionMaximum: 1,
+                            activityIds: [
+                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            ],
+                        },
+                    ],
+                },
+                {
                     key: 2,
                     name: '内嵌广告-看广告领金币',
                     desc: '领取完成[x]',
@@ -745,7 +744,7 @@
                 {
                     key: 6,
                     name: '弹窗广告-金币',
-                    desc: '点[X][取消]',
+                    desc: '点[X][取消][立即打卡]',
                     matchTime: 5000,
                     rules: [
                         {
@@ -762,7 +761,7 @@
                         },
                         {
                             key: 2,
-                            name: '开启推送提醒[取消]',
+                            name: '开启推送提醒-[取消]',
                             matches: [
                                 '[text="开启推送提醒"]',
                                 '[vid="cm_"]',
