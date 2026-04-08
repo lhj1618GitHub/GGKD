@@ -1,4 +1,4 @@
-# RawAppRule 应用规则 - 新手速查手册
+# RawAppRule 应用规则 - 新手速查手册 - [官网-API](https://gkd.li/api/)
 
 ## 📌 基础信息
 - **类型**: 应用规则（App类型规则）
