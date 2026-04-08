@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 47,
+    version: 48,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -626,7 +626,7 @@
                                 duration: 250,
                             },
                             matches: [
-                                '[vid="an1"][visibleToUser=true] <<4 [vid="hi"] - [vid="container"]',
+                                '[vid="hi"][visibleToUser=true] - [vid="container"]',
                             ],
                             fastQuery: true,
                             actionMaximum: 1,
