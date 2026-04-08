@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 48,
+    version: 49,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -626,7 +626,7 @@
                                 duration: 250,
                             },
                             matches: [
-                                '[vid="hi"][visibleToUser=true] - [vid="container"]',
+                                '[text="上滑继续观看短剧"] < LinearLayout < [vid="amo"] < FrameLayout < [vid="hi"] - [vid="container"]',
                             ],
                             fastQuery: true,
                             actionMaximum: 1,
