@@ -623,7 +623,7 @@
                                     x: '500',
                                     y: '800',
                                 },
-                                duration: 250,
+                                duration: 200,
                             },
                             matches: [
                                 '[visibleToUser=true][vid="an1"][text="上滑继续观看短剧"] < LinearLayout < [vid="amo"] < FrameLayout < [vid="hi"] - [vid="container"]',
