@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 53,
+    version: 54,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -840,8 +840,8 @@
                             fastQuery: true,
                             activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
                             position: {
-                                top: 'width * 1.2620',
-                                left: 'width * 0.57',
+                                top: 'width * 1.35',
+                                left: 'width * 0.5',
                             },
                             matches: '@ViewGroup[visibleToUser=true][childCount=0] < FrameLayout < [vid="au5"]',
                         },
