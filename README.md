@@ -28,7 +28,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 - [Gitcode](https://gitcode.com/lhj1618/GGKD)：
 ```
-https://gitcode.com/lhj1618/GGKD/blob/main/releases/lhj1618.json5
+https://raw.gitcode.com/lhj1618/GGKD/raw/main/releases/lhj1618.json5
 ```
 
 ---
