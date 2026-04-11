@@ -20,11 +20,18 @@
 
 ---
 
-- **我的订阅地址**（[查看版本](./releases/version.json5)）：
+- **我的订阅地址：** 
+- [Gitee](https://gitee.com/lhj1618/GGKD/)：
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
+- [Gitcode](https://gitcode.com/lhj1618/GGKD)：
+```
+https://gitcode.com/lhj1618/GGKD/blob/main/releases/lhj1618.json5
+```
+
+---
 
 - [上传快照文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/snapshot) - [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/master/.temp/new-app) - [编辑临时规则](https://gitee.com/lhj1618/GGKD/edit/master/.temp/01.md)
 
