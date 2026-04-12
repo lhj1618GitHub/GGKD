@@ -644,6 +644,8 @@
       ],
       fastQuery: true,
       matchRoot: true,
+            forcedTime: 90000,
+      matchTime: 5000,
       activityIds: [
         'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
       ],
