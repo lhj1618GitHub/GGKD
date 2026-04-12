@@ -43,8 +43,8 @@ https://raw.gitcode.com/lhj1618/GGKD/raw/main/releases/lhj1618.json5
     - [官方网站](https://i.gkd.li/) - [仿官方.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
     - [第三方Plus版网站](https://li.chenge.eu.org/) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 - 快照审查脚本
-    - [GKD-Snapshot.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-Snapshot.js)
-    - [增强脚本.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases)
+    - [GKD-Snapshot.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-Snapshot.js) 获取屏幕坐标/相对偏移
+    - [增强脚本.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases) 美化页面/增强规则参数插入/坐标获取
     - [官方网站重定向至Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 
 - [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip) - [授权说明](./help/adb授权命令.md)
