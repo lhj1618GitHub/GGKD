@@ -21,14 +21,16 @@
 ---
 
 **我的订阅地址：** 
-- [Gitee](https://gitee.com/lhj1618/GGKD/)：
+
+- [release](https://gitee.com/lhj1618/GGKD/tree/master/)：
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
-- [Gitcode](https://gitcode.com/lhj1618/GGKD)：
+
+- [Beta](https://gitee.com/lhj1618/GGKD/tree/beta/)：
 ```
-https://raw.gitcode.com/lhj1618/GGKD/raw/main/releases/lhj1618.json5
+https://gitee.com/lhj1618/GGKD/raw/beta/releases/lhj1618.json5
 ```
 
 ---
