@@ -22,17 +22,19 @@
 
 **我的订阅地址：** 
 
-- [Master](https://gitee.com/lhj1618/GGKD/tree/master/)
+- [Master](https://gitee.com/lhj1618/GGKD/tree/master/) - [查看版本](./releases/version.json5)
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-- [Beta](https://gitee.com/lhj1618/GGKD/tree/beta/) - [上传快照文件](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/snapshot) - [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/new-app) - [编辑临时规则](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/01.md)
+- [Beta](https://gitee.com/lhj1618/GGKD/tree/beta/) - [查看版本](../beta/releases/version.json5)
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/beta/releases/lhj1618.json5
 ```
+
+- [上传快照文件](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/snapshot) - [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/new-app) - [编辑临时规则](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/01.md)
 
 ---
 
