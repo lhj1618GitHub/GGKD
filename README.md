@@ -49,19 +49,19 @@
 
 **我的订阅地址：** 
 
-- [Beta](https://gitee.com/lhj1618/GGKD/tree/master/) - [查看版本](./releases/version.json5)
+- [正式版-Gitee](https://gitee.com/lhj1618/GGKD/tree/master/) - [查看版本](./releases/version.json5)
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-- [正式版](https://gitee.com/lhj1618/GGKD/tree/Good/) - [查看版本](../Good/releases/version.json5)
+- [Beta-Gitcode](https://gitcode.com/lhj1618/GGKD) - [查看版本](https://gitcode.com/lhj1618/GGKD/blob/main/releases/version.json5)
 
 ```
-https://gitee.com/lhj1618/GGKD/raw/Good/releases/lhj1618.json5
+https://raw.gitcode.com/lhj1618/GGKD/raw/main/releases/lhj1618.json5
 ```
 
-- [上传快照文件](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/snapshot) - [上传新规则文件](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/new-app) - [编辑临时规则](https://gitee.com/lhj1618/GGKD/upload/beta/.temp/01.md)
+-  **Beta** ：[上传快照文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/snapshot) - [上传新规则文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/new-app) - [编辑临时规则](https://gitcode.com/lhj1618/GGKD/edit/main/.temp/01.md)
 
 ---
 
