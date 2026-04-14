@@ -22,7 +22,7 @@
 
 **我的订阅地址：** 
 
-- [release](https://gitee.com/lhj1618/GGKD/tree/master/)：
+- [Master](https://gitee.com/lhj1618/GGKD/tree/master/)：
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
