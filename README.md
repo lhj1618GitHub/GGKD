@@ -42,7 +42,7 @@
 | 7    | 拼多多        | [查看](./apps/拼多多.md)         | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/拼多多.md)             | 
 | 8    | 红果免费短剧  | [查看](./apps/红果免费短剧.md)    | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/红果免费短剧.md)        |
 | 9    | 音乐-小米     | [查看](./apps/音乐-小米.md)      | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/音乐-小米.md)           |
-| 10   | AppShare     | [查看](./apps/appshare.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/appshare.md            |
+| 10   | AppShare     | [查看](./apps/appshare.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/appshare.md)           |
 |----|----------|--------------------------|---|
 |    |          |                          |   |
 |    |          |                          |   |
