@@ -44,15 +44,7 @@
 | 9    | 音乐-小米     | [查看](./apps/音乐-小米.md)      | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/音乐-小米.md)           |
 | 10   | AppShare     | [查看](./apps/appshare.md)       | [下  载](https://gitee.com/lhj1618/GGKD/raw/master/apps/appshare.md)           |
 |----|----------|--------------------------|---|
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
-|    |          |                          |   |
+
 
 
 
