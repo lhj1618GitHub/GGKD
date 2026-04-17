@@ -135,8 +135,8 @@
                 }
                 mergedContent = mergedContent.slice(0, -1);
 
-                // 删除```json
-                let cleanedContent = mergedContent.replace(/```json/g, '');
+                // 删除```json5
+                let cleanedContent = mergedContent.replace(/```json5/g, '');
 
                 // 替换标记
                 let json5Content = await sampleJson5.async('string');
