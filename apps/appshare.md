@@ -1,4 +1,4 @@
-```json
+```json5
 {
     id: 'info.muge.appshare',
     name: 'AppShare',
