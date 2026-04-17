@@ -27,7 +27,7 @@
             rules: [
                 {
                     matches: [
-                        'TextView[text="已签到"] < @View <4 View < View <4 View < View < View < View < View < View < ComposeView < [id="android:id/content"]',
+                        'TextView[text="签到"] < @View <4 View < View <4 View < View < View < View < View < View < ComposeView < [id="android:id/content"]',
                     ],
                     fastQuery: true,
                     activityIds: [
