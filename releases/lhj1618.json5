@@ -264,8 +264,11 @@
             rules: [
                 {
                     fastQuery: true,
-                    activityIds: 'com.xiaomi.market.ui.UpdateListActivity',
-                    matches: '[vid="expand_button"][text="展开"]',
+                    activityIds:  [
+                         'com.xiaomi.market.ui.UpdateListActivity',
+                         'com.xiaomi.market.ui.IgnoreAppsActivity',
+                    ],
+                     matches: '[vid="expand_button"][text="展开"]',
                 },
             ],
         },
