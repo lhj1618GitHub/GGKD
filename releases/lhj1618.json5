@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 64,
+    version: 65,
     name: 'lhj1618',
     author: 'lhj1618',    
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -898,22 +898,89 @@
     groups: [
         {
             key: 1,
-            name: '内嵌广告-卡片',
-            desc: '点击首页/我的[x]',
+            name: '弹窗广告-我的页面弹窗',
+            desc: '[x]',
             rules: [
                 {
-                    matches: [
-                        '[vid="close" || vid="close_banner"]',
-                    ],
                     fastQuery: true,
-                    activityIds: [
-                        'com.tencent.qqmusiclite.activity.MainActivity',
-                    ],
+                    activityIds: 'com.tencent.qqmusiclite.activity.MainActivity',
+                    matches: '[vid="iv_close_dialog_button"]',
+                },
+            ],
+        },
+        {
+            key: 2,
+            name: '弹窗广告-我的页面累计试听开通会员提醒',
+            desc: '[x]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiccommon.hybrid.HybridViewActivity',
+                    matches: '@Button < View < View < View < WebView < WebView < FrameLayout < FrameLayout < [vid="webview_container"]',
+                },
+            ],
+        },
+        {
+            key: 3,
+            name: '内嵌广告-我的页面卡片',
+            desc: '[x]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiclite.activity.MainActivity',
+                    matches: '[vid="close_banner" || vid="dunning_close_btn"]',
+                },
+            ],
+        },
+        {
+            key: 4,
+            name: '弹窗广告-签到成功',
+            desc: '[x]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiccommon.hybrid.HybridViewActivity',
+                    matches: '@ViewGroup < ViewGroup < ViewGroup < FrameLayout < FrameLayout < [vid="webview_container"]',
+                },
+            ],
+        },
+        {
+            key: 5,
+            name: '弹窗广告-获得积分提醒看广告',
+            desc: '[x]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiccommon.hybrid.HybridViewActivity',
+                    matches: '@ViewGroup < ViewGroup < ViewGroup < FrameLayout < FrameLayout < [vid="webview_container"]',
+                },
+            ],
+        },
+        {
+            key: 6,
+            name: '弹窗广告-首页续费豪华绿钻',
+            desc: '[x]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiccommon.hybrid.HybridViewActivity',
+                    matches: '@ViewGroup < ViewGroup < ViewGroup < FrameLayout < FrameLayout < [vid="webview_container"]',
+                },
+            ],
+        },
+        {
+            key: 7,
+            name: '内嵌广告-视频广告',
+            desc: '[跳过]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiclite.activity.SplashAdActivity',
+                    matches: '@TextView[text="跳过"] <4 ViewGroup <2 [vid="root"]',
                 },
             ],
         },
     ],
-}
-,
+},
     ],
 }
