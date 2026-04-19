@@ -891,7 +891,6 @@
         },
     ],
 }, 
-
 {
     id: 'com.miui.player',
     name: '音乐',
@@ -977,6 +976,18 @@
                     fastQuery: true,
                     activityIds: 'com.tencent.qqmusiclite.activity.SplashAdActivity',
                     matches: '@TextView[text="跳过"] <4 ViewGroup <2 [vid="root"]',
+                },
+            ],
+        },
+        {
+            key: 8,
+            name: '内嵌广告-首页卡片',
+            desc: '[x]',
+            rules: [
+                {
+                    fastQuery: true,
+                    activityIds: 'com.tencent.qqmusiclite.activity.MainActivity',
+                    matches: '[vid="close"]',
                 },
             ],
         },
