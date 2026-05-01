@@ -1,0 +1,120 @@
+name: 自动构建 JSON5 文件
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置环境
+        run: |
+          echo "ROOT_DIR=$(pwd)" >> $GITHUB_ENV
+          echo "TS_INPUT=${{ env.ROOT_DIR }}/all-apps.ts" >> $GITHUB_ENV
+          echo "JSON5_SOURCE=${{ env.ROOT_DIR }}/apps/sample.json5" >> $GITHUB_ENV
+          echo "JSON5_OUTPUT=${{ env.ROOT_DIR }}/new.json5" >> $GITHUB_ENV
+          echo "REPLACE_FLAG=//替换标记" >> $GITHUB_ENV
+          echo "TS_SOURCE_DIR=${{ env.ROOT_DIR }}/apps" >> $GITHUB_ENV
+
+      - name: 第一步：合并 TS 文件 (模拟 to-one.bat)
+        id: merge_ts
+        run: |
+          # 检查源目录是否存在
+          if [ ! -d "$TS_SOURCE_DIR" ]; then
+            echo "❌ 错误：找不到文件夹 $TS_SOURCE_DIR"
+            exit 1
+          fi
+
+          # 清空或创建目标文件
+          > "$TS_INPUT"
+
+          first=1
+          # 遍历 apps 目录下的所有 .md 文件
+          for f in "$TS_SOURCE_DIR"/*.md; do
+            if [ -f "$f" ]; then
+              if [ $first -eq 1 ]; then
+                cat "$f" >> "$TS_INPUT"
+                first=0
+              else
+                echo "," >> "$TS_INPUT"
+                cat "$f" >> "$TS_INPUT"
+              fi
+            fi
+          done
+
+          if [ $first -eq 1 ]; then
+            echo "⚠️  警告：未在 $TS_SOURCE_DIR 中找到任何 .md 文件。"
+          else
+            echo "✅ 应用规则合并完成！"
+            echo "merged=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 第二步：清理与替换内容 (模拟 to-in.bat)
+        id: replace_content
+        # 仅在上一步成功且合并了文件时执行
+        if: steps.merge_ts.outputs.merged == 'true'
+        run: |
+          # 校验输入文件是否存在
+          if [ ! -f "$TS_INPUT" ]; then
+            echo "❌ 错误：未找到 $TS_INPUT"
+            exit 1
+          fi
+          if [ ! -f "$JSON5_SOURCE" ]; then
+            echo "❌ 错误：未找到 $JSON5_SOURCE"
+            exit 1
+          fi
+
+          echo "开始处理..."
+
+          # 1. 清理 TS_INPUT 文件中的 ```json5 标记
+          sed -i 's/```json5//g' "$TS_INPUT"
+          echo "✅ 多余内容清理完成"
+
+          # 2. 执行核心替换：将 JSON5_SOURCE 中的 REPLACE_FLAG 替换为 TS_INPUT 的内容
+          # 使用 awk 处理多行替换更可靠
+          TS_CONTENT=$(cat "$TS_INPUT")
+          awk -v rpl="$TS_CONTENT" -v flag="$REPLACE_FLAG" '{gsub(flag, rpl); print}' "$JSON5_SOURCE" > "$JSON5_OUTPUT"
+
+          # 校验是否成功生成输出文件
+          if [ $? -eq 0 ] && [ -f "$JSON5_OUTPUT" ]; then
+            echo "✅ 替换标记内容完成"
+            echo "replaced=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ JSON5 替换失败，请检查："
+            echo "  1. 文件内容是否含特殊转义字符"
+            echo "  2. 替换标记 $REPLACE_FLAG 是否在 sample.json5 中存在"
+            echo "  3. 目标路径是否有写入权限"
+            exit 1
+          fi
+
+      - name: 第三步：清理临时文件 (模拟主脚本)
+        if: steps.replace_content.outputs.replaced == 'true'
+        run: |
+          rm -f "$TS_INPUT"
+          echo "✅ 删除临时文件 all-apps.ts"
+
+      - name: 第四步：输出结果与完成提示
+        if: steps.replace_content.outputs.replaced == 'true'
+        run: |
+          echo "========================================"
+          echo "✅ 全部执行完成！"
+          echo ""
+          echo "最终生成文件：new.json5"
+          echo ""
+          echo "⚠️  注意：请手动检查并更新版本号 (version +1)。"
+          echo "========================================"
+
+      - name: 第五步：上传生成的文件作为产物 (可选)
+        if: steps.replace_content.outputs.replaced == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-json5
+          path: ${{ env.JSON5_OUTPUT }}
