@@ -67,7 +67,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 https://gitee.com/lhj1618/GGKD/raw/master/.temp/new-app/test.json5
 ```
 
-- [GitHub](https://github.com/lhj1618GitHub/GGKD) - [查看版本](./releases/version.json5)：
+- [GitHub](https://github.com/lhj1618GitHub/GGKD) - [查看版本](https://gitcode.com/lhj1618/GGKD/blob/main/releases/version.json5)：
 ```
 https://github.com/lhj1618GitHub/GGKD/raw/refs/heads/main/releases/lhj1618.json5
 ```
