@@ -49,7 +49,7 @@
 
 
 
-注：下载的文件为单应用规则记录文件，需在内容中删除开头的 ` ```json ` 
+注：下载的文件为单应用规则记录文件，需在内容中删除开头的 ` ```json5 ` 
 
 ---
 
@@ -61,13 +61,11 @@
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-- [Beta-Gitcode](https://gitcode.com/lhj1618/GGKD) - [查看版本](https://gitcode.com/lhj1618/GGKD/blob/main/releases/version.json5)
+- [Beta-test](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app) - [查看版本](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app/version.json5)
 
 ```
-https://raw.gitcode.com/lhj1618/GGKD/raw/main/releases/lhj1618.json5
+https://gitee.com/lhj1618/GGKD/raw/master/.temp/new-app/test.json5
 ```
-
--  **Beta** ：[上传快照文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/snapshot) - [上传新规则文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/new-app)
 
 ---
 
