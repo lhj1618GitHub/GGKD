@@ -67,6 +67,11 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 https://gitee.com/lhj1618/GGKD/raw/master/.temp/new-app/test.json5
 ```
 
+- [GitHub](https://github.com/lhj1618GitHub/GGKD) - [查看版本](./releases/version.json5)：
+```
+https://github.com/lhj1618GitHub/GGKD/raw/refs/heads/main/releases/lhj1618.json5
+```
+
 ---
 
  **我的releases**  ： [Gitee](https://gitee.com/lhj1618/GGKD/releases) - [Github](https://github.com/lhj1618GitHub/GGKD/releases) - [Gitcode](https://gitcode.com/lhj1618/GGKD/releases)  /  我的李跳跳：[github](https://github.com/lhj1618GitHub/litiaotiao-autojs-android-app) - [Gitee](https://gitee.com/lhj1618/litiaotiao-autojs-android-app) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
