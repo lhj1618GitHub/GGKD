@@ -1,6 +1,6 @@
 {
     id: 3432,
-    version: 66,
+    version: 67,
     name: 'lhj1618',
     author: 'lhj1618',
     checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
@@ -650,6 +650,7 @@
                             matches: [
                                 '[vid="amo"]',
                             ],
+                            actionDelay: 1000,
                             fastQuery: true,
                             activityIds: [
                                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
@@ -688,7 +689,7 @@
                             matches: [
                                 '[vid="al"][visibleToUser=true]',
                             ],
-                            actionDelay: 1000,
+                            actionDelay: 200,
                             fastQuery: true,
                         },
                     ],
