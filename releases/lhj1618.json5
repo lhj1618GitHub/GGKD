@@ -391,6 +391,20 @@
                     ],
                 },
             ],
+            {
+                    key: 7,
+                        name: '自动化-公众号消息',
+                            desc: '[删除]',
+                                rules: [
+                                            {
+                                                            activityIds: 'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+                                                                        matches: '@View[desc="删除"][visibleToUser=true]',
+                                            },
+                                ],
+            },
+                                            }
+                                ]
+            }
         },
         {
             id: 'com.github.eprendre.tingshu',
