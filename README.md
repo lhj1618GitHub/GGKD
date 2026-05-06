@@ -67,7 +67,7 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 https://raw.gitcode.com/lhj1618/GGKD/raw/main/releases/lhj1618.json5
 ```
 
--  **Beta** ：[上传快照文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/snapshot) - [上传新规则文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/new-app) - [编辑临时规则](https://gitcode.com/lhj1618/GGKD/edit/main/.temp/01.md)
+-  **Beta** ：[上传快照文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/snapshot) - [上传新规则文件](https://gitcode.com/lhj1618/GGKD/upload_file/main/.temp/new-app)
 
 ---
 
