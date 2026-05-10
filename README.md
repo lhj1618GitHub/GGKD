@@ -55,7 +55,7 @@
 
 **我的订阅地址：** 
 
-- [正式版-Gitee](https://gitee.com/lhj1618/GGKD/tree/master/) - [查看版本](./releases/version.json5)
+- [正式版-Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](./releases/version.json5)
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
