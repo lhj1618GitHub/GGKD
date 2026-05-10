@@ -302,7 +302,7 @@
                             key: 2,
                             name: '自动查看原图',
                             activityIds: 'com.tencent.mm.ui.chatting.gallery.ImageGalleryUI',
-                            rules: 'Button[text^="查看原图"][clickable=true]',
+                            matches: 'Button[text^="查看原图"][clickable=true]',
                         },
                     ],
                 },
