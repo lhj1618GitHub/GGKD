@@ -50,33 +50,28 @@
             display: block;
         }
     </style>
-    <script src="./todo/jszip.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h2>订阅文件合成工具-依赖本地jszip.js库文件</h2>
+        <h2>订阅文件合成工具</h2>
         <div>
             <label>1. 选择本地ZIP压缩文件：</label>
             <input type="file" id="zipFile" accept=".zip" />
         </div>
-
         <div>
             <label>2. 输入目标版本号（可选）：</label><br>
             <input type="number" id="numInput" placeholder="请输入数字" />
         </div>
-
         <button id="startBtn" disabled>3. 开始处理</button>
-
         <div id="status" class="status"></div>
     </div>
-
     <script>
         let selectedZip = null;
         const zipFileInput = document.getElementById('zipFile');
         const numInput = document.getElementById('numInput');
         const startBtn = document.getElementById('startBtn');
         const statusDiv = document.getElementById('status');
-
         zipFileInput.addEventListener('change', (e) => {
             selectedZip = e.target.files[0];
             if (selectedZip) {
@@ -87,28 +82,23 @@
                 showStatus('', '');
             }
         });
-
-        // 递归遍历ZIP，查找所有apps文件夹文件 + apps/sample.json5
+        // 修复：兼容根目录apps/ 和 子目录/apps/
         function findFilesInZip(zip) {
             const appsFiles = [];
             let sampleJson5 = null;
-
-            // 深度遍历所有文件/文件夹
             zip.forEach((relativePath, file) => {
-                // 1. 查找所有apps文件夹下的.md文件（任意层级）
-                if (!file.dir && relativePath.includes('/apps/') && 
-            relativePath.endsWith('.md')) {
+                // 统一转小写，兼容大小写；匹配 apps/ 开头或 /apps/ 中间
+                const path = relativePath.toLowerCase();
+                if (!file.dir && (path.startsWith('apps/') || path.includes('/apps/')) && path.endsWith('.md')) {
                     appsFiles.push(file);
                 }
-                // 2. 查找任意层级下的 apps/sample.json5
-                if (!file.dir && relativePath.endsWith('apps/sample.json5') && !sampleJson5) {
+                // 匹配任意层级的 apps/sample.json5
+                if (!file.dir && path.endsWith('apps/sample.json5') && !sampleJson5) {
                     sampleJson5 = file;
                 }
             });
-
             return { appsFiles, sampleJson5 };
         }
-
         startBtn.addEventListener('click', async () => {
             if (!selectedZip) {
                 showStatus('请先选择ZIP文件！', 'error');
@@ -116,42 +106,30 @@
             }
             showStatus('正在处理文件，请稍候...', 'success');
             startBtn.disabled = true;
-
             try {
                 const zip = new JSZip();
                 const zipData = await zip.loadAsync(selectedZip);
-
-                // 深度查找文件（支持多层子文件夹）
                 const { appsFiles, sampleJson5 } = findFilesInZip(zipData);
-
-                if (appsFiles.length === 0) throw new Error('ZIP中未找到apps文件夹或文件夹为空');
+                if (appsFiles.length === 0) throw new Error('ZIP中未找到apps文件夹下的.md文件');
                 if (!sampleJson5) throw new Error('ZIP中未找到apps/sample.json5文件');
-
-                // 合并apps文件内容
+                // 合并内容
                 let mergedContent = '';
                 for (const file of appsFiles) {
                     const content = await file.async('string');
                     mergedContent += content + ',';
                 }
                 mergedContent = mergedContent.slice(0, -1);
-
-                // 删除```json5
-                let cleanedContent = mergedContent.replace(/```json5/g, '');
-
-                // 替换标记
+                // 清理标记
+                let cleanedContent = mergedContent.replace(/```json/g, '');
                 let json5Content = await sampleJson5.async('string');
                 json5Content = json5Content.replace('//替换标记', cleanedContent);
-
-                // 替换 version: 数字,
+                // 替换版本号
                 const inputNum = numInput.value.trim();
                 if (inputNum !== '') {
                     json5Content = json5Content.replace(/version:\s*\d+\s*,/g, `version: ${inputNum},`);
                 }
-
-                // 下载文件
                 downloadFile(json5Content, 'new.json5', 'application/json');
                 showStatus('处理完成！已自动下载 new.json5 文件', 'success');
-
             } catch (error) {
                 showStatus('处理失败：' + error.message, 'error');
                 console.error(error);
@@ -159,12 +137,10 @@
                 startBtn.disabled = false;
             }
         });
-
         function showStatus(text, type) {
             statusDiv.textContent = text;
             statusDiv.className = 'status ' + type;
         }
-
         function downloadFile(content, fileName, contentType) {
             const blob = new Blob([content], { type: contentType });
             const url = URL.createObjectURL(blob);
