@@ -2,154 +2,373 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>ZIP文件处理工具</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>工具合集（暗色紧凑）</title>
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            margin: 20px;
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 30px;
-            border: 1px solid #eee;
+
+        body {
+            background: #000;
+            color: #e0e0e0;
+            padding: 8px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .tab-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #121212;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        button, input {
-            padding: 8px 12px;
-            margin: 10px 0;
-            font-size: 14px;
+
+        .tab-header {
+            display: flex;
+            background: #1f1f1f;
         }
-        #startBtn {
-            background: #42b983;
-            color: white;
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 6px;
             border: none;
-            border-radius: 4px;
+            background: transparent;
+            color: #bbb;
             cursor: pointer;
+            font-size: 14px;
+            text-align: center;
         }
-        #startBtn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
+
+        .tab-btn.active {
+            background: #2c2c2c;
+            color: #42b983;
+            border-bottom: 2px solid #42b983;
         }
-        .status {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
+
+        .tab-content {
+            padding: 12px;
             display: none;
         }
-        .success {
-            background: #e6f7ee;
-            color: #2c7a50;
+
+        .tab-content.active {
             display: block;
         }
-        .error {
-            background: #fee;
-            color: #c53030;
+
+        .card {
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 6px;
+            background: #1e1e1e;
+        }
+
+        .card h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #eee;
+        }
+
+        label {
             display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        input[type="file"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 14px;
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            background: #42b983;
+            color: #fff;
+        }
+
+        .btn:disabled {
+            background: #444 !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .status {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            display: none;
+            word-break: break-all;
+        }
+
+        .status.success {
+            display: block;
+            background: #1c3b2e;
+            color: #73d1a4;
+        }
+
+        .status.error {
+            display: block;
+            background: #3b1c1c;
+            color: #f47174;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .toolbar .btn {
+            flex: 1;
+            min-width: 70px;
+            padding: 8px;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        #editor {
+            width: 100%;
+            height: calc(100vh - 180px);
+            min-height: 280px;
+            padding: 10px;
+            background: #000;
+            color: #e0e0e0;
+            border-radius: 4px;
+            border: 1px solid #333;
+            outline: none;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: none;
+            font-family: monospace;
+        }
+
+        .filename {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+        }
+
+        .tip {
+            font-size: 12px;
+            color: #888;
+            margin: 4px 0 8px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h2>订阅文件合成工具</h2>
-        <div>
-            <label>1. 选择本地ZIP压缩文件：</label>
-            <input type="file" id="zipFile" accept=".zip" />
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="zipTool">文件工具</button>
+            <button class="tab-btn" data-tab="textEditor">编辑器</button>
         </div>
-        <div>
-            <label>2. 输入目标版本号（可选）：</label><br>
-            <input type="number" id="numInput" placeholder="请输入数字" />
+
+        <div class="tab-content active" id="zipTool">
+            <div class="card">
+                <h2>📂 多文件打包ZIP</h2>
+                <p class="tip">手机：全选目录内文件，自动还原目录结构</p>
+                <label>选择文件（可多选）：</label>
+                <input type="file" id="multiFileInput" multiple>
+                <button class="btn" id="zipMultiBtn" disabled>打包并下载ZIP</button>
+            </div>
+
+            <div class="card">
+                <h2>📦 订阅文件合成</h2>
+                <label>选择ZIP：</label>
+                <input type="file" id="zipFile" accept=".zip">
+                <label>版本号（可选）：</label>
+                <input type="number" id="numInput" placeholder="数字">
+                <button class="btn" id="startBtn" disabled>合成订阅文件</button>
+            </div>
+
+            <div id="status" class="status"></div>
         </div>
-        <button id="startBtn" disabled>3. 开始处理</button>
-        <div id="status" class="status"></div>
+
+        <div class="tab-content" id="textEditor">
+            <div class="toolbar">
+                <button class="btn" id="openBtn">打开</button>
+                <button class="btn" id="saveBtn">保存</button>
+                <button class="btn" id="clearBtn">清空</button>
+                <span class="filename" id="fileName">未打开</span>
+            </div>
+            <textarea id="editor" placeholder="编辑内容..."></textarea>
+            <input type="file" id="fileInput" style="display:none;">
+        </div>
     </div>
+
     <script>
-        let selectedZip = null;
+        // 标签页
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        function showStatus(text, type) {
+            const el = document.getElementById('status');
+            el.textContent = text;
+            el.className = 'status ' + type;
+        }
+
+        function downloadBlob(blob, name) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = name;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // 1. 多文件打包
+        const multiFileInput = document.getElementById('multiFileInput');
+        const zipMultiBtn = document.getElementById('zipMultiBtn');
+        let selectedFiles = [];
+
+        multiFileInput.addEventListener('change', e => {
+            selectedFiles = Array.from(e.target.files);
+            zipMultiBtn.disabled = selectedFiles.length === 0;
+            if (selectedFiles.length) showStatus(`已选 ${selectedFiles.length} 个文件`, 'success');
+        });
+
+        zipMultiBtn.addEventListener('click', async () => {
+            if (!selectedFiles.length) return;
+            zipMultiBtn.disabled = true;
+            showStatus('正在打包...', 'success');
+            try {
+                const zip = new JSZip();
+                selectedFiles.forEach(file => {
+                    const path = file.webkitRelativePath || file.name;
+                    zip.file(path, file);
+                });
+                const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
+                downloadBlob(blob, '打包文件.zip');
+                showStatus('✅ 打包完成', 'success');
+            } catch (err) {
+                showStatus('❌ 失败：' + err.message, 'error');
+            } finally {
+                zipMultiBtn.disabled = false;
+            }
+        });
+
+        // 2. 订阅合成
         const zipFileInput = document.getElementById('zipFile');
         const numInput = document.getElementById('numInput');
         const startBtn = document.getElementById('startBtn');
-        const statusDiv = document.getElementById('status');
-        zipFileInput.addEventListener('change', (e) => {
+        let selectedZip = null;
+
+        zipFileInput.addEventListener('change', e => {
             selectedZip = e.target.files[0];
-            if (selectedZip) {
-                startBtn.disabled = false;
-                showStatus('已选择ZIP文件：' + selectedZip.name, 'success');
-            } else {
-                startBtn.disabled = true;
-                showStatus('', '');
-            }
+            startBtn.disabled = !selectedZip;
+            if (selectedZip) showStatus('已选择：' + selectedZip.name, 'success');
         });
-        // 修复：兼容根目录apps/ 和 子目录/apps/
-        function findFilesInZip(zip) {
+
+        function findTargetFiles(zip) {
             const appsFiles = [];
             let sampleJson5 = null;
-            zip.forEach((relativePath, file) => {
-                // 统一转小写，兼容大小写；匹配 apps/ 开头或 /apps/ 中间
-                const path = relativePath.toLowerCase();
-                if (!file.dir && (path.startsWith('apps/') || path.includes('/apps/')) && path.endsWith('.md')) {
+            zip.forEach((path, file) => {
+                const p = path.toLowerCase();
+                if (!file.dir && (p.startsWith('apps/') || p.includes('/apps/')) && p.endsWith('.md')) {
                     appsFiles.push(file);
                 }
-                // 匹配任意层级的 apps/sample.json5
-                if (!file.dir && path.endsWith('apps/sample.json5') && !sampleJson5) {
+                if (!file.dir && p.endsWith('apps/sample.json5') && !sampleJson5) {
                     sampleJson5 = file;
                 }
             });
             return { appsFiles, sampleJson5 };
         }
+
         startBtn.addEventListener('click', async () => {
-            if (!selectedZip) {
-                showStatus('请先选择ZIP文件！', 'error');
-                return;
-            }
-            showStatus('正在处理文件，请稍候...', 'success');
+            if (!selectedZip) return showStatus('请先选择ZIP文件', 'error');
             startBtn.disabled = true;
+            showStatus('正在处理...', 'success');
             try {
-                const zip = new JSZip();
-                const zipData = await zip.loadAsync(selectedZip);
-                const { appsFiles, sampleJson5 } = findFilesInZip(zipData);
-                if (appsFiles.length === 0) throw new Error('ZIP中未找到apps文件夹下的.md文件');
-                if (!sampleJson5) throw new Error('ZIP中未找到apps/sample.json5文件');
-                // 合并内容
-                let mergedContent = '';
-                for (const file of appsFiles) {
-                    const content = await file.async('string');
-                    mergedContent += content + ',';
-                }
-                mergedContent = mergedContent.slice(0, -1);
-                // 清理标记
-                let cleanedContent = mergedContent.replace(/```json/g, '');
-                let json5Content = await sampleJson5.async('string');
-                json5Content = json5Content.replace('//替换标记', cleanedContent);
-                // 替换版本号
-                const inputNum = numInput.value.trim();
-                if (inputNum !== '') {
-                    json5Content = json5Content.replace(/version:\s*\d+\s*,/g, `version: ${inputNum},`);
-                }
-                downloadFile(json5Content, 'new.json5', 'application/json');
-                showStatus('处理完成！已自动下载 new.json5 文件', 'success');
-            } catch (error) {
-                showStatus('处理失败：' + error.message, 'error');
-                console.error(error);
+                const zip = await new JSZip().loadAsync(selectedZip);
+                const { appsFiles, sampleJson5 } = findTargetFiles(zip);
+                if (!appsFiles.length) throw new Error('未找到apps下的md文件');
+                if (!sampleJson5) throw new Error('未找到sample.json5');
+
+                let content = '';
+                for (const f of appsFiles) content += await f.async('string') + ',';
+                content = content.slice(0, -1).replace(/```json/g, '');
+
+                let json5 = await sampleJson5.async('string');
+                json5 = json5.replace('//替换标记', content);
+
+                const v = numInput.value.trim();
+                if (v) json5 = json5.replace(/version:\s*\d+\s*,/g, `version: ${v},`);
+
+                const blob = new Blob([json5], { type: 'application/json' });
+                downloadBlob(blob, 'new.json5');
+                showStatus('✅ 合成完成', 'success');
+            } catch (err) {
+                showStatus('❌ 失败：' + err.message, 'error');
             } finally {
                 startBtn.disabled = false;
             }
         });
-        function showStatus(text, type) {
-            statusDiv.textContent = text;
-            statusDiv.className = 'status ' + type;
-        }
-        function downloadFile(content, fileName, contentType) {
-            const blob = new Blob([content], { type: contentType });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = fileName;
-            a.click();
-            URL.revokeObjectURL(url);
-        }
+
+        // 3. 文本编辑器
+        const fileInput = document.getElementById('fileInput');
+        const editor = document.getElementById('editor');
+        const saveBtn = document.getElementById('saveBtn');
+        const openBtn = document.getElementById('openBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const fileName = document.getElementById('fileName');
+        let currentFileName = '';
+
+        openBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', async e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            editor.value = await file.text();
+            currentFileName = file.name;
+            fileName.textContent = '当前：' + file.name;
+        });
+
+        saveBtn.addEventListener('click', () => {
+            const text = editor.value.trim();
+            if (!text) return alert('内容不能为空');
+            const name = prompt('保存文件名', currentFileName || 'text.txt');
+            if (!name) return;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            downloadBlob(blob, name);
+            currentFileName = name;
+            fileName.textContent = '当前：' + name;
+            alert('保存成功');
+        });
+
+        clearBtn.addEventListener('click', () => {
+            editor.value = '';
+            currentFileName = '';
+            fileName.textContent = '未打开';
+        });
     </script>
 </body>
 </html>
