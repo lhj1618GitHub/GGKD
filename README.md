@@ -19,7 +19,6 @@
  **移动端自定义规则-工具下载** （html文件需系统浏览器打开）：
 
 - [json5.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html) / [json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；支持导入所有格式文件，导出为json/json5
-- [多格式文件编辑器.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91%E5%99%A8.html)
 - [创建GKD订阅文件.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E5%88%9B%E5%BB%BAGKD%E8%AE%A2%E9%98%85%E6%96%87%E4%BB%B6.html)；此为在线zip和json5库版本，可修改为使用本地库，库文件在[todo文件夹](./todo)
 
  **查找第三方规则（需网络支持）** 
