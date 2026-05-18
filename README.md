@@ -9,7 +9,7 @@
     - [第三方Plus版网站](https://li.chenge.eu.org/) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 - 快照审查脚本
     - [GKD-Snapshot.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-Snapshot.js) 获取屏幕坐标/相对偏移
-    - [增强脚本.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-%E5%BF%AB%E7%85%A7%E5%AE%A1%E6%9F%A5%E5%A2%9E%E5%BC%BA.js) - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases) 美化页面/增强规则参数插入/坐标获取
+    - 增强脚本.js - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases) 美化页面/增强规则参数插入/坐标获取
     - [官方网站重定向至Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 
 - [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip) - [授权说明](./help/adb授权命令.md)
@@ -20,7 +20,7 @@
 
 - [json5.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html) / [json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；支持导入所有格式文件，导出为json/json5
 - [多格式文件编辑器.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91%E5%99%A8.html)
-- [创建订阅文件方式1.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E5%88%9B%E5%BB%BA%E8%AE%A2%E9%98%85%E6%96%87%E4%BB%B6-%E6%96%B9%E5%BC%8F1.html)；此为在线zip库版本，仓库代码里的为离线版
+- [创建订阅文件.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/%E5%88%9B%E5%BB%BA%E8%AE%A2%E9%98%85.html)；此为在线zip和json5库版本，可修改为使用本地库，库文件在[todo文件夹](./todo)
 
  **查找第三方规则（需网络支持）** 
 
@@ -65,11 +65,6 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/.temp/new-app/test.json5
-```
-
-- [GitHub](https://github.com/lhj1618GitHub/GGKD) - [查看版本](https://gitcode.com/lhj1618/GGKD/blob/main/releases/version.json5)：
-```
-https://github.com/lhj1618GitHub/GGKD/raw/refs/heads/main/releases/lhj1618.json5
 ```
 
 ---
