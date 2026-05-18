@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>创建GKD订阅文件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #e0e0e0;
+            padding: 8px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .tab-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #121212;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tab-header {
+            display: flex;
+            background: #1f1f1f;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 6px;
+            border: none;
+            background: transparent;
+            color: #bbb;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .tab-btn.active {
+            background: #2c2c2c;
+            color: #42b983;
+            border-bottom: 2px solid #42b983;
+        }
+
+        .tab-content {
+            padding: 12px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 6px;
+            background: #1e1e1e;
+        }
+
+        .card h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #eee;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        input[type="file"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 14px;
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            background: #42b983;
+            color: #fff;
+        }
+
+        .btn:disabled {
+            background: #444 !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .status {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            display: none;
+            word-break: break-all;
+        }
+
+        .status.success {
+            display: block;
+            background: #1c3b2e;
+            color: #73d1a4;
+        }
+
+        .status.error {
+            display: block;
+            background: #3b1c1c;
+            color: #f47174;
+        }
+
+        /* === JSON/JSON5 格式化工具样式 === */
+        .editor-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-title {
+            padding: 8px 10px;
+            background: #1e1e1e;
+            color: white;
+            border-radius: 4px 4px 0 0;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #333;
+            border-bottom: none;
+            font-size: 14px;
+        }
+
+        .panel-info {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .cursor-pos {
+            color: #4dabf7;
+        }
+
+        .format-btns {
+            display: flex;
+            gap: 4px;
+        }
+
+        .format-btn {
+            padding: 3px 6px;
+            font-size: 11px;
+            background: #3498db;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #json5-input, #json5-output {
+            flex: 1;
+            min-height: 300px;
+            padding: 10px;
+            border: 1px solid #333;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            resize: vertical;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            background: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-group button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-group button:hover {
+            background: #2980b9;
+        }
+
+        .file-input-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-input-btn input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .json5-status {
+            margin-top: 8px;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            background: #1e1e1e;
+            border: 1px solid #333;
+        }
+
+        .json5-status.valid {
+            background: #1e3a1e;
+            color: #4caf50;
+            border-color: #2e7d32;
+        }
+
+        .json5-status.invalid {
+            background: #3a1e1e;
+            color: #f44336;
+            border-color: #c62828;
+        }
+
+        /* 面板切换 */
+        .json5-view {
+            display: none;
+        }
+
+        .json5-view.active {
+            display: block;
+        }
+
+        .tip {
+            font-size: 12px;
+            color: #888;
+            margin: 4px 0 8px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tab-header">
+            <button class="tab-btn active" data-tab="json5Editor">JSON5工具</button>
+            <button class="tab-btn" data-tab="zipTool">订阅文件</button>
+        </div>
+
+        <!-- JSON5工具：双面板独立切换 -->
+        <div class="tab-content active" id="json5Editor">
+            <div class="json5-view active" id="inputView">
+                <div class="editor-panel">
+                    <div class="panel-title">
+                        <span>输入 JSON/JSON5</span>
+                        <div class="panel-info">
+                            <div class="format-btns">
+                                <button class="format-btn" onclick="convertToJson()">→ JSON</button>
+                                <button class="format-btn" onclick="convertToJson5()">→ JSON5</button>
+                            </div>
+                            <span class="cursor-pos" id="cursor-pos">行:列</span>
+                        </div>
+                    </div>
+                    <textarea id="json5-input" placeholder="粘贴或输入JSON/JSON5内容..."></textarea>
+                    <div class="btn-group">
+                        <button onclick="pasteInput()">📋 粘贴</button>
+                        <button class="file-input-btn">📁 导入
+                            <input type="file" id="fileInput" onchange="readLocalFile(this)">
+                        </button>
+                        <button onclick="clearInput()">🗑️ 清空</button>
+                        <button onclick="showResultView()">✅ 格式化结果</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 结果面板（默认隐藏） -->
+            <div class="json5-view" id="resultView">
+                <div class="editor-panel">
+                    <div class="panel-title">
+                        <span>格式化结果</span>
+                    </div>
+                    <textarea id="json5-output" readonly placeholder="格式化结果..."></textarea>
+                    <div class="btn-group">
+                        <button onclick="toggleDisplay()">🔄 切换</button>
+                        <button onclick="copyOutput()">📋 复制</button>
+                        <button onclick="downloadFile()">⬇️ 下载</button>
+                        <button onclick="showInputView()">✏️ 编辑</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统一状态栏：成功/报错都在这里 -->
+            <div id="json5-status" class="json5-status">
+                <span id="status-msg"></span>
+            </div>
+        </div>
+
+        <!-- 订阅文件 -->
+        <div class="tab-content" id="zipTool">
+            <div class="card">
+                <h2>📂 多文件合成订阅</h2>
+                <p class="tip">选择所有apps目录内文件(md/ts),需包含sample.json5样本文件</p>
+                <label>选择文件（可多选）：</label>
+                <input type="file" id="multiFileInput" multiple accept=".md,.ts,.json5">
+                <label>版本号（可选）：</label>
+                <input type="number" id="multiVersion" placeholder="输入数字">
+                <button class="btn" id="mergeMultiBtn" disabled>合成并下载订阅</button>
+            </div>
+
+            <div class="card">
+                <h2>📦 ZIP上传合成订阅</h2>
+                <label>选择ZIP压缩包(需包含sample.json5样本文件)：</label>
+                <input type="file" id="zipFile" accept=".zip">
+                <label>版本号（可选）：</label>
+                <input type="number" id="zipVersion" placeholder="输入数字">
+                <button class="btn" id="startBtn" disabled>合成并下载订阅</button>
+            </div>
+
+            <div id="status" class="status"></div>
+        </div>
+    </div>
+
+    <script>
+        // 标签页切换
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // ==============================
+        // JSON5 双面板切换控制
+        // ==============================
+        const inputView = document.getElementById('inputView');
+        const resultView = document.getElementById('resultView');
+        
+        function showInputView() {
+            inputView.classList.add('active');
+            resultView.classList.remove('active');
+        }
+        
+        function showResultView() {
+            renderFormattedResult();
+            inputView.classList.remove('active');
+            resultView.classList.add('active');
+        }
+
+        // ==============================
+        // JSON/JSON5 格式化工具逻辑
+        // ==============================
+        const inputEl = document.getElementById('json5-input');
+        const outputEl = document.getElementById('json5-output');
+        const statusMsgEl = document.getElementById('status-msg');
+        const cursorPosEl = document.getElementById('cursor-pos');
+        const statusEl = document.getElementById('json5-status');
+        
+        let isCompact = false;
+        let lastParsed = null;
+        let currentFormat = 'json5'; // json / json5
+        const CHUNK_SIZE = 1024 * 256;
+        let isLoadingLargeFile = false;
+
+        inputEl.addEventListener('input', autoParseOnly);
+        inputEl.addEventListener('click', updateCursorPos);
+        inputEl.addEventListener('keyup', updateCursorPos);
+        inputEl.addEventListener('focus', updateCursorPos);
+
+        // 仅解析不自动覆盖输出格式
+        function autoParseOnly() {
+            if (isLoadingLargeFile) return;
+            const input = inputEl.value.trim();
+            if (!input) {
+                lastParsed = null;
+                setStatus('', 'valid');
+                updateCursorPos();
+                return;
+            }
+            try {
+                lastParsed = JSON5.parse(input);
+                setStatus('✅ JSON/JSON5 格式有效', 'valid');
+            } catch (err) {
+                lastParsed = null;
+                setStatus(`❌ 格式化失败：${err.message}`, 'invalid');
+            }
+            updateCursorPos();
+        }
+
+        // 按当前选中的格式渲染结果
+        function renderFormattedResult() {
+            if (!lastParsed) {
+                outputEl.value = '';
+                return;
+            }
+            if (currentFormat === 'json') {
+                outputEl.value = JSON.stringify(lastParsed, null, 4);
+            } else {
+                outputEl.value = JSON5.stringify(lastParsed, null, 4);
+            }
+            isCompact = false;
+        }
+
+        function convertToJson() {
+            const input = inputEl.value.trim();
+            if (!input) { setStatus('❌ 无内容可转换', 'invalid'); return; }
+            try {
+                lastParsed = JSON5.parse(input);
+                currentFormat = 'json';
+                renderFormattedResult();
+                setStatus('✅ 已转为标准 JSON', 'valid');
+            } catch (err) { setStatus(`❌ 转换失败：${err.message}`, 'invalid'); }
+        }
+
+        function convertToJson5() {
+            const input = inputEl.value.trim();
+            if (!input) { setStatus('❌ 无内容可转换', 'invalid'); return; }
+            try {
+                lastParsed = JSON5.parse(input);
+                currentFormat = 'json5';
+                renderFormattedResult();
+                setStatus('✅ 已转为 JSON5 格式', 'valid');
+            } catch (err) { setStatus(`❌ 转换失败：${err.message}`, 'invalid'); }
+        }
+
+        function toggleDisplay() {
+            if (!lastParsed) {
+                setStatus('❌ 暂无有效内容可切换显示', 'invalid');
+                return;
+            }
+            isCompact = !isCompact;
+            if (currentFormat === 'json') {
+                outputEl.value = isCompact ? JSON.stringify(lastParsed) : JSON.stringify(lastParsed, null, 4);
+                setStatus(isCompact ? '🔄 JSON【紧凑】' : '🔄 JSON【展开】', 'valid');
+            } else {
+                outputEl.value = isCompact ? JSON5.stringify(lastParsed) : JSON5.stringify(lastParsed, null, 4);
+                setStatus(isCompact ? '🔄 JSON5【紧凑】' : '🔄 JSON5【展开】', 'valid');
+            }
+            setTimeout(() => setStatus('', 'valid'), 2000);
+        }
+
+        function updateCursorPos() {
+            const value = inputEl.value;
+            const pos = inputEl.selectionStart;
+            const lines = value.substring(0, pos).split('\n');
+            const row = lines.length;
+            const col = lines[lines.length - 1].length + 1;
+            cursorPosEl.textContent = `${row}:${col}`;
+        }
+
+        async function pasteInput() {
+            try {
+                const text = await navigator.clipboard.readText();
+                inputEl.value = text;
+                autoParseOnly();
+            } catch (err) { setStatus('❌ 粘贴失败：权限不足', 'invalid'); }
+        }
+
+        async function copyOutput() {
+            const text = outputEl.value;
+            if (!text) { setStatus('❌ 无内容可复制', 'invalid'); return; }
+            try {
+                await navigator.clipboard.writeText(text);
+                setStatus('✅ 复制成功！', 'valid');
+                setTimeout(() => setStatus('', 'valid'), 2000);
+            } catch (err) { setStatus('❌ 复制失败', 'invalid'); }
+        }
+
+        function clearInput() {
+            inputEl.value = '';
+            currentFormat = 'json5';
+            lastParsed = null;
+            autoParseOnly();
+        }
+
+        function downloadFile() {
+            const content = outputEl.value.trim();
+            if (!content) { setStatus('❌ 无内容可下载', 'invalid'); return; }
+            const blob = new Blob([content], { type: 'application/json5' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentFormat === 'json' ? 'formatted.json' : 'formatted.json5';
+            a.click();
+            URL.revokeObjectURL(url);
+            setStatus('✅ 下载完成', 'valid');
+            setTimeout(() => setStatus('', 'valid'), 2000);
+        }
+
+        function setStatus(msg, type) {
+            statusMsgEl.textContent = msg;
+            statusEl.className = `json5-status ${type}`;
+        }
+
+        function readLocalFile(fileInput) {
+            const file = fileInput.files[0];
+            if (!file) return;
+            isLoadingLargeFile = true;
+            inputEl.value = '';
+            setStatus(`⏳ 加载：${file.name}`, 'valid');
+            const fileReader = new FileReader();
+            let offset = 0;
+            const fileSize = file.size;
+            fileReader.onload = function (e) {
+                inputEl.value += e.target.result;
+                offset += CHUNK_SIZE;
+                loadNextChunk();
+            };
+            fileReader.onerror = function () {
+                isLoadingLargeFile = false;
+                setStatus('❌ 文件读取失败', 'invalid');
+                fileInput.value = '';
+            };
+            function loadNextChunk() {
+                if (offset >= fileSize) {
+                    isLoadingLargeFile = false;
+                    setStatus(`✅ 加载完成：${file.name}`, 'valid');
+                    autoParseOnly();
+                    fileInput.value = '';
+                    return;
+                }
+                const slice = file.slice(offset, offset + CHUNK_SIZE);
+                fileReader.readAsText(slice, 'UTF-8');
+            }
+            loadNextChunk();
+        }
+
+        // ==============================
+        // 通用工具函数
+        // ==============================
+        function showStatus(text, type) {
+            const el = document.getElementById('status');
+            el.textContent = text;
+            el.className = 'status ' + type;
+        }
+
+        function downloadBlob(blob, name) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = name;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ==============================
+        // 多文件直接合成订阅
+        // ==============================
+        const multiFileInput = document.getElementById('multiFileInput');
+        const multiVersion = document.getElementById('multiVersion');
+        const mergeMultiBtn = document.getElementById('mergeMultiBtn');
+        let selectedFiles = [];
+
+        multiFileInput.addEventListener('change', e => {
+            selectedFiles = Array.from(e.target.files).filter(f => 
+                f.name.endsWith('.md') || f.name.endsWith('.ts') || f.name.endsWith('.json5')
+            );
+            mergeMultiBtn.disabled = selectedFiles.length === 0;
+            if (selectedFiles.length) showStatus(`已选 ${selectedFiles.length} 个文件`, 'success');
+        });
+
+        mergeMultiBtn.addEventListener('click', async () => {
+            if (!selectedFiles.length) return;
+            mergeMultiBtn.disabled = true;
+            showStatus('正在合并生成订阅...', 'success');
+
+            try {
+                let mdContents = [];
+                let json5Template = '';
+
+                for (const file of selectedFiles) {
+                    const text = await file.text();
+                    // .ts 与 .md 逻辑完全一致
+                    if (file.name.toLowerCase().endsWith('.md') || file.name.toLowerCase().endsWith('.ts')) {
+                        mdContents.push(text);
+                    } else if (file.name === 'sample.json5') {
+                        json5Template = text;
+                    }
+                }
+
+                if (mdContents.length === 0) throw new Error('未选择任何 .md / .ts 文件');
+                if (!json5Template) throw new Error('未选择 sample.json5 模板文件');
+
+                let merged = mdContents.join(',').replace(/```json/g, '');
+                let result = json5Template.replace('//替换标记', merged);
+
+                const v = multiVersion.value.trim();
+                if (v) result = result.replace(/version:\s*\d+\s*,/g, `version: ${v},`);
+
+                const blob = new Blob([result], { type: 'application/json' });
+                downloadBlob(blob, 'new.json5');
+                showStatus('✅ 多文件合成订阅完成！', 'success');
+            } catch (err) {
+                showStatus('❌ 合成失败：' + err.message, 'error');
+            } finally {
+                mergeMultiBtn.disabled = false;
+            }
+        });
+
+        // ==============================
+        // ZIP上传合成订阅
+        // ==============================
+        const zipFileInput = document.getElementById('zipFile');
+        const zipVersion = document.getElementById('zipVersion');
+        const startBtn = document.getElementById('startBtn');
+        let selectedZip = null;
+
+        zipFileInput.addEventListener('change', e => {
+            selectedZip = e.target.files[0];
+            startBtn.disabled = !selectedZip;
+            if (selectedZip) showStatus('已选择：' + selectedZip.name, 'success');
+        });
+
+        function findTargetFiles(zip) {
+            const appsFiles = [];
+            let sampleJson5 = null;
+            zip.forEach((path, file) => {
+                const p = path.toLowerCase();
+                // .ts与.md逻辑一致
+                if (!file.dir && (p.startsWith('apps/') || p.includes('/apps/')) && 
+                    (p.endsWith('.md') || p.endsWith('.ts'))) {
+                    appsFiles.push(file);
+                }
+                if (!file.dir && p.endsWith('apps/sample.json5') && !sampleJson5) {
+                    sampleJson5 = file;
+                }
+            });
+            return { appsFiles, sampleJson5 };
+        }
+
+        startBtn.addEventListener('click', async () => {
+            if (!selectedZip) return showStatus('请先选择ZIP文件', 'error');
+            startBtn.disabled = true;
+            showStatus('正在处理ZIP...', 'success');
+
+            try {
+                const zip = await new JSZip().loadAsync(selectedZip);
+                const { appsFiles, sampleJson5 } = findTargetFiles(zip);
+                
+                if (!appsFiles.length) throw new Error('未找到apps下的md/ts文件');
+                if (!sampleJson5) throw new Error('未找到sample.json5');
+
+                let content = '';
+                for (const f of appsFiles) content += await f.async('string') + ',';
+                content = content.slice(0, -1).replace(/```json/g, '');
+
+                let json5 = await sampleJson5.async('string');
+                json5 = json5.replace('//替换标记', content);
+
+                const v = zipVersion.value.trim();
+                if (v) json5 = json5.replace(/version:\s*\d+\s*,/g, `version: ${v},`);
+
+                const blob = new Blob([json5], { type: 'application/json' });
+                downloadBlob(blob, 'new.json5');
+                showStatus('✅ ZIP合成订阅完成！', 'success');
+            } catch (err) {
+                showStatus('❌ 失败：' + err.message, 'error');
+            } finally {
+                startBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
