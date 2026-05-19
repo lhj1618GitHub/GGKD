@@ -9,7 +9,7 @@
     - [第三方Plus版网站](https://li.chenge.eu.org/) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 
 - 快照审查脚本
-    - [HTTP服务](https://github.com/gkd-kit/network-extension) - 局域网[连接地址](192.168.3.44:8888) ；[安装](https://registry.npmmirror.com/@gkd-kit/network-extension/latest/files/dist/network-extension.user.js)/[安装](https://fastly.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)/[安装](https://github.com/gkd-kit/network-extension/raw/main/dist/network-extension.user.js)
+    - [HTTP服务](https://github.com/gkd-kit/network-extension) - 局域网[连接地址](http://192.168.3.44:8888/) ；[安装](https://registry.npmmirror.com/@gkd-kit/network-extension/latest/files/dist/network-extension.user.js)/[安装](https://fastly.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)/[安装](https://github.com/gkd-kit/network-extension/raw/main/dist/network-extension.user.js)
     - [GKD-Snapshot.js](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD-Snapshot.js) 获取屏幕坐标/相对偏移
     - 增强脚本.js - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases) 美化页面/增强规则参数插入/坐标获取
     - [官方网站重定向至Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
