@@ -56,16 +56,18 @@
 
 **我的订阅地址：** 
 
-- [正式版-Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](./releases/version.json5)
+- [正式版-Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5)
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-- [Beta-test](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app) - [查看版本](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app/version.json5)
+- ~~[Beta-test](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app) - [查看版本](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app/version.json5)~~
+
+- [GitHub](./releases) - [查看版本](./releases/version.json5)
 
 ```
-https://gitee.com/lhj1618/GGKD/raw/master/.temp/new-app/test.json5
+https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
 
 ---
