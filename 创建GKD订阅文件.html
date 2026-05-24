@@ -611,7 +611,7 @@
                 if (mdContents.length === 0) throw new Error('未选择任何 .md / .ts 文件');
                 if (!json5Template) throw new Error('未选择 sample.json5 模板文件');
 
-                let merged = mdContents.join(',').replace(/```json/g, '');
+                let merged = mdContents.join(',').replace(/```json5/g, '');
                 let result = json5Template.replace('//替换标记', merged);
 
                 const v = multiVersion.value.trim();
@@ -672,7 +672,7 @@
 
                 let content = '';
                 for (const f of appsFiles) content += await f.async('string') + ',';
-                content = content.slice(0, -1).replace(/```json/g, '');
+                content = content.slice(0, -1).replace(/```json5/g, '');
 
                 let json5 = await sampleJson5.async('string');
                 json5 = json5.replace('//替换标记', content);
