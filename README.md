@@ -69,6 +69,9 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
+```
+https://raw.gitmirror.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+```
 
 ---
 
