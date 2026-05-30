@@ -443,8 +443,16 @@ const file=e.target.files[0];if(!file)return;
 const reader=new FileReader();
 reader.onload=evt=>{codeEditor.value=evt.target.result;parseData();showStatusGkd('文件导入成功！');};
 reader.readAsText(file);
-};
-document.getElementById('exportBtn').onclick=()=>{parseData();saveAs(new Blob([codeEditor.value],{type:'application/json5'}),`gkd_${Date.now()}.json5`);showStatusGkd('导出成功');};
+};document.getElementById('exportBtn').onclick = async () => {if (!parseData()) {showStatusGkd('数据无效，无法导出', 'error');return;}
+try {const content = codeEditor.value.trim();
+if (!content) {showStatusGkd('无内容可导出', 'error');return;}
+const blob = new Blob([content], { type: 'application/json5; charset=utf-8' });
+const fileName = `gkd_${Date.now()}.json5`;
+if (navigator.msSaveOrOpenBlob) {navigator.msSaveOrOpenBlob(blob, fileName);
+} else {const url = URL.createObjectURL(blob);const a = document.createElement('a');
+a.href = url;a.download = fileName;a.style.display = 'none';document.body.appendChild(a);
+a.click();setTimeout(() => {document.body.removeChild(a);URL.revokeObjectURL(url);},100);}
+showStatusGkd('导出成功');} catch (err) {showStatusGkd('导出失败：' + err.message, 'error');}};
 document.getElementById('formatBtn').onclick=()=>{parseData();syncCode();showStatusGkd('格式化完成');};
 document.getElementById('clearBtn').onclick=()=>{if(confirm('确定清空所有数据？')){gkdData={apps:[]};codeEditor.value='';renderAppList();showStatusGkd('已清空','warning');}};
 renderAppList();
