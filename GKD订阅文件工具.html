@@ -349,7 +349,7 @@ function editVersion(){
 }
 function editGlobalGroup(i){
     editTarget={type:'globalGroup',idx1:i};
-    document.getElementById('editModalTitle').innerText='编辑规则组';
+    document.getElementById('editModalTitle').innerText='编辑全局规则组';
     document.getElementById('editCode').value=JSON5.stringify(subscriptionData.globalGroups[i],null,2);
     document.getElementById('editMask').style.display='flex';
 }
@@ -368,6 +368,7 @@ function editGroup(a,g){
 function editRule(a,g,r){
     editTarget={type:'rule',idx1:a,idx2:g,idx3:r};
     let rule = subscriptionData.apps[a].groups[g].rules[r];
+    document.getElementById('editModalTitle').innerText='编辑子规则';
     document.getElementById('editCode').value = JSON5.stringify(rule,null,2);
     document.getElementById('editMask').style.display='flex';
 }
