@@ -18,7 +18,7 @@
 
 ---
 
- **移动端自定义规则-工具下载** （html文件需系统浏览器打开）：
+ **移动端自定义规则- - [下载汇总](https://gitcode.com/lhj1618/Tool)** （html文件需系统浏览器打开）：
 
 - [json5.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html) / [json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；支持导入所有格式文件，导出为json/json5
 - [GKD订阅文件工具](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD%E8%AE%A2%E9%98%85%E6%96%87%E4%BB%B6%E5%B7%A5%E5%85%B7.html)：含创建和可视化编辑功能；支持手机端。需下载并导入本仓库文件(apps文件夹内文件。含sample.json5样本文件)，支持json5格式化，支持格式 md txt ts json json5 html 
