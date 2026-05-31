@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://raw.giteeusercontent.com/lhj1618/GGKD/raw/master/todo/json5.js"></script>
+<script src="https://unpkg.com/json5@2/dist/index.min.js"></script>
 <title>GKD JSON5 编辑器</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft Yahei,sans-serif}
@@ -80,15 +80,16 @@ textarea{width:100%;height:72vh;padding:12px;border:1px solid #333;border-radius
     <div class="visual-box">
         <button class="btn btn-danger close-visual" onclick="closeVisualManage()">关闭</button>
         <div class="info-card">
-            <div class="info-item"><span class="info-label">订阅编号：</span><span id="subId">-</span></div>
-            <div class="info-item"><span class="info-label">订阅名称：</span><span id="subName">-</span></div>
+            <div class="info-item"><span class="info-label">编号：</span><span id="subId">-</span></div>
+            <div class="info-item"><span class="info-label">名称：</span><span id="subName">-</span></div>
             <div class="info-item">
-                <span class="info-label">版本号：</span>
+                <span class="info-label">版本：</span>
                 <span id="subVersion">-</span>
                 <button class="btn btn-sm btn-warning" onclick="editVersion()">编辑</button>
             </div>
             <div class="info-item"><span class="info-label">作者：</span><span id="subAuthor">-</span></div>
-            <div class="info-item"><span class="info-label">更新地址：</span><span id="subUpdateUrl">-</span></div>
+            <div class="info-item"><span class="info-label">检测更新：</span><span id="subUpcheckUrl">-</span></div>
+            <div class="info-item"><span class="info-label">更新下载：</span><span id="subUpdateUrl">-</span></div>
             <div class="info-item"><span class="info-label">主页地址：</span><span id="subSupportUri">-</span></div>
         </div>
 
@@ -236,6 +237,7 @@ function renderAllView(){
     document.getElementById('subName').innerText = subscriptionData.name ?? '-';
     document.getElementById('subVersion').innerText = subscriptionData.version ?? 0;
     document.getElementById('subAuthor').innerText = subscriptionData.author ?? '-';
+    document.getElementById('subUpcheckUrl').innerText = subscriptionData.checkUpdateUrl ?? '-';
     document.getElementById('subUpdateUrl').innerText = subscriptionData.updateUrl ?? '-';
     document.getElementById('subSupportUri').innerText = subscriptionData.supportUri ?? '-';
     renderGlobalGroups();
