@@ -2,460 +2,421 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
-<title>GKD 订阅工具合集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://raw.giteeusercontent.com/lhj1618/GGKD/raw/master/todo/json5.js"></script>
+<title>GKD JSON5 编辑器</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}
-body{background:#000;color:#e0e0e0;padding:8px;font-size:15px;line-height:1.4}
-.tab-container{max-width:100%;margin:0 auto;background:#121212;border-radius:8px;overflow:hidden}
-.tab-header{display:flex;background:#1f1f1f}
-.tab-btn{flex:1;padding:10px 6px;border:none;background:transparent;color:#bbb;cursor:pointer;font-size:14px;text-align:center}
-.tab-btn.active{background:#2c2c2c;color:#42b983;border-bottom:2px solid #42b983}
-.tab-content{padding:12px;display:none}
-.tab-content.active{display:block}
-.card{margin-bottom:12px;padding:12px;border-radius:6px;background:#1e1e1e}
-.card h2{font-size:16px;margin-bottom:10px;color:#eee}
-label{display:block;margin-bottom:4px;font-size:13px;color:#aaa}
-input[type=file],input[type=number]{width:100%;padding:8px;margin-bottom:8px;border:1px solid #333;border-radius:4px;font-size:14px;background:#2a2a2a;color:#e0e0e0}
-.btn{border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:.2s;padding:6px 12px}
-.btn:disabled{background:#444!important;cursor:not-allowed;opacity:.7}
-.status{margin-top:8px;padding:8px;border-radius:4px;font-size:13px;display:none;word-break:break-all}
-.status.success{display:block;background:#1c3b2e;color:#73d1a4}
-.status.error{display:block;background:#3b1c1c;color:#f47174}
-.editor-panel{display:flex;flex-direction:column}
-.panel-title{padding:8px 10px;background:#1e1e1e;color:#fff;border-radius:4px 4px 0 0;font-weight:500;display:flex;justify-content:space-between;align-items:center;border:1px solid #333;border-bottom:none;font-size:14px}
-.panel-info{display:flex;gap:8px;align-items:center;font-size:12px}
-.cursor-pos{color:#4dabf7}
-.format-btns{display:flex;gap:4px}
-.format-btn{padding:3px 6px;font-size:11px;background:#3498db;border:none;border-radius:3px;color:#fff;cursor:pointer}
-#json5-input,#json5-output{flex:1;min-height:300px;padding:10px;border:1px solid #333;border-top:none;border-radius:0 0 4px 4px;resize:vertical;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.5;background:#1e1e1e;color:#e0e0e0}
-.btn-group{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.btn-group button{padding:8px 12px;border:none;border-radius:4px;background:#3498db;color:#fff;cursor:pointer;font-size:13px}
-.btn-group button:hover{background:#2980b9}
-.file-input-btn{position:relative;overflow:hidden}
-.file-input-btn input{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer}
-.json5-status{margin-top:8px;padding:8px 10px;border-radius:4px;font-size:13px;background:#1e1e1e;border:1px solid #333}
-.json5-status.valid{background:#1e3a1e;color:#4caf50;border-color:#2e7d32}
-.json5-status.invalid{background:#3a1e1e;color:#f44336;border-color:#c62828}
-.json5-view{display:none}
-.json5-view.active{display:block}
-.tip{font-size:12px;color:#888;margin:4px 0 8px}
-.header{text-align:center;margin-bottom:16px}
-.title{font-size:20px;color:#fff;margin-bottom:6px}
-.tool-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;padding:10px;background:#1a1a1a;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.btn-primary{background:#3b82f6;color:#fff}
-.btn-success{background:#10b981;color:#fff}
-.btn-warning{background:#f59e0b;color:#fff}
-.btn-danger{background:#ef4444;color:#fff}
-.btn:hover{opacity:.9}
-.btn-sm{padding:2px 6px;font-size:11px;margin-left:4px;border-radius:4px}
-.panel{background:#1a1a1a;border-radius:8px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.3);margin-bottom:12px}
-.panel-title{font-size:16px;margin-bottom:10px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-.app-item{border:1px solid #333;border-radius:6px;margin-bottom:10px;overflow:hidden}
-.app-header{padding:10px;background:#242424;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.app-name{font-weight:600;color:#fff;font-size:14px}
-.app-pkg{font-size:11px;color:#999;margin-top:2px}
-.app-body{padding:10px;display:none}
-.app-body.show{display:block}
-.group-item{border-left:2px solid #3b82f6;padding:8px 10px;margin-bottom:6px;background:#242424;border-radius:4px}
-.group-name{font-weight:500;margin-bottom:4px;display:flex;align-items:center;flex-wrap:wrap;color:#fff;font-size:13px}
-.rule-item{font-size:12px;color:#ccc;padding:4px 0;border-bottom:1px dashed #333;display:flex;justify-content:space-between;align-items:center}
-.rule-actions{display:flex;gap:2px}
-.empty-tip{text-align:center;color:#666;padding:12px 0;font-size:13px}
-#codeEditor{width:100%;height:500px;padding:10px;border:1px solid #333;border-radius:6px;resize:vertical;font-family:monospace;font-size:13px;line-height:1.6;display:none;background:#121212;color:#fff}
-#appListContainer{display:block}
-.edit-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center;z-index:9999}
-.modal-content{background:#1a1a1a;width:90%;max-width:700px;border-radius:10px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.modal-title{font-size:16px;margin-bottom:10px;font-weight:600;color:#fff}
-.modal-textarea{width:100%;height:300px;padding:10px;border:1px solid #333;border-radius:6px;font-family:monospace;font-size:13px;resize:vertical;margin-bottom:12px;background:#121212;color:#fff}
-.modal-buttons{display:flex;gap:8px;justify-content:flex-end}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft Yahei,sans-serif}
+body{background:#121212;color:#e5e5e5;padding:15px}
+.main-container{max-width:1200px;margin:0 auto}
+
+.toolbar{background:#1e1e1e;padding:10px 12px;border-radius:6px;margin-bottom:15px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid #333}
+.btn{padding:4px 8px;border:none;border-radius:3px;cursor:pointer;font-size:12px;white-space:nowrap}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-success{background:#059669;color:#fff}
+.btn-warning{background:#d97706;color:#fff}
+.btn-danger{background:#dc2626;color:#eee}
+.btn-default{background:#333;color:#eee}
+.btn-sm{padding:2px 5px;font-size:11px}
+
+.code-panel{background:#1e1e1e;border-radius:6px;padding:15px;border:1px solid #333}
+.panel-title{font-size:16px;font-weight:500;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:center}
+.cursor-pos{font-size:12px;color:#999;font-weight:normal}
+textarea{width:100%;height:72vh;padding:12px;border:1px solid #333;border-radius:4px;font-family:Consolas,monospace;font-size:13px;resize:none;line-height:1.5;background:#171717;color:#e5e5e5}
+#parseTip{margin-top:8px;font-size:12px;white-space:pre-wrap}
+
+.mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0.8);display:none;align-items:center;justify-content:center;z-index:999}
+.modal{background:#1e1e1e;border:1px solid #333;border-radius:6px;padding:18px;width:620px}
+.modal-title{font-size:15px;font-weight:500;margin-bottom:15px}
+.modal-footer{text-align:right;display:flex;gap:6px;justify-content:flex-end}
+
+.visual-mask{padding:15px}
+.visual-box{width:100%;height:100%;background:#1e1e1e;border:1px solid #333;border-radius:6px;padding:15px;overflow:auto}
+.close-visual{float:right;margin-bottom:10px}
+
+.info-card{background:#171717;border:1px solid #333;padding:12px;border-radius:6px;margin-bottom:15px}
+.info-item{line-height:2;font-size:12px;display:flex;align-items:center;gap:6px}
+.info-label{font-weight:500;width:85px;display:inline-block;color:#aaa}
+
+.app-list-head{display:flex;justify-content:space-between;align-items:center;margin:15px 0 8px;gap:10px}
+.app-list-head span{font-size:14px;font-weight:500}
+.app-search-row{display:flex;gap:6px;align-items:center}
+#appSearch{padding:4px 8px;background:#171717;border:1px solid #333;border-radius:4px;color:#eee;font-size:12px;width:220px}
+
+.list-wrap{margin-top:8px}
+.app-item,.group-item,.rule-item{padding:10px;border:1px solid #333;border-radius:6px;margin-bottom:8px;background:#171717}
+.app-title,.group-title{cursor:pointer;user-select:none}
+.app-desc,.group-desc{font-size:12px;color:#999;line-height:1.5}
+.rule-desc{display:none}
+
+.child-wrap{display:none}
+.child-wrap.open{display:block}
+#fileInput{display:none}
 </style>
 </head>
 <body>
-<div class="tab-container">
-<div class="tab-header">
-<button class="tab-btn active" data-tab="json5Editor">JSON5工具</button>
-<button class="tab-btn" data-tab="zipTool">创建订阅文件</button>
-<button class="tab-btn" data-tab="editGkd">编辑订阅文件</button>
+<div class="main-container">
+    <div class="toolbar">
+        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">导入</button>
+        <button class="btn btn-danger" onclick="downloadJson5()">导出</button>
+        <button class="btn btn-default" onclick="clearContent()">清空</button>
+        <button class="btn btn-success" onclick="parseJson5()">解析</button>
+        <button class="btn btn-warning" onclick="toggleCodeView()">紧凑/展开</button>
+        <button class="btn btn-primary" onclick="openVisualManage()">可视化</button>
+        <input type="file" id="fileInput" accept=".json5,.json,.txt" onchange="importLocalFile(event)">
+    </div>
+
+    <div class="code-panel">
+        <div class="panel-title">
+            <span>JSON5 源码编辑</span>
+            <span class="cursor-pos" id="cursorPos">行:1 , 列:1</span>
+        </div>
+        <textarea id="json5Code" placeholder="粘贴GKD订阅json5内容..."></textarea>
+        <div id="parseTip"></div>
+    </div>
 </div>
 
-<div class="tab-content active" id="json5Editor">
-<div class="json5-view active" id="inputView">
-<div class="editor-panel">
-<div class="panel-title">
-<span>输入 JSON/JSON5</span>
-<div class="panel-info">
-<div class="format-btns">
-<button class="format-btn" onclick="convertToJson()">→ JSON</button>
-<button class="format-btn" onclick="convertToJson5()">→ JSON5</button>
-</div>
-<span class="cursor-pos" id="cursor-pos">行:列</span>
-</div>
-</div>
-<textarea id="json5-input" placeholder="粘贴或输入JSON/JSON5内容..."></textarea>
-<div class="btn-group">
-<button onclick="pasteInput()">📋 粘贴</button>
-<button class="file-input-btn">📁 导入<input type="file" id="fileInput" onchange="readLocalFile(this)"></button>
-<button onclick="clearInput()">🗑️ 清空</button>
-<button onclick="showResultView()">✅ 格式化结果</button>
-</div>
-</div>
-</div>
-<div class="json5-view" id="resultView">
-<div class="editor-panel">
-<div class="panel-title"><span>格式化结果</span></div>
-<textarea id="json5-output" readonly placeholder="格式化结果..."></textarea>
-<div class="btn-group">
-<button onclick="toggleDisplay()">🔄 切换</button>
-<button onclick="copyOutput()">📋 复制</button>
-<button onclick="downloadFile()">⬇️ 下载</button>
-<button onclick="showInputView()">✏️ 编辑</button>
-</div>
-</div>
-</div>
-<div id="json5-status" class="json5-status"><span id="status-msg"></span></div>
+<div class="mask visual-mask" id="visualMask">
+    <div class="visual-box">
+        <button class="btn btn-danger close-visual" onclick="closeVisualManage()">关闭</button>
+        <div class="info-card">
+            <div class="info-item"><span class="info-label">订阅编号：</span><span id="subId">-</span></div>
+            <div class="info-item"><span class="info-label">订阅名称：</span><span id="subName">-</span></div>
+            <div class="info-item">
+                <span class="info-label">版本号：</span>
+                <span id="subVersion">-</span>
+                <button class="btn btn-sm btn-warning" onclick="editVersion()">编辑</button>
+            </div>
+            <div class="info-item"><span class="info-label">作者：</span><span id="subAuthor">-</span></div>
+            <div class="info-item"><span class="info-label">更新地址：</span><span id="subUpdateUrl">-</span></div>
+            <div class="info-item"><span class="info-label">主页地址：</span><span id="subSupportUri">-</span></div>
+        </div>
+
+        <div style="font-size:14px;font-weight:500;margin:15px 0 8px">全局规则组</div>
+        <div id="globalGroupsWrap" class="list-wrap">暂无</div>
+
+        <div class="app-list-head">
+            <span>应用规则列表</span>
+            <div class="app-search-row">
+                <input id="appSearch" placeholder="搜索应用名称/包名">
+                <button class="btn btn-sm btn-primary" onclick="doSearch()">搜索</button>
+            </div>
+        </div>
+        <div id="appsWrap" class="list-wrap">暂无</div>
+    </div>
 </div>
 
-<div class="tab-content" id="zipTool">
-<div class="card">
-<h2>📂 多文件合成订阅</h2>
-<p class="tip">选择所有apps目录内文件(md/ts),需包含sample.json5样本文件</p>
-<label>选择文件（可多选）：</label>
-<input type="file" id="multiFileInput" multiple accept=".md,.ts,.json5">
-<label>版本号（可选）：</label>
-<input type="number" id="multiVersion" placeholder="输入数字">
-<button class="btn" id="mergeMultiBtn" disabled>合成并下载订阅</button>
-</div>
-<div class="card">
-<h2>📦 ZIP上传合成订阅</h2>
-<label>选择ZIP压缩包(需包含sample.json5样本文件)：</label>
-<input type="file" id="zipFile" accept=".zip">
-<label>版本号（可选）：</label>
-<input type="number" id="zipVersion" placeholder="输入数字">
-<button class="btn" id="startBtn" disabled>合成并下载订阅</button>
-</div>
-<div id="status" class="status"></div>
+<div class="mask" id="editMask">
+    <div class="modal">
+        <div class="modal-title" id="editModalTitle">编辑</div>
+        <textarea id="editCode" style="width:100%;height:260px;margin:10px 0;background:#171717;color:#eee;border:1px solid #333;border-radius:4px;padding:10px;font-family:Consolas"></textarea>
+        <div class="modal-footer">
+            <button class="btn btn-default" onclick="closeEditMask()">取消</button>
+            <button class="btn btn-success" onclick="saveEditContent()">保存</button>
+        </div>
+    </div>
 </div>
 
-<div class="tab-content" id="editGkd">
-<div class="header"><h1 class="title">GKD 订阅规则编辑器</h1></div>
-<div class="tool-bar">
-<input type="file" id="fileInputGkd" accept=".json5" style="display:none;">
-<button class="btn btn-primary" id="importBtn">导入</button>
-<button class="btn btn-success" id="exportBtn">导出</button>
-<button class="btn btn-primary" id="addAppBtn">加应用</button>
-<button class="btn btn-warning" id="toggleCodeBtn">源码</button>
-<button class="btn btn-warning" id="formatBtn">格式化</button>
-<button class="btn btn-danger" id="clearBtn">清空</button>
-</div>
-<div id="statusGkd" class="status"></div>
-<div class="panel">
-<div class="panel-title"><span>应用 & 规则 管理</span></div>
-<div id="appListContainer">
-<div id="appList"><div class="empty-tip">请导入 GKD 订阅文件开始编辑</div></div>
-</div>
-<textarea id="codeEditor" placeholder="编辑源码会自动实时解析..."></textarea>
-</div>
-<div class="edit-modal" id="editModal">
-<div class="modal-content">
-<div class="modal-title" id="modalTitle">编辑源码</div>
-<textarea class="modal-textarea" id="modalEditor"></textarea>
-<div class="modal-buttons">
-<button class="btn btn-danger" onclick="closeModal()">取消</button>
-<button class="btn btn-primary" onclick="saveModal()">保存</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<script src="https://gitee.com/lhj1618/GGKD/raw/master/todo/json5.js"></script>
-<script src="https://gitee.com/lhj1618/GGKD/blob/master/todo/jszip.js"></script>
-<script src="https://gitee.com/lhj1618/GGKD/blob/master/todo/FileSaver.js
-"></script>
 <script>
-const tabBtns=document.querySelectorAll('.tab-btn');
-const tabContents=document.querySelectorAll('.tab-content');
-tabBtns.forEach(btn=>{
-btn.addEventListener('click',()=>{
-const target=btn.dataset.tab;
-tabBtns.forEach(b=>b.classList.remove('active'));
-tabContents.forEach(c=>c.classList.remove('active'));
-btn.classList.add('active');
-document.getElementById(target).classList.add('active');
-});
+// 工具函数
+function safeArr(v){return Array.isArray(v)?v:[]}
+function hasValidKey(key){return key!==undefined&&key!==null&&key!==''}
+
+// 全局变量
+let subscriptionData = null;
+let isCompact = false;
+let editTarget = { type:'', idx1:-1, idx2:-1, idx3:-1 };
+let expandedApps = new Set();
+let expandedGroups = new Set();
+let lastSearchKey = '';
+
+// DOM 延后获取
+let codeArea, cursorPosEl, parseTipEl, appSearchEl;
+
+// 页面加载完毕再初始化
+document.addEventListener('DOMContentLoaded',function(){
+    codeArea = document.getElementById('json5Code');
+    cursorPosEl = document.getElementById('cursorPos');
+    parseTipEl = document.getElementById('parseTip');
+    appSearchEl = document.getElementById('appSearch');
+
+    codeArea.addEventListener('click', updateCursor);
+    codeArea.addEventListener('keyup', updateCursor);
+    appSearchEl.addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});
+
+    updateCursor();
 });
 
-const inputView=document.getElementById('inputView');
-const resultView=document.getElementById('resultView');
-function showInputView(){inputView.classList.add('active');resultView.classList.remove('active');}
-function showResultView(){renderFormattedResult();inputView.classList.remove('active');resultView.classList.add('active');}
+// 光标
+function updateCursor(){
+    let s = codeArea.selectionStart;
+    let t = codeArea.value.substring(0,s).split('\n');
+    cursorPosEl.innerText = `行:${t.length} , 列:${t[t.length-1].length}`;
+}
 
-const inputEl=document.getElementById('json5-input');
-const outputEl=document.getElementById('json5-output');
-const statusMsgEl=document.getElementById('status-msg');
-const cursorPosEl=document.getElementById('cursor-pos');
-const statusEl=document.getElementById('json5-status');
-let isCompact=false,lastParsed=null,currentFormat='json5';
-const CHUNK_SIZE=1024*256;
-let isLoadingLargeFile=false;
-inputEl.addEventListener('input',autoParseOnly);
-inputEl.addEventListener('click',updateCursorPos);
-inputEl.addEventListener('keyup',updateCursorPos);
-inputEl.addEventListener('focus',updateCursorPos);
+// 清空
+function clearContent(){
+    codeArea.value = '';
+    parseTipEl.innerText = '';
+    subscriptionData = null;
+    expandedApps.clear();
+    expandedGroups.clear();
+    lastSearchKey = '';
+    appSearchEl.value = '';
+    updateCursor();
+}
 
-function autoParseOnly(){
-if(isLoadingLargeFile)return;
-const input=inputEl.value.trim();
-if(!input){lastParsed=null;setStatus('', 'valid');updateCursorPos();return;}
-try{lastParsed=JSON5.parse(input);setStatus('✅ JSON/JSON5 格式有效','valid');}
-catch(err){lastParsed=null;setStatus(`❌ 格式化失败：${err.message}`,'invalid');}
-updateCursorPos();
+// 紧凑/展开
+function toggleCodeView(){
+    if(!subscriptionData){alert('请先解析');return;}
+    isCompact = !isCompact;
+    codeArea.value = isCompact ? JSON5.stringify(subscriptionData) : JSON5.stringify(subscriptionData,null,2);
+    updateCursor();
 }
-function renderFormattedResult(){
-if(!lastParsed){outputEl.value='';return;}
-outputEl.value=currentFormat==='json'?JSON.stringify(lastParsed,null,4):JSON5.stringify(lastParsed,null,4);
-isCompact=false;
-}
-function convertToJson(){
-const input=inputEl.value.trim();
-if(!input){setStatus('❌ 无内容可转换','invalid');return;}
-try{lastParsed=JSON5.parse(input);currentFormat='json';renderFormattedResult();setStatus('✅ 已转为标准 JSON','valid');}
-catch(err){setStatus(`❌ 转换失败：${err.message}`,'invalid');}
-}
-function convertToJson5(){
-const input=inputEl.value.trim();
-if(!input){setStatus('❌ 无内容可转换','invalid');return;}
-try{lastParsed=JSON5.parse(input);currentFormat='json5';renderFormattedResult();setStatus('✅ 已转为 JSON5 格式','valid');}
-catch(err){setStatus(`❌ 转换失败：${err.message}`,'invalid');}
-}
-function toggleDisplay(){
-if(!lastParsed){setStatus('❌ 暂无有效内容可切换显示','invalid');return;}
-isCompact=!isCompact;
-outputEl.value=currentFormat==='json'
-?(isCompact?JSON.stringify(lastParsed):JSON.stringify(lastParsed,null,4))
-:(isCompact?JSON5.stringify(lastParsed):JSON5.stringify(lastParsed,null,4));
-setStatus(isCompact?'🔄 JSON5【紧凑】':'🔄 JSON5【展开】','valid');
-setTimeout(()=>setStatus('','valid'),2000);
-}
-function updateCursorPos(){
-const value=inputEl.value;
-const pos=inputEl.selectionStart;
-const lines=value.substring(0,pos).split('\n');
-const row=lines.length;
-const col=lines[lines.length-1].length+1;
-cursorPosEl.textContent=`${row}:${col}`;
-}
-async function pasteInput(){
-try{const text=await navigator.clipboard.readText();inputEl.value=text;autoParseOnly();}
-catch(err){setStatus('❌ 粘贴失败：权限不足','invalid');}
-}
-async function copyOutput(){
-const text=outputEl.value;
-if(!text){setStatus('❌ 无内容可复制','invalid');return;}
-try{await navigator.clipboard.writeText(text);setStatus('✅ 复制成功！','valid');setTimeout(()=>setStatus('','valid'),2000);}
-catch(err){setStatus('❌ 复制失败','invalid');}
-}
-function clearInput(){inputEl.value='';currentFormat='json5';lastParsed=null;autoParseOnly();}
-function downloadFile(){
-const content=outputEl.value.trim();
-if(!content){setStatus('❌ 无内容可下载','invalid');return;}
-const blob=new Blob([content],{type:'application/json5'});
-const url=URL.createObjectURL(blob);
-const a=document.createElement('a');
-a.href=url;a.download=currentFormat==='json'?'formatted.json':'formatted.json5';a.click();
-URL.revokeObjectURL(url);
-setStatus('✅ 下载完成','valid');setTimeout(()=>setStatus('','valid'),2000);
-}
-function setStatus(msg,type){statusMsgEl.textContent=msg;statusEl.className=`json5-status ${type}`;}
-function readLocalFile(fileInput){
-const file=fileInput.files[0];if(!file)return;
-isLoadingLargeFile=true;inputEl.value='';setStatus(`⏳ 加载：${file.name}`,'valid');
-const fileReader=new FileReader();let offset=0;const fileSize=file.size;
-fileReader.onload=function(e){inputEl.value+=e.target.result;offset+=CHUNK_SIZE;loadNextChunk();};
-fileReader.onerror=function(){isLoadingLargeFile=false;setStatus('❌ 文件读取失败','invalid');fileInput.value='';};
-function loadNextChunk(){
-if(offset>=fileSize){isLoadingLargeFile=false;setStatus(`✅ 加载完成：${file.name}`,'valid');autoParseOnly();fileInput.value='';return;}
-const slice=file.slice(offset,offset+CHUNK_SIZE);
-fileReader.readAsText(slice,'UTF-8');
-}
-loadNextChunk();
-}
-function showStatus(text,type){const el=document.getElementById('status');el.textContent=text;el.className='status '+type;}
-function downloadBlob(blob,name){
-const url=URL.createObjectURL(blob);
-const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);
-}
-const multiFileInput=document.getElementById('multiFileInput');
-const multiVersion=document.getElementById('multiVersion');
-const mergeMultiBtn=document.getElementById('mergeMultiBtn');
-let selectedFiles=[];
-multiFileInput.addEventListener('change',e=>{
-selectedFiles=Array.from(e.target.files).filter(f=>f.name.endsWith('.md')||f.name.endsWith('.ts')||f.name.endsWith('.json5'));
-mergeMultiBtn.disabled=selectedFiles.length===0;
-if(selectedFiles.length)showStatus(`已选 ${selectedFiles.length} 个文件`,'success');
-});
-mergeMultiBtn.addEventListener('click',async ()=>{
-if(!selectedFiles.length)return;
-mergeMultiBtn.disabled=true;showStatus('正在合并生成订阅...','success');
-try{
-let mdContents=[],json5Template='';
-for(const file of selectedFiles){
-const text=await file.text();
-if(file.name.toLowerCase().endsWith('.md')||file.name.toLowerCase().endsWith('.ts'))mdContents.push(text);
-else if(file.name==='sample.json5')json5Template=text;
-}
-if(mdContents.length===0)throw new Error('未选择任何 .md / .ts 文件');
-if(!json5Template)throw new Error('未选择 sample.json5 模板文件');
-let merged=mdContents.join(',').replace(/```json5/g,'');
-let result=json5Template.replace('//替换标记',merged);
-const v=multiVersion.value.trim();
-if(v)result=result.replace(/version:\s*\d+\s*,/g,`version: ${v},`);
-const blob=new Blob([result],{type:'application/json'});
-downloadBlob(blob,'new.json5');
-showStatus('✅ 多文件合成订阅完成！','success');
-}catch(err){showStatus('❌ 合成失败：'+err.message,'error');}
-finally{mergeMultiBtn.disabled=false;}
-});
-const zipFileInput=document.getElementById('zipFile');
-const zipVersion=document.getElementById('zipVersion');
-const startBtn=document.getElementById('startBtn');
-let selectedZip=null;
-zipFileInput.addEventListener('change',e=>{
-selectedZip=e.target.files[0];startBtn.disabled=!selectedZip;
-if(selectedZip)showStatus('已选择：'+selectedZip.name,'success');
-});
-function findTargetFiles(zip){
-const appsFiles=[];let sampleJson5=null;
-zip.forEach((path,file)=>{
-const p=path.toLowerCase();
-if(!file.dir&&(p.startsWith('apps/')||p.includes('/apps/'))&&(p.endsWith('.md')||p.endsWith('.ts')))appsFiles.push(file);
-if(!file.dir&&p.endsWith('apps/sample.json5')&&!sampleJson5)sampleJson5=file;
-});
-return{appsFiles,sampleJson5};
-}
-startBtn.addEventListener('click',async ()=>{
-if(!selectedZip)return showStatus('请先选择ZIP文件','error');
-startBtn.disabled=true;showStatus('正在处理ZIP...','success');
-try{
-const zip=await new JSZip().loadAsync(selectedZip);
-const {appsFiles,sampleJson5}=findTargetFiles(zip);
-if(!appsFiles.length)throw new Error('未找到apps下的md/ts文件');
-if(!sampleJson5)throw new Error('未找到sample.json5');
-let content='';
-for(const f of appsFiles)content+=await f.async('string')+',';
-content=content.slice(0,-1).replace(/```json5/g,'');
-let json5=await sampleJson5.async('string');
-json5=json5.replace('//替换标记',content);
-const v=zipVersion.value.trim();
-if(v)json5=json5.replace(/version:\s*\d+\s*,/g,`version: ${v},`);
-const blob=new Blob([json5],{type:'application/json'});
-downloadBlob(blob,'new.json5');
-showStatus('✅ ZIP合成订阅完成！','success');
-}catch(err){showStatus('❌ 失败：'+err.message,'error');}
-finally{startBtn.disabled=false;}
-});
 
-let gkdData={};
-const codeEditor=document.getElementById('codeEditor');
-const appListContainer=document.getElementById('appListContainer');
-const statusBox=document.getElementById('statusGkd');
-const editModal=document.getElementById('editModal');
-const modalTitle=document.getElementById('modalTitle');
-const modalEditor=document.getElementById('modalEditor');
-let isCodeMode=false,currentEdit=null;
-function showStatusGkd(msg,type='success'){
-statusBox.textContent=msg;statusBox.className=`status ${type}`;
-statusBox.style.display='block';setTimeout(()=>statusBox.style.display='none',3000);
+// 本地导入
+function importLocalFile(e){
+    let f = e.target.files[0];
+    if(!f) return;
+    let r = new FileReader;
+    r.onload = function(ev){
+        codeArea.value = ev.target.result;
+        parseJson5();
+        updateCursor();
+    };
+    r.readAsText(f);
+    e.target.value = '';
 }
-function parseData(){
-try{
-const val=codeEditor.value.trim();
-gkdData=val?JSON5.parse(val):{apps:[]};
-if(!gkdData.apps)gkdData.apps=[];
-renderAppList();return true;
-}catch(e){showStatusGkd('解析失败：'+e.message,'error');return false;}
+
+// 提示
+function showErr(m){parseTipEl.style.color='#f87171';parseTipEl.innerText=m}
+function showOk(m){parseTipEl.style.color='#4ade80';parseTipEl.innerText=m}
+
+// 解析核心
+function parseJson5(){
+    let c = codeArea.value.trim();
+    if(!c){showErr('请输入JSON5内容');subscriptionData=null;return;}
+    try{
+        subscriptionData = JSON5.parse(c);
+        codeArea.value = JSON5.stringify(subscriptionData,null,2);
+        isCompact = false;
+        expandedApps.clear();
+        expandedGroups.clear();
+        lastSearchKey = '';
+        appSearchEl.value = '';
+        showOk('解析成功');
+        renderAllView();
+    }catch(err){
+        showErr('解析失败：'+err.message);
+        subscriptionData = null;
+    }
+    updateCursor();
 }
-function syncCode(){codeEditor.value=JSON5.stringify(gkdData,null,2);}
-document.getElementById('toggleCodeBtn').onclick=()=>{
-isCodeMode=!isCodeMode;
-if(isCodeMode){syncCode();appListContainer.style.display='none';codeEditor.style.display='block';document.getElementById('toggleCodeBtn').textContent='可视化';}
-else{codeEditor.style.display='none';appListContainer.style.display='block';parseData();document.getElementById('toggleCodeBtn').textContent='源码';}
-};
-codeEditor.addEventListener('input',parseData);
-function renderAppList(){
-const appList=document.getElementById('appList');
-if(!gkdData.apps.length){appList.innerHTML='<div class="empty-tip">暂无应用规则</div>';return;}
-let html='';
-gkdData.apps.forEach((app,aIdx)=>{
-const appName=app.name||'未命名应用';
-const appPkg=app.id||app.package||'无包名';
-html+=`<div class="app-item"><div class="app-header" onclick="toggleApp(this)"><div><div class="app-name">${appName}</div><div class="app-pkg">包名：${appPkg}</div></div><div><button class="btn btn-warning btn-sm" onclick="editApp(${aIdx},event)">编辑</button><button class="btn btn-danger btn-sm" onclick="delApp(${aIdx},event)">删除</button></div></div><div class="app-body"><button class="btn btn-primary btn-sm" onclick="addGroup(${aIdx})">➕ 新增组</button><div style="margin-top:10px;">`;
-const groups=app.groups||[];
-groups.forEach((group,gIdx)=>{
-const gk=group.key!==undefined?group.key:gIdx;
-const gn=group.name||'未命名组';
-html+=`<div class="group-item"><div class="group-name">[${gk}] ${gn}<button class="btn btn-warning btn-sm" onclick="editGroup(${aIdx},${gIdx},event)">编辑</button><button class="btn btn-danger btn-sm" onclick="delGroup(${aIdx},${gIdx},event)">删除</button><button class="btn btn-primary btn-sm" onclick="addRule(${aIdx},${gIdx})">加规则</button></div>`;
-const rules=group.rules||[];
-if(rules.length){
-rules.forEach((rule,rIdx)=>{
-const rk=rule.key!==undefined?rule.key:'';
-const rn=rule.name||'';
-const txt=rk!==''?`[${rk}] ${rn}`:rn;
-html+=`<div class="rule-item"><span>${txt}</span><div class="rule-actions"><button class="btn btn-warning btn-sm" onclick="editRule(${aIdx},${gIdx},${rIdx},event)">编</button><button class="btn btn-danger btn-sm" onclick="delRule(${aIdx},${gIdx},${rIdx},event)">删</button></div></div>`;
-});
-}else html+='<div class="empty-tip" style="padding:4px;text-align:left;">暂无子规则</div>';
-html+='</div>';
-});
-if(!groups.length)html+='<div class="empty-tip" style="padding:4px;text-align:left;">该应用暂无规则组</div>';
-html+='</div></div></div>';
-});
-appList.innerHTML=html;
+
+// 搜索
+function doSearch(){
+    lastSearchKey = appSearchEl.value.trim().toLowerCase();
+    renderApps();
 }
-window.toggleApp=el=>el.nextElementSibling.classList.toggle('show');
-function openModal(title,data,callback){
-modalTitle.textContent=title;
-modalEditor.value=JSON5.stringify(data,null,2);
-currentEdit=callback;
-editModal.style.display='flex';
+
+// 弹窗
+function openVisualManage(){
+    if(!subscriptionData){alert('请先解析');return;}
+    renderAllView();
+    document.getElementById('visualMask').style.display='flex';
 }
-window.closeModal=()=>{editModal.style.display='none';currentEdit=null;};
-window.saveModal=()=>{
-try{
-const val=modalEditor.value.trim();
-const data=JSON5.parse(val);
-if(currentEdit)currentEdit(data);
-closeModal();syncCode();renderAppList();showStatusGkd('保存成功');
-}catch(e){showStatusGkd('JSON格式错误','error');}
-};
-window.editApp=(aIdx,e)=>{e.stopPropagation();openModal('编辑应用源码',gkdData.apps[aIdx],data=>gkdData.apps[aIdx]=data);};
-window.editGroup=(aIdx,gIdx,e)=>{e.stopPropagation();openModal('编辑规则组源码',gkdData.apps[aIdx].groups[gIdx],data=>gkdData.apps[aIdx].groups[gIdx]=data);};
-window.editRule=(aIdx,gIdx,rIdx,e)=>{e.stopPropagation();openModal('编辑子规则源码',gkdData.apps[aIdx].groups[gIdx].rules[rIdx],data=>gkdData.apps[aIdx].groups[gIdx].rules[rIdx]=data);};
-window.delApp=(idx,e)=>{e.stopPropagation();if(confirm('确定删除该应用？')){gkdData.apps.splice(idx,1);syncCode();renderAppList();}};
-window.delGroup=(a,g,e)=>{e.stopPropagation();if(confirm('确定删除该规则组？')){gkdData.apps[a].groups.splice(g,1);syncCode();renderAppList();}};
-window.delRule=(a,g,r,e)=>{e.stopPropagation();if(confirm('确定删除该子规则？')){gkdData.apps[a].groups[g].rules.splice(r,1);syncCode();renderAppList();}};
-document.getElementById('addAppBtn').onclick=()=>{gkdData.apps.push({id:'',name:'',groups:[]});syncCode();renderAppList();showStatusGkd('新增应用成功');};
-window.addGroup=aIdx=>{gkdData.apps[aIdx].groups.push({key:0,name:'',rules:[]});syncCode();renderAppList();showStatusGkd('新增规则组成功');};
-window.addRule=(aIdx,gIdx)=>{gkdData.apps[aIdx].groups[gIdx].rules.push({key:0,name:'',match:''});syncCode();renderAppList();showStatusGkd('新增子规则成功');};
-document.getElementById('importBtn').onclick=()=>document.getElementById('fileInputGkd').click();
-document.getElementById('fileInputGkd').onchange=function(e){
-const file=e.target.files[0];if(!file)return;
-const reader=new FileReader();
-reader.onload=evt=>{codeEditor.value=evt.target.result;parseData();showStatusGkd('文件导入成功！');};
-reader.readAsText(file);
-};document.getElementById('exportBtn').onclick = async () => {if (!parseData()) {showStatusGkd('数据无效，无法导出', 'error');return;}
-try {const content = codeEditor.value.trim();
-if (!content) {showStatusGkd('无内容可导出', 'error');return;}
-const blob = new Blob([content], { type: 'application/json5; charset=utf-8' });
-const fileName = `gkd_${Date.now()}.json5`;
-if (navigator.msSaveOrOpenBlob) {navigator.msSaveOrOpenBlob(blob, fileName);
-} else {const url = URL.createObjectURL(blob);const a = document.createElement('a');
-a.href = url;a.download = fileName;a.style.display = 'none';document.body.appendChild(a);
-a.click();setTimeout(() => {document.body.removeChild(a);URL.revokeObjectURL(url);},100);}
-showStatusGkd('导出成功');} catch (err) {showStatusGkd('导出失败：' + err.message, 'error');}};
-document.getElementById('formatBtn').onclick=()=>{parseData();syncCode();showStatusGkd('格式化完成');};
-document.getElementById('clearBtn').onclick=()=>{if(confirm('确定清空所有数据？')){gkdData={apps:[]};codeEditor.value='';renderAppList();showStatusGkd('已清空','warning');}};
-renderAppList();
+function closeVisualManage(){
+    document.getElementById('visualMask').style.display='none';
+}
+
+// 渲染总入口
+function renderAllView(){
+    if(!subscriptionData) return;
+    document.getElementById('subId').innerText = subscriptionData.id ?? '-';
+    document.getElementById('subName').innerText = subscriptionData.name ?? '-';
+    document.getElementById('subVersion').innerText = subscriptionData.version ?? 0;
+    document.getElementById('subAuthor').innerText = subscriptionData.author ?? '-';
+    document.getElementById('subUpdateUrl').innerText = subscriptionData.updateUrl ?? '-';
+    document.getElementById('subSupportUri').innerText = subscriptionData.supportUri ?? '-';
+    renderGlobalGroups();
+    renderApps();
+}
+
+// 渲染全局规则组
+function renderGlobalGroups(){
+    let wrap = document.getElementById('globalGroupsWrap');
+    let g = safeArr(subscriptionData.globalGroups);
+    if(!g.length){wrap.innerHTML='<div class="app-item">暂无</div>';return}
+    let html='';
+    g.forEach((item,idx)=>{
+        let keyText = hasValidKey(item.key) ? `规则组${item.key}：` : '';
+        html += `<div class="app-item"><div class="app-head">
+        <span>${keyText}${item.name||'未命名'}</span>
+        <div>
+        <button class="btn btn-sm btn-warning" onclick="editGlobalGroup(${idx})">编辑</button>
+        <button class="btn btn-sm btn-danger" onclick="delGlobalGroup(${idx})">删除</button>
+        </div></div>
+        ${hasValidKey(item.key)?`<div class="app-desc">key：${item.key}</div>`:''}</div>`;
+    });
+    wrap.innerHTML = html;
+}
+
+// 渲染应用列表
+function renderApps(){
+    let wrap = document.getElementById('appsWrap');
+    let apps = safeArr(subscriptionData.apps);
+    let filterApps = apps.filter(app=>{
+        let n = (app.name||'').toLowerCase();
+        let id = (app.id||'').toLowerCase();
+        return n.includes(lastSearchKey) || id.includes(lastSearchKey);
+    });
+    if(!filterApps){wrap.innerHTML='<div class="app-item">无匹配应用</div>';return}
+    let html='';
+    filterApps.forEach((app,appIdx)=>{
+        let realIdx = apps.indexOf(app);
+        let appOpen = expandedApps.has(realIdx);
+        let groups = safeArr(app.groups);
+        html += `<div class="app-item"><div class="app-head">
+        <span class="app-title" onclick="toggleAppExpand(${realIdx})">${appOpen?'▼':'▶'} ${app.name||'未命名'} (${app.id})</span>
+        <div>
+        <button class="btn btn-sm btn-warning" onclick="editApp(${realIdx})">编辑</button>
+        <button class="btn btn-sm btn-danger" onclick="delApp(${realIdx})">删除</button>
+        <button class="btn btn-sm btn-primary" onclick="addEmptyGroup(${realIdx})">加规则组</button>
+        </div></div><div class="child-wrap ${appOpen?'open':''}">`;
+        if(!groups.length){html+='<div class="group-item">暂无规则组</div>';}
+        else{
+            groups.forEach((group,groupIdx)=>{
+                let gKey = `${realIdx}-${groupIdx}`;
+                let gOpen = expandedGroups.has(gKey);
+                let rules = safeArr(group.rules);
+                let keyText = hasValidKey(group.key) ? `规则组${group.key}：` : '';
+                html += `<div class="group-item"><div class="group-head">
+                <span class="group-title" onclick="toggleGroupExpand(${realIdx},${groupIdx})">${gOpen?'▼':'▶'} ${keyText}${group.name||'未命名'}</span>
+                <div>
+                <button class="btn btn-sm btn-warning" onclick="editGroup(${realIdx},${groupIdx})">编辑</button>
+                <button class="btn btn-sm btn-danger" onclick="delGroup(${realIdx},${groupIdx})">删除</button>
+                <button class="btn btn-sm btn-primary" onclick="addEmptyRule(${realIdx},${groupIdx})">加子规则</button>
+                </div></div>
+                ${hasValidKey(group.key)?`<div class="group-desc">key：${group.key}</div>`:''}
+                <div class="child-wrap ${gOpen?'open':''}">`;
+                if(!rules.length){html+='<div class="rule-item">暂无子规则</div>';}
+                else{
+                    rules.forEach((rule,ruleIdx)=>{
+                        let rKeyText = hasValidKey(rule.key) ? `子规则${rule.key}：` : '';
+                        html += `<div class="rule-item"><div class="rule-head">
+                        <span>${rKeyText}${rule.name||'未命名'}</span>
+                        <div>
+                        <button class="btn btn-sm btn-warning" onclick="editRule(${realIdx},${groupIdx},${ruleIdx})">编辑</button>
+                        <button class="btn btn-sm btn-danger" onclick="delRule(${realIdx},${groupIdx})">删除</button>
+                        </div></div></div>`;
+                    });
+                }
+                html += `</div></div>`;
+            });
+        }
+        html += `</div></div>`;
+    });
+    wrap.innerHTML = html;
+}
+
+// 折叠
+function toggleAppExpand(i){expandedApps.has(i)?expandedApps.delete(i):expandedApps.add(i);renderApps()}
+function toggleGroupExpand(a,g){let k=`${a}-${g}`;expandedGroups.has(k)?expandedGroups.delete(k):expandedGroups.add(k);renderApps()}
+
+// 同步
+function syncToCode(){
+    if(!subscriptionData) return;
+    codeArea.value = JSON5.stringify(subscriptionData,null,2);
+    isCompact = false;
+    updateCursor();
+}
+
+// 导出
+function downloadJson5(){
+    let blob = new Blob([codeArea.value],{type:'text/plain'});
+    let a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'gkd.json5';
+    a.click();
+}
+
+// 编辑
+function editVersion(){
+    editTarget={type:'version'};
+    document.getElementById('editModalTitle').innerText='编辑版本号';
+    document.getElementById('editCode').value=String(subscriptionData.version??0);
+    document.getElementById('editMask').style.display='flex';
+}
+function editGlobalGroup(i){
+    editTarget={type:'globalGroup',idx1:i};
+    document.getElementById('editModalTitle').innerText='编辑规则组';
+    document.getElementById('editCode').value=JSON5.stringify(subscriptionData.globalGroups[i],null,2);
+    document.getElementById('editMask').style.display='flex';
+}
+function editApp(i){
+    editTarget={type:'app',idx1:i};
+    document.getElementById('editModalTitle').innerText='编辑应用';
+    document.getElementById('editCode').value=JSON5.stringify(subscriptionData.apps[i],null,2);
+    document.getElementById('editMask').style.display='flex';
+}
+function editGroup(a,g){
+    editTarget={type:'group',idx1:a,idx2:g};
+    document.getElementById('editModalTitle').innerText='编辑规则组';
+    document.getElementById('editCode').value=JSON5.stringify(subscriptionData.apps[a].groups[g],null,2);
+    document.getElementById('editMask').style.display='flex';
+}
+function editRule(a,g,r){
+    editTarget={type:'rule',idx1:a,idx2:g,idx3:r};
+    let rule = subscriptionData.apps[a].groups[g].rules[r];
+    document.getElementById('editCode').value = JSON5.stringify(rule,null,2);
+    document.getElementById('editMask').style.display='flex';
+}
+function closeEditMask(){
+    document.getElementById('editMask').style.display='none';
+}
+
+// 保存
+function saveEditContent(){
+    let v = document.getElementById('editCode').value.trim();
+    try{
+        let o = JSON5.parse(v);
+        if(editTarget.type === 'version'){
+            let n = parseInt(v);
+            subscriptionData.version = isNaN(n)?0:n;
+        }else{
+            switch(editTarget.type){
+                case 'globalGroup': subscriptionData.globalGroups[editTarget.idx1]=o;break;
+                case 'app': subscriptionData.apps[editTarget.idx1]=o;break;
+                case 'group': subscriptionData.apps[editTarget.idx2]=o;break;
+                case 'rule': subscriptionData.apps[editTarget.idx1].groups[editTarget.idx2].rules[editTarget.idx3]=o;break;
+            }
+        }
+        syncToCode();renderAllView();closeEditMask();
+    }catch(e){alert('JSON5 格式错误')}
+}
+
+// 删除
+function delGlobalGroup(i){if(!confirm('确定删除？'))return;subscriptionData.globalGroups.splice(i,1);syncToCode();renderAllView()}
+function delApp(i){if(!confirm('确定删除？'))return;subscriptionData.apps.splice(i,1);expandedApps.delete(i);syncToCode();renderApps()}
+function delGroup(a,g){if(!confirm('确定删除？'))return;subscriptionData.apps[a].groups.splice(g,1);syncToCode();renderApps()}
+function delRule(a,g,r){if(!confirm('确定删除？'))return;subscriptionData.apps[a].groups[g].rules.splice(r,1);syncToCode();renderApps()}
+
+// 新增
+function addEmptyGroup(i){
+    if(!subscriptionData.apps[i].groups) subscriptionData.apps[i].groups=[];
+    let k = subscriptionData.apps[i].groups.length;
+    subscriptionData.apps[i].groups.push({key:k,name:'新规则组-未命名',rules:[]});
+    expandedApps.add(i);
+    syncToCode();renderApps();
+}
+function addEmptyRule(a,g){
+    let group = subscriptionData.apps[a].groups[g];
+    if(!group.rules) group.rules=[];
+    let k = group.rules.length;
+    group.rules.push({key:k,name:'新子规则',fastQuery:true,activityIds:'',matches:'',snapshotUrls:''});
+    expandedGroups.add(`${a}-${g}`);
+    syncToCode();renderApps();
+}
 </script>
 </body>
 </html>
