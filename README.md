@@ -62,17 +62,20 @@
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 ```
 
-- ~~[Beta-test](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app) - [查看版本](https://gitee.com/lhj1618/GGKD/tree/master/.temp/new-app/version.json5)~~
-
 - [GitHub](./releases) - [查看版本](./releases/version.json5)
 
+原GitHub链接
+```
+https://github.com/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5
+```
+Xget加速
+```
+https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5
+```
+原raw链接
 ```
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
-```
-```
-https://raw.gitmirror.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
-```
-
+`
 ---
 
  **其它平台**  ： [Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD)  /  我的李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
