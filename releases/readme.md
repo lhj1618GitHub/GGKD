@@ -1,6 +1,6 @@
  **正式订阅文件存放目录** 
 
-版本说明 - [最新订阅文件](./lhj1618.json5) - [最新版本号](./version.json5) 
+版本说明 [编辑最新文件](https://github.com/lhj1618GitHub/GGKD/edit/master/releases/lhj1618.json5) - [最新订阅文件](./lhj1618.json5) - [最新版本号](./version.json5) 
 
 |        版本        |      主要变动内容      |
 |--------------------|-----------------------|
