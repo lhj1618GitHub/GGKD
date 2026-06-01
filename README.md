@@ -30,10 +30,6 @@
 
 ---
 
-[我的订阅文件](./releases.md)
-
----
-
- **其它平台**  ： [Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD)  /  我的李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
+**[我的订阅文件](./releases.md) / 其它平台**  ： [Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD)  /  我的李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
 
 
