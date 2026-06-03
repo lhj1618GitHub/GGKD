@@ -168,7 +168,6 @@
                 </div>
                 <textarea id="input" placeholder="粘贴或输入JSON/JSON5内容...也可通过下方按钮导入本地文件"></textarea>
                 <div class="btn-group">
-                    <button onclick="pasteInput()">📋 粘贴</button>
                     <button onclick="clearInput()">🗑️ 清空</button>
                     <button class="file-input-btn">📁 导入
                         <input type="file" id="fileInput" onchange="readLocalFile(this)">
@@ -323,15 +322,6 @@
         }
 
         function setErrorMsg(msg) { errorMsgEl.textContent = msg; }
-
-        async function pasteInput() {
-            try {
-                const text = await navigator.clipboard.readText();
-                inputEl.value = text;
-                formatJson();
-                setErrorMsg('');
-            } catch (err) { setErrorMsg('❌ 粘贴失败：权限不足'); }
-        }
 
         async function copyOutput() {
             const text = outputEl.value;
