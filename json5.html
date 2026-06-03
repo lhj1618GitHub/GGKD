@@ -64,6 +64,10 @@
             color: #ff6b6b;
             font-weight: 500;
         }
+        .status-tip {
+            color: #4caf50;
+            font-weight:500;
+        }
         .format-btns {
             display: flex;
             gap: 6px;
@@ -133,29 +137,7 @@
             cursor: pointer;
         }
         .status {
-            margin-top: 10px;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1e1e1e;
-            border: 1px solid #333;
-        }
-        .status.valid {
-            background: #1e3a1e;
-            color: #4caf50;
-            border-color: #2e7d32;
-        }
-        .status.invalid {
-            background: #3a1e1e;
-            color: #f44336;
-            border-color: #c62828;
-        }
-        .loading {
-            color: #ffc107;
-            font-weight: bold;
+            display: none;
         }
         @media (max-width: 900px) {
             .editor-group {
@@ -186,11 +168,12 @@
                 </div>
                 <textarea id="input" placeholder="粘贴或输入JSON/JSON5内容...也可通过下方按钮导入本地文件"></textarea>
                 <div class="btn-group">
-                    <button onclick="pasteInput()">📋 快捷粘贴</button>
-                    <button onclick="clearInput()">🗑️ 清空输入</button>
-                    <button class="file-input-btn">📁 导入本地文件
+                    <button onclick="pasteInput()">📋 粘贴</button>
+                    <button onclick="clearInput()">🗑️ 清空</button>
+                    <button class="file-input-btn">📁 导入
                         <input type="file" id="fileInput" onchange="readLocalFile(this)">
                     </button>
+                    <button onclick="toggleInputCompact()">🔃 紧凑/展开</button>
                 </div>
             </div>
             <div class="editor-panel">
@@ -198,11 +181,12 @@
                     <span>格式化结果</span>
                     <div class="panel-info">
                         <span class="error-msg" id="error-msg"></span>
+                        <span class="status-tip" id="status-tip"></span>
                     </div>
                 </div>
                 <textarea id="output" readonly placeholder="格式化结果将显示在这里..."></textarea>
                 <div class="btn-group">
-                    <button onclick="toggleDisplay()">🔄 切换显示</button>
+                    <button onclick="toggleDisplay()">🔄 紧凑/展开</button>
                     <button onclick="copyOutput()">📋 复制结果</button>
                     <button onclick="downloadFile()">⬇️ 下载文件</button>
                 </div>
@@ -217,24 +201,22 @@
         const inputEl = document.getElementById('input');
         const outputEl = document.getElementById('output');
         const statusMsgEl = document.getElementById('status-msg');
+        const statusTipEl = document.getElementById('status-tip');
         const cursorPosEl = document.getElementById('cursor-pos');
         const errorMsgEl = document.getElementById('error-msg');
         const statusEl = document.getElementById('status');
         
-        // 优化：记录当前格式类型 + 切换状态
         let isCompact = false;
+        let inputIsCompact = false;
         let lastParsed = null;
-        let currentFormat = 'json5'; // json / json5
-
+        let currentFormat = 'json5';
         const CHUNK_SIZE = 1024 * 256;
         let isLoadingLargeFile = false;
-
         inputEl.addEventListener('input', formatJson);
         inputEl.addEventListener('click', updateCursorPos);
         inputEl.addEventListener('keyup', updateCursorPos);
         inputEl.addEventListener('focus', updateCursorPos);
 
-        // 默认格式化（JSON5）
         function formatJson() {
             if (isLoadingLargeFile) return;
             const input = inputEl.value.trim();
@@ -253,7 +235,7 @@
                 currentFormat = 'json5';
                 isCompact = false;
                 outputEl.value = JSON5.stringify(parsed, null, 4);
-                setStatus('✅ JSON/JSON5 格式有效', 'valid');
+                setStatus('✅ 格式有效', 'valid');
                 setErrorMsg('');
             } catch (err) {
                 outputEl.value = '';
@@ -264,34 +246,52 @@
             updateCursorPos();
         }
 
-        // ✅ 核心优化：智能切换显示（自动匹配当前格式）
+        function toggleInputCompact(){
+            const val = inputEl.value.trim();
+            if(!val){
+                setErrorMsg("❌ 输入框暂无数据");
+                return;
+            }
+            try{
+                let obj = JSON5.parse(val);
+                inputIsCompact = !inputIsCompact;
+                if(inputIsCompact){
+                    inputEl.value = JSON5.stringify(obj);
+                    setStatus("✅ 输入已切换【紧凑】",'valid');
+                }else{
+                    inputEl.value = JSON5.stringify(obj,null,4);
+                    setStatus("✅ 输入已切换【展开】",'valid');
+                }
+                setTimeout(()=>setStatus('','valid'),2000);
+                formatJson();
+            }catch(e){
+                setErrorMsg(`❌ 格式错误无法切换：${e.message}`);
+            }
+        }
+
         function toggleDisplay() {
             if (!lastParsed) {
                 setErrorMsg('❌ 暂无有效内容可切换显示');
                 return;
             }
             isCompact = !isCompact;
-            
             if (currentFormat === 'json') {
-                // 当前是 JSON 格式：保持 JSON 标准
                 outputEl.value = isCompact ? JSON.stringify(lastParsed) : JSON.stringify(lastParsed, null, 4);
                 setStatus(isCompact ? '🔄 JSON【紧凑模式】' : '🔄 JSON【展开模式】', 'valid');
             } else {
-                // 当前是 JSON5 格式：保持 JSON5 格式
                 outputEl.value = isCompact ? JSON5.stringify(lastParsed) : JSON5.stringify(lastParsed, null, 4);
                 setStatus(isCompact ? '🔄 JSON5【紧凑模式】' : '🔄 JSON5【展开模式】', 'valid');
             }
             setTimeout(() => setStatus('', 'valid'), 2000);
         }
 
-        // 转换为标准 JSON
         function convertToJson() {
             const input = inputEl.value.trim();
             if (!input) { setErrorMsg('❌ 无内容可转换'); return; }
             try {
                 const parsed = JSON5.parse(input);
                 lastParsed = parsed;
-                currentFormat = 'json'; // 标记当前为 JSON 格式
+                currentFormat = 'json';
                 isCompact = false;
                 outputEl.value = JSON.stringify(parsed, null, 4);
                 setStatus('✅ 已转为标准 JSON', 'valid');
@@ -299,14 +299,13 @@
             } catch (err) { setErrorMsg(`❌ 转换失败：${err.message}`); }
         }
 
-        // 转换为 JSON5
         function convertToJson5() {
             const input = inputEl.value.trim();
             if (!input) { setErrorMsg('❌ 无内容可转换'); return; }
             try {
                 const parsed = JSON5.parse(input);
                 lastParsed = parsed;
-                currentFormat = 'json5'; // 标记当前为 JSON5 格式
+                currentFormat = 'json5';
                 isCompact = false;
                 outputEl.value = JSON5.stringify(parsed, null, 4);
                 setStatus('✅ 已转为 JSON5 格式', 'valid');
@@ -331,7 +330,7 @@
                 inputEl.value = text;
                 formatJson();
                 setErrorMsg('');
-            } catch (err) { setErrorMsg('❌ 粘贴失败：浏览器权限不足'); }
+            } catch (err) { setErrorMsg('❌ 粘贴失败：权限不足'); }
         }
 
         async function copyOutput() {
@@ -346,6 +345,7 @@
 
         function clearInput() {
             inputEl.value = '';
+            inputIsCompact = false;
             formatJson();
             setErrorMsg('');
         }
@@ -371,8 +371,7 @@
         }
 
         function setStatus(msg, type) {
-            statusMsgEl.textContent = msg;
-            statusEl.className = `status ${type}`;
+            statusTipEl.textContent = msg;
         }
 
         function readLocalFile(fileInput) {
@@ -380,7 +379,7 @@
             if (!file) return;
             isLoadingLargeFile = true;
             inputEl.value = '';
-            setStatus(`⏳ 正在加载超大文件：${file.name}，请稍候...`, 'valid');
+            setStatus(`⏳ 正在加载大文件：${file.name}，请稍候...`, 'valid');
             setErrorMsg('');
             const fileReader = new FileReader();
             let offset = 0;
