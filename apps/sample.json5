@@ -23,6 +23,20 @@
                 },
             ],
         },
+        {
+            key: 1,
+            name: '更新提示-全局',
+            desc: '拒绝更新应用',
+            fastQuery: true,
+            matchTime: 8000,
+            actionMaximum: 1,
+            resetMatch: 'app',
+            rules: [
+                {
+                    matches: '[text="暂不更新" || desc="暂不更新" || text="以后再说" || desc="以后再说"][visibleToUser=true]',
+                },
+            ],
+        },
     ],
     categories: [
         {
