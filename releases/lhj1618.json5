@@ -1,12 +1,12 @@
 {
-  id: 2603,
-  version: 85,
-  name: 'GitHub',
-  author: 'lhj1618',
-  checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
-  updateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5',
-  supportUri: 'https://github.com/lhj1618GitHub/GGKD',
-  globalGroups: [
+    id: 2603,
+    version: 86,
+    name: 'GitHub',
+    author: 'lhj1618',
+    checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
+    updateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5',
+    supportUri: 'https://github.com/lhj1618GitHub/GGKD',
+    globalGroups: [
         {
             key: 0,
             name: '开屏广告-全局',
@@ -20,6 +20,20 @@
                     anyMatches: [
                         '[text*="跳过" || text*="跳 过" || text*="跳過" || text*="关闭" || desc*="跳过" || desc*="跳 过" || desc*="跳過"][text.length<10][visibleToUser=true]',
                     ],
+                },
+            ],
+        },
+        {
+            key: 1,
+            name: '更新提示-全局',
+            desc: '拒绝更新应用',
+            fastQuery: true,
+            matchTime: 8000,
+            actionMaximum: 1,
+            resetMatch: 'app',
+            rules: [
+                {
+                    matches: '[text="暂不更新" || desc="暂不更新" || text="以后再说" || desc="以后再说"][visibleToUser=true]',
                 },
             ],
         },
@@ -39,43 +53,6 @@
         },
     ],
     apps: [
-        {
-            id: 'com.miui.gallery',
-            name: '相册',
-            matchTime: 5000,
-            groups: [
-                {
-                    key: 1,
-                    name: '自动化-发现新版本',
-                    desc: '[暂不更新]',
-                    rules: [
-                        {
-                            activityIds: null,
-                            matches: '@Button[desc="暂不更新"][visibleToUser=true]',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 'com.android.providers.downloads.ui',
-            name: '下载管理',
-            groups: [
-                {
-                    key: 1,
-                    name: '自动化- 发现新版本',
-                    desc: '[以后再说]',
-                    matchTime: 5000,
-                    rules: [
-                        {
-                            fastQuery: true,
-                            activityIds: 'com.android.providers.downloads.ui.DownloadList',
-                            matches: '[text="发现新版本"] < LinearLayout + ScrollView + LinearLayout > Button[text="以后再说"][visibleToUser=true]',
-                        },
-                    ],
-                },
-            ],
-        },
         {
             id: 'com.phoenix.read',
             name: '红果免费短剧',
