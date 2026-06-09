@@ -18,7 +18,7 @@
             rules: [
                 {
                     anyMatches: [
-                        '[text*="跳过" || text*="跳 过" || text*="跳過" || text*="关闭" || desc*="跳过" || desc*="跳 过" || desc*="跳過"][text.length<10][visibleToUser=true]',
+                        '[text*="跳过" || desc*="跳过" || text*="跳 过" || desc*="跳 过" || text*="跳過" || desc*="跳過"][text.length<10][visibleToUser=true]',
                     ],
                 },
             ],
