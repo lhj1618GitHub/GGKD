@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 87,
+    version: 88,
     name: 'GitHub',
     author: 'lhj1618',
     checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
@@ -53,6 +53,24 @@
         },
     ],
     apps: [
+        {
+            id: 'com.changan.uni',
+            name: '引力域',
+            groups: [
+                {
+                    key: 1,
+                    name: '弹窗广告-爱车首页',
+                    desc: '[x]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: 'com.changan.uni.MainActivity',
+                            matches: '[vid="iv_close"][visibleToUser=true]',
+                        },
+                    ],
+                },
+            ],
+        },
         {
             id: 'com.phoenix.read',
             name: '红果免费短剧',
