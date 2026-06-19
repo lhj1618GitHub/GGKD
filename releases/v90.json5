@@ -1,11 +1,11 @@
 {
-    id: 3432,
+    id: 6666,
     version: 90,
-    name: 'Gitee',
+    name: 'Gitcode',
     author: 'lhj1618',
-    checkUpdateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/version.json5',
-    updateUrl: 'https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5',
-    supportUri: 'https://gitee.com/lhj1618/GGKD',
+    checkUpdateUrl: './version.json5',
+    updateUrl: 'https://raw.gitcode.com/lhj1618/me/raw/main/GGKD/lhj1618.json5',
+    supportUri: 'https://gitcode.com/lhj1618/me/tree/main/GGKD',
     globalGroups: [
         {
             key: 0,
@@ -52,6 +52,40 @@
         },
     ],
     apps: [
+        {
+            id: 'com.android.permissioncontroller',
+            name: '权限控制器',
+            groups: [
+                {
+                    key: 1,
+                    name: '自动化-修改日历中的日程信息',
+                    desc: '[拒绝]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            matches: [
+                                '[text*="修改日历中的日程信息？"]',
+                                '@Button <2 [vid="buttonPanel"]',
+                            ],
+                        },
+                    ],
+                },
+                {
+                    key: 2,
+                    name: '自动化-应用获取位置信息',
+                    desc: '[拒绝]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            excludeMatches: 'TextView[text*="高德" || text*="引力域" || text*="天气"]',
+                            matches: '@Button[text="拒绝"] <3 LinearLayout -2 LinearLayout > TextView[text*="获取位置信息？"]',
+                        },
+                    ],
+                },
+            ],
+        },
         {
             id: 'com.changan.uni',
             name: '引力域',
@@ -866,6 +900,21 @@
                             fastQuery: true,
                             activityIds: 'com.xiaomi.market.ui.UpdateListActivity',
                             matches: '[vid="ignore_this"]',
+                        },
+                    ],
+                },
+                {
+                    key: 4,
+                    name: '自动化-通知栏提醒',
+                    desc: '[不]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            matches: [
+                                '[text="开启通知栏提醒"]',
+                                '@[text="不了，谢谢"] < [vid="buttonPanel"]',
+                            ],
                         },
                     ],
                 },
