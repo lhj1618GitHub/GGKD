@@ -1,11 +1,11 @@
 {
-    id: 2603,
-    version: 88,
-    name: 'GitHub',
+    id: 6666,
+    version: 90,
+    name: 'Gitcode',
     author: 'lhj1618',
-    checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
-    updateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5',
-    supportUri: 'https://github.com/lhj1618GitHub/GGKD',
+    checkUpdateUrl: './version.json5',
+    updateUrl: 'https://raw.gitcode.com/lhj1618/me/raw/main/GGKD/lhj1618.json5',
+    supportUri: 'https://gitcode.com/lhj1618/me/tree/main/GGKD',
     globalGroups: [
         {
             key: 0,
@@ -27,7 +27,6 @@
             key: 1,
             name: '更新提示-全局',
             desc: '拒绝更新应用',
-            fastQuery: true,
             matchTime: 8000,
             actionMaximum: 1,
             resetMatch: 'app',
@@ -54,6 +53,40 @@
     ],
     apps: [
         {
+            id: 'com.android.permissioncontroller',
+            name: '权限控制器',
+            groups: [
+                {
+                    key: 1,
+                    name: '自动化-修改日历中的日程信息',
+                    desc: '[拒绝]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            matches: [
+                                '[text*="修改日历中的日程信息？"]',
+                                '@Button <2 [vid="buttonPanel"]',
+                            ],
+                        },
+                    ],
+                },
+                {
+                    key: 2,
+                    name: '自动化-应用获取位置信息',
+                    desc: '[拒绝]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            excludeMatches: 'TextView[text*="高德" || text*="引力域" || text*="天气"]',
+                            matches: '@Button[text="拒绝"] <3 LinearLayout -2 LinearLayout > TextView[text*="获取位置信息？"]',
+                        },
+                    ],
+                },
+            ],
+        },
+        {
             id: 'com.changan.uni',
             name: '引力域',
             groups: [
@@ -66,6 +99,19 @@
                             fastQuery: true,
                             activityIds: 'com.changan.uni.MainActivity',
                             matches: '[vid="iv_close"][visibleToUser=true]',
+                        },
+                    ],
+                },
+                {
+                    key: 2,
+                    name: '自动化-连接蓝牙',
+                    desc: '[蓝牙图标]',
+                    actionMaximum: '1',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: 'com.changan.uni.MainActivity',
+                            matches: '[vid="bluetooth_new_image"][visibleToUser=true]',
                         },
                     ],
                 },
@@ -506,39 +552,6 @@
             groups: [
                 {
                     key: 1,
-                    name: '弹窗广告-多关键词',
-                    desc: '使用[返回键]和点击[x]',
-                    fastQuery: true,
-                    matchTime: 5000,
-                    rules: [
-                        {
-                            key: 0,
-                            action: 'back',
-                            matches: [
-                                '[text="开心收下" || text="去抢购" || text="立即抽免单" || text="去刮奖" || text="立即领取" || text="去领大额金币" || text="送你大额现金" || text*="红包助手" || text="刮刮卡发来的消息通知" || text="立即充值" || text="打款金额"][top>600][visibleToUser=true]',
-                            ],
-                            excludeMatches: [
-                                '[text="我的订单" || text="聊天"][bottom<500][visibleToUser=true]',
-                            ],
-                            activityIds: [
-                                '.ui.activity.HomeActivity',
-                                '.ui.activity.MainFrameActivity',
-                            ],
-                        },
-                        {
-                            key: 1,
-                            matches: [
-                                'ImageView[childCount=0][width<130&&height<130] < ViewGroup[childCount=1] < @ViewGroup[childCount=1][clickable=true][visibleToUser=true] <(1,2) ViewGroup <(1,2) ViewGroup < ViewGroup < FrameLayout < FrameLayout < FrameLayout < FrameLayout < FrameLayout <(1,2,3) [parent=null]',
-                            ],
-                            activityIds: [
-                                '.ui.activity.HomeActivity',
-                                '.ui.activity.MainFrameActivity',
-                            ],
-                        },
-                    ],
-                },
-                {
-                    key: 2,
                     name: '弹窗广告-商品详情页视频讲解窗口',
                     desc: '点击[x]',
                     rules: [
@@ -554,7 +567,7 @@
                     ],
                 },
                 {
-                    key: 3,
+                    key: 2,
                     name: '弹窗广告-下单后出现的弹窗',
                     desc: '点击[x]',
                     fastQuery: true,
@@ -574,7 +587,7 @@
                     ],
                 },
                 {
-                    key: 4,
+                    key: 3,
                     name: '自动化-通知权限',
                     desc: '点击[x]和返回键',
                     fastQuery: true,
@@ -887,6 +900,21 @@
                             fastQuery: true,
                             activityIds: 'com.xiaomi.market.ui.UpdateListActivity',
                             matches: '[vid="ignore_this"]',
+                        },
+                    ],
+                },
+                {
+                    key: 4,
+                    name: '自动化-通知栏提醒',
+                    desc: '[不]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: null,
+                            matches: [
+                                '[text="开启通知栏提醒"]',
+                                '@[text="不了，谢谢"] < [vid="buttonPanel"]',
+                            ],
                         },
                     ],
                 },
