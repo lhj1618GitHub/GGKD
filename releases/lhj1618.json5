@@ -1,6 +1,6 @@
 {
     id: 6666,
-    version: 90,
+    version: 92,
     name: 'Gitcode',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -53,6 +53,24 @@
     ],
     apps: [
         {
+            id: 'com.android.browser',
+            name: '浏览器-小米',
+            groups: [
+                {
+                    key: 1,
+                    name: '弹窗广告-添加小部件',
+                    desc: '[取消]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: 'com.android.browser.BrowserActivity',
+                            matches: 'TextView[text*="小部件"] <2 ViewGroup < FrameLayout < ViewGroup < ScrollView + LinearLayout > @Button[text="取消"]',
+                        },
+                    ],
+                },
+            ],
+        },
+        {
             id: 'com.android.permissioncontroller',
             name: '权限控制器',
             groups: [
@@ -99,19 +117,6 @@
                             fastQuery: true,
                             activityIds: 'com.changan.uni.MainActivity',
                             matches: '[vid="iv_close"][visibleToUser=true]',
-                        },
-                    ],
-                },
-                {
-                    key: 2,
-                    name: '自动化-连接蓝牙',
-                    desc: '[蓝牙图标]',
-                    actionMaximum: '1',
-                    rules: [
-                        {
-                            fastQuery: true,
-                            activityIds: 'com.changan.uni.MainActivity',
-                            matches: '[vid="bluetooth_new_image"][visibleToUser=true]',
                         },
                     ],
                 },
@@ -292,6 +297,18 @@
                             activityIds: [
                                 'com.dragon.read.pages.main.MainFragmentActivity',
                             ],
+                        },
+                    ],
+                },
+                {
+                    key: 6,
+                    name: '弹窗广告-开启推送提醒',
+                    desc: '[取消]',
+                    rules: [
+                        {
+                            fastQuery: true,
+                            activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
+                            matches: 'TextView[text="开启推送提醒"] <2 LinearLayout +2 LinearLayout > @TextView[text="取消"]',
                         },
                     ],
                 },
