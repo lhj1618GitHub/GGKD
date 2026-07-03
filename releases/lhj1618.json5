@@ -1,6 +1,6 @@
 {
     id: 6666,
-    version: 94,
+    version: 96,
     name: 'Gitcode',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -282,8 +282,9 @@
                         {
                             key: 1,
                             name: '弹窗广告-可点x',
-                            matches: [
+                            anyMatches: [
                                 '@ImageView[visibleToUser=true][clickable=true] < FrameLayout <3 ViewGroup < FrameLayout < LinearLayout < [parent=null]',
+                                '@ImageView[visibleToUser=true][clickable=true] <n View <<n ComposeView < FrameLayout < LinearLayout < [parent=null]',
                             ],
                             fastQuery: true,
                             activityIds: [
@@ -339,7 +340,7 @@
                     rules: [
                         {
                             activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
-                            matches: 'TextView[text="直接领取"][visibleToUser=true] < View < @View < View <5 View + View > View +4 View + TextView[text="看视频奖励"]',
+                            matches: '@TextView[text="直接领取"][visibleToUser=true] < View < View < View <5 View + View > View +4 View + TextView[text="看视频奖励"]',
                         },
                     ],
                 },
