@@ -1,6 +1,6 @@
 {
     id: 6666,
-    version: 93,
+    version: 94,
     name: 'Gitcode',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -277,6 +277,7 @@
                     key: 5,
                     name: '弹窗广告-恭喜你获得',
                     desc: '[x][back]',
+                    matchTime: 5000,
                     rules: [
                         {
                             key: 1,
@@ -314,6 +315,7 @@
                     key: 7,
                     name: '弹窗广告-天天预约领金币',
                     desc: '[立即领][左上角<]',
+                    matchTime: 5000,
                     rules: [
                         {
                             key: 1,
@@ -333,10 +335,11 @@
                     key: 8,
                     name: '弹窗广告-存钱罐奖励',
                     desc: '[直接领取]',
+                    matchTime: 5000,
                     rules: [
                         {
                             activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
-                            matches: 'TextView[text="直接领取"][visibleToUser=true] <<3 View <5 View + View > View +4 View + TextView[text="看视频奖励"]',
+                            matches: 'TextView[text="直接领取"][visibleToUser=true] < View < @View < View <5 View + View > View +4 View + TextView[text="看视频奖励"]',
                         },
                     ],
                 },
