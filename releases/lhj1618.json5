@@ -1,6 +1,6 @@
 {
     id: 6666,
-    version: 92,
+    version: 93,
     name: 'Gitcode',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -148,17 +148,6 @@
                         },
                         {
                             key: 2,
-                            name: '请选择宝箱奖励-左边',
-                            preKeys: [
-                                1,
-                            ],
-                            matches: [
-                                '@ViewGroup < ViewGroup -2 ViewGroup <<4 FrameLayout < LinearLayout <<4 FrameLayout < LinearLayout < [parent=null]',
-                            ],
-                            fastQuery: true,
-                        },
-                        {
-                            key: 3,
                             name: '关闭宝箱结算',
                             position: {
                                 left: 'width * -3.6',
@@ -286,10 +275,12 @@
                 },
                 {
                     key: 5,
-                    name: '弹窗广告-看短剧赚金币',
-                    desc: '恭喜你获得[x]',
+                    name: '弹窗广告-恭喜你获得',
+                    desc: '[x][back]',
                     rules: [
                         {
+                            key: 1,
+                            name: '弹窗广告-可点x',
                             matches: [
                                 '@ImageView[visibleToUser=true][clickable=true] < FrameLayout <3 ViewGroup < FrameLayout < LinearLayout < [parent=null]',
                             ],
@@ -297,6 +288,13 @@
                             activityIds: [
                                 'com.dragon.read.pages.main.MainFragmentActivity',
                             ],
+                        },
+                        {
+                            key: 2,
+                            name: '弹窗广告-假x点back',
+                            action: 'back',
+                            activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
+                            matches: 'ViewGroup[visibleToUser=true] <<4 FrameLayout < LinearLayout <<4 FrameLayout < LinearLayout < [parent=null]',
                         },
                     ],
                 },
@@ -309,6 +307,36 @@
                             fastQuery: true,
                             activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
                             matches: 'TextView[text="开启推送提醒"] <2 LinearLayout +2 LinearLayout > @TextView[text="取消"]',
+                        },
+                    ],
+                },
+                {
+                    key: 7,
+                    name: '弹窗广告-天天预约领金币',
+                    desc: '[立即领][左上角<]',
+                    rules: [
+                        {
+                            key: 1,
+                            name: '立即领金币',
+                            activityIds: 'com.dragon.read.bullet.widget.BulletContainerActivity',
+                            matches: '@ViewGroup[desc*="立即领"][visibleToUser=true] <2 ViewGroup <2 ViewGroup < LinearLayout < HorizontalScrollView < ScrollView + ViewGroup + ViewGroup[visibleToUser=true]',
+                        },
+                        {
+                            key: 2,
+                            name: '继续预约时左上角返回',
+                            activityIds: 'com.dragon.read.bullet.widget.BulletContainerActivity',
+                            matches: 'ViewGroup[desc="继续预约"][visibleToUser=true] <2 ViewGroup <2 ViewGroup < LinearLayout < HorizontalScrollView < ScrollView + ViewGroup + @ViewGroup[visibleToUser=true]',
+                        },
+                    ],
+                },
+                {
+                    key: 8,
+                    name: '弹窗广告-存钱罐奖励',
+                    desc: '[直接领取]',
+                    rules: [
+                        {
+                            activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
+                            matches: 'TextView[text="直接领取"][visibleToUser=true] <<3 View <5 View + View > View +4 View + TextView[text="看视频奖励"]',
                         },
                     ],
                 },
