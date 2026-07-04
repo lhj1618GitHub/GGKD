@@ -285,6 +285,7 @@
                             anyMatches: [
                                 '@ImageView[visibleToUser=true][clickable=true] < FrameLayout <3 ViewGroup < FrameLayout < LinearLayout < [parent=null]',
                                 '@ImageView[visibleToUser=true][clickable=true] <n View <<n ComposeView < FrameLayout < LinearLayout < [parent=null]',
+                                '@View < View <9 View <2 View < ComposeView < [id="android:id/content"]',
                             ],
                             fastQuery: true,
                             activityIds: [
