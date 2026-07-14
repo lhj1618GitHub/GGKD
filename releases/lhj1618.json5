@@ -1,6 +1,6 @@
 {
     id: 6666,
-    version: 96,
+    version: 97,
     name: 'Gitcode',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -26,7 +26,7 @@
         {
             key: 1,
             name: '更新提示-全局',
-            desc: '拒绝更新应用',
+            desc: '拒绝更新小米[相册][下载]',
             matchTime: 8000,
             actionMaximum: 1,
             resetMatch: 'app',
@@ -299,7 +299,7 @@
                             activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
                             anyMatches: [
                                 'ViewGroup[visibleToUser=true][height<2400] <<4 FrameLayout < LinearLayout <<4 FrameLayout < LinearLayout < [parent=null]',
-                                '@ViewGroup[visibleToUser=true][desc="金币"] < LinearLayout < HorizontalScrollView < ScrollView <<4 FrameLayout',//饭点领金币补贴
+                                '@ViewGroup[visibleToUser=true][desc="金币"] < LinearLayout < HorizontalScrollView < ScrollView <<4 FrameLayout',
                             ],
                         },
                     ],
@@ -349,29 +349,28 @@
                     ],
                 },
                 {
-      key: 9,
-      name: '自动化-倍速播放',
-      desc: '[倍速][x1.5]',
-      matchTime: 5000,
-      rules: [
-        {
-      key: 1,
-      name: '点击倍速',
-          activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-          matches: '@TextView[visibleToUser=true][text="倍速"] <2 LinearLayout < @FrameLayout',
-        },
-{
-      key: 2,
-      name: '点击x1.5',
-      preKeys: [
-      1,
-      ],
-          activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-          matches: 'TextView[visibleToUser=true][text="1.5x"] < @ViewGroup <3 RecyclerView',
-        },
-
-      ],
-    },
+                    key: 9,
+                    name: '自动化-倍速播放',
+                    desc: '[倍速][x1.5]',
+                    matchTime: 5000,
+                    rules: [
+                        {
+                            key: 1,
+                            name: '点击倍速',
+                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            matches: '@TextView[visibleToUser=true][text="1.0x"] <2 LinearLayout < @FrameLayout',
+                        },
+                        {
+                            key: 2,
+                            name: '点击x1.5',
+                            preKeys: [
+                                1,
+                            ],
+                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            matches: 'TextView[visibleToUser=true][text="1.5x"] < @ViewGroup <3 RecyclerView',
+                        },
+                    ],
+                },
             ],
         },
         {
