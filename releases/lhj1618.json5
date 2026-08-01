@@ -3,7 +3,7 @@
     version: 102,
     name: 'Github',
     author: 'lhj1618',
-    checkUpdateUrl: 'https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/version.json5',
+    checkUpdateUrl: './version.json5',
     updateUrl: 'https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5',
     supportUri: 'https://github.com/lhj1618GitHub/GGKD',
     globalGroups: [
