@@ -34,10 +34,6 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 - [GitHub](./releases) - [查看版本](./releases/version.json5) - [编辑](https://github.com/lhj1618GitHub/GGKD/edit/master/releases/lhj1618.json5) - [上传](https://github.com/lhj1618GitHub/GGKD/upload/master/releases)
 
-原GitHub链接
-```
-https://github.com/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5
-```
 Xget加速
 ```
 https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5
