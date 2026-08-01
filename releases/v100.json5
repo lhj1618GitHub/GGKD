@@ -1,11 +1,11 @@
 {
-    id: 6666,
-    version: 100,
-    name: 'Gitcode',
+    id: 2603,
+    version: 102,
+    name: 'Github',
     author: 'lhj1618',
-    checkUpdateUrl: './version.json5',
-    updateUrl: 'https://raw.gitcode.com/lhj1618/me/raw/main/GGKD/lhj1618.json5',
-    supportUri: 'https://gitcode.com/lhj1618/me/tree/main/GGKD',
+    checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
+    updateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5',
+    supportUri: 'https://github.com/lhj1618GitHub/GGKD',
     globalGroups: [
         {
             key: 0,
@@ -164,7 +164,7 @@
                             matches: [
                                 '@ViewGroup[desc="第?个"][visibleToUser=true]',
                             ],
-                        },                        
+                        },
                         {
                             key: 4,
                             name: '关闭重复结算',
@@ -181,6 +181,96 @@
                 },
                 {
                     key: 2,
+                    name: '内嵌广告-剧集广告',
+                    desc: '[back][观看完整剧集]跳过重复',
+                    rules: [
+                        {
+                            key: 0,
+                            name: '广告页/预警',
+                            action: 'back',
+                            anyMatches: [
+                                '[text*="进入广告"]',
+                            ],
+                            fastQuery: true,
+                            actionMaximum: 1,
+                            activityIds: [
+                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            ],
+                        },
+                        {
+                            key: 1,
+                            name: '观看完整剧集/历史和收藏',
+                            preKeys: [
+                                0,
+                            ],
+                            anyMatches: [
+                                'FrameLayout[clickable=true][visibleToUser=true][childCount=1][index=0]',
+                                'ViewGroup[index=0][longClickable=true][visibleToUser=true]',
+                            ],
+                            fastQuery: true,
+                            activityIds: [
+                                'com.dragon.read.pages.main.MainFragmentActivity',
+                            ],
+                        },
+                        {
+                            key: 2,
+                            name: '从第一集开始观看',
+                            action: 'swipe',
+                            swipeArg: {
+                                start: {
+                                    x: '500',
+                                    y: '1500',
+                                },
+                                end: {
+                                    x: '500',
+                                    y: '800',
+                                },
+                                duration: 200,
+                            },
+                            anyMatches: [
+                                '[vid="al"][visibleToUser=true]',
+                                '[text*="上滑继续"][visibleToUser=true]',
+                            ],
+                            fastQuery: true,
+                            matchDelay: 200,
+                            activityIds: [
+                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            ],
+                        },
+                    ],
+                },
+                {
+                    key: 3,
+                    name: '内嵌广告-其它上滑汇总',
+                    desc: '调查问卷/直播',
+                    rules: [
+                        {
+                            action: 'swipe',
+                            swipeArg: {
+                                start: {
+                                    x: '500',
+                                    y: '1500',
+                                },
+                                end: {
+                                    x: '500',
+                                    y: '800',
+                                },
+                                duration: 200,
+                            },
+                            fastQuery: true,
+                            anyMatches: [
+                                '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView[vid="f0z"]',
+                                '@ViewGroup[visibleToUser=true] <2 ViewGroup <3 FrameLayout < FrameLayout[vid="ax2"]',
+                            ],
+                            activityIds: [
+                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                                'com.dragon.read.pages.main.MainFragmentActivity',
+                            ],
+                        },
+                    ],
+                },
+                {
+                    key: 4,
                     name: '内嵌广告-看广告领金币',
                     desc: '领取完成[x][坚持退出]',
                     rules: [
@@ -216,72 +306,7 @@
                     ],
                 },
                 {
-                    key: 3,
-                    name: '内嵌广告-剧集广告',
-                    desc: '[back][观看完整剧集]跳过重复',
-                    rules: [
-                        {
-                            key: 0,
-                            name: '广告页/预警',
-                            action: 'back',
-                            anyMatches: [
-                                '[text*="进入广告"]',
-                                '@ViewGroup[focusable=true][visibleToUser=true] < ViewGroup < ViewGroup - ViewGroup',
-                            ],
-                            fastQuery: true,
-                            actionMaximum: 1,
-                            activityIds: [
-                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                            ],
-                        },
-                        {
-                            key: 1,
-                            name: '观看完整剧集/历史和收藏',
-                            preKeys: [
-                                0,
-                            ],
-                            anyMatches: [
-                                'FrameLayout[clickable=true][visibleToUser=true][childCount=1][index=0]',
-                                'ViewGroup[index=0][longClickable=true][visibleToUser=true]',
-                            ],
-                            fastQuery: true,
-                            activityIds: [
-                                'com.dragon.read.pages.main.MainFragmentActivity',
-                            ],
-                        },
-                        {
-                            key: 2,
-                            name: '从第一集开始观看-上滑',
-                            preKeys: [
-                                1,
-                            ],
-                            action: 'swipe',
-                            swipeArg: {
-                                start: {
-                                    x: '500',
-                                    y: '1500',
-                                },
-                                end: {
-                                    x: '500',
-                                    y: '800',
-                                },
-                                duration: 200,
-                            },
-                            anyMatches: [
-                                '[vid="al"][visibleToUser=true]',
-                                '[text*="上滑继续"][visibleToUser=true]',
-                            ],
-                            fastQuery: true,
-                            matchDelay: 200,
-                            activityIds: [
-                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                            ],
-                        },
-          
-                    ],
-                },
-                {
-                    key: 4,
+                    key: 5,
                     name: '自动化-删除历史收藏不添加到桌面',
                     desc: '点[确认][删除][暂不添加]',
                     rules: [
@@ -297,7 +322,30 @@
                     ],
                 },
                 {
-                    key: 5,
+                    key: 6,
+                    name: '自动化-倍速播放',
+                    desc: '[倍速][x1.5]',
+                    matchTime: 5000,
+                    rules: [
+                        {
+                            key: 1,
+                            name: '点击倍速',
+                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            matches: '@TextView[visibleToUser=true][text!="1.5x"] <2 LinearLayout < @FrameLayout',
+                        },
+                        {
+                            key: 2,
+                            name: '点击x1.5',
+                            preKeys: [
+                                1,
+                            ],
+                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                            matches: 'TextView[visibleToUser=true][text="1.5x"] < @ViewGroup <3 RecyclerView',
+                        },
+                    ],
+                },
+                {
+                    key: 7,
                     name: '弹窗广告-恭喜你获得',
                     desc: '[x][back]',
                     matchTime: 5000,
@@ -328,49 +376,18 @@
                     ],
                 },
                 {
-                    key: 6,
-                    name: '弹窗广告-开启推送提醒',
-                    desc: '[取消]',
+                    key: 8,
+                    name: '弹窗广告-推送提醒/存钱罐奖励',
+                    desc: '[取消][直接领取]',
+                    matchTime: 5000,
                     rules: [
                         {
                             fastQuery: true,
                             activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
-                            matches: 'TextView[text="开启推送提醒"] <2 LinearLayout +2 LinearLayout > @TextView[text="取消"]',
-                        },
-                    ],
-                },
-                {
-                    key: 7,
-                    name: '弹窗广告-存钱罐奖励',
-                    desc: '[直接领取]',
-                    matchTime: 5000,
-                    rules: [
-                        {
-                            activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
-                            matches: '@TextView[text="直接领取"][visibleToUser=true] < View <<n ComposeView',
-                        },
-                    ],
-                },
-                {
-                    key: 8,
-                    name: '自动化-倍速播放',
-                    desc: '[倍速][x1.5]',
-                    matchTime: 5000,
-                    rules: [
-                        {
-                            key: 1,
-                            name: '点击倍速',
-                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                            matches: '@TextView[visibleToUser=true][text!="1.5x"] <2 LinearLayout < @FrameLayout',
-                        },
-                        {
-                            key: 2,
-                            name: '点击x1.5',
-                            preKeys: [
-                                1,
+                            anyMatches: [
+                                'TextView[text="开启推送提醒"] <2 LinearLayout +2 LinearLayout > @TextView[text="取消"]',
+                                '@TextView[text="直接领取"][visibleToUser=true] < View <<n ComposeView',
                             ],
-                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                            matches: 'TextView[visibleToUser=true][text="1.5x"] < @ViewGroup <3 RecyclerView',
                         },
                     ],
                 },
@@ -730,13 +747,21 @@
                 },
                 {
                     key: 3,
-                    name: '自动化-付款后',
-                    desc: '点击-完成/返回商家',
+                    name: '自动化-付款后点击',
+                    desc: '完成/返回商家/暂不开启指纹支付',
+                    matchTime: 8000,
                     rules: [
                         {
                             fastQuery: true,
-                            activityIds: 'com.tencent.mm.framework.app.UIPageFragmentActivity',
-                            matches: '[vid="kinda_button_impl_wrapper"][desc="完成" || desc="返回商家"]',
+                            activityIds: [
+                                'com.tencent.mm.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
+                                'com.tencent.mm.framework.app.UIPageFragmentActivity',
+                            ],
+                            anyMatches: [
+                                '@Button[desc="完成"][visibleToUser=true] -n View[desc="支付成功"]',
+                                '[vid="kinda_button_impl_wrapper"][desc="完成"][visibleToUser=true]',
+                                'View[desc="开启指纹支付"] < View < View + @Button[desc="暂不开启"][visibleToUser=true]',
+                            ],
                         },
                     ],
                 },
