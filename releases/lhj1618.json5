@@ -1,11 +1,11 @@
 {
-    id: 6666,
+    id: 2603,
     version: 102,
-    name: 'Gitcode',
+    name: 'Github',
     author: 'lhj1618',
-    checkUpdateUrl: './version.json5',
-    updateUrl: 'https://raw.gitcode.com/lhj1618/me/raw/main/GGKD/lhj1618.json5',
-    supportUri: 'https://gitcode.com/lhj1618/me/tree/main/GGKD',
+    checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
+    updateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5',
+    supportUri: 'https://github.com/lhj1618GitHub/GGKD',
     globalGroups: [
         {
             key: 0,
@@ -754,12 +754,12 @@
                         {
                             fastQuery: true,
                             activityIds: [
-                            'com.tencent.mm.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
-                            'com.tencent.mm.framework.app.UIPageFragmentActivity',
+                                'com.tencent.mm.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
+                                'com.tencent.mm.framework.app.UIPageFragmentActivity',
                             ],
                             anyMatches: [
                                 '@Button[desc="完成"][visibleToUser=true] -n View[desc="支付成功"]',
-                                '[vid="kinda_button_impl_wrapper"][desc="完成"][visibleToUser=true]',                                
+                                '[vid="kinda_button_impl_wrapper"][desc="完成"][visibleToUser=true]',
                                 'View[desc="开启指纹支付"] < View < View + @Button[desc="暂不开启"][visibleToUser=true]',
                             ],
                         },
