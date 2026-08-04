@@ -144,11 +144,12 @@
 #### **选择器语法**
 ```javascript
 // 基础选择器
-"[text='确定']"                // 文本等于
-"[text*='跳过']"               // 文本包含
-"[id='com.xxx:id/close']"     // ID匹配
-"[desc='关闭按钮']"            // 描述匹配
-"[childCount=3]"              // 子节点数
+"[text='确定']"                                // 文本等于
+"[text*='跳过']"                               // 文本包含
+"[id='com.xxx:id/close']"                     // ID匹配
+"[desc='关闭按钮']"                            // 描述匹配
+"[childCount=3]"                              // 子节点数
+"[index=parent.childCount.minus(1)]"          // 末尾子节点
 
 // 组合选择器
 "A > B"                      // 直接子节点
