@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 102,
+    version: 103,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -331,7 +331,7 @@
                             key: 1,
                             name: '点击倍速',
                             activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                            matches: '@TextView[visibleToUser=true][text!="1.5x"] <2 LinearLayout < @FrameLayout',
+                            matches: '@TextView[visibleToUser=true][text!="1.5x"] <2 LinearLayout < FrameLayout',
                         },
                         {
                             key: 2,
