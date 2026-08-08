@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 103,
+    version: 104,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -228,7 +228,7 @@
                                 duration: 200,
                             },
                             anyMatches: [
-                                '[vid="al"][visibleToUser=true]',
+                                '[text*="从第一集开始"][visibleToUser=true]',
                                 '[text*="上滑继续"][visibleToUser=true]',
                             ],
                             fastQuery: true,
