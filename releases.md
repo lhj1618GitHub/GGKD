@@ -34,6 +34,11 @@ https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
 
 - [GitHub](./releases) - [查看版本](./releases/version.json5) - [编辑](https://github.com/lhj1618GitHub/GGKD/edit/master/releases/lhj1618.json5) - [上传](https://github.com/lhj1618GitHub/GGKD/upload/master/releases)
 
+proxy加速
+```
+https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+```
+
 Xget加速
 ```
 https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5
