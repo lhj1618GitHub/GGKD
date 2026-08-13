@@ -259,8 +259,8 @@
                             },
                             fastQuery: true,
                             anyMatches: [
-                                '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView[vid="f0z"]',
-                                'ImageView[visibleToUser=true] < ViewGroup < ViewGroup < ViewGroup <2 ViewGroup -2 ViewGroup > @ImageView[visibleToUser=true]',
+                                '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView',
+                                '@ImageView[visibleToUser=true] <2 ViewGroup <<7 FrameLayout - FrameLayout <<20 [parent=null]',
                             ],
                             activityIds: [
                                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
