@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 104,
+    version: 105,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -260,7 +260,7 @@
                             fastQuery: true,
                             anyMatches: [
                                 '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView[vid="f0z"]',
-                                '@ViewGroup[visibleToUser=true] <2 ViewGroup <3 FrameLayout < FrameLayout[vid="ax2"]',
+                                'ImageView[visibleToUser=true] < ViewGroup < ViewGroup < ViewGroup <2 ViewGroup -2 ViewGroup > @ImageView[visibleToUser=true]',
                             ],
                             activityIds: [
                                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
