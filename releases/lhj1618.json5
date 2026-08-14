@@ -243,6 +243,7 @@
             key: 3,
             name: '内嵌广告-其它上滑汇总',
             desc: '调查问卷/直播',
+            matchTime: 5000,
             rules: [
                 {
                     action: 'swipe',
@@ -258,6 +259,7 @@
                         duration: 200,
                     },
                     fastQuery: true,
+                    matchRoot: true,
                     anyMatches: [
                         '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView',
                         '@ImageView[visibleToUser=true] <2 ViewGroup <<7 FrameLayout - FrameLayout <<20 [parent=null]',
