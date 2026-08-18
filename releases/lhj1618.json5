@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 105,
+    version: 106,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -229,11 +229,11 @@
                         duration: 200,
                     },
                     anyMatches: [
-                        '[text*="从第一集开始"][visibleToUser=true]',
-                        '[text*="上滑继续"][visibleToUser=true]',
+                        '[text^="从第一集开始"][visibleToUser=true]',
+                        '[text^="上滑继续"][visibleToUser=true]',
                     ],
                     fastQuery: true,
-                    matchDelay: 200,
+                    actionDelay: 200,
                     activityIds: [
                         'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
                     ],
@@ -259,7 +259,6 @@
                         },
                         duration: 200,
                     },
-                    fastQuery: true,
                     matchRoot: true,
                     anyMatches: [
                         '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView',
