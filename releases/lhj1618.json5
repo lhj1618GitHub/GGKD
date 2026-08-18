@@ -186,7 +186,21 @@
             rules: [
                 {
                     key: 0,
-                    name: '广告页/预警',
+                    name: '片首广告预警',
+                    action: 'back',
+                    matchTime: 3000,
+                    matches: [
+                    'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',
+                    ],
+                    matchRoot: true,
+                    actionMaximum: 1,
+                    activityIds: [
+                        'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+                    ],
+                },
+                {
+                    key: 1,
+                    name: '片尾广告预警',
                     action: 'back',
                     matches: [
                         '[text*="进入广告"][visibleToUser=true]',
@@ -199,7 +213,7 @@
                     ],
                 },
                 {
-                    key: 1,
+                    key: 2,
                     name: '观看完整剧集/历史和收藏',
                     preKeys: [
                         0,
@@ -214,7 +228,7 @@
                     ],
                 },
                 {
-                    key: 2,
+                    key: 3,
                     name: '从第一集开始观看',
                     action: 'swipe',
                     swipeArg: {
