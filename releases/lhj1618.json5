@@ -191,7 +191,7 @@
                     matchDelay: 5000,
                     matchTime: 6000,
                     matches: [
-                    'FrameLayout[childCount=1][index=2] <3 * <<n [parent=null]',//n=19
+                    'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',//n=19
                     ],
                     matchRoot: true,
                     actionMaximum: 1,
