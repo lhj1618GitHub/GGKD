@@ -188,9 +188,10 @@
                     key: 0,
                     name: '片首广告预警',
                     action: 'back',
-                    matchTime: 3000,
+                    matchDelay: 5000,
+                    matchTime: 6000,
                     matches: [
-                    'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',
+                    'FrameLayout[childCount=1][index=2] <3 * <<n [parent=null]',//n=19
                     ],
                     matchRoot: true,
                     actionMaximum: 1,
@@ -219,7 +220,7 @@
                         0,
                     ],
                     anyMatches: [
-                        'FrameLayout[clickable=true][visibleToUser=true][childCount=1][index=0]',
+                        'FrameLayout[clickable=true][focusable=true][visibleToUser=true][width=1080]',
                         'ViewGroup[index=0][longClickable=true][visibleToUser=true]',
                     ],
                     fastQuery: true,
@@ -275,9 +276,9 @@
                     },
                     matchRoot: true,
                     anyMatches: [
-                        '@TextView[text="上滑继续看短剧"][visibleToUser=true] - ImageView <n View < ComposeView',
+                        '@TextView[text^="上滑继续"][visibleToUser=true] - ImageView <n View < ComposeView',
                         '@ImageView[visibleToUser=true] <2 ViewGroup <<7 FrameLayout - FrameLayout <<20 [parent=null]',
-'FrameLayout[index=0][visibleToUser=true] < FrameLayout <2 RecyclerView <<19 [parent=null]',
+                        'FrameLayout[index=0][visibleToUser=true] < FrameLayout <2 RecyclerView <<19 [parent=null]',
                     ],
                     activityIds: [
                         'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
