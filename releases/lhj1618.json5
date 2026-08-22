@@ -189,7 +189,7 @@
                     name: '片首广告预警',
                     action: 'back',
                     matchTime: 10000,
-                    resetMatch: match,
+                    resetMatch: 'match',
                     matches: [
                     'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',//n=19
                     ],
