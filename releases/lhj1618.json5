@@ -276,6 +276,7 @@
                     },
                     matchRoot: true,
                     anyMatches: [
+                        '[text$="集"][visibleToUser=false]',
                         '@TextView[text^="上滑继续"][visibleToUser=true] - ImageView <n View < ComposeView',
                         '@ImageView[visibleToUser=true] <2 ViewGroup <<7 FrameLayout - FrameLayout <<20 [parent=null]',
                         'FrameLayout[index=0][visibleToUser=true] < FrameLayout <2 RecyclerView <<19 [parent=null]',
