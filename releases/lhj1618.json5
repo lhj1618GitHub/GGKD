@@ -190,8 +190,9 @@
                     action: 'back',
                     matchTime: 10000,
                     resetMatch: 'match',
-                    matches: [
+                    anyMatches: [
                     'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',//n=19
+'[vid="ax9"]',
                     ],
                     matchRoot: true,
                     actionMaximum: 1,
