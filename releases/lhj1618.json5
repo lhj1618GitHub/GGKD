@@ -188,8 +188,8 @@
                     key: 0,
                     name: '片首广告预警',
                     action: 'back',
-                    matchDelay: 5000,
-                    matchTime: 6000,
+                    matchTime: 10000,
+                    resetMatch: match,
                     matches: [
                     'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',//n=19
                     ],
