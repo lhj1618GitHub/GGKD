@@ -203,8 +203,9 @@
                     key: 1,
                     name: '片尾广告预警',
                     action: 'back',
-                    matches: [
+                    anyMatches: [
                         '[text*="进入广告"][visibleToUser=true]',
+'[vid="ax9"]',
                     ],
                     fastQuery: true,
                     matchRoot: true,
