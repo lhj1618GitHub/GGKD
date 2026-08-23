@@ -186,37 +186,20 @@
             rules: [
                 {
                     key: 0,
-                    name: '片首广告预警',
+                    name: '片首片尾广告预警',
                     action: 'back',
-                    matchTime: 10000,
-                    resetMatch: 'match',
                     anyMatches: [
-                    'FrameLayout[childCount=1][index=2] <3 * <<19 [parent=null]',//n=19
-'[vid="ax9"]',
+                    'FrameLayout[childCount=1] <3 RecyclerView < [vid="l0"]',
+'[text*="进入广告"][visibleToUser=true]',
+
                     ],
-                    matchRoot: true,
-                    actionMaximum: 1,
+                    fastQuery: true,
                     activityIds: [
                         'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
                     ],
                 },
                 {
                     key: 1,
-                    name: '片尾广告预警',
-                    action: 'back',
-                    anyMatches: [
-                        '[text*="进入广告"][visibleToUser=true]',
-'[vid="ax9"]',
-                    ],
-                    fastQuery: true,
-                    matchRoot: true,
-                    actionMaximum: 1,
-                    activityIds: [
-                        'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                    ],
-                },
-                {
-                    key: 2,
                     name: '观看完整剧集/历史和收藏',
                     preKeys: [
                         0,
@@ -231,7 +214,7 @@
                     ],
                 },
                 {
-                    key: 3,
+                    key: 2,
                     name: '从第一集开始观看',
                     action: 'swipe',
                     swipeArg: {
@@ -246,8 +229,8 @@
                         duration: 200,
                     },
                     anyMatches: [
-                        '[text^="从第一集开始"][visibleToUser=true]',
-                        '[text^="上滑继续"][visibleToUser=true]',
+                        '[text^="从第"][visibleToUser=true]',
+                        '[text*="上滑继续"][visibleToUser=true]',
                     ],
                     fastQuery: true,
                     actionDelay: 200,
