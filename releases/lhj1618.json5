@@ -613,9 +613,18 @@
                 {
                     key: 3,
                     name: '自动化-确认收货后返回',
-                    desc: '退出页面[发表真实评价]',
+                    desc: '[拍照][发表评价]时back',
                     rules: [
                         {
+                            key: 1,
+                            name: '拍照页返回',
+                            action: 'back',
+                            activityIds: 'com.xunmeng.pinduoduo.activity.NewPageActivity',
+                            matches: '@[text="拍照"] < ViewGroup <2 ViewGroup <4 ViewGroup <<4 [parent=null]',
+                        },
+                        {
+                            key: 2,
+                            name: '评价页返回',
                             fastQuery: true,
                             activityIds: 'com.xunmeng.pinduoduo.activity.NewPageActivity',
                             matches: '@ImageView[desc="返回"] < LinearLayout + LinearLayout > [text="发表真实评价" || text="发表评价"]',
