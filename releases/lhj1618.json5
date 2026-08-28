@@ -12,7 +12,7 @@
             name: '开屏广告-全局',
             desc: '关闭打开应用时的开屏广告',
             fastQuery: true,
-            matchTime: 5000,
+            matchTime: 8000,
             actionMaximum: 1,
             resetMatch: 'app',
             rules: [
@@ -20,19 +20,6 @@
                     anyMatches: [
                         '[text*="跳过" || desc*="跳过" || text*="跳 过" || desc*="跳 过" || text*="跳過" || desc*="跳過"][text.length<10][visibleToUser=true]',
                     ],
-                },
-            ],
-        },
-        {
-            key: 1,
-            name: '更新提示-全局',
-            desc: '拒绝更新小米[相册][下载]',
-            matchTime: 8000,
-            actionMaximum: 1,
-            resetMatch: 'app',
-            rules: [
-                {
-                    matches: '[text="暂不更新" || desc="暂不更新" || text="以后再说" || desc="以后再说"][visibleToUser=true]',
                 },
             ],
         },
@@ -366,7 +353,7 @@
             groups: [
                 {
                     key: 1,
-                    name: '自动化-应用信息页面',
+                    name: '自动化-应用信息页面操作时自动确定',
                     desc: '点击[确定]',
                     fastQuery: true,
                     matchTime: 3000,
@@ -698,26 +685,6 @@
                 },
                 {
                     key: 3,
-                    name: '自动化-付款后点击',
-                    desc: '完成/返回商家/暂不开启指纹支付',
-                    matchTime: 8000,
-                    rules: [
-                        {
-                            fastQuery: true,
-                            activityIds: [
-                                'com.tencent.mm.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
-                                'com.tencent.mm.framework.app.UIPageFragmentActivity',
-                            ],
-                            anyMatches: [
-                                '@Button[desc="完成"][visibleToUser=true] -n View[desc="支付成功"]',
-                                '[vid="kinda_button_impl_wrapper"][desc="完成"][visibleToUser=true]',
-                                'View[desc="开启指纹支付"] < View < View + @Button[desc="暂不开启"][visibleToUser=true]',
-                            ],
-                        },
-                    ],
-                },
-                {
-                    key: 4,
                     name: '自动化-自动语音转文字',
                     desc: '语音旁边的[转文字]',
                     rules: [
@@ -729,9 +696,9 @@
                     ],
                 },
                 {
-                    key: 5,
+                    key: 4,
                     name: '自动化-数字标未读消息',
-                    desc: '头像有数字',
+                    desc: '头像有数字标',
                     rules: [
                         {
                             matches: '[vid="o_u"]',
@@ -743,9 +710,9 @@
                     ],
                 },
                 {
-                    key: 6,
+                    key: 5,
                     name: '自动化-红点标未读消息',
-                    desc: '头像有红点',
+                    desc: '头像有红点标',
                     rules: [
                         {
                             matches: [
@@ -759,7 +726,7 @@
                     ],
                 },
                 {
-                    key: 7,
+                    key: 6,
                     name: '自动化-操作确认',
                     desc: '点击[清空/删除]',
                     rules: [
