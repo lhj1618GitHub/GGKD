@@ -279,12 +279,10 @@
                 {
                     key: 6,
                     name: '弹窗广告-恭喜你获得',
-                    desc: '[x][back]',
+                    desc: '[x]',
                     matchTime: 5000,
                     rules: [
                         {
-                            key: 1,
-                            name: '弹窗广告-可点x',
                             anyMatches: [
                                 '@ImageView[visibleToUser=true][clickable=true] < FrameLayout <3 ViewGroup < FrameLayout < LinearLayout < [parent=null]',
                                 '@ImageView[visibleToUser=true][clickable=true] <7 View <<6 [parent=null]',
@@ -293,15 +291,6 @@
                             fastQuery: true,
                             activityIds: [
                                 'com.dragon.read.pages.main.MainFragmentActivity',
-                            ],
-                        },
-                        {
-                            key: 2,
-                            name: '弹窗广告-假x点back',
-                            action: 'back',
-                            activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
-                            anyMatches: [
-                                '@ViewGroup[visibleToUser=true][desc="金币"] < LinearLayout < HorizontalScrollView < ScrollView <<4 FrameLayout',
                             ],
                         },
                     ],
@@ -336,7 +325,7 @@
                     rules: [
                         {
                             matches: [
-                                'TextView[text="签到"] < @View <4 View < View <4 View < View < View < View < View < View < ComposeView < [id="android:id/content"]',
+                                '@TextView[text="签到"] < View <<23 [parent=null]',
                             ],
                             fastQuery: true,
                             activityIds: [
