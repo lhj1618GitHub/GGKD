@@ -193,6 +193,7 @@
                             matches: [
                                 '[text="确认" || text="删除" || text="暂不添加"]',
                             ],
+                            actionCd: 2000,
                             fastQuery: true,
                             activityIds: [
                                 'com.dragon.read.pages.main.MainFragmentActivity',
@@ -328,6 +329,7 @@
                             matches: [
                                 '[text="确认" || text="删除" || text="暂不添加"]',
                             ],
+                            actionCd: 2000,
                             fastQuery: true,
                             activityIds: [
                                 'com.dragon.read.pages.main.MainFragmentActivity',
