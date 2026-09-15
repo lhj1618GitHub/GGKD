@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 112,
+    version: 113,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -110,8 +110,8 @@
             ],
         },
         {
-            id: 'com.phoenix.read',
-            name: '红果免费短剧',
+            id: ['com.phoenix.read','com.kylin.read',]
+            name: '红果免费短剧/漫剧',
             groups: [
                 {
                     key: 1,
