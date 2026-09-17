@@ -406,12 +406,13 @@
                     key: 2,
                     name: '自动化-签到',
                     desc: '[签到]',
+                    matchTime: 5000,
                     rules: [
                         {
                             key: 0,
                             name: '签到',
                             matches: [
-                                'TextView[text="签到"] < @View <4 View < View <4 View < View < View < View < View < View < ComposeView < [id="android:id/content"]',
+                                '[getChild(0).text="我的"] <<n * - * >n @* > [text="签到"]',
       
                             ],
                             fastQuery: true,
@@ -434,6 +435,7 @@
                                 '[text="确定"]',
                                 '@[clickable=true] > [childCount=0][text="我知道了"]',
                                 '[vid="tvClose"][text="我知道了"][clickable=true][visibleToUser=true]',
+                                '[text="立即签到"] < @* -n *[getChild(0).getChild(1).getChild(0).text="每日签到"]',
                             ],
                         },
                     ],
