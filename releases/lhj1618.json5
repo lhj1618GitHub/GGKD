@@ -411,13 +411,9 @@
                         {
                             key: 0,
                             name: '签到',
-                            matches: [
-                                '[getChild(0).text="我的"] <<n * - * >n * > @[text="签到"]',
-      
-                            ],
-                            fastQuery: true,
+                            matches:  '[getChild(0).text="我的"] <<n * - * >n @* > [text="签到"]',
                             activityIds: [
-                                'info.muge.appshare.MainActivity',
+                                '.MainActivity',
                             ],
                         },
                         {
