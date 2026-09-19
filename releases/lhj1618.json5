@@ -413,7 +413,7 @@
                             name: '签到',
                             actionMaximum: 1,
                             resetMatch: 'app',
-                            matches:  '[getChild(0).text="我的"] <<n * - * >n @* > [text="签到"]',
+                            matches:  '@*[clickable=true][visibleToUser=true] > [text="签到"] + Button',
                             activityIds: [
                                 '.MainActivity',
                             ],
@@ -433,7 +433,6 @@
                                 '[text="确定"]',
                                 '@[clickable=true] > [childCount=0][text="我知道了"]',
                                 '[text="我知道了"][clickable=true][visibleToUser=true]',
-                                '[text="立即签到"] < @* -n *[getChild(0).getChild(1).getChild(0).text="每日签到"]',
                             ],
                         },
                     ],
