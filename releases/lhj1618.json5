@@ -406,11 +406,13 @@
                     key: 2,
                     name: '自动化-签到',
                     desc: '[签到]',
-                    matchTime: 5000,
+                    matchTime: 3000,
                     rules: [
                         {
                             key: 0,
                             name: '签到',
+                            actionMaximum: 1,
+                            resetMatch: 'app',
                             matches:  '[getChild(0).text="我的"] <<n * - * >n @* > [text="签到"]',
                             activityIds: [
                                 '.MainActivity',
