@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 113,
+    version: 114,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
