@@ -327,7 +327,7 @@
                     rules: [
                         {
                             matches: [
-                                '[text="确认" || text="删除" || text="暂不添加"]',
+                                '[text="确认" || text="删除" || text="暂不添加"][visibleToUser=true]',
                             ],
                             actionCd: 2000,
                             fastQuery: true,
@@ -347,7 +347,7 @@
                             key: 0,
                             name: '点击倍速',
                             activityIds: '.component.shortvideo.impl.ShortSeriesActivity',
-                            matches: '@TextView[visibleToUser=true][text!="1.5x"] <2 LinearLayout < FrameLayout',
+                            matches: '@[visibleToUser=true][text!="1.5x"] <2 LinearLayout < FrameLayout[clickable=true]',
                         },
                         {
                             key: 1,
@@ -356,7 +356,7 @@
                                 0,
                             ],
                             activityIds: '.component.shortvideo.impl.ShortSeriesActivity',
-                            matches: 'TextView[visibleToUser=true][text="1.5x"]',
+                            matches: 'TextView[visibleToUser=true][text="1.5x"] < @ViewGroup[clickable=true]',
                         },
                     ],
                 },
@@ -368,9 +368,11 @@
                     rules: [
                         {
                             anyMatches: [
-                                '@ImageView[visibleToUser=true][clickable=true] < FrameLayout <3 ViewGroup < FrameLayout < LinearLayout < [parent=null]',
-                                '@ImageView[visibleToUser=true][clickable=true] <7 View <<6 [parent=null]',
-                                '@View < View <9 View <2 View < ComposeView < [id="android:id/content"]',
+                                
+'@[desc="close button"][visibleToUser=true] -n [text^="恭喜"] <n * <<n [id="android:id/content"]',
+'@[visibleToUser=true] < * - * > * >n [text^="恭喜"]',
+'*[visibleToUser=true] < @*[clickable=true] -n * >n *[text="恭喜获得开宝箱奖励"]',
+
                             ],
                             fastQuery: true,
                             activityIds: [
