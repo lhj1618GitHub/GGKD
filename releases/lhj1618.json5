@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 114,
+    version: 115,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -413,8 +413,6 @@
                         {
                             key: 0,
                             name: '签到',
-                            actionMaximum: 1,
-                            resetMatch: 'app',
                             matches:  '@*[clickable=true][visibleToUser=true] > [text="签到"] + Button',
                             activityIds: [
                                 '.MainActivity',
@@ -427,10 +425,6 @@
                                 0,
                             ],
                             fastQuery: true,
-                            activityIds: [
-                                '.view.main.MainActivity',
-                                '.MainActivity',
-                            ],
                             anyMatches: [
                                 '[text="确定"]',
                                 '@[clickable=true] > [childCount=0][text="我知道了"]',
