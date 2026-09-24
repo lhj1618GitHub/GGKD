@@ -15,7 +15,7 @@
           ],
           fastQuery: true,
           activityIds: [
-            'info.muge.appshare.MainActivity',
+            '.MainActivity',
           ],
         },
       ],
@@ -24,17 +24,14 @@
       key: 2,
       name: '自动化-签到',
       desc: '[签到]',
+      matchTime: 3000,
       rules: [
         {
           key: 0,
           name: '签到',
-          anyMatches: [
-            'TextView[text="签到"] < @View <4 View < View <4 View < View < View < View < View < View < ComposeView < [id="android:id/content"]',
-            '[desc="头像"] +3 @View[clickable=true] > [text="签到"]',
-          ],
-          fastQuery: true,
+          matches: '@*[clickable=true][visibleToUser=true] > [text="签到"] + Button',
           activityIds: [
-            'info.muge.appshare.MainActivity',
+            '.MainActivity',
           ],
         },
         {
@@ -44,14 +41,10 @@
             0,
           ],
           fastQuery: true,
-          activityIds: [
-            '.view.main.MainActivity',
-            '.MainActivity',
-          ],
           anyMatches: [
             '[text="确定"]',
             '@[clickable=true] > [childCount=0][text="我知道了"]',
-            '[vid="tvClose"][text="我知道了"][clickable=true][visibleToUser=true]',
+            '[text="我知道了"][clickable=true][visibleToUser=true]',
           ],
         },
       ],
