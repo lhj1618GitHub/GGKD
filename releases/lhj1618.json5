@@ -974,8 +974,20 @@
             id: 'com.xiaomi.market',
             name: '应用商店',
             groups: [
+{
+  key: 1,
+  name: '弹窗广告-首页启动弹窗',
+  desc: '[x]',
+  rules: [
+    {
+      fastQuery: true,
+      activityIds: '.business_ui.main.MarketTabActivity',
+      matches: '[vid="iv_close"]',
+    },
+  ],
+},
                 {
-                    key: 1,
+                    key: 2,
                     name: '自动化-查看全部升级',
                     desc: '[查看全部]',
                     rules: [
@@ -987,7 +999,7 @@
                     ],
                 },
                 {
-                    key: 2,
+                    key: 3,
                     name: '自动化-展开应用升级',
                     desc: '[展开]',
                     rules: [
@@ -1002,7 +1014,7 @@
                     ],
                 },
                 {
-                    key: 3,
+                    key: 4,
                     name: '自动化-忽略应用升级',
                     desc: '[忽略本次]',
                     rules: [
@@ -1014,7 +1026,7 @@
                     ],
                 },
                 {
-                    key: 4,
+                    key: 5,
                     name: '自动化-通知栏提醒',
                     desc: '[不]',
                     rules: [
