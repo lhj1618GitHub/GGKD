@@ -4,6 +4,20 @@
 
 - [订阅信息](./订阅信息.md) - [最新版本号](./version.json5) - [app目录](../apps)
 
+- 订阅地址1 - proxy加速
+```
+https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+
+```
+
+- 订阅地址2 - 原raw链接
+```
+https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+```
+
+
+- 历史版本
+
 |        版本        |      主要变动内容      |
 |--------------------|-----------------------|
 | [v49](./old/v49.json5) | 【红果短剧】 |
@@ -18,16 +32,4 @@
 | [v110](./old/v110.json5) | 优化【微信】支付后点击/【红果短剧】更新 |
 |   |   |
 |   |   |
-
-
-
-- proxy加速
-```
-https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
-```
-
-- 原raw链接
-```
-https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
-```
 
