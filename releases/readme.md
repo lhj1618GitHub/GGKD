@@ -21,12 +21,12 @@
 
 
 
-proxy加速
+- proxy加速
 ```
 https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
 
-原raw链接
+- 原raw链接
 ```
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
