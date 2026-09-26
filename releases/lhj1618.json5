@@ -465,7 +465,7 @@
                     rules: [
                         {
                             matches: [
-                                '[childCount=0][text*="本次允许"][visibleToUser=true]',
+                                '[childCount=0][text="本次允许"][visibleToUser=true]',
                             ],
                             activityIds: [
                                 'com.miui.securitycenter',
@@ -487,7 +487,7 @@
                         {
                             key: 0,
                             matches: [
-                                '@[vid="check_box"][checked=false]',
+                                '[vid="check_box"][checked=false]',
                             ],
                         },
                         {
@@ -497,36 +497,6 @@
                             ],
                             matches: [
                                 '[text="确定"]',
-                            ],
-                        },
-                    ],
-                },
-                {
-                    key: 4,
-                    name: '自动化-省电策略',
-                    desc: '禁止后台运行点[确定]',
-                    rules: [
-                        {
-                            matches: [
-                                '[id="android:id/button1"]',
-                            ],
-                            fastQuery: true,
-                            activityIds: [
-                                'com.miui.powercenter.legacypowerrank.PowerDetailActivity',
-                            ],
-                        },
-                    ],
-                },
-                {
-                    key: 5,
-                    name: '自动化-获取已安装的应用信息',
-                    desc: '[拒绝]',
-                    rules: [
-                        {
-                            fastQuery: true,
-                            matches: [
-                                '[text*="获取已安装的应用信息"]',
-                                '@Button < [vid="buttonPanel"]',
                             ],
                         },
                     ],
