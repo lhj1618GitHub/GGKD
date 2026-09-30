@@ -474,8 +474,23 @@
                         },
                     ],
                 },
+{
+  key: 3,
+  name: '自动化-获取已安装的应用信息',
+  desc: '[拒绝]',
+  matchTime: 3000,
+  rules: [
+    {
+      fastQuery: true,
+      matches: [
+'[text^="是否允许"][text$="获取已安装的应用信息"]',
+'[text="拒绝"][visibleToUser=true]',
+],
+    },
+  ],
+},
                 {
-                    key: 3,
+                    key: 4,
                     name: '自动化-高敏感权限自动确定',
                     desc: '勾选[我已知晓..]后点击[确定]',
                     fastQuery: true,
