@@ -1,6 +1,6 @@
 {
     id: 2603,
-    version: 116,
+    version: 117,
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
@@ -187,11 +187,12 @@
                 {
                     key: 3,
                     name: '自动化-删除历史收藏不添加到桌面',
-                    desc: '点[确认][删除][暂不添加]',
+                    desc: '点[确认][删除][暂不添加][取消]',
                     rules: [
                         {
                             matches: [
                                 '[text="确认" || text="删除" || text="暂不添加"]',
+'@[text="取消"][visibleToUser=true] < * -2 *[getChild(1).text="开启推送提醒"]',
                             ],
                             actionCd: 2000,
                             fastQuery: true,
@@ -323,11 +324,12 @@
                 {
                     key: 3,
                     name: '自动化-删除历史收藏不添加到桌面',
-                    desc: '点[确认][删除][暂不添加]',
+                    desc: '点[确认][删除][暂不添加][取消]',
                     rules: [
                         {
                             matches: [
                                 '[text="确认" || text="删除" || text="暂不添加"][visibleToUser=true]',
+'@[text="取消"][visibleToUser=true] < * -2 *[getChild(1).text="开启推送提醒"]',
                             ],
                             actionCd: 2000,
                             fastQuery: true,
