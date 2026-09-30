@@ -190,9 +190,8 @@
                     desc: '点[确认][删除][暂不添加][取消]',
                     rules: [
                         {
-                            anyMatches: [
-                                '[text="确认" || text="删除" || text="暂不添加"]',
-'@[text="取消"][visibleToUser=true] < * -2 *[getChild(1).text="开启推送提醒"]',
+                            matches: [
+                                '[text="确认" || text="删除" || text="暂不添加" || text="取消"]',
                             ],
                             actionCd: 2000,
                             fastQuery: true,
@@ -327,9 +326,8 @@
                     desc: '点[确认][删除][暂不添加][取消]',
                     rules: [
                         {
-                            anyMatches: [
-                                '[text="确认" || text="删除" || text="暂不添加"][visibleToUser=true]',
-'@[text="取消"][visibleToUser=true] < * -2 *[getChild(1).text="开启推送提醒"]',
+                            matches: [
+                                '[text="确认" || text="删除" || text="暂不添加" || text="取消"][visibleToUser=true]',
                             ],
                             actionCd: 2000,
                             fastQuery: true,
