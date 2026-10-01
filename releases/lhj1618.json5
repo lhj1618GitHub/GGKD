@@ -447,7 +447,7 @@
     {
       fastQuery: true,
       activityIds: '.view.main.MainActivity',
-      matches: '@View[width=112][height=112][visibleToUser=true] <3 FrameLayout <2 FrameLayout < FrameLayout < [vid="ad_container"]',
+      matches: '@[width<150][height<150][clickable=true][visibleToUser=true] <<n [vid="ad_container"]',
     },
   ],
 },
