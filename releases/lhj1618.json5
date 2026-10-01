@@ -451,18 +451,6 @@
     },
   ],
 },
-    {
-      key: 1,
-      name: '内嵌广告-今日推荐',
-      desc: '[x]',
-      rules: [
-        {
-          fastQuery: true,
-          activityIds: '.view.node.DynamicNodePageActivity',
-          matches: '[vid="close_view" || desc="关闭"][visibleToUser=true] - [text="来自广告推荐"] - [text="今日推荐"]',
-        },
-      ],
-    },
   ],
 },
         {
