@@ -446,6 +446,7 @@
   rules: [
     {
       fastQuery: true,
+      matchTime: 3000,
       activityIds: '.view.main.MainActivity',
       matches: '@[width<150][height<150][clickable=true][visibleToUser=true] <<n [vid="ad_container"]',
     },
