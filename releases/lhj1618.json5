@@ -435,6 +435,36 @@
                 },
             ],
         },
+{
+  id: 'com.coolapk.market',
+  name: '酷安',
+  groups: [
+{
+  key: 0,
+  name: '弹窗广告-启动广告',
+  desc: '圆形[跳过]',
+  rules: [
+    {
+      fastQuery: true,
+      activityIds: '.view.main.MainActivity',
+      matches: '@View[width=112][height=112][visibleToUser=true] <3 FrameLayout <2 FrameLayout < FrameLayout < [vid="ad_container"]',
+    },
+  ],
+},
+    {
+      key: 1,
+      name: '内嵌广告-今日推荐',
+      desc: '[x]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.view.node.DynamicNodePageActivity',
+          matches: '[vid="close_view" || desc="关闭"][visibleToUser=true] - [text="来自广告推荐"] - [text="今日推荐"]',
+        },
+      ],
+    },
+  ],
+},
         {
             id: 'com.miui.securitycenter',
             name: '安全服务',
