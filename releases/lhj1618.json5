@@ -205,12 +205,12 @@
                     key: 4,
                     name: '自动化-倍速播放',
                     desc: '[倍速][x1.5]',
-                    fastQuery: true,
                     rules: [
                         {
                             key: 0,
                             name: '点击倍速',
-                            activityIds: '.component.shortvideo.impl.ShortSeriesActivity',
+                             fastQuery: true,
+    activityIds: '.component.shortvideo.impl.ShortSeriesActivity',
                             matches: '[visibleToUser=true][text!="1.5x"] <2 * < @[clickable=true][focusable=true] < * - [text^="第"][text$="集"]',
                         },
                         {
