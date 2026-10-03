@@ -205,7 +205,7 @@
                     key: 4,
                     name: '自动化-倍速播放',
                     desc: '[倍速][x1.5]',
-                    matchTime: 3000,
+                    fastQuery: true,
                     rules: [
                         {
                             key: 0,
