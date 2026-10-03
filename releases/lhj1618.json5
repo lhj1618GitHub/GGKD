@@ -341,13 +341,13 @@
                     key: 4,
                     name: '自动化-倍速播放',
                     desc: '[倍速][x1.5]',
-                    matchTime: 3000,
+                    fastQuery: true,
                     rules: [
                         {
                             key: 0,
-                            name: '点击倍速',
+                            name: '点击倍速按钮',
                             activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-                            matches: '[visibleToUser=true][text="倍速"]',
+                            matches: '[visibleToUser=true][text!="1.5x"] <2 * < @[clickable=true][focusable=true] < * - [text^="第"][text$="集"]',
                         },
                         {
                             key: 1,
