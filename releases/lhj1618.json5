@@ -128,7 +128,7 @@
                             ],
                             fastQuery: true,
                             activityIds: [
-                                '.component.shortvideo.impl.ShortSeriesActivity',
+                                'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
                             ],
                         },
                         {
@@ -143,7 +143,7 @@
                             ],
                             fastQuery: true,
                             activityIds: [
-                                '.pages.main.MainFragmentActivity',
+                                'com.dragon.read.pages.main.MainFragmentActivity',
                             ],
                         },
                     ],
@@ -196,7 +196,7 @@
                             actionCd: 2000,
                             fastQuery: true,
                             activityIds: [
-                                '.pages.main.MainFragmentActivity',
+                                'com.dragon.read.pages.main.MainFragmentActivity',
                             ],
                         },
                     ],
@@ -210,7 +210,7 @@
                             key: 0,
                             name: '点击倍速',
                              fastQuery: true,
-    activityIds: '.component.shortvideo.impl.ShortSeriesActivity',
+    activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
                             matches: '@[visibleToUser=true][text!="1.5x"] <2 * < [clickable=true][focusable=true] < * - [text^="第"][text$="集"]',
                         },
                         {
@@ -219,7 +219,7 @@
                             preKeys: [
                                 0,
                             ],
-                            activityIds: '.component.shortvideo.impl.ShortSeriesActivity',
+                            activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
                             matches: '[visibleToUser=true][text="1.5x"]',
                         },
                     ],
@@ -238,7 +238,7 @@
                             ],
                             fastQuery: true,
                             activityIds: [
-                                '.pages.main.MainFragmentActivity',
+                                'com.dragon.read.pages.main.MainFragmentActivity',
                             ],
                         },
                     ],
