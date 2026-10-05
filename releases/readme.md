@@ -1,23 +1,37 @@
+ [返回仓库首页](https://github.com/lhj1618GitHub/GGKD)
+ 
+ ---
+ 
  **正式订阅文件存放目录** 
 
 - [最新订阅文件](./lhj1618.json5) - [编辑](https://github.com/lhj1618GitHub/GGKD/edit/master/releases/lhj1618.json5)
 
 - [订阅信息](./订阅信息.md) - [最新版本号](./version.json5) - [app目录](../apps)
 
-- 订阅地址1 - proxy加速
+---
+
+**订阅链接 - Github**
+
+- proxy加速
 ```
 https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 
 ```
 
-- 订阅地址2 - 原raw链接
+- 官方原raw链接
 ```
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
 
+- [Gitee-随缘更新](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5)
+
+```
+https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
+```
+
 ---
 
-- 历史版本
+**历史版本**
 
 |        版本        |      主要变动内容      |
 |--------------------|-----------------------|
@@ -34,8 +48,6 @@ https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/
 | [v117](./old/v117.json5) | 新增【红果漫剧】/【红果短剧】更新 |
 |   |   |
 |   |   |
-
-[返回首页](https://github.com/lhj1618GitHub/GGKD)
 
 ---
 
@@ -59,16 +71,6 @@ https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/
 
 ---
 
-**其它备用-随缘更新** 
-
-- [Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5)
-
-```
-https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
-```
-
----
-
-[返回首页](https://github.com/lhj1618GitHub/GGKD)
+[返回仓库首页](https://github.com/lhj1618GitHub/GGKD)
 
 
