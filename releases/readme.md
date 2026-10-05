@@ -30,6 +30,7 @@ https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/
 | [v80](./old/v80.json5) | 修复【红果短剧】版本通用适配 |
 | [v90](./old/v90.json5) | 新增【权限控制器】/【引力域】|
 | [v110](./old/v110.json5) | 优化【微信】支付后点击/【红果短剧】更新 |
+| [v117](./old/v117.json5) | 新增【红果漫剧】/【红果短剧】更新 |
 |   |   |
 |   |   |
 
