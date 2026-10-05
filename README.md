@@ -12,8 +12,8 @@ ADB
 - [adb授权命令与说明](./help/adb授权命令.md) - [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip)
 
 Shizuku
-- [Shizuku官网](https://shizuku.rikka.app/) - [Shizuku-Github](https://github.com/RikkaApps/Shizuku/releases)
-- [thedjchi版](https://github.com/thedjchi/Shizuku/releases)
+- [Shizuku官网](https://shizuku.rikka.app/) - [Github](https://github.com/RikkaApps/Shizuku/releases)
+- thedjchi版 - [Github](https://github.com/thedjchi/Shizuku/releases)
 
 Root
  - [KernelSU官网](https://kernelsu.org/zh_CN/) - [KernelSU-Github](https://github.com/tiann/KernelSU)
