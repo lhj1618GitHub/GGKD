@@ -30,7 +30,7 @@
 
 ---
 
-**[我的订阅信息](./releases.md)** - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases) - [查看订阅](./releases)
+**[我的订阅信息](./releases.md)** - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases) - [查看订阅文件](./releases/lhj1618.json5)
 
 **其它平台**  ： [Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD)
 
