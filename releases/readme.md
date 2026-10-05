@@ -13,12 +13,13 @@
 **订阅链接 - Github**
 
 - proxy加速
+
 ```
 https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
-
 ```
 
 - 官方原raw链接
+
 ```
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
