@@ -2,6 +2,10 @@
 
 ---
 
+**[我的订阅信息](./releases/订阅信息.md)** - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases) - [查看订阅文件](./releases/lhj1618.json5)
+
+---
+
 [新手编写规则帮助文档](./help/)  - [官网API](https://gkd.li/api/)
 
 - 快照审查网页
@@ -23,17 +27,13 @@
 - [json5.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5.html) / [json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；支持导入所有格式文件，导出为json/json5
 - [GKD订阅文件工具](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKD%E8%AE%A2%E9%98%85%E6%96%87%E4%BB%B6%E5%B7%A5%E5%85%B7.html)：含创建和可视化编辑功能；支持手机端。需下载并导入本仓库文件(apps文件夹内文件。含sample.json5样本文件)，支持json5格式化，支持格式 md txt ts json json5 html 
 
- **查找第三方规则（需网络支持）** 
+ **查找第三方规则** 
 
 - [GKDTOOL.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/GKDTool_2.1.4.apk) / [GitHub发布页](https://github.com/adproqwq/GKDTool_Vue/releases)
 - [在GitHub搜索](https://github.com/topics/gkd-subscription)
 
 ---
 
-**[我的订阅信息](./releases.md)** - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases) - [查看订阅文件](./releases/lhj1618.json5)
-
-**其它平台**  ： [Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD)
-
-**我的李跳跳**：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
+GGKD：[Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD) & 李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
 
 
