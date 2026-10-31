@@ -417,7 +417,6 @@
           key: 1,
           name: '内嵌广告-剧集广告',
           desc: '[back][观看完整剧集]跳过重复',
-          matchRoot=false,
           rules: [
             {
               key: 0,
@@ -427,6 +426,7 @@
                 '@FrameLayout[childCount=1] <(2,3) RecyclerView < [vid="l0"]',
               ],
               fastQuery: true,
+              matchRoot: true,
               activityIds: [
                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
               ],
