@@ -422,9 +422,8 @@
               key: 0,
               name: '片首片尾广告预警',
               action: 'back',
-              anyMatches: [
+              matches: [
                 'FrameLayout[childCount=1] <n RecyclerView < [vid="l0"]',
-                '[text*="进入广告"][visibleToUser=true]',
               ],
               fastQuery: true,
               activityIds: [
