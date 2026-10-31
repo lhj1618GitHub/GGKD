@@ -426,6 +426,7 @@
                 '@FrameLayout[childCount=1] <(2,3) RecyclerView < [vid="l0"]',
               ],
               fastQuery: true,
+              matchRoot=false,
               activityIds: [
                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
               ],
