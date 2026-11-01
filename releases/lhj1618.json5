@@ -511,7 +511,10 @@
               name: '点击倍速',
               fastQuery: true,
               activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-              matches: '@[visibleToUser=true][text!="1.5x"] <2 * < [clickable=true][focusable=true] < * - [text^="第"][text$="集"]',
+              anyMatches: [
+'@[visibleToUser=true][text!="1.5x"] <2 * < [clickable=true][focusable=true] < * - [text^="第"][text$="集"]',
+'[text="倍速"]',
+],
             },
             {
               key: 1,
@@ -519,13 +522,30 @@
               preKeys: [
                 0,
               ],
-              activityIds: 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
               matches: '[visibleToUser=true][text="1.5x"]',
             },
           ],
         },
+{
+  key: 5,
+  name: '弹窗广告-获得奖励',
+  desc: 'X',
+  rules: [
+    {
+      anyMatches: [
+        '@LynxFlattenUI[visibleToUser=true][clickable=true][height<120] <n FrameLayout < FrameLayout < FrameLayout < FrameLayout < LinearLayout < FrameLayout < [id="android:id/content"]',
+        '@ImageView[visibleToUser=true][clickable=true][focusable=true][height<120] < FrameLayout <2 ViewGroup < [id="android:id/content"]',
+        
+      ],
+      fastQuery: true,
+      activityIds: [
+        'com.dragon.read.bullet.widget.BulletContainerActivity',
+      ],
+    },
+  ],
+},
         {
-          key: 5,
+          key: 6,
           name: '弹窗广告-恭喜你获得',
           desc: '[x]',
           matchTime: 5000,
