@@ -548,7 +548,6 @@
           key: 6,
           name: '弹窗广告-恭喜你获得',
           desc: '[x]',
-          matchTime: 5000,
           rules: [
             {
               anyMatches: [
