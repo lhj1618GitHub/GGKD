@@ -18,6 +18,11 @@
 https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
 ```
 
+```
+https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+```
+
+
 - 官方原raw链接
 
 ```
