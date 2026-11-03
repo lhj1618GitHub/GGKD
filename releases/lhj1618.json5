@@ -423,12 +423,13 @@
               name: '片首片尾广告预警',
               action: 'back',
               matches: [
-                '@FrameLayout[childCount=1] <(2,3) RecyclerView < [vid="l0"]',
+                '@FrameLayout[childCount=1] <(2,3) * <<4 * <3 FrameLayout < [id="android:id/content"]',
               ],
               fastQuery: true,
               matchRoot: true,
               activityIds: [
                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
               ],
             },
             {
