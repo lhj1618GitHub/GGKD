@@ -1,6 +1,6 @@
 {
   id: 2603,
-  version: 119,
+  version: 120,
   name: 'Github',
   author: 'lhj1618',
   checkUpdateUrl: './version.json5',
@@ -423,13 +423,13 @@
               name: '片首片尾广告预警',
               action: 'back',
               matches: [
-                '@FrameLayout[childCount=1] <(2,3) * <<4 * <3 FrameLayout < [id="android:id/content"]',
+                '@FrameLayout[childCount=1] <(2,3) * < [vid="l0"]',
               ],
               fastQuery: true,
               matchRoot: true,
               activityIds: [
                 'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
-'com.dragon.read.component.shortvideo.impl.ShortSeriesActivity',
+
               ],
             },
             {
@@ -494,7 +494,7 @@
               matches: [
                 '[text="确认" || text="删除" || text="暂不添加" || text="取消"]',
               ],
-              actionCd: 2000,
+              actionMaximum: 1,
               fastQuery: true,
               activityIds: [
                 'com.dragon.read.pages.main.MainFragmentActivity',
