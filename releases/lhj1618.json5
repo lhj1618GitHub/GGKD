@@ -488,11 +488,11 @@
         {
           key: 3,
           name: '自动化-历史收藏桌面推送',
-          desc: '点[删除][确认][暂不添加][取消]',
+          desc: '点[确认][暂不添加][取消]',
           rules: [
             {
               matches: [
-                '[text="确认" || text="删除" || text="暂不添加" || text="取消"]',
+                '[text="确认" || text="暂不添加" || text="取消"]',
               ],
               actionMaximum: 1,
               resetMatch: 'match',
