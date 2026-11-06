@@ -14,6 +14,7 @@ ADB
 Shizuku
 - [Shizuku官网](https://shizuku.rikka.app/) - [Github](https://github.com/RikkaApps/Shizuku/releases)
 - thedjchi版 - [Github](https://github.com/thedjchi/Shizuku/releases)
+- [lingyu版](https://lingyu-1qj.pages.dev/Shizuku) 
 
 Root
  - [KernelSU官网](https://kernelsu.org/zh_CN/) - [KernelSU-Github](https://github.com/tiann/KernelSU)
