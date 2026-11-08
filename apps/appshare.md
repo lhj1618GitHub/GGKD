@@ -7,7 +7,6 @@
       key: 1,
       name: '内嵌广告-启动广告',
       desc: '[跳过]',
-      matchTime: 5000,
       rules: [
         {
           matches: [
@@ -24,7 +23,6 @@
       key: 2,
       name: '自动化-签到',
       desc: '[签到]',
-      matchTime: 3000,
       rules: [
         {
           key: 0,
