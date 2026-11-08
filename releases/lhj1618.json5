@@ -433,7 +433,7 @@
               ],
               anyMatches: [
                 'FrameLayout[clickable=true][focusable=true][visibleToUser=true][width=1080]',
-                'ViewGroup[index=0][longClickable=true]',
+                'ViewGroup[index=0][longClickable=true][visibleToUser=true]',
               ],
               fastQuery: true,
               activityIds: [
