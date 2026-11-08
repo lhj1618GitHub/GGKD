@@ -17,8 +17,11 @@ Shizuku
 - [lingyu版](https://lingyu-1qj.pages.dev/Shizuku) 
 
 Root
- - [KernelSU官网](https://kernelsu.org/zh_CN/) - [KernelSU-Github](https://github.com/tiann/KernelSU)
- - [Magisk面具](https://magiskcn.com/) - [Magisk-Github](https://github.com/topjohnwu/Magisk)
+- [KernelSU官网](https://kernelsu.org/zh_CN/) - [KernelSU-Github](https://github.com/tiann/KernelSU)
+
+- [Magisk面具](https://magiskcn.com/) - [Magisk-Github](https://github.com/topjohnwu/Magisk)
+
+- Ghostlock - [Github](https://github.com/YuKongA/ghostlock-app)
 
 ---
 
