@@ -154,6 +154,56 @@
         },
       ],
     },
+{
+  id: 'com.miui.packageinstaller',
+  name: '应用包管理组件',
+  groups: [
+{
+  key: 1,
+  name: '自动化-自动安装',
+  desc: '风险提示[网络不佳]',
+  rules: [
+    {
+      key: 0,
+      matches: [
+        '[text^="当前网络环境不佳"] < LinearLayout < ScrollView - [text="风险提示"]',
+        '[text="继续"]',
+      ],
+      fastQuery: true,
+      activityIds: [
+        'com.miui.packageInstaller.NewInstallerPrepareActivity',
+      ],
+    },
+    {
+      key: 1,
+      preKeys: [
+        0,
+      ],
+      matches: [
+        '[vid="more"][visibleToUser=true]',
+      ],
+      fastQuery: true,
+      activityIds: [
+        'com.miui.packageInstaller.NewInstallerPrepareActivity',
+      ],
+    },
+    {
+      key: 2,
+      preKeys: [
+        1,
+      ],
+      matches: [
+        '[text="单次安装授权"] < RelativeLayout < LinearLayout < [id="android:id/list"][visibleToUser=true]',
+      ],
+      fastQuery: true,
+      activityIds: [
+        'com.miui.packageInstaller.NewInstallerPrepareActivity',
+      ],
+    },
+  ],
+},
+],
+},
     {
       id: 'com.android.browser',
       name: '浏览器-小米',
