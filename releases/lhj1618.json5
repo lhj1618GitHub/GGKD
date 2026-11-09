@@ -456,17 +456,46 @@
       id: 'com.phoenix.read',
       name: '红果免费短剧',
       groups: [
+{
+  key: 1,
+  name: '内嵌广告-推荐页广告直播',
+  desc: '[上滑]',
+  rules: [
+    {
+      action: 'swipe',
+      swipeArg: {
+        start: {
+          x: 'width * 0.5',
+          y: 'height * 0.7',
+        },
+        end: {
+          x: 'width * 0.5',
+          y: 'height * 0.3',
+        },
+        duration: 200,
+      },
+      matches: [
+        '@FrameLayout[childCount=1] <2 * < [vid="l0"]',
+      ],
+      fastQuery: true,
+      matchRoot: true,
+      activityIds: [
+        'com.dragon.read.pages.main.MainFragmentActivity',
+      ],
+    },
+  ],
+},
         {
-          key: 1,
+          key: 2,
           name: '内嵌广告-剧集广告',
           desc: '[back][观看完整剧集]跳过重复',
           rules: [
             {
               key: 0,
-              name: '片首片尾广告预警',
+              name: '下一集是广告',
               action: 'back',
               matches: [
-                '@FrameLayout[childCount=1] <(2,3) * < [vid="l0"]',
+                '@FrameLayout[childCount=1] <3 * < [vid="l0"]',
               ],
               fastQuery: true,
               matchRoot: true,
@@ -493,7 +522,7 @@
           ],
         },
         {
-          key: 2,
+          key: 3,
           name: '自动化-历史收藏桌面推送',
           desc: '点[确认][暂不添加][取消]',
           rules: [
@@ -511,7 +540,7 @@
           ],
         },
         {
-          key: 3,
+          key: 4,
           name: '自动化-倍速播放',
           desc: '[倍速][x1.5]',
           rules: [
