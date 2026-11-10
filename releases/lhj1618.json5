@@ -324,6 +324,24 @@
         },
       ],
     },
+{
+  id: 'com.coolapk.market',
+  name: '酷安',
+  groups: [
+    {
+      key: 1,
+      name: '内嵌广告-启动广告',
+      desc: '[跳过]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.view.main.MainActivity',
+          matches: '@View[width<120][visibleToUser=true] <3 FrameLayout <2 FrameLayout < FrameLayout < FrameLayout < [vid="root_view"]',
+        },
+      ],
+    },
+  ],
+},
     {
       id: 'com.changan.uni',
       name: '引力域',
