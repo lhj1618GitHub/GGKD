@@ -37,7 +37,7 @@ Root
     - 增强脚本.js - [Github发布页](https://github.com/adproqwq/MikuMagicWand/releases) 美化页面/增强规则参数插入/坐标获取
     - [官方网站重定向至Plus版.js](https://github.com/cjy0812/inspect-plus/raw/refs/heads/main/userscripts/url-redirect.user.js) - [GitHub发布页](https://github.com/cjy0812/inspect-plus)
 
-- 其它辅助工具 - [最新在线版](https://lhj1618github.github.io/html/)在线版：
+- 其它辅助工具 - [最新在线版](https://lhj1618github.github.io/html/)：
     - [json5.html](https://lhj1618github.github.io/html/json5.html) / [json5-noline.html](https://gitee.com/lhj1618/GGKD/releases/download/releases/json5-noline.zip)；支持导入所有格式文件，导出为json/json5
     - [GKD订阅文件工具](https://lhj1618github.github.io/html/GKD-TOOL.html)：含创建和可视化编辑功能；支持json5格式化，支持格式 md txt ts json json5 html 
 
