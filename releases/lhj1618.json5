@@ -1,6 +1,6 @@
 {
   id: 2603,
-  version: 122,
+  version: 123,
   name: 'Github',
   author: 'lhj1618',
   checkUpdateUrl: './version.json5',
@@ -803,18 +803,6 @@
             },
           ],
         },
-{
-    key: 7,
-    name: '内嵌广告-小程序启动广告',
-    desc: '[跳过]',
-    rules: [
-        {
-            fastQuery: true,
-            activityIds: '.plugin.appbrand.ui.AppBrandUI00',
-            matches: '[text="跳过"]',
-        },
-    ],
-},
       ],
     },
     {
