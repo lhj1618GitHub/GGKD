@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 生成 OK/lhj1618.json5
+      - name: 生成 OK/lhj1618.json5 与 OK/version.json5
         run: |
           cat > build.js <<'EOF'
           const fs   = require('fs');
@@ -43,6 +43,7 @@ jobs:
           const SAMPLE       = path.join(APPS_DIR, 'sample.json5');
           const OUT_DIR      = path.join(ROOT, 'OK');
           const OUT_FILE     = path.join(OUT_DIR, 'lhj1618.json5');
+          const VERSION_FILE = path.join(OUT_DIR, 'version.json5');
           const REPLACE_FLAG = '//替换标记';
           const JSON5_PATH   = path.join(ROOT, 'todo', 'json5.js');
 
@@ -54,7 +55,6 @@ jobs:
           try {
             JSON5 = require(JSON5_PATH);
           } catch (e) {
-            // UMD 兜底：某些构建会挂到 globalThis
             JSON5 = globalThis.JSON5;
           }
           if (!JSON5 && globalThis.JSON5) JSON5 = globalThis.JSON5;
@@ -63,7 +63,7 @@ jobs:
           }
           console.log('    ✅ 已加载 todo/json5.js');
 
-          // ---------- 1. 合并 apps/*.md（等价 to-one.bat） ----------
+          // ---------- 1. 合并 apps/*.md ----------
           if (!fs.existsSync(APPS_DIR)) fail(`找不到目录 ${APPS_DIR}`);
           if (!fs.existsSync(SAMPLE))   fail(`找不到模板 ${SAMPLE}`);
 
@@ -91,7 +91,7 @@ jobs:
           const finalText = src.split(REPLACE_FLAG).join(cleaned);
           console.log('    ✅ 替换标记内容完成');
 
-          // ---------- 4. 解析、version+1 ----------
+          // ---------- 4. 解析 ----------
           let obj;
           try {
             obj = JSON5.parse(finalText);
@@ -99,35 +99,65 @@ jobs:
             fail('JSON5 解析失败：' + e.message);
           }
 
-          if (fs.existsSync(OUT_FILE)) {
+          // ---------- 5. 读取旧 version（优先 lhj1618.json5，其次 version.json5） ----------
+          let oldVersion;
+          let oldSource = '';
+          for (const f of [OUT_FILE, VERSION_FILE]) {
+            if (!fs.existsSync(f)) continue;
             try {
-              const oldObj = JSON5.parse(fs.readFileSync(OUT_FILE, 'utf8'));
-              const ov = oldObj.version;
-              if (typeof ov === 'number') {
-                obj.version = ov + 1;
-                console.log(`   version: ${ov} → ${obj.version}`);
-              } else if (typeof ov === 'string' && /^\d+$/.test(ov)) {
-                obj.version = String(parseInt(ov, 10) + 1);
-                console.log(`   version: ${ov} → ${obj.version}`);
-              } else {
-                console.warn(`   ⚠️ version 类型不支持自动 +1，保持原值: ${ov}`);
+              const o = JSON5.parse(fs.readFileSync(f, 'utf8'));
+              if (o && o.version !== undefined) {
+                oldVersion = o.version;
+                oldSource  = path.relative(ROOT, f);
+                break;
               }
             } catch (e) {
-              console.warn('   ⚠️ 读取旧文件 version 失败：' + e.message);
+              console.warn(`   ⚠️ 读取 ${path.relative(ROOT, f)} 失败：${e.message}`);
             }
-          } else {
-            console.log(`   首次生成，version 保持模板值：${obj.version}`);
           }
 
-          // ---------- 5. 使用 todo/json5.js 格式化 ----------
-          const output = JSON5.stringify(obj, null, 2) + '\n';
+          // ---------- 6. 计算新 version ----------
+          let newVersion;
+          if (oldVersion === undefined) {
+            newVersion = obj.version;
+            console.log(`   首次生成，version 保持模板值：${newVersion}`);
+          } else if (typeof oldVersion === 'number') {
+            newVersion = oldVersion + 1;
+            console.log(`   version: ${oldVersion} → ${newVersion}  (源: ${oldSource})`);
+          } else if (typeof oldVersion === 'string' && /^\d+$/.test(oldVersion)) {
+            newVersion = String(parseInt(oldVersion, 10) + 1);
+            console.log(`   version: ${oldVersion} → ${newVersion}  (源: ${oldSource})`);
+          } else {
+            newVersion = oldVersion;
+            console.warn(`   ⚠️ version 类型不支持自动 +1，保持原值：${oldVersion}`);
+          }
 
+          // ---------- 7. 写 lhj1618.json5 ----------
+          obj.version = newVersion;
           fs.mkdirSync(OUT_DIR, { recursive: true });
-          fs.writeFileSync(OUT_FILE, output, 'utf8');
+          fs.writeFileSync(OUT_FILE, JSON5.stringify(obj, null, 2) + '\n', 'utf8');
+          console.log('    ✅ 已写入 OK/lhj1618.json5');
+
+          // ---------- 8. 同步写 OK/version.json5 ----------
+          let vObj = {};
+          if (fs.existsSync(VERSION_FILE)) {
+            try {
+              const parsed = JSON5.parse(fs.readFileSync(VERSION_FILE, 'utf8'));
+              if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+                vObj = parsed;
+              }
+            } catch (e) {
+              console.warn('   ⚠️ 旧 version.json5 解析失败，将重建：' + e.message);
+            }
+          }
+          vObj.version = newVersion;
+          fs.writeFileSync(VERSION_FILE, JSON5.stringify(vObj, null, 2) + '\n', 'utf8');
+          console.log('    ✅ 已同步 OK/version.json5');
 
           console.log('');
           console.log('✅ 整理订阅文件完成！');
-          console.log('   输出文件：' + path.relative(ROOT, OUT_FILE));
+          console.log('   lhj1618.json5 version = ' + newVersion);
+          console.log('   version.json5 version = ' + newVersion);
           EOF
           node build.js
 
@@ -135,7 +165,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lhj1618-json5
-          path: OK/lhj1618.json5
+          path: |
+            OK/lhj1618.json5
+            OK/version.json5
           if-no-files-found: error
 
       - name: 提交结果回仓库
@@ -143,10 +175,10 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add OK/lhj1618.json5
+          git add OK/lhj1618.json5 OK/version.json5
           if git diff --staged --quiet; then
             echo "无变化，跳过提交"
           else
-            git commit -m "chore: 自动生成 OK/lhj1618.json5 [skip ci]"
+            git commit -m "chore: 自动生成 OK/lhj1618.json5 + version.json5 [skip ci]"
             git push
           fi
