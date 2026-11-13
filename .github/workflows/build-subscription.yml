@@ -61,7 +61,7 @@ jobs:
               print(f"  + {f.name}")
 
           # 模拟 echo. 产生的首行空行 + 逗号分隔的各文件内容
-          combined = "\n" + ",\n".join(parts)
+          combined = ",\n".join(parts)
           with open(ts_output, "w", encoding="utf-8", newline="\n") as fh:
               fh.write(combined)
 
