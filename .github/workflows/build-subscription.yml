@@ -2,15 +2,14 @@ name: 创建订阅文件
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - 'apps/**'
-      - 'todo/json5.js'
-      - '.github/workflows/build-subscription.yml'
-  pull_request:
-    paths:
-      - 'apps/**'
+    inputs:
+      output_format:
+        description: '输出文件格式（compact=紧凑单行 / pretty=展开缩进）'
+        type: choice
+        options:
+          - compact
+          - pretty
+        default: compact
 
 permissions:
   contents: write
@@ -22,6 +21,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      OUTPUT_FORMAT: ${{ inputs.output_format }}
 
     steps:
       - name: 检出仓库
@@ -32,8 +33,9 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 生成 OK/lhj1618.json5 与 OK/version.json5
+      - name: 生成 releases/lhj1618.json5 与 releases/version.json5
         run: |
+          echo "输出格式：${OUTPUT_FORMAT}"
           cat > build.js <<'EOF'
           const fs   = require('fs');
           const path = require('path');
@@ -41,13 +43,21 @@ jobs:
           const ROOT         = process.cwd();
           const APPS_DIR     = path.join(ROOT, 'apps');
           const SAMPLE       = path.join(APPS_DIR, 'sample.json5');
-          const OUT_DIR      = path.join(ROOT, 'OK');
+          const OUT_DIR      = path.join(ROOT, 'releases');
           const OUT_FILE     = path.join(OUT_DIR, 'lhj1618.json5');
           const VERSION_FILE = path.join(OUT_DIR, 'version.json5');
           const REPLACE_FLAG = '//替换标记';
           const JSON5_PATH   = path.join(ROOT, 'todo', 'json5.js');
+          const FORMAT       = (process.env.OUTPUT_FORMAT || 'compact').toLowerCase();
 
           function fail(msg) { console.error('❌ ' + msg); process.exit(1); }
+
+          // 按选择格式化：compact=无缩进；pretty=2 空格缩进
+          function stringify(o) {
+            return FORMAT === 'pretty'
+              ? JSON5.stringify(o, null, 2)
+              : JSON5.stringify(o);
+          }
 
           // ---------- 0. 加载本地 todo/json5.js ----------
           if (!fs.existsSync(JSON5_PATH)) fail(`找不到 ${JSON5_PATH}`);
@@ -75,7 +85,6 @@ jobs:
             const raw  = fs.readFileSync(full, 'utf8');
             const body = raw.split('```json5').join(''); // 忽略 ```json5 标记
 
-            // 尝试若干种形态：单个对象/数组、多个对象/数组以逗号分隔
             const attempts = [
               () => JSON5.parse('[' + body + ']'),
               () => JSON5.parse(body),
@@ -160,13 +169,13 @@ jobs:
             console.warn(`   ⚠️ version 类型不支持自动 +1，保持原值：${oldVersion}`);
           }
 
-          // ---------- 8. 紧凑输出 lhj1618.json5 ----------
+          // ---------- 8. 输出 lhj1618.json5 ----------
           obj.version = newVersion;
           fs.mkdirSync(OUT_DIR, { recursive: true });
-          fs.writeFileSync(OUT_FILE, JSON5.stringify(obj) + '\n', 'utf8');
-          console.log('    ✅ 已写入 OK/lhj1618.json5 (紧凑格式)');
+          fs.writeFileSync(OUT_FILE, stringify(obj) + '\n', 'utf8');
+          console.log(`    ✅ 已写入 releases/lhj1618.json5 (${FORMAT})`);
 
-          // ---------- 9. 紧凑同步 OK/version.json5 ----------
+          // ---------- 9. 同步 version.json5 ----------
           let vObj = {};
           if (fs.existsSync(VERSION_FILE)) {
             try {
@@ -179,13 +188,14 @@ jobs:
             }
           }
           vObj.version = newVersion;
-          fs.writeFileSync(VERSION_FILE, JSON5.stringify(vObj) + '\n', 'utf8');
-          console.log('    ✅ 已同步 OK/version.json5 (紧凑格式)');
+          fs.writeFileSync(VERSION_FILE, stringify(vObj) + '\n', 'utf8');
+          console.log(`    ✅ 已同步 releases/version.json5 (${FORMAT})`);
 
           console.log('');
           console.log('✅ 整理订阅文件完成！');
-          console.log('   lhj1618.json5 version = ' + newVersion);
-          console.log('   version.json5 version = ' + newVersion);
+          console.log('   releases/lhj1618.json5 version = ' + newVersion);
+          console.log('   releases/version.json5 version = ' + newVersion);
+          console.log('   输出格式 = ' + FORMAT);
           EOF
           node build.js
 
@@ -194,19 +204,18 @@ jobs:
         with:
           name: lhj1618-json5
           path: |
-            OK/lhj1618.json5
-            OK/version.json5
+            releases/lhj1618.json5
+            releases/version.json5
           if-no-files-found: error
 
       - name: 提交结果回仓库
-        if: github.event_name != 'pull_request'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add OK/lhj1618.json5 OK/version.json5
+          git add releases/lhj1618.json5 releases/version.json5
           if git diff --staged --quiet; then
             echo "无变化，跳过提交"
           else
-            git commit -m "chore: 自动生成 OK/lhj1618.json5 + version.json5 [skip ci]"
+            git commit -m "chore: 自动生成 releases/*.json5 [${OUTPUT_FORMAT}][skip ci]"
             git push
           fi
