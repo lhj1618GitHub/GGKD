@@ -52,18 +52,14 @@ jobs:
           // ---------- 0. 加载本地 todo/json5.js ----------
           if (!fs.existsSync(JSON5_PATH)) fail(`找不到 ${JSON5_PATH}`);
           let JSON5;
-          try {
-            JSON5 = require(JSON5_PATH);
-          } catch (e) {
-            JSON5 = globalThis.JSON5;
-          }
+          try { JSON5 = require(JSON5_PATH); } catch (e) { JSON5 = globalThis.JSON5; }
           if (!JSON5 && globalThis.JSON5) JSON5 = globalThis.JSON5;
           if (!JSON5 || typeof JSON5.parse !== 'function' || typeof JSON5.stringify !== 'function') {
             fail('todo/json5.js 未导出 parse/stringify，请确认是 json5 官方 dist 版本');
           }
           console.log('    ✅ 已加载 todo/json5.js');
 
-          // ---------- 1. 合并 apps/*.md ----------
+          // ---------- 1. 前置校验 apps/*.md 的 JSON5 格式 ----------
           if (!fs.existsSync(APPS_DIR)) fail(`找不到目录 ${APPS_DIR}`);
           if (!fs.existsSync(SAMPLE))   fail(`找不到模板 ${SAMPLE}`);
 
@@ -72,36 +68,68 @@ jobs:
                             .sort();
           if (mdFiles.length === 0) fail('apps 目录下没有 .md 文件');
 
+          console.log('    开始校验 apps/*.md 的 JSON5 格式...');
+          const badFiles = [];
+          for (const f of mdFiles) {
+            const full = path.join(APPS_DIR, f);
+            const raw  = fs.readFileSync(full, 'utf8');
+            const body = raw.split('```json5').join(''); // 忽略 ```json5 标记
+
+            // 尝试若干种形态：单个对象/数组、多个对象/数组以逗号分隔
+            const attempts = [
+              () => JSON5.parse('[' + body + ']'),
+              () => JSON5.parse(body),
+            ];
+            let ok = false, lastErr = null;
+            for (const t of attempts) {
+              try { t(); ok = true; break; } catch (e) { lastErr = e; }
+            }
+            if (!ok) {
+              badFiles.push({ file: f, msg: lastErr ? lastErr.message : '未知解析错误' });
+              console.log(`      ❌ ${f}`);
+            } else {
+              console.log(`      ✓  ${f}`);
+            }
+          }
+
+          if (badFiles.length) {
+            console.error('');
+            console.error('❌ 以下 md 文件存在 JSON5 格式错误，已中止：');
+            for (const b of badFiles) {
+              console.error(`   - apps/${b.file}`);
+              console.error(`     原因：${b.msg}`);
+            }
+            process.exit(1);
+          }
+          console.log('    ✅ 全部 md 文件格式校验通过');
+
+          // ---------- 2. 合并 apps/*.md ----------
           let combined = '\n';
           mdFiles.forEach((f, i) => {
             const text = fs.readFileSync(path.join(APPS_DIR, f), 'utf8');
             if (i > 0) combined += ',\n';
             combined += text;
             if (!text.endsWith('\n')) combined += '\n';
-            console.log('  + ' + f);
           });
+          console.log('    ✅ 应用规则合并完成');
 
-          // ---------- 2. 清理 ```json5 ----------
+          // ---------- 3. 清理 ```json5 ----------
           const cleaned = combined.split('```json5').join('');
           console.log('    ✅ 多余内容清理完成');
 
-          // ---------- 3. 替换标记 ----------
+          // ---------- 4. 替换标记 ----------
           const src = fs.readFileSync(SAMPLE, 'utf8');
           if (!src.includes(REPLACE_FLAG)) fail(`${SAMPLE} 中不存在替换标记 ${REPLACE_FLAG}`);
           const finalText = src.split(REPLACE_FLAG).join(cleaned);
           console.log('    ✅ 替换标记内容完成');
 
-          // ---------- 4. 解析 ----------
+          // ---------- 5. 解析 ----------
           let obj;
-          try {
-            obj = JSON5.parse(finalText);
-          } catch (e) {
-            fail('JSON5 解析失败：' + e.message);
-          }
+          try { obj = JSON5.parse(finalText); }
+          catch (e) { fail('JSON5 解析失败：' + e.message); }
 
-          // ---------- 5. 读取旧 version（优先 lhj1618.json5，其次 version.json5） ----------
-          let oldVersion;
-          let oldSource = '';
+          // ---------- 6. 读取旧 version（lhj1618 优先，version.json5 兜底） ----------
+          let oldVersion, oldSource = '';
           for (const f of [OUT_FILE, VERSION_FILE]) {
             if (!fs.existsSync(f)) continue;
             try {
@@ -116,7 +144,7 @@ jobs:
             }
           }
 
-          // ---------- 6. 计算新 version ----------
+          // ---------- 7. 计算新 version ----------
           let newVersion;
           if (oldVersion === undefined) {
             newVersion = obj.version;
@@ -132,13 +160,13 @@ jobs:
             console.warn(`   ⚠️ version 类型不支持自动 +1，保持原值：${oldVersion}`);
           }
 
-          // ---------- 7. 写 lhj1618.json5 ----------
+          // ---------- 8. 紧凑输出 lhj1618.json5 ----------
           obj.version = newVersion;
           fs.mkdirSync(OUT_DIR, { recursive: true });
-          fs.writeFileSync(OUT_FILE, JSON5.stringify(obj, null, 2) + '\n', 'utf8');
-          console.log('    ✅ 已写入 OK/lhj1618.json5');
+          fs.writeFileSync(OUT_FILE, JSON5.stringify(obj) + '\n', 'utf8');
+          console.log('    ✅ 已写入 OK/lhj1618.json5 (紧凑格式)');
 
-          // ---------- 8. 同步写 OK/version.json5 ----------
+          // ---------- 9. 紧凑同步 OK/version.json5 ----------
           let vObj = {};
           if (fs.existsSync(VERSION_FILE)) {
             try {
@@ -151,8 +179,8 @@ jobs:
             }
           }
           vObj.version = newVersion;
-          fs.writeFileSync(VERSION_FILE, JSON5.stringify(vObj, null, 2) + '\n', 'utf8');
-          console.log('    ✅ 已同步 OK/version.json5');
+          fs.writeFileSync(VERSION_FILE, JSON5.stringify(vObj) + '\n', 'utf8');
+          console.log('    ✅ 已同步 OK/version.json5 (紧凑格式)');
 
           console.log('');
           console.log('✅ 整理订阅文件完成！');
