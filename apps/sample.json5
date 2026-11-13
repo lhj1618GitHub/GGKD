@@ -3,8 +3,8 @@
     version: 0,
     name: 'Github',
     author: 'lhj1618',
-    checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
-    updateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/lhj1618.json5',
+    checkUpdateUrl: './version.json5',
+    updateUrl: 'https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5',
     supportUri: 'https://github.com/lhj1618GitHub/GGKD',
     globalGroups: [
         {
@@ -12,13 +12,12 @@
             name: '开屏广告-全局',
             desc: '关闭打开应用时的开屏广告',
             fastQuery: true,
-            matchTime: 5000,
-            actionMaximum: 1,
+            matchTime: 8000,
             resetMatch: 'app',
             rules: [
                 {
                     anyMatches: [
-                        '[text*="跳过" || desc*="跳过" || text*="跳 过" || desc*="跳 过" || text*="跳過" || desc*="跳過"][text.length<10][visibleToUser=true]',
+                        '[text="跳过" || desc="跳过" || text="跳 过" || desc="跳 过" || text="跳過" || desc="跳過"][text.length<10][visibleToUser=true]',
                     ],
                 },
             ],
@@ -45,10 +44,14 @@
         },
         {
             key: 1,
-            name: '弹窗广告',
+            name: '开屏广告',
         },
         {
             key: 2,
+            name: '弹窗广告',
+        },
+        {
+            key: 3,
             name: '内嵌广告',
         },
     ],
