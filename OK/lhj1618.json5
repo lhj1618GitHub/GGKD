@@ -1,6 +1,6 @@
 {
   id: 2603,
-  version: 1,
+  version: 2,
   name: 'Github',
   author: 'lhj1618',
   checkUpdateUrl: 'https://xget.xi-xu.me/gh/lhj1618GitHub/GGKD/raw/refs/heads/master/releases/version.json5',
