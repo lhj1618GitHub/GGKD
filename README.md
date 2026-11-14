@@ -13,8 +13,9 @@ ADB
 
 Shizuku
 - [Shizuku官网](https://shizuku.rikka.app/) - [Github](https://github.com/RikkaApps/Shizuku/releases)
-- thedjchi版 - [Github](https://github.com/thedjchi/Shizuku/releases)
-- [lingyu版](https://lingyu-1qj.pages.dev/Shizuku) 
+- HSSkyBoy版 - [Github](https://github.com/HSSkyBoy/Shizuku) 支持17，增加无线自启动/保活
+- thedjchi版 - [Github](https://github.com/thedjchi/Shizuku/releases) 支持17，增加无线自启动/保活，集成墓碑模式等小工具
+- [lingyu版](https://lingyu-1qj.pages.dev/Shizuku)  支持17，增加无线自启动/保活，集成联网控制/shell等小工具
 
 Root
 - [KernelSU官网](https://kernelsu.org/zh_CN/) - [Github](https://github.com/tiann/KernelSU)
