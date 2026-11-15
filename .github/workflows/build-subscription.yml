@@ -42,8 +42,8 @@ jobs:
 
           const ROOT         = process.cwd();
           const APPS_DIR     = path.join(ROOT, 'apps');
-          const SAMPLE       = path.join(APPS_DIR, 'sample.json5');
           const OUT_DIR      = path.join(ROOT, 'releases');
+          const SAMPLE       = path.join(OUT_DIR, 'sample.json5');
           const OUT_FILE     = path.join(OUT_DIR, 'lhj1618.json5');
           const VERSION_FILE = path.join(OUT_DIR, 'version.json5');
           const REPLACE_FLAG = '//替换标记';
