@@ -70,13 +70,13 @@ jobs:
           console.log('    ✅ 已加载 todo/json5.js');
 
           // ---------- 1. 前置校验 apps/*.md 的 JSON5 格式 ----------
-           if (!fs.existsSync(APPS_DIR)) fail(`找不到目录 ${APPS_DIR}`);
-           if (!fs.existsSync(SAMPLE))   fail(`找不到模板 ${SAMPLE}`);
+          if (!fs.existsSync(APPS_DIR)) fail(`找不到目录 ${APPS_DIR}`);
+          if (!fs.existsSync(SAMPLE))   fail(`找不到模板 ${SAMPLE}`);
 
-const mdFiles = fs.readdirSync(APPS_DIR)
-                  .filter(f => f.endsWith('.md') && f.toLowerCase() !== 'readme.md')
-                  .sort();
-if (mdFiles.length === 0) fail('apps 目录下没有 .md 文件（已排除 readme.md）');
+          const mdFiles = fs.readdirSync(APPS_DIR)
+                            .filter(f => f.endsWith('.md'))
+                            .sort();
+          if (mdFiles.length === 0) fail('apps 目录下没有 .md 文件');
 
           console.log('    开始校验 apps/*.md 的 JSON5 格式...');
           const badFiles = [];
