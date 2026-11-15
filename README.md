@@ -48,7 +48,7 @@ Root
 
 ---
 
-## [创建订阅文件](../创建订阅文件方式-说明.md)
+## [创建订阅文件](./创建订阅文件-说明.md)
 
 
 GGKD：[Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD) & 李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
