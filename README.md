@@ -1,12 +1,12 @@
- **[GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases) - [第三方订阅列表](https://github.com/topics/gkd-subscription)** 
+ # [GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases) - [第三方订阅列表](https://github.com/topics/gkd-subscription)
 
 ---
 
-[我的订阅信息](./releases/readme.md) - [查看订阅文件](./releases/lhj1618.json5) - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases)
+## [我的订阅信息](./releases/readme.md) - [查看订阅文件](./releases/lhj1618.json5) - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases)
 
 ---
 
-**授权与命令**
+## 授权与命令
 
 ADB
 - [adb授权命令与说明](./help/adb授权命令.md) - [ADB工具包下载](https://gitee.com/lhj1618/GGKD/releases/download/releases/adb.zip)
@@ -26,7 +26,7 @@ Root
 
 ---
 
-**自定义规则编辑** - [帮助文档](./help/)  - [官网API](https://gkd.li/api/)
+## 自定义规则编辑 - [帮助文档](./help/)  - [官网API](https://gkd.li/api/)
 
 - 快照审查网页
     - [官方网站](https://i.gkd.li/) - [仿官方.apk](https://gitee.com/lhj1618/GGKD/releases/download/releases/gmd-gkd%E8%BE%85%E5%8A%A9_1.0.apk)
@@ -48,6 +48,10 @@ Root
 
 ---
 
+## [创建订阅文件](../创建订阅文件方式-说明.md)
+
+
 GGKD：[Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD) & 李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
 
+# End
 
