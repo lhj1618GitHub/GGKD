@@ -1,6 +1,8 @@
  # [GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)
 
-- [第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的订阅信息](./releases/readme.md) - [查看订阅文件](./releases/lhj1618.json5) - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases)
+- [第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的订阅信息](./releases/readme.md)
+
+- [查看订阅文件](./releases/lhj1618.json5) - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases)
 
 
 ## 授权与命令
