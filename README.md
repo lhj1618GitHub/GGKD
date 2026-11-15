@@ -1,10 +1,7 @@
  # [GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases) - [第三方订阅列表](https://github.com/topics/gkd-subscription)
 
----
-
 ## [我的订阅信息](./releases/readme.md) - [查看订阅文件](./releases/lhj1618.json5) - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases)
 
----
 
 ## 授权与命令
 
@@ -48,7 +45,7 @@ Root
 
 ---
 
-## [创建订阅文件](./创建订阅文件-说明.md)
+## 订阅文件更新流程：[应用规则管理](./apps/) → [创建订阅文件](./创建订阅文件-说明.md)
 
 
 GGKD：[Gitee](https://gitee.com/lhj1618/GGKD) - [Github](https://github.com/lhj1618GitHub/GGKD) & 李跳跳：[github](https://github.com/lhj1618GitHub/LiTT) - [Gitee](https://gitee.com/lhj1618/LiTT) - [Gitcode](https://gitcode.com/lhj1618/LiTT)
