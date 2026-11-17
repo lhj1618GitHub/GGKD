@@ -13,12 +13,147 @@
             desc: '关闭打开应用时的开屏广告',
             fastQuery: true,
             matchTime: 8000,
+            actionMaximum: 2,
             resetMatch: 'app',
             rules: [
                 {
                     anyMatches: [
                         '[text*="跳过" || desc*="跳过" || text*="跳 过" || desc*="跳 过" || text*="跳過" || desc*="跳過" || vid*="skip"][text.length<10][visibleToUser=true]',
                     ],
+                },
+            ],
+            apps: [
+                {
+                    id: 'com.miui.systemAdSolution',
+                    enable: true,
+                },
+                {
+                    id: 'com.xiaomi.market',
+                    enable: true,
+                },
+                {
+                    id: 'bin.mt.plus',
+                    enable: false,
+                },
+                {
+                    id: 'com.aistra.hail',
+                    enable: false,
+                },
+                {
+                    id: 'com.android.calendar',
+                    enable: false,
+                },
+                {
+                    id: 'com.android.deskclock',
+                    enable: false,
+                },
+                {
+                    id: 'com.android.email',
+                    enable: false,
+                },
+                {
+                    id: 'com.android.providers.downloads.ui',
+                    enable: false,
+                },
+                {
+                    id: 'com.android.soundrecorder',
+                    enable: false,
+                },
+                {
+                    id: 'com.deepseek.chat',
+                    enable: false,
+                },
+                {
+                    id: 'com.eg.android.AlipayGphone',
+                    enable: false,
+                },
+                {
+                    id: 'com.github.android',
+                    enable: false,
+                },
+                {
+                    id: 'com.hubmobile.app',
+                    enable: false,
+                },
+                {
+                    id: 'com.hyper.gallery.plugin',
+                    enable: false,
+                },
+                {
+                    id: 'com.jfmod.GiteePro',
+                    enable: false,
+                },
+                {
+                    id: 'com.legado.app.release',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.calculator',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.cleanmaster',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.gallery',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.mediaeditor',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.newmidrive',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.password',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.screenrecorder',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.securitymanager',
+                    enable: false,
+                },
+                {
+                    id: 'com.miui.weather2',
+                    enable: false,
+                },
+                {
+                    id: 'com.qihoo.dvrlite',
+                    enable: false,
+                },
+                {
+                    id: 'com.rosan.dhizuku',
+                    enable: false,
+                },
+                {
+                    id: 'com.tencent.mm',
+                    enable: false,
+                },
+                {
+                    id: 'com.tmri.app.main',
+                    enable: false,
+                },
+                {
+                    id: 'com.tvbox.app',
+                    enable: false,
+                },
+                {
+                    id: 'com.xiaomi.mibrain.speech',
+                    enable: false,
+                },
+                {
+                    id: 'li.songe.gkd',
+                    enable: false,
+                },
+                {
+                    id: 'mark.via',
+                    enable: false,
                 },
             ],
         },
