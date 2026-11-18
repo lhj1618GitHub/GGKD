@@ -12,7 +12,7 @@
 
 **订阅链接 - Github**
 
-- proxy加速
+- 代理加速
 
 ```
 https://gh.sixyin.com/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
