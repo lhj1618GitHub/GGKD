@@ -15,6 +15,10 @@
 - 代理加速
 
 ```
+https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD/releases/lhj1618.json5
+```
+
+```
 https://gh.sixyin.com/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
