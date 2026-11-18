@@ -13,6 +13,9 @@
 **订阅链接 - Github**
 
 - proxy加速
+```
+https://v4.gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+```
 
 ```
 https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
