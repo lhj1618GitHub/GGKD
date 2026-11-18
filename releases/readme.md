@@ -38,7 +38,7 @@ https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/ma
 - 官方原raw链接
 
 ```
-https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
 - [Gitee-随缘更新](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5)
