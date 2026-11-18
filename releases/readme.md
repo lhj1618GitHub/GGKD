@@ -15,19 +15,19 @@
 - 代理加速
 
 ```
-https://gh.sixyin.com/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+https://gh.sixyin.com/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
 ```
-https://v4.gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+https://v4.gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
 ```
-https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
 ```
-https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/refs/heads/master/releases/lhj1618.json5
+https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
 
