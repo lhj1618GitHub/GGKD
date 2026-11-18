@@ -4,7 +4,7 @@
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
-    supportUri: 'https://github.com/lhj1618GitHub/GGKD',
+    supportUri: 'https://lhj1618github.github.io/html/Tool/GKD-TOOL.html',
     globalGroups: [
         {
             key: 0,
