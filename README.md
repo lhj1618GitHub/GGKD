@@ -1,8 +1,7 @@
  # [GKD官网](https://gkd.li/) - [官方GitHub发布页](https://github.com/gkd-kit/gkd/releases)
 
-- [第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的订阅信息](./releases/readme.md)
-
-- [我的订阅文件](./releases/readme.md) - [测试专用订阅](./.temp/readme.md) - [releases下载](https://github.com/lhj1618GitHub/GGKD/releases)
+- [第三方订阅列表-Github](https://github.com/topics/gkd-subscription)
+- [我的订阅信息](./releases/readme.md) - [测试专用订阅](./.temp/readme.md) - [releases下载](https://github.com/lhj1618GitHub/GGKD/releases)
 
 ---
 
