@@ -2,7 +2,7 @@
 
 - [第三方订阅列表](https://github.com/topics/gkd-subscription) - [我的订阅信息](./releases/readme.md)
 
-- [查看订阅文件](./releases/lhj1618.json5) - [下载releases](https://github.com/lhj1618GitHub/GGKD/releases)
+- [我的订阅文件](./releases/lhj1618.json5) - [测试专用订阅](./.temp/readme.md) - [releases下载](https://github.com/lhj1618GitHub/GGKD/releases)
 
 ---
 
