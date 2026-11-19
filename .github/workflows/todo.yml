@@ -213,7 +213,16 @@ jobs:
           fs.writeFileSync(OUT_FILE, stringify(obj) + '\n', 'utf8');
           console.log(`    ✅ 已写入 releases/lhj1618.json5 (${FORMAT})`);
 
-          // ---------- 9. 同步 version.json5（version + id） ----------
+
+          // ---------- 9. 同步 id（与 sample.json5 内一致，不做变动）
+          if (obj.id !== undefined) {
+            vObj.id = obj.id;
+            console.log(`    ✅ 同步 id = ${obj.id}`);
+          } else {
+            console.log('    ℹ️ sample.json5 中未定义 id，version.json5 的 id 保持不变');
+          }
+
+          // 同步 version.json5（version + id） ----------
           let vObj = {};
           if (fs.existsSync(VERSION_FILE)) {
             try {
@@ -227,13 +236,6 @@ jobs:
           }
           vObj.version = newVersion;
 
-          // 同步 id（与 sample.json5 内一致，不做变动）
-          if (obj.id !== undefined) {
-            vObj.id = obj.id;
-            console.log(`    ✅ 同步 id = ${obj.id}`);
-          } else {
-            console.log('    ℹ️ sample.json5 中未定义 id，version.json5 的 id 保持不变');
-          }
 
           fs.writeFileSync(VERSION_FILE, stringify(vObj) + '\n', 'utf8');
           console.log(`    ✅ 已同步 releases/version.json5 (${FORMAT})`);
