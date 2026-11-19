@@ -4,9 +4,8 @@
  
  **正式订阅文件存放目录** 
 
-- [最新订阅文件](./lhj1618.json5) - [去网页编辑](https://github.com/lhj1618GitHub/GGKD/edit/master/releases/lhj1618.json5) 
-- [最新版本号](./version.json5)
-- [订阅表头信息](./订阅信息.md)
+- [最新订阅文件](./lhj1618.json5) - [最新版本号](./version.json5)
+- [去网页编辑](https://github.com/lhj1618GitHub/GGKD/edit/master/releases/lhj1618.json5)- [订阅表头信息](./订阅信息.md)
 
 ---
 
