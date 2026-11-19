@@ -43,11 +43,11 @@ jobs:
           const ROOT         = process.cwd();
           const APPS_DIR     = path.join(ROOT, 'apps');
           const OUT_DIR      = path.join(ROOT, 'releases');
-          const SAMPLE       = path.join(OUT_DIR, 'sample.json5');
+          const SAMPLE       = path.join(ROOT, 'todo', 'sample.json5');
           const OUT_FILE     = path.join(OUT_DIR, 'lhj1618.json5');
           const VERSION_FILE = path.join(OUT_DIR, 'version.json5');
           const GLOBAL_FILE  = path.join(APPS_DIR, 'globalGroups-全局规则.md');
-          const REPLACE_FLAG = '//apps替换标记';
+          const REPLACE_FLAG = '//替换标记';
           const GLOBAL_FLAG  = '//全局规则替换标记';
           const JSON5_PATH   = path.join(ROOT, 'todo', 'json5.js');
           const FORMAT       = (process.env.OUTPUT_FORMAT || 'compact').toLowerCase();
@@ -216,6 +216,7 @@ jobs:
 
           // ---------- 9. 同步 id（与 sample.json5 内一致，不做变动）
           let vObj = {};
+
           if (obj.id !== undefined) {
             vObj.id = obj.id;
             console.log(`    ✅ 同步 id = ${obj.id}`);
@@ -235,6 +236,8 @@ jobs:
             }
           }
           vObj.version = newVersion;
+
+          // 同步id和version完成 ----------
 
           fs.writeFileSync(VERSION_FILE, stringify(vObj) + '\n', 'utf8');
           console.log(`    ✅ 已同步 releases/version.json5 (${FORMAT})`);
