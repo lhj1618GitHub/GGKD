@@ -7,6 +7,6 @@
     supportUri: 'https://lhj1618github.github.io/html/Tool/GKD-TOOL.html',
     globalGroups: //全局规则替换标记,
     apps: [
-        //替换标记,
+        //apps替换标记,
     ],
 }
