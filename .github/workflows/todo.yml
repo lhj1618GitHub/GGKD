@@ -215,6 +215,7 @@ jobs:
 
 
           // ---------- 9. 同步 id（与 sample.json5 内一致，不做变动）
+          let vObj = {};
           if (obj.id !== undefined) {
             vObj.id = obj.id;
             console.log(`    ✅ 同步 id = ${obj.id}`);
@@ -223,7 +224,6 @@ jobs:
           }
 
           // 同步 version.json5（version + id） ----------
-          let vObj = {};
           if (fs.existsSync(VERSION_FILE)) {
             try {
               const parsed = JSON5.parse(fs.readFileSync(VERSION_FILE, 'utf8'));
@@ -235,7 +235,6 @@ jobs:
             }
           }
           vObj.version = newVersion;
-
 
           fs.writeFileSync(VERSION_FILE, stringify(vObj) + '\n', 'utf8');
           console.log(`    ✅ 已同步 releases/version.json5 (${FORMAT})`);
