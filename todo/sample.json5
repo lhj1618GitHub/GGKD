@@ -6,6 +6,24 @@
     checkUpdateUrl: './version.json5',
     supportUri: 'https://gh-proxy.at9.net/https://github.com/lhj1618GitHub/GGKD',
     globalGroups: //全局规则替换标记,
+    categories: [
+        {
+            key: 0,
+            name: '自动化',
+        },
+        {
+            key: 1,
+            name: '开屏广告',
+        },
+        {
+            key: 2,
+            name: '弹窗广告',
+        },
+        {
+            key: 3,
+            name: '内嵌广告',
+        },
+    ],
     apps: [
         //替换标记,
     ],
