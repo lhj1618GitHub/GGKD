@@ -4,7 +4,7 @@
     name: 'Github',
     author: 'lhj1618',
     checkUpdateUrl: './version.json5',
-    supportUri: 'https://lhj1618github.github.io/html/Tool/GKD-TOOL.html',
+    supportUri: 'https://gh-proxy.at9.net/https://github.com/lhj1618GitHub/GGKD',
     globalGroups: //全局规则替换标记,
     apps: [
         //替换标记,
