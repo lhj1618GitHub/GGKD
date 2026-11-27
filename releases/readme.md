@@ -52,7 +52,7 @@ https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/ma
 | [v80](./old/v80.json5) | 修复【红果短剧】版本通用适配 |
 | [v90](./old/v90.json5) | 新增【权限控制器】/【引力域】|
 | [v110](./old/v110.json5) | 优化【微信】支付后点击/【红果短剧】更新 |
-| [v121](./old/v121.json5) | 移除【红果短剧】金币相关 酷安优化|
+| [v121](./old/v121.json5) | 移除【红果短剧】金币相关 【酷安】优化|
 | 最新版 |  以[实际订阅文件](./lhj1618.json5)为准 |
 |   |   |
 
