@@ -1,4 +1,4 @@
-name: 创建订阅文件-同步gitee版
+name: 创建订阅文件-创建后同步gitee版
 
 on:
   workflow_dispatch:
