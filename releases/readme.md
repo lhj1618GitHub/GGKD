@@ -21,7 +21,7 @@
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
-- [Gitee-随缘更新](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5)
+- [Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5) - actions同步
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
