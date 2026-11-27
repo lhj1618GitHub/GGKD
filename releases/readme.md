@@ -15,7 +15,7 @@
 
 **订阅链接 - Github**
 
-- [Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5) - actions同步
+- [Gitee](https://gitee.com/lhj1618/GGKD/) - [查看版本](https://gitee.com/lhj1618/GGKD/releases/version.json5) - 由actions自动同步
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
