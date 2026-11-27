@@ -11,7 +11,7 @@ on:
           - pretty
         default: compact
       gitee_token:
-        description: 'Gitee 访问令牌（可选，留空则不同步到 Gitee Releases）'
+        description: 'Gitee 访问令牌（可选，留空则不同步到 Gitee）'
         type: string
         required: false
         default: ''
@@ -277,95 +277,51 @@ jobs:
             git push
           fi
 
-      # ============ 新增：同步到 Gitee Releases ============
-      - name: 同步到 Gitee Releases
+      # ============ 新增：同步到 Gitee 仓库 releases/ 目录 ============
+      - name: 同步到 Gitee 仓库 releases 目录
         if: ${{ inputs.gitee_token != '' }}
         env:
           GITEE_TOKEN: ${{ inputs.gitee_token }}
+          GITEE_USER:  lhj1618
           GITEE_OWNER: lhj1618
-          GITEE_REPO: GGKD
+          GITEE_REPO:  GGKD
         run: |
           set -euo pipefail
           echo "::add-mask::${GITEE_TOKEN}"
 
-          API="https://gitee.com/api/v5/repos/${GITEE_OWNER}/${GITEE_REPO}"
+          # 先记录构建产物绝对路径
+          SRC_DIR="${GITHUB_WORKSPACE}/releases"
 
-          # 读取 version.json5 中的 version 作为 tag
-          VERSION=$(node -e '
+          # 读取 version（用于 commit message）
+          VERSION=$(cd "$GITHUB_WORKSPACE" && node -e '
             let JSON5;
             try { JSON5 = require("./todo/json5.js"); } catch (e) {}
             if (!JSON5 || typeof JSON5.parse !== "function") JSON5 = globalThis.JSON5;
             const o = JSON5.parse(require("fs").readFileSync("releases/version.json5","utf8"));
             process.stdout.write(String(o.version));
           ')
-          TAG="v${VERSION}"
-          echo "Gitee release tag: ${TAG}"
 
-          extract_id() {
-            node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{try{const o=JSON.parse(d);process.stdout.write(String(o.id||""))}catch(e){process.stdout.write("")}})'
-          }
+          REMOTE="https://${GITEE_USER}:${GITEE_TOKEN}@gitee.com/${GITEE_OWNER}/${GITEE_REPO}.git"
+          WORK=$(mktemp -d)
+          echo "临时目录：${WORK}"
 
-          # 1) 查询是否已存在该 tag 的 release
-          echo "查询是否已存在 release ${TAG} ..."
-          RESP=$(curl -s -w "\n%{http_code}" \
-            "${API}/releases/tags/${TAG}?access_token=${GITEE_TOKEN}")
-          HTTP_CODE=$(echo "$RESP" | tail -n1)
-          BODY=$(echo "$RESP" | sed '$d')
+          # 浅克隆 Gitee 仓库
+          git clone --depth 1 "$REMOTE" "$WORK/repo"
+          cd "$WORK/repo"
 
-          RELEASE_ID=""
-          if [ "$HTTP_CODE" = "200" ]; then
-            RELEASE_ID=$(echo "$BODY" | extract_id)
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 拷贝并提交到 releases/ 目录
+          mkdir -p releases
+          cp "${SRC_DIR}/lhj1618.json5" releases/
+          cp "${SRC_DIR}/version.json5"  releases/
+          git add releases/lhj1618.json5 releases/version.json5
+
+          if git diff --staged --quiet; then
+            echo "Gitee 仓库无变化，跳过提交"
+          else
+            git commit -m "chore: 自动更新 releases/*.json5 (v${VERSION}) [skip ci]"
+            git push origin HEAD
+            echo "✅ 已同步到 https://gitee.com/${GITEE_OWNER}/${GITEE_REPO}/tree/master/releases"
           fi
-
-          # 2) 不存在则创建（Gitee 会自动基于 target_commitish 创建 tag）
-          if [ -z "$RELEASE_ID" ]; then
-            echo "创建 release ${TAG} ..."
-            BODY=$(curl -s -X POST "${API}/releases" \
-              -F "access_token=${GITEE_TOKEN}" \
-              -F "tag_name=${TAG}" \
-              -F "name=${TAG}" \
-              -F "target_commitish=master" \
-              -F "body=自动生成的订阅文件 ${TAG}")
-            RELEASE_ID=$(echo "$BODY" | extract_id)
-          fi
-
-          if [ -z "$RELEASE_ID" ]; then
-            echo "❌ 无法获取/创建 Gitee release"
-            echo "$BODY"
-            exit 1
-          fi
-          echo "Release ID: ${RELEASE_ID}"
-
-          # 3) 现有附件清单（id name）
-          ASSETS=$(echo "$BODY" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{try{const o=JSON.parse(d);(o.assets||[]).forEach(a=>console.log(a.id+" "+a.name))}catch(e){}})' || true)
-
-          # 4) 逐个文件：同名先删后传
-          for FILE in releases/lhj1618.json5 releases/version.json5; do
-            BASENAME=$(basename "$FILE")
-            OLD_ID=$(echo "$ASSETS" | awk -v n="$BASENAME" '$2==n{print $1; exit}' || true)
-            if [ -n "${OLD_ID:-}" ]; then
-              echo "删除同名旧附件 ${BASENAME} (id=${OLD_ID})"
-              curl -s -X DELETE \
-                "${API}/releases/${RELEASE_ID}/attach_files/${OLD_ID}?access_token=${GITEE_TOKEN}" \
-                >/dev/null || true
-            fi
-
-            echo "上传 ${FILE} ..."
-            RESP=$(curl -s -w "\n%{http_code}" -X POST \
-              "${API}/releases/${RELEASE_ID}/attach_files" \
-              -F "access_token=${GITEE_TOKEN}" \
-              -F "file=@${FILE}")
-            HTTP_CODE=$(echo "$RESP" | tail -n1)
-            BODY=$(echo "$RESP" | sed '$d')
-            case "$HTTP_CODE" in
-              2*) echo "  ✅ ${BASENAME} 上传成功" ;;
-              *)
-                echo "  ❌ ${BASENAME} 上传失败 (HTTP ${HTTP_CODE})"
-                echo "$BODY"
-                exit 1
-                ;;
-            esac
-          done
-
-          echo ""
-          echo "✅ Gitee release 同步完成：https://gitee.com/${GITEE_OWNER}/${GITEE_REPO}/releases/tag/${TAG}"
