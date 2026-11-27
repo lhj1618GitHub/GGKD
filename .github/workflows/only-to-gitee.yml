@@ -1,0 +1,112 @@
+name: 同步releases目录订阅文件到Gitee
+
+on:
+  workflow_dispatch:
+    inputs:
+      gitee_token:
+        description: 'Gitee 访问令牌（必填，用于向 Gitee 仓库推送）'
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-to-gitee
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出 GitHub 仓库
+        uses: actions/checkout@v4
+
+      - name: 校验待同步文件
+        run: |
+          set -e
+          for f in releases/lhj1618.json5 releases/version.json5; do
+            if [ ! -f "$f" ]; then
+              echo "❌ 缺少文件：$f"
+              exit 1
+            fi
+            echo "✓ 找到 $f ($(wc -c < "$f") 字节)"
+          done
+
+      - name: 同步到 Gitee releases 目录
+        env:
+          GITEE_TOKEN: ${{ inputs.gitee_token }}
+          GITEE_USER:  lhj1618
+          GITEE_OWNER: lhj1618
+          GITEE_REPO:  GGKD
+        run: |
+          set -euo pipefail
+          echo "::add-mask::${GITEE_TOKEN}"
+
+          SRC_DIR="${GITHUB_WORKSPACE}/releases"
+          REMOTE="https://${GITEE_USER}:${GITEE_TOKEN}@gitee.com/${GITEE_OWNER}/${GITEE_REPO}.git"
+          WORK="$(mktemp -d)"
+          echo "临时目录：${WORK}"
+
+          # 1) 克隆：先浅克隆，失败则完整克隆，再失败视为空仓库
+          if git clone --depth 1 "$REMOTE" "$WORK/repo"; then
+            echo "✓ 浅克隆成功"
+          else
+            echo "浅克隆失败，尝试完整克隆…"
+            rm -rf "$WORK/repo"
+            if git clone "$REMOTE" "$WORK/repo"; then
+              echo "✓ 完整克隆成功"
+            else
+              echo "克隆失败，按空仓库初始化"
+              mkdir -p "$WORK/repo"
+            fi
+          fi
+
+          cd "$WORK/repo"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 2) 确定分支（空仓库时创建 master）
+          BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+          if [ -z "$BRANCH" ]; then
+            echo "未检测到分支，初始化 master"
+            git checkout -b master
+            BRANCH=master
+          fi
+          echo "目标分支：${BRANCH}"
+
+          # 3) 拷贝文件
+          mkdir -p releases
+          cp "${SRC_DIR}/lhj1618.json5" releases/
+          cp "${SRC_DIR}/version.json5"  releases/
+          git add releases/lhj1618.json5 releases/version.json5
+
+          if git diff --staged --quiet; then
+            echo "ℹ️ Gitee 仓库 releases/ 已是最新，无需提交"
+            exit 0
+          fi
+
+          # 4) 提交（commit message 尽量带版本号）
+          VERSION=$(grep -oE '"version"[[:space:]]*:[[:space:]]*"?[0-9]+' releases/version.json5 \
+                    | grep -oE '[0-9]+' | head -1 || true)
+          MSG="chore: 同步 releases/*.json5 到 Gitee"
+          [ -n "${VERSION:-}" ] && MSG="${MSG} (v${VERSION})"
+          MSG="${MSG} [skip ci]"
+          git commit -m "$MSG"
+
+          # 5) 推送（若 shallow push 不被支持，unshallow 后重试一次）
+          if ! git push origin "HEAD:${BRANCH}"; then
+            if [ -f .git/shallow ]; then
+              echo "浅克隆 push 失败，尝试 unshallow 后重试…"
+              git fetch --unshallow origin
+              git push origin "HEAD:${BRANCH}"
+            else
+              echo "❌ 推送失败"
+              exit 1
+            fi
+          fi
+
+          echo ""
+          echo "✅ 已同步到 Gitee"
+          echo "🔗 https://gitee.com/${GITEE_OWNER}/${GITEE_REPO}/tree/${BRANCH}/releases"
