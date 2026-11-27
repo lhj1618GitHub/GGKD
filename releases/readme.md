@@ -15,30 +15,7 @@
 
 **订阅链接 - Github**
 
-- 代理加速
-
-```
-https://fastly.jsdelivr.net/gh/lhj1618GitHub/GGKD/releases/lhj1618.json5
-```
-
-```
-https://gh.sixyin.com/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
-```
-
-```
-https://v4.gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
-```
-
-```
-https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
-```
-
-```
-https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
-```
-
-
-- 官方原raw链接
+- 原raw链接(国内访问不稳定)
 
 ```
 https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
@@ -48,6 +25,15 @@ https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.jso
 
 ```
 https://gitee.com/lhj1618/GGKD/raw/master/releases/lhj1618.json5
+```
+
+- 代理加速Github
+```
+https://gh-proxy.org/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
+```
+
+```
+https://gh-proxy.at9.net/https://raw.githubusercontent.com/lhj1618GitHub/GGKD/master/releases/lhj1618.json5
 ```
 
 ---
